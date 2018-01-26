@@ -1,0 +1,41 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block stylesheets %}
+    
+{% endblock stylesheets %}
+{% block body %}
+    <h1>Creer une nouvelle page</h1>
+
+    <section class="app-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget">
+                    <header class="widget-header">
+                        <h4 class="widget-title">Contenu de la page</h4>
+                    </header><!-- .widget-header -->
+                    <hr class="widget-separator">
+                    <div class="widget-body">
+                        <!--<div class="m-0" data-plugin="summernote" data-options="{height: 250}">Hello Summernote</div>-->
+
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <input type="submit" value="Create" />
+                        {{ form_end(form) }}
+                    </div><!-- .widget-body -->
+                </div><!-- .widget -->
+            </div><!-- END column -->
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul>
+                    <li>
+                        <a href="{{ path('pages_index') }}">Retour à la liste</a>
+                    </li>
+                </ul>
+            </div><!-- END column -->
+        </div>
+    </section><!-- #dash-content -->
+    {% block javascripts %}
+         <script src="{{ asset('bundles/vmj/ckeditor/ckeditor.js') }}"></script>
+        {% endblock javascripts %}
+{% endblock %}

@@ -1,0 +1,228 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrap">
+
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+        <div class="index-4">
+
+
+            <section class="team-of-prof-particuliers">
+                <div class="team-of-prof" id="team-of-prof">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="seo-main col-md-6 col-sm-12">
+                      <!--           <img alt="" src="{{ asset('theme/img/features/seo-main.png') }}">
+                                -->
+                             <h1 style="color:white">   Essayez, découvrez,
+                                 vivez le métier de votre rêve </h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Calculator -->
+            <section class="text-field">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-md-3">
+
+						<h3 class="upp"><span class="visible-md visible-sm visible-xs">1.</span> url address</h3>
+
+						<input class="input-border" type="text" placeholder="http://">
+						<div class="bottom-border"> </div>
+
+					</div>
+
+					<div class="col-md-3">
+
+						<h3 class="upp"><span class="visible-md visible-sm visible-xs">2.</span> select regions</h3>
+
+						<select name="color-select" id="color-select" tabindex="1">
+							<option value="">-- Please select --</option>
+							<option value="1">Africa</option>
+							<option value="2">The Americas</option>
+							<option value="3">Asia andthe Middle East</option>
+							<option value="4">Europe</option>
+							<option value="5">Oceania</option>
+						</select>
+						<div class="bottom-border"></div>
+
+					</div>
+
+					<div class="col-md-3">
+
+						<h3 class="upp"><span class="visible-md visible-sm visible-xs">3.</span> needed keywords</h3>
+
+						<input class="input-border" type="text">
+						<div class="bottom-border"> </div>
+
+					</div>
+
+					<div class="col-md-3">
+
+						<h3 class="upp"> <span class="visible-md visible-sm visible-xs">4.</span>budget</h3>
+
+						<p style="text-align: center; color: #ff9c00; font-size: 21px; font-family: Oswald">$0</p>
+
+					</div>
+
+					<div class="col-md-6 col-sm-6 hidden-xs">
+
+						<p class="four-steps">four steps to calculate budget of SEO optimization<br>
+						for your site and keywords</p>
+
+					</div>
+
+					<div class="col-md-6 col-sm-6 col-xs-12">
+
+						<a class="button-green upp pull-left">calculate seo budget</a>
+
+					</div>
+
+				</div>
+			</div>
+
+		</section>
+
+            <section class="calculator">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-3 hidden-md hidden-sm hidden-xs">
+                            <img src="{{ asset('theme/img/rec-4.svg')}}" alt="">
+                        </div>
+                        <div class="col-md-3 hidden-md hidden-sm hidden-xs">
+                            <img src="{{ asset('theme/img/rec-4.svg')}}" alt="">
+                        </div>
+                        <div class="col-md-3 hidden-md hidden-sm hidden-xs">
+                            <img src="{{ asset('theme/img/rec-4.svg')}}" alt="">
+                        </div>
+                        <div class="col-md-3 hidden-md hidden-sm hidden-xs">
+                            <img src="{{ asset('theme/img/rec-4.svg')}}" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <div class="green-line"></div>
+
+            <!-- Our service -->
+
+            <section>
+                <div class="container">
+                    <div class="row">
+                        <div class="wow fadeInUp col-lg-4 col-md-4 col-sm-4 col-xs-12 col-xs-small">
+                            <div class="service-block">
+                                <div class="service-ico service-ico-1 c-pointer"><img src="{{ asset('theme/img/picto-lightning.png')}}" width="100" alt=""><i class="icon-scale-border"></i></div>
+                                <h3>Changez de métier</h3>
+                                <p>Vous souhaitez vous reconvertir professionnellement ?</p>
+                            </div>
+                        </div>
+                        <div class="wow fadeInUp col-lg-4 col-md-4 col-sm-4 col-xs-12 col-xs-small" data-wow-delay="0.5s">
+                            <div class="service-block">
+                                <div class="service-ico service-ico-2 c-pointer"><img src="{{ asset('theme/img/picto-hexagon.png')}}"  width="100" alt=""><i class="icon-scale-border"></i></div>
+                                <h3>Découvrez un métier</h3>
+                                <p> Vous cherchez un nouveau job ? 
+                                    <br />
+                                    Trouvez celui que vous allez adorer !
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="wow fadeInUp col-lg-4 col-md-4 col-sm-4 col-xs-12 col-xs-small" data-wow-delay="0.5s">
+                            <div class="service-block">
+                                <div class="service-ico service-ico-2 c-pointer"><img src="{{ asset('theme/img/picto-check.png')}}"  width="100" alt=""><i class="icon-scale-border"></i></div>
+                                <h3>Vivez un métier</h3>
+                                <p> Par curiosité ou plaisir, réalisez un rêve et osez essayer !
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- and Our service -->
+
+
+
+
+            <section>
+
+                <div>
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+                                <h2>Témoignages <span>Ce que la communauté Viemonjob dit</span></h2>
+
+                                <div id="owl-demo-8" class="owl-carousel col-xs-small none cursor-move">
+
+                                    <div class="people-quote">
+                                        <div class="item-quote">
+                                            <p>Mon immersion me sera bénéfique pour créer mon foodtruck ! 
+                                                Un grand merci à Violette et toute son équipe qui m'ont chaleureusement accueilli, toujours disponibles pour répondre à ma curiosité tant au niveau de la gestion, de l'accueil et du service client, de la cuisine et ses petits secrets. 
+                                                Je rêve de créer une affaire ou les employés travaillent en harmonie, et d'avoir une clientèle aussi fidèle et qui se régale à l'image de chez Violette. 
+                                                Merci d'avoir créé Viemonjob, c'est vraiment une excellente idée car je pense que ça correspond à un vrai besoin !</p>
+                                        </div>
+                                        <span class="bottom-border"></span>
+
+
+                                        <div class="people-av">
+                                            <div class="people-av-img">
+                                                <img src="{{ asset('theme/img/avatar/te-1.jpg') }}" alt="">
+                                            </div>
+                                            <h4>Hervé</h4>
+                                            <p>Immersion en Restauration</p>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="people-quote">
+                                        <div class="item-quote">
+                                            <p>J'ai testé le métier de fleuriste près de chez moi durant une semaine. 
+                                                Je suis allée à Rungis le matin pour choisir les fleurs, que j'ai préparées avant de composer des bouquets. 
+                                                J'ai adoré la relation privilégiée avec les clients, et j'ai découvert une vraie vie de quartier, unique chez les commerçants. 
+                                                Grâce à cette expérience, j'ai eu la chance d'être accueillie par une personne passionnée qui m'a fait découvrir tant les aspects positifs que les contraintes du métier de fleuriste.</p>
+                                        </div>
+                                        <span class="bottom-border"></span>
+
+
+                                        <div class="people-av">
+                                            <div class="people-av-img">
+                                                <img src="{{ asset('theme/img/avatar/te-1.jpg') }}" alt="">
+                                            </div>
+                                            <h4>Tiphanie</h4>
+                                            <p>Fleuriste pendant une semaine.</p>
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+                            </div>
+
+                        </div> <!-- and row -->
+                    </div> <!-- and container -->
+                </div> <!-- and relaited-products -->
+
+            </section>
+
+        </div><!-- and index-4 -->
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+    </div> <!-- and wrap -->
+
+
+
+{% endblock body %}

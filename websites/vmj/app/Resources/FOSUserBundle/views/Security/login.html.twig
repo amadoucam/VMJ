@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion à Viemonjob{% endblock %}
+{% block description %}Naviguez et réservez, ou proposez votre immersion. C'est simple avec Viemonjob.{% endblock %}
+{% block keywords %}tester un métier, essayer un métier, test un metier, reconversion, orientation, transition, formation, employabilité, emploi, immersion, stage, métier, job, tester, essayer, découvrir{% endblock %}
+
+{% block body %}
+    {% trans_default_domain 'FOSUserBundle' %}
+    {% block fos_user_content %}
+        {#{{ facebook_initialize({'xfbml': true, 'fbAsyncInit': 'onFbInit();'}) }}#}
+        <div>
+            <div id="wrap">
+                <!-- Page title -->
+                {% block header %}
+                    {{ parent() }}
+                {% endblock header %}
+
+                <!-- Login Register -->
+                <section>
+                    <div class="login-register">
+
+
+                                <!-- Shop content -->
+                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                    <div class="login">
+                                        <h2 class="mauve fs45 fw300 text-center">Connexion <!--<span>standard ou avec vos réseaux sociaux</span>-->
+                                        </h2>
+                                        {% if error %}
+                                            <div>{{ error.messageKey|trans(error.messageData, 'security') }}
+                                            </div>
+                                        {% endif %}
+
+                                        <!--<span>standard ou avec vos réseaux sociaux</span>-->
+
+                                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fs16 fw300 ">
+                                                    {#<li> {{ facebook_login_button({'autologoutlink': true}) }}</li>#}
+                                                    <form action="{{ path("fos_user_security_check") }}" method="post">
+                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 padding-connexion">
+                                                        <a href="{{ path('facebook_login') }}" title="Connexion via facebook"><div class="blanc bouton-connexion text-center bordconnexionradius facebookfond">
+                                                                <span class="text-left icon-conex icon-conex-fb">
+                                                                    <img src="../theme/img/facebook-icn.png">
+                                                                </span> Connexion avec Facebook 
+                                                            </div> 
+                                                        </a></div>
+                                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 padding-connexion-bis">
+                                                        <a href="{{ path('linkedin_login') }}" title="Connexion via Linkedin"><div class="blanc bouton-connexion text-center bordconnexionradius linkedinfond">
+                                                                <span class="text-left icon-conex">
+                                                                    <img src="../theme/img/linkedin-icn.png" >
+                                                                </span>
+                                                                Connexion avec Linkedin 
+                                                            </div>
+                                                        </a></div>
+                                                        {#<a href="http://www.viemonjob.com/connect/twitter" title="Connexion via twitter"><div class="blanc bouton-connexion   text-center bordconnexionradius   twitterfond">
+                                                                <span class="text-left icon-conex">
+                                                                    <img src="../theme/img/twitter-icn.png" >
+                                                                </span>
+                                                                Connexion avec  Twitter 
+                                                            </div>
+                                                        </a>#}
+
+                                                        <div class="text-center">   ou   
+                                                        </div>
+
+                                                        <div class="bouton-connexion2 text-center bordconnexionradius boutonconnexiontextleft">
+                                                            <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                                                            <input type="text" id="username" class="form-control" placeholder="exemple@monmail.com" name="_username" value="{{ last_username }}" required="required" />
+                                                        </div>
+
+                                                        <div class="bouton-connexion2 text-center bordconnexionradius boutonconnexiontextleft">
+                                                            <input   type="password" class="form-control" placeholder="Mot de passe" id="password" name="_password" required="required" />
+                                                        </div>
+
+                                                        <!-- <div class="souvienstoi text-center">
+                                                            <input type="checkbox" class="mauvef"  id="remember_me" name="_remember_me" value="on"/>
+                                                            <span for="remember_me" class="grisfonce">Rester connecté</span>
+                                                        </div> -->
+
+                                                        <div class="motdepassevmj text-center">
+                                                            <a href="{{path('fos_user_resetting_request')}}" class="souvienstoi c-pointer bleuvert ">Mot de passe oublié&nbsp?</a>
+                                                        </div> 
+
+                                                        <div class="bouton-connexion text-center bordconnexionradius fondbleuvert">
+                                                            <input type="submit" id="_submit" class=" boutonseconnecter  " name="_submit" value="Se connecter" /> 
+                                                        </div>
+
+                                                        <div  class="ligneconnexion bouton-connexion2 fs1"> &nbsp </div>
+
+                                                        <div class="col-xs-8 fs13 bouton-connexion"> <a class="c-pointer grisfonce fs15 fw300 vnpdc">Vous n'avez pas de compte&nbsp?</a>
+                                                        </div>
+
+                                                        <div class="col-xs-4 text-center fs13 bordconnexionradius bordconnexioncouleur2 bleuvert bouton-connexion fw300"> 
+                                                            <a href="{{ path('fos_user_registration_register') }}" class="c-pointer bleuvert ">Inscription</a> 
+
+                                                        </div> 
+                                                    </form>
+                                                </div>
+
+                                        <!--ou avec vos réseaux sociaux</span>
+
+                                <a class="c-pointer social social-google">
+                                    <i class="fa fa-google-plus"></i>
+                                    Connexion avec Google</a>
+
+                                <a class="c-pointer social social-facebook">
+                                    <i class="fa fa-facebook"></i>
+                                    Connexion avec Facebook</a>-->
+                                    </div>
+
+                                </div>
+                                <div class="col-lg-7 col-md-7 hidden-xs hidden-sm padding-connexion">
+                                    <img class="image-connexion" src="../theme/img/vmj_connexion_background.jpg" alt="" />
+                                </div>
+
+                    </div> <!-- and Login Register -->
+                </section>
+
+                {% block footer %}
+                    {{ parent() }}
+                {% endblock footer %}
+
+            </div> <!-- and wrap -->
+
+            <!-- Price slider range -->
+            <script>
+                $(document).ready(function () {
+                    $(function () {
+                        $("#slider-range").slider({
+                            range: true,
+                            min: 0,
+                            max: 5000,
+                            values: [750, 3500],
+                            slide: function (event, ui) {
+                                $("#amount").val("$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ]);
+                            }
+                        });
+                        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                                " - $" + $("#slider-range").slider("values", 1));
+                    });
+                });
+            </script>
+        </div>
+
+    {% endblock fos_user_content %}
+{% endblock body %}

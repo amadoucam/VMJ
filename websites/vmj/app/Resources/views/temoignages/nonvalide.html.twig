@@ -1,0 +1,47 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block body %}
+    <h1>Temoignages list</h1>
+
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Temoignage</th>
+                <th>Note</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Valide</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for temoignage in temoignages %}
+            <tr>
+                <td><a href="{{ path('temoignages_show', { 'id': temoignage.id }) }}">{{ temoignage.id }}</a></td>
+                <td>{{ temoignage.temoignage }}</td>
+                <td>{{ temoignage.note }}</td>
+                <td>{% if temoignage.created %}{{ temoignage.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if temoignage.updated %}{{ temoignage.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if temoignage.valide %}Yes{% else %}No{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('temoignages_show', { 'id': temoignage.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('temoignages_edit', { 'id': temoignage.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('temoignages_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les medias qui parlent de Viemonjob{% endblock %}
+{% block description %}Les medias parlent de Viemonjob, une plateforme innovante qui permet de tester un métier{% endblock %}
+{% block keywords %}Viemonjob, VMJ, médias, presse, télévision, télé, radio, journaux, blog, internet{% endblock %}
+
+
+{% block body %}
+    <div id="wrap">
+
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+
+        <!-- PAGE COORPORATE -->
+        <!-- À propos -->
+
+        <section class="  ">
+            <div class="row headerpageapropos hidden-xs-down">
+            </div>
+        </section>
+        <!-- Menu à propos -->  
+
+        <section>
+
+
+            <div class="container submenuapropos pt25 pb20"> 
+                <ul class="nav nav-tabs">
+                    <li><a href="{{path('page_a_propos')}}">À propos</a></li>
+                    <li><a href="{{path('page_aide')}}">FAQ</a></li>
+                    <li class="active clearfix"><a href="{{path('page_on_parle_de_nous')}}">On parle de nous</a></li> 
+                    <li><a href="{{path('page_cgv')}}">Conditions générales d'utilisation</a></li>
+                    <li><a href="{{path('page_mentions_legales')}}">Mentions légales</a></li> 
+                </ul>
+                <!-- Contenu --> 
+
+                 <div class="col-sm-12 text-center"> <h1 class="fw100 mauve fs50 pt30">On parle de nous</h1>
+                 </div>
+                    
+
+                <div class="tab-content display-inline submenuaproposcontent">
+
+                    <div id="apropos2" class="padd10p tab-pane fade in active fw100">
+                    
+                        <!--Div1--> 
+                        <div class="container">
+                            <div class="row text-center onparledenous">
+
+                                <!--TÉLÉVISION-->
+                                <div class="container clearfix inlineblock">
+                                    <h2>Télévision</h2>
+                                </div>
+
+                                <div class="clearfix">
+                                    {% for presse in presse %}
+                                        {% if presse.cat == '0' %}
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix" style="height: 250px;">
+                                                {% if presse.lien is defined %}
+                                                    <a href="{{ presse.lien }}" target="_blank">
+                                                    <img src="{{ asset('theme/img/logo/'~presse.logolien) }}" style="height: 100px;max-width: 200px;">
+                                                    <p>{{ presse.name }} <br> {{ presse.date|date('d-m-Y')}}</p></a>
+                                                {% else %}
+                                                    <img src="{{ asset('theme/img/logo/'~presse.logolien) }}" style="height: 100px;max-width: 200px;">
+                                                    <p>{{ presse.name }} <br> {{ presse.date|date('d-m-Y')}}</p>
+                                                {% endif %}
+                                        </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                                <!--WEB-->
+                                <br>
+                                <div class="container clearfix inlineblock">
+                                    <h2>Presse & Web</h2>
+                                </div>
+
+                                <div class="clearfix">
+                                    {% for presse in presse %}
+                                        {% if presse.cat == '1' %}
+                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix" style="height: 250px;">
+                                                {% if presse.lien is defined %}
+                                                    <a href="{{ presse.lien }}" target="_blank">
+                                                        <img src="{{ asset('theme/img/logo/'~presse.logolien) }}" style="height: 100px;max-width: 200px;">
+                                                        <p>{{ presse.name }} <br> {{ presse.date|date('d-m-Y')}}</p></a>
+                                                {% else %}
+                                                    <img src="{{ asset('theme/img/logo/'~presse.logolien) }}" style="height: 100px;max-width: 200px;">
+                                                    <p>{{ presse.name }} <br> {{ presse.date|date('d-m-Y')}}</p>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                                <!--RADIO-->
+                                <br>
+                                <div class="container clearfix inlineblock">
+                                    <h2>Radio</h2>
+                                </div>
+
+                                <div class="clearfix">
+                                    {% for presse in presse %}
+                                        {% if presse.cat == '2' %}
+                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix" style="height: 250px;">
+                                                {% if presse.lien is defined %}
+                                                    <a href="{{ presse.lien }}" target="_blank">
+                                                        <img src="{{ asset('theme/img/logo/'~presse.logolien) }}" style="height: 100px;max-width: 200px;">
+                                                        <p>{{ presse.name }} <br> {{ presse.date|date('d-m-Y')}}</p></a>
+                                                {% else %}
+                                                    <img src="{{ asset('theme/img/logo/'~presse.logolien) }}" style="height: 100px;max-width: 200px;">
+                                                    <p>{{ presse.name }} <br> {{ presse.date|date('d-m-Y')}}</p>
+                                                {% endif %}
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+                        </div> 
+                    </div>
+
+                </div>
+            </div>
+        </section>  
+
+       {% block temoignages %}
+            {{ parent() }}
+        {% endblock temoignages %} 
+
+        {% block metiers %}
+            {{ parent() }}
+        {% endblock metiers %}
+
+        {% block newsletters %}
+            {{ parent() }}
+        {% endblock newsletters %}
+
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+        
+    </div>
+    {% endblock %}
+

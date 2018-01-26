@@ -1,0 +1,24 @@
+conversations_index:
+    path:     /
+    defaults: { _controller: "VmjBundle:Conversations:index" }
+    methods:  GET
+
+conversations_show:
+    path:     /{id}/show
+    defaults: { _controller: "VmjBundle:Conversations:show" }
+    methods:  GET
+
+conversations_new:
+    path:     /new
+    defaults: { _controller: "VmjBundle:Conversations:new" }
+    methods:  [GET, POST]
+
+conversations_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VmjBundle:Conversations:edit" }
+    methods:  [GET, POST]
+
+conversations_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VmjBundle:Conversations:delete" }
+    methods:  DELETE

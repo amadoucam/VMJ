@@ -1,0 +1,61 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block titrepage %} Vos immersions réservées {% endblock titrepage %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/> 
+
+{% endblock stylesheets %}
+
+{% block body %}
+
+    <h1>Immersions</h1>
+    <table id="immersions" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Catégorie Métier</th>
+                <th>Titre de l'immersion</th>
+                <th>Prix/semaine</th>  
+                <th>Édition</th>
+                <th>Commandes</th>
+                <th>Statut</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for immersion in immersions %}
+                {% set categories = '' %}
+                {% for cat in immersion.categories %}
+                    {% if categories == '' %}
+                        {% set categories = cat %}
+                    {% else %}
+                        {% set categories = categories~', '~cat %}
+                    {% endif %}
+                {% endfor %}
+                <tr>
+                    <td>{{ categories }}</td>
+                    <td>{{ immersion.title }}</td>
+                    <td>{{ immersion.weekPrice }}</td>
+                    <td><a href="{{ path('dashboard_pro_immersion_edit', {'id':immersion.id}) }}">Editer</a></td>
+                    <td><a href="{{ path('dashboard_pro_commandes', {'id':immersion.id}) }}">Commandes</a></td>
+                    <td>{% if immersion.actifAdmin == true %}<span class="btn-success">Validé par l'admin</span>{% else %}<span class="btn-warning">En attente de validation <br /> administration</span>{% endif %}</td>
+                    <td>
+                        <form action="{{ path('pro_immersion_delete', { 'immersionId': immersion.id }) }}" method="POST">
+                            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i></button>
+                        </form>
+        </td>
+                </tr>                
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#immersions').DataTable({'language': french_datatable});
+        });
+    </script>
+{% endblock javascripts %}

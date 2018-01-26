@@ -1,0 +1,44 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block body %}
+    <h1>CategorieJob</h1>
+
+    <table class="table table-hover table-stripped table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ categorieJob.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ categorieJob.name }}</td>
+            </tr>
+            <tr>
+                <th>Url</th>
+                <td>{{ categorieJob.slug }}</td>
+            </tr>
+            <tr>
+                <th>Modifié le</th>
+                <td>{% if categorieJob.modified %}{{ categorieJob.modified|date('d-m-Y H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date de creation</th>
+                <td>{% if categorieJob.created %}{{ categorieJob.created|date('d-m-Y H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_categoriejob_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('admin_categoriejob_edit', { 'id': categorieJob.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

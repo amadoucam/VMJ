@@ -1,0 +1,72 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block body %}
+    {{form_start(searchForm)}}
+    <table class="table table-bordered">
+        <tr>
+            <td>{{ form_widget(searchForm.metier, {'attr': {'class': 'form-control', 'placeholder' : 'MÉTIER ? Boulanger, cuisinier ... '}}) }}</td>
+            <td>{{ form_widget(searchForm.lieu, {'attr': {'class': 'form-control', 'placeholder' : 'Où ? Ville ? Région ?'}}) }}</td>
+            <td>{{ form_widget(searchForm.periode, {'attr': {'class': 'form-control', 'placeholder' : 'Quand ?'}}) }}</td>
+        </tr>
+        <tr>
+            <td colspan="3">{{ form_widget(searchForm.motCle, {'attr': {'class': 'form-control', 'placeholder' : 'Recherche libre ex: bijoux, dessin, parc, etc...'}}) }}</td>
+        </tr>
+        <tr>
+
+            <td colspan="3" class="text-center">
+                <button type="submit" class="btn btn-primary btn-lg"><i class="fa fa-search-plus"></i> Rechercher</button>
+            </td>
+        </tr>
+    </table>
+    {{form_end(searchForm)}}
+
+
+
+    <div class="wrap">
+        <section class="app-content">
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div id="profile-tabs" class="nav-tabs-horizontal white m-b-lg">
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+
+
+                            <div class="row">
+                                {% for result in resultats%}
+                                <div class="col-md-6 col-sm-6">
+                                    <div class="user-card">
+                                        <a href="{{path('vmj_show_profile',{id: result.professionnel.id})}}">
+                                            <div class="media">
+                                            <div class="media-left">
+                                                <div class="avatar avatar-lg avatar-circle">
+                                                   {% if result.imgPresentation.AssetPath is defined %} <img src="{{ result.imgPresentation.AssetPath|imagine_filter('avatarPic') }}" alt="">{% endif %}
+                                                    <i class="status status-online"></i>
+                                                </div>
+                                            </div>
+                                            <div class="media-body">
+                                                <h5 class="media-heading">{% if result.professionnel is not null%} {{result.professionnel.firstname}} {{result.professionnel.lastname}}{% endif %}</h5>
+                                                <small class="media-meta">{{result.name}}</small>
+                                            </div>
+                                        </div></a>
+                                    </div><!-- search-result -->
+                                </div><!-- END column -->
+                                {% endfor%}
+
+
+                            </div><!-- .row -->
+
+                        </div><!-- .tab-content -->
+                    </div><!-- #profile-components -->
+                </div><!-- END column -->
+
+            </div><!-- .row -->
+        </section><!-- #dash-content -->
+    </div><!-- .row -->
+
+
+
+
+{% endblock body %}

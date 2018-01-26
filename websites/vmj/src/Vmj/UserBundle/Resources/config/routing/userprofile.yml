@@ -1,0 +1,29 @@
+userprofile_index:
+    path:     /
+    defaults: { _controller: "VmjUserBundle:UserProfile:index" }
+    methods:  GET
+
+userprofile_show:
+    path:     /{id}/show
+    defaults: { _controller: "VmjUserBundle:UserProfile:show" }
+    methods:  GET
+
+userprofile_new:
+    path:     /new
+    defaults: { _controller: "VmjUserBundle:UserProfile:new" }
+    methods:  [GET, POST]
+
+userprofile_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VmjUserBundle:UserProfile:edit" }
+    methods:  [GET, POST]
+    
+myProfile_edit:
+    path:     /my-profile-edit
+    defaults: { _controller: "VmjUserBundle:UserProfile:editMyProfile" }
+    methods:  [GET, POST]
+
+userprofile_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VmjUserBundle:UserProfile:delete" }
+    methods:  DELETE

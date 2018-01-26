@@ -1,0 +1,79 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block titrepage %} Mes commandes {% endblock titrepage %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>
+
+{% endblock stylesheets %}
+
+{% block body %}
+
+    <h1>Liste des commandes</h1>
+    
+    {% if commandes is defined and commandes is not null%}
+        
+            <div class="row">
+                <table class="commandes table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Client</th>
+                        <th>Mail client</th>
+                        <th>Immersion</th>
+						<th>Mail pro</th>
+                        <th>Date de l'immersion</th>
+                        <th>Prix</th>
+                        <th>Date de commande</th>
+                        <th>Motivation</th>
+                        <th>Statut</th>
+                        <th>Facture</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for commande in commandes %}
+                        {% set immersion = commande.immersion %}
+                        {% set professionnel = commande.immersion.professionnel %}
+                        <tr>
+                            <td>{{ commande.id }}</td>
+                            <td>{{ commande.customer }}</td>
+                            <td>{{ commande.customer.email }}</td>
+                            <td>{{ immersion.title }}</td>
+							<td>{{ professionnel.email}}
+                            <td>{{ commande.start | date('Y-m-d') }}
+                                au
+                                {%  if commande.end is null %}
+                                    {{ commande.start | date_modify("+5 day")| date('Y-m-d') }}
+                                {% else %}
+                                    {{ commande.end | date('Y-m-d') }}
+                                {% endif %}
+                            </td>
+                            <td>{{ commande.price }}€</td>
+                            <td>{{ commande.createdAt | date('d-m-Y') }}</td>
+                            <td>{{ commande.motivation }}</td>
+                            <td>
+                                {% if commande.statut == 1 %}
+                                    Validée
+                                {%  else %}
+                                    Abandonnée
+                                {% endif %}
+                            </td>
+                            <td><a href="{{ path('particuliers_facture', {'id': commande.id}) }}" target="_blank">Facture</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+    {% else %}
+        <h3>Vous n'avez pas de commandes pour l'instant</h3>
+    {% endif %}
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.commandes').DataTable({'language': french_datatable });
+        });
+    </script>
+{% endblock javascripts %}

@@ -1,0 +1,44 @@
+<ul class="app-menu">
+  {#  <li class="has-submenu">
+        <a href="{{path('dashboard_particuliers')}}">
+            <i class="menu-icon zmdi zmdi-inbox zmdi-hc-lg"></i>
+            <span class="menu-text">Accueil / Recherche</span>
+        </a>
+        
+    </li>#}
+  <li><a href="{{path('particuliers_immersions')}}"><i class="menu-icon zmdi zmdi-inbox zmdi-hc-lg"></i><span class="menu-text">Mes Immersions</span></a></li>
+    <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-inbox zmdi-hc-lg"></i>
+            <span class="menu-text">Ma messagerie</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+        <ul class="submenu">
+            <li>
+                <a href="{{path('messages_inbox')}}">
+                    <span class="menu-text">Boite de reception</span>
+                    {% if compteNonLus is defined and compteNonLus != 0 %}<span class="label label-primary menu-label">{{compteNonLus}}</span>{% endif %}
+                </a>
+            </li>
+            <li><a href="{{path('messages_inbox')}}"><span class="menu-text">Messages envoyés</span></a></li>
+            <li><a href="{{path('messages_compose')}}"><span class="menu-text">Nouveau Message</span></a></li>
+        </ul>
+    </li>
+    
+    {#<li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+            <span class="menu-text">Mes immersions</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+        <ul class="submenu">
+           #} 
+          {#  <li><a href="{{path('dashboard_particuliers')}}"><span class="menu-text">Recherche Professionnelle</span></a></li>
+        </ul>
+
+
+
+    <li class="menu-separator"><hr></li>#}
+
+
+</ul><!-- .app-menu -->

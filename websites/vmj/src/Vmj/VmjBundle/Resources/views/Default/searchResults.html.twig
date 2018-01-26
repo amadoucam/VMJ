@@ -1,0 +1,143 @@
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrap">
+
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+
+        <section>
+            {# {{dump(categorieJobs)}} #}
+            <div class="page-title">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5">
+                            <h3>Découvrez tous nos métiers</h3>
+                        </div>
+                        <div class="col-md-7 col-sm-7 hidden-xs">
+                            <div class="page-title-address">
+                                <a href="{{path('vmj_homepage')}}">Accueil</a><i class="fa fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    {#<div class="row">
+                        <form>
+                            <div class="checkbox-container">
+                                {% for categorieJob in categorieJobs %}
+                                    <div class="col-md-5 col-sm-5">
+                                        <label> {{categorieJob.name}} <input type="checkbox" class="checkbox" value="{{categorieJob.id}}" value="job{{categorieJob.id}}" name="categorie[]"/> </label>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </form>
+                    </div>#}
+
+                </div>
+            </div>
+        </section> <!-- and Page title -->
+        <!-- Portfolio -->
+        <section>
+            <div class="portfolio">
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-md-12 hidden-xs">
+                            <div class="portfolioFilter">
+                                <div class="filter-link"><a href="#" data-filter="*" class="current">Tout</a> <div class="bottom-border"></div></div>
+                                    {% for categorieJob in categorieJobs %}
+                                    <div class="filter-link">
+                                        <a href="#" data-filter=".categorie{{categorieJob.id}}">{{categorieJob.name}}</a> 
+                                        <div class="bottom-border"></div>                                            
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                            <div class="row">
+                        <div class="portfolioContainer">
+
+                            {% for metier in metiers %}
+
+                                {% if metier.categorieJob is defined and metier.categorieJob is not null %} 
+                                    {% set metierCategorieId = metier.categorieJob.id%} 
+                                {% else %} 
+                                    {% set metierCategorieId = '' %} 
+                                {% endif %}
+
+
+                                <div class="col-md-6 col-md-6 col-sm-6 col-xs-6 col-xs-small graphic categorie{{metierCategorieId}}">
+
+                                    <div class="p-item-img">
+
+                                       <!-- <div class="overaly">
+                                            <a class="button-dark upp c-pointer" href="img/portfolio/2.jpg" data-gal="prettyPhoto[gallery]">quick view</a>
+                                            <a class="button-dark upp">details</a>
+                                        </div>-->
+
+                                        <img alt="" src="{% if metier.imgPresentation is defined and metier.imgPresentation is not null %}{{ metier.imgPresentation.AssetPath|imagine_filter('metierPic') }}{% endif %}">
+
+                                    </div>
+
+                                    <div class="portfolio-item-description p-item-description">
+                                        <h3><a href="{{ path('vmj_fiche_metier', {'slug':metier.slug}) }}"><h3>{{ metier.name }}<span class="pull-right">{{metier.averageDailyRate * 5 }} € / semaine</span></h3></a>
+                                            <span style="font-size: 0.6em" class="gray-italic">{{ metier.businessDescription|slice(0, 76) }}...</span>
+                                    </div>
+
+                                    <div class="bottom-border">
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+    </div> <!-- and wrap -->
+
+
+    {% block javascripts %}
+
+
+        <script type="text/javascript">
+            /* Isotope launch */
+            $(window).load(function () {
+                var $container = $('.portfolioContainer');
+                $container.isotope({
+                    filter: '*',
+                    animationOptions: {
+                        duration: 750,
+                        easing: 'linear',
+                        queue: false,
+                    }
+                });
+
+                $('.portfolioFilter a').click(function () {
+                    $('.portfolioFilter .current').removeClass('current');
+                    $(this).addClass('current');
+
+                    var selector = $(this).attr('data-filter');
+                    $container.isotope({
+                        filter: selector,
+                        animationOptions: {
+                            duration: 750,
+                            easing: 'linear',
+                            queue: false,
+                        }
+                    });
+                    return false;
+                });
+            });
+            /* and Isotope launch */
+        </script>
+
+
+
+    {% endblock javascripts %}
+{% endblock body %}

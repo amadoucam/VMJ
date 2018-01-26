@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block fos_user_content %}
+    <div class="container-fluid">
+        <div id="wrap"> 
+        {% block header %}
+                    {{ parent() }}
+                {% endblock header %}
+
+    {% block metiers %}
+
+        <section>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="login-sec">
+                        <div class="login">
+                            <div class="login-form"> 
+                                 {% if user.UserProfile.type == "2" %} 
+
+                                <div class="container bienvenue-d1-vmj fondmauve blanc fs25 fw300 "> Bienvenue</div> 
+                                 {% else %} 
+                                 <div class="container bienvenue-d1-vmj fondjaune blanc fs25 fw300 "> Bienvenue</div>
+                                 {% endif %}  
+
+
+                                 {% if user.UserProfile.type == "2" %}  
+                                 <div class="container ">
+                                    <div class="container pt30 pb30">
+                                        <p class="majusculepremierelettre pl30"> <span class="fw500 fs25  ">{{user.UserProfile.firstname}},</span> votre compte est désormais activé. 
+                                        </p>
+                                    </div>
+                                     <div class="container text-center">
+                                        <p class="majusculepremierelettre"> Vous pouvez finir de remplir votre profil professionnel en cliquant <a href="{{path('edition_profile_pro')}}" title="Inscription professionnel" class="text-center"> ICI 
+                                             </a> .
+                                        </p>
+                                        <br>  
+                                         <div class="text-center">
+                                            <a href="{{path('edition_profile_pro')}}" title="Inscription professionnel" class="text-center">  
+                                             <button class="fs18 fondjaune  blanc br30 noborder paddingboutton">Compléter vos informations</button>  
+                                             </a>
+                                        </div>
+
+                                    </div>  
+                                    <br>  
+                                      <div class="container">
+                                        <p class="majusculepremierelettre text-center">  ou commence à créer vos immersions <a href="{{path('dashboard_pro_immersion_create')}}" title="Inscription particuliers" class="text-center"> ICI </a> .
+                                        </p>
+                                        <br>  
+                                        <div class="text-center pb30">
+                                            <a href="{{path('dashboard_pro_immersion_create')}}" title="Inscription particuliers" class="text-center">  
+                                             <button class="fs18 fondbleuvert blanc br30 noborder paddingboutton">Créer une immersion</button>  
+                                             </a>
+                                        </div> 
+                                    </div> 
+                                </div> 
+ 
+                                {% else %} 
+
+                                 <div class="container ">
+                                    <div class="container pt30 pb30">
+                                        <p class="majusculepremierelettre pl30"> <span class="fw500 fs25  ">{{user.UserProfile.firstname}},</span> votre compte est désormais activé. 
+                                        </p>
+                                    </div>
+                                     <div class="container">
+                                        <p class="majusculepremierelettre text-center"> En allant sur la page "métier" vous pourrez choisir une immersion et enfin vivre l'expérience Viemonjob.
+                                        </p>
+                                    </div>
+
+                                    <br>   
+                                     <div class="text-center pb30">
+                                        <a href="{{path('vmj_metiers')}}" title="Inscription particuliers" class="text-center">  
+                                         <button class="fs18 fondrose  blanc br30 noborder paddingboutton">Page Métiers</button>  
+                                         </a>
+                                    </div>
+                                </div> 
+
+                                {% endif %}  
+
+                                <!-- 
+                                <h2>{{ 'registration.confirmed'|trans({'%username%': user.username}) }}</h2>
+                                -->
+
+                                {% if targetUrl %}
+
+                                    <h3><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></h3>
+
+                                    {% else%}
+
+                                   <!--   <a href="{{ path('vmj_homepage') }}"><button class="btn btn-success">Acceder au site</button></a>       
+                                    -->
+
+                                    {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+
+            <!-- Découvrez les métier -->
+        
+            <section  class="clearfix team-of-prof-bg decouvrez-metier ">
+                <div class="row  ">
+                    <div class="text-center blanc">
+                        <h2 class="fs60 fw100 ">Viemonjob</h2>
+                        <p class="fs35 blanc">Maître fromager, coutelier, avocat, photo-reporter,<br>
+                            poissonnier, décorateur d’intérieur et bien d’autres encore...</p> <br>
+                        <a href="{{path('vmj_metiers')}}" title="decouvrez les metiers"><button class=" fs18 br30 fondrose2 blanc noborder paddingboutton fw400 fs18 ">   Découvrez tous les métiers </button> </a>
+                    </div>
+                </div>
+            </section>
+
+        {% endblock metiers %}
+        {% block newsletters %}
+        {% endblock newsletters %}
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+        </div>
+    </div>
+{% endblock fos_user_content %}

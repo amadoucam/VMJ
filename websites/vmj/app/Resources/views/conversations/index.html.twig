@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Conversations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for conversation in conversations %}
+            <tr>
+                <td><a href="{{ path('conversations_show', { 'id': conversation.id }) }}">{{ conversation.id }}</a></td>
+                <td>{% if conversation.created %}{{ conversation.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if conversation.updated %}{{ conversation.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('conversations_show', { 'id': conversation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('conversations_edit', { 'id': conversation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('conversations_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

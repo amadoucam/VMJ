@@ -1,0 +1,59 @@
+messages_index:
+    path:     /
+    defaults: { _controller: "VmjBundle:Messages:index" }
+    methods:  GET
+
+messages_show:
+    path:     /{id}/show
+    defaults: { _controller: "VmjBundle:Messages:show" }
+    methods:  GET
+    
+messages_voir:
+    path:     /{id}/voir
+    defaults: { _controller: "VmjBundle:Messages:voir" }
+    methods:  GET
+    
+messages_new:
+    path:     /new
+    defaults: { _controller: "VmjBundle:Messages:new" }
+    methods:  [GET, POST]
+    
+messages_inbox:
+    path:     /inbox
+    defaults: { _controller: "VmjBundle:Messages:inbox" }
+    methods:  [GET, POST]
+    
+messages_outbox:
+    path:     /outbox
+    defaults: { _controller: "VmjBundle:Messages:outbox" }
+    methods:  [GET, POST]
+    
+messages_compose:
+    path:     /nouveau-message
+    defaults: { _controller: "VmjBundle:Messages:compose" }
+    methods:  [GET, POST]
+    
+messages_reply:
+    path:     /repondre
+    defaults: { _controller: "VmjBundle:Messages:reply" }
+    methods:  [GET, POST]
+    
+messages_write_admin:
+    path:     /ecrire-administrateur
+    defaults: { _controller: "VmjBundle:Messages:writeToAdmin" }
+    methods:  [GET, POST]
+    
+messages_contact_pro:
+    path:     /ecrire-professionnel/{id}
+    defaults: { _controller: "VmjBundle:Messages:contacterPro" }
+    methods:  [GET, POST]
+
+messages_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VmjBundle:Messages:edit" }
+    methods:  [GET, POST]
+
+messages_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VmjBundle:Messages:delete" }
+    methods:  DELETE

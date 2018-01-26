@@ -1,0 +1,152 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tester un métier en immersion professionnelle avec Viemonjob{% endblock %}
+{% block description %}Viemonjob vous accompagne dans votre projet professionnel en vous permettant de réaliser une immersion professionnelle, d'essayer, de tester un métier{% endblock %}
+{% block keywords %}tester un métier, essayer un métier, testunmetier, reconversion, orientation, transition, reprise d’entreprise, création d’entreprise, entrepreunariat, formation, mobilité, agilité, RH, collaboratif, employabilité, emploi, immersion, métier, job, tester, essayer, découvrir{% endblock %}
+
+{% block body %}
+    <div id="wrap">
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+        <div class="index-4">
+            <!-- PAGE PARTICULIERS -->
+            <!-- Heade page particuliers -->
+            <section class=" ">
+                <div class="row headerpageparticuliers hidden-sm-up">
+                    <div class="col-sm-6 text-center"><h1 class="fw100 rose fs50">Particuliers</h1>
+                        <p class="fs25 grisfonce">Changez votre quotidien, <br>
+                            préparez une reconversion professionnelle<br>
+                            ou testez le métier de vos rêves </p>
+                        <a href="{{ path('fos_user_registration_register') }}" title="Inscription particuliers">
+                            <button class="br30 fondrose2 blanc noborder paddingboutton fw400 fs18">Je m'inscris
+                            </button>
+                        </a>
+                    </div>
+                    <div class="col-sm-6"></div>
+                </div>
+            </section>
+
+            <!-- Pourquoi VMJ -->
+            <section class=" ">
+
+                <div class="container text-center wow pt10 fw100 pk-vmj">
+                    <div class="container">
+                        <h2 class="fs45 rose fw100 ">Vivre l'expérience Viemonjob</h2>
+                        <p class="grisfonce fs25 ">Vous songez à votre orientation ou reconversion professionnelle,
+                            vous êtes à la recherche d’un emploi, vous préparez une reprise d’activité,
+                            vous sortez d’un burn-out et vous souhaitez changer de vie...
+                            vous êtes senior, ou vous êtes simplement un passionné. <br><br>
+                            <span class="bleu fs30">  Viemonjob, c’est oser&nbsp:</span></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3 icônes  -->
+            <section class="clearfix pb30">
+                <div class="container 3icones pt50 pb40">
+
+                    <div class="col-md-4 text-center wow">
+                        <img src="{{ asset('theme/img/viemonjob-picto-coeur.png') }}"><br><br>
+                        <p>Aider chacun à s'épanouir<br>
+                            personnellement<br>
+                            et professionnellement</p>
+                    </div>
+                    <div class="col-md-4 text-center wow">
+                        <img src="{{ asset('theme/img/viemonjob-picto-metiers.png') }}"><br><br>
+                        <p>Apporter une solution<br>
+                            concrète, rapide et simple<br>
+                            à tous
+                    </div>
+                    <div class="col-md-4 text-center wow">
+                        <img src="{{ asset('theme/img/viemonjob-picto-solutions.png') }}"><br><br>
+                        <p>Un large choix de métiers<br>
+                            dans tous les domaines
+                    </div>
+                </div>
+            </section>
+
+            <!-- Div 4  image de fond text -->
+            <section class="clearfix ">
+                <div class="row particuliers-fond-orange blanc fw100 pt20 pb20">
+                    <div class="container">
+                        <div class="col-md-6 blanc">
+                            <h2 class="fw100">Une expérience unique</h2>
+                            <p class="blanc">C’est vivre une immersion privilégiée
+                                chez le professionnel que vous souhaitez
+                                afin de vous donner une chance de changer
+                                votre quotidien et de faire de votre rêve une réalité.</p>
+                        </div>
+
+                        <div class="col-md-6 ">
+                            <h2 class="fw100">L'immersion complète</h2>
+                            <p class="blanc">Inscrivez-vous et utilisez notre module de recherche pour trouver le métier
+                                de vos rêves. Choisissez la période qui vous convient et passez du temps chez un
+                                professionnel pour découvrir son activité.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4 icônes  -->
+            <section class="clearfix pb30">
+                <div class="container 3icones mb25 fw100 fs22">
+                    <div class="row text-center pb20 mb25">
+                        <h2 class="fw100 rose fs60 text-center">Viemonjob en 4 étapes</h2>
+                    </div>
+
+                    <div class="col-md-3 text-center wow grisfonce">
+                        <img src="{{ asset('theme/img/viemonjob-picto-trouvez.png') }}"><br><br>
+                        <p><span class="bleu"> Trouvez</span><br>
+                            le métier que vous souhaitez<br>
+                            tester parmi un large choix. </p>
+                    </div>
+                    <div class="col-md-3 text-center wow">
+                        <img src="{{ asset('theme/img/viemonjob-picto-inscrivez-vous.png') }}"><br> <br>
+                        <p><span class="bleu">Inscrivez-vous</span><br>
+                            et réservez votre <br>
+                            immersion.</p>
+                    </div>
+                    <div class="col-md-3 text-center wow">
+                        <img src="{{ asset('theme/img/viemonjob-picto-payez.png') }}"><br> <br>
+                        <p><span class="bleu">Payez</span><br>
+                            directement en ligne <br>
+                            de manière sécurisée.</p>
+                    </div>
+                    <div class="col-md-3 text-center wow">
+                        <img src="{{ asset('theme/img/viemonjob-picto-vivez.png') }}"><br> <br>
+                        <p><span class="bleu">Vivez</span><br>
+                            l'expérience auprès<br>
+                            d'un professionnel passioné.</p>
+                    </div>
+                </div>
+
+                <div class="container text-center">
+                    <a href="{{ path('fos_user_registration_register') }}" title="Inscription particuliers">
+                        <button class=" blanc fw400 br30 fondrose paddingboutton noborder fs18"
+                                href="fos_user_security_login"> Je m'inscris
+                        </button>
+                    </a>
+                </div>
+            </section>
+
+            {% block temoignages %}
+                {{ parent() }}
+            {% endblock temoignages %}
+
+            {% block metiers %}
+                {{ parent() }}
+            {% endblock metiers %}
+
+            {% block newsletters %}
+                {{ parent() }}
+            {% endblock newsletters %}
+
+
+        </div><!-- and index-4 -->
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+    </div> <!-- and wrap -->
+{% endblock body %}

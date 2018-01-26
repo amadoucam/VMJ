@@ -1,0 +1,267 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{metier.title}} : un métier à tester avec Viemonjob{% endblock %}
+{% block description %}Viemonjob vous propose de tester le métier de {{metier.title}} à {{metier.professionnel.town}} {{metier.professionnel.postalcode}} avec {{metier.professionnel.firstname}} {{metier.professionnel.lastname}}{% endblock %}
+{% block keywords %}{{metier.title}}, tester un métier, essayer un métier, testunmétier, viemonjob, vmj, vismavie, reconversion professionnelle, orientation{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
+{% endblock %}
+{% block body %}
+
+    <section id="wrap">
+
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+
+        {% if metier.professionnel is defined and metier.professionnel is not null%}
+            {% set prenomPro = metier.professionnel.firstname %}
+            {% set nomPro = metier.professionnel.lastname %}
+        {% else%}
+            {% set prenomPro = '' %}
+            {% set nomPro = '' %}
+        {% endif%}
+
+        <!--Page détail métier -->
+        <!-- nom immersion -->
+        <section>
+            <div class="row">
+                <div class="row">
+                    <div class="row pl20 ">
+                        {% if metier.professionnel is defined and metier.professionnel is not null %}
+                            {% set prenomPro = metier.professionnel.firstname %}
+                            {% set nomPro = metier.professionnel.lastname %}
+                            {% set villePro = metier.professionnel.town %}
+                            {% set zipPro = metier.professionnel.postalcode %}
+							{% set regionPro = metier.professionnel.region %}
+                        {% else %}
+                            {% set prenomPro = '' %}
+                            {% set nomPro = '' %}
+                            {% set villePro = '' %}
+                            {% set zipPro = '' %}
+							{% set regionPro ='' %}
+                        {% endif %}
+                        <div class="container detailmetier11 text-left col-md-7">
+                                <h1 class="mauve fw100 pddmetiernom fs35">{{metier.title}}</h1>
+                                <h2 class="fw100 no-margin pddmetiernom fs30">{{ villePro }} {% if zipPro %} - {{ zipPro }}{% endif %}</h2>
+                                <hr/>
+                        </div>
+                        <div class="col-md-5"></div>
+                        <div class="container detailmetier11 text-left col-md-7">
+                                <h3 class="mauve fw100 pt10 pddmetiernom fs24">À propos de l'immersion {{metier.title}}</h3>
+                                <br>
+                                <p class="pddmetiernom fs20">{{ metier.advert }}</p>
+                                <br>
+                                <p class="pddmetiernom fs20">
+                                    <b>Entreprise :</b>
+                                        {% if metier.professionnel.website is not null %}
+                                            <a href='{{ metier.professionnel.website }}' target="_blank">{{ metier.professionnel.businessName }}</a>
+                                        {% else %}
+                                            <a href="{{ metier.professionnel.facebookLink }}" target="_blank">{{ metier.professionnel.businessName }}</a>
+                                        {% endif %}
+                                </p>
+                                <p class="pddmetiernom fs20">
+                                    <b>Adresse de l'immersion :</b>
+                                        {% if metier.secondAddress is not null %}
+                                            {{metier.secondAddress}} {{metier.secondCp}} {{metier.secondTown}}
+                                        {% else %}
+                                            {{metier.professionnel.address}} {{metier.professionnel.postalcode }} {{metier.professionnel.town }} {{metier.professionnel.region}}
+                                        {% endif %}
+                                </p>
+                                {% if metier.conditions is not null %}
+                                    <p class="pddmetiernom fs20">
+                                        <b>Conditions particulières :</b> {{metier.conditions}}
+                                    </p>
+                                {% endif %}
+                                {% set dayToDisable = [] %}
+                                    {% if metier.lundi == false
+                                        and metier.mardi == false
+                                        and metier.mercredi == false
+                                        and metier.jeudi == false
+                                        and metier.vendredi == false
+                                        and metier.samedi == false
+                                        and metier.dimanche == false %}
+                                    {% else %}
+                                            <p class="pddmetiernom fs20"><b>Les jours de présence sont :  </b>
+                                        {% if metier.lundi == true %}Lundi{% set dayToDisable = dayToDisable|merge([1]) %}{% endif %}
+                                        {% if metier.mardi == true %}, Mardi{% set dayToDisable = dayToDisable|merge([2]) %}{% endif %}
+                                        {% if metier.mercredi == true %}, Mercredi{% set dayToDisable = dayToDisable|merge([3]) %}{% endif %}
+                                        {% if metier.jeudi == true %}, Jeudi{% set dayToDisable = dayToDisable|merge([4]) %}{% endif %}
+                                        {% if metier.vendredi == true %}, Vendredi{% set dayToDisable = dayToDisable|merge([5]) %}{% endif %}
+                                        {% if metier.samedi == true %}, Samedi{% set dayToDisable = dayToDisable|merge([6]) %}{% endif %}
+                                        {% if metier.dimanche == true %}, Dimanche{% set dayToDisable = dayToDisable|merge([7]) %}{% endif %}
+                                            </p>
+                                    {% endif %}
+                                <hr/>
+
+                                <h3 class="mauve fw100 pt10 pddmetiernom fs24">À propos de l'accueillant </h3>
+                                <br>
+                                <div class="avatar avatar-md avatar-circle pddmetiernom text-center">
+                                    <img class="imgrondepro inline-flex"
+                                        src="
+                                            {%if metier.professionnel.lienPhoto is defined and metier.professionnel.lienPhoto is not null %}
+                                                {{ asset('uploads/'~metier.professionnel.lienPhoto) }}
+                                            {% else %}
+                                                {{ asset('uploads/user-icone.jpg') }}
+                                            {% endif %}"
+                                                alt="{{metier.professionnel.firstname}} {{metier.professionnel.lastname}} {{metier.title}} Viemonjob">
+                                </div>
+                                <h3 class="pddmetiernom mauve fs22 text-center">
+                                    {{ prenomPro }} {{ nomPro }}
+                                </h3>
+                                <p class="pddmetiernom fs20">
+                                        {% if metier.professionnel is defined and metier.professionnel is not null %}
+                                            {{metier.professionnel.businessDescription}}
+                                        {% endif %}
+                                </p>
+                                <br>
+
+                        </div>
+                        <div class="col-md-5">
+                            <img class="banniere-metier" src="{{asset('uploads/'~metier.lienBanniere)}}"/>
+
+                            <div class="col-md-12 partage-metier">
+                            <div class="sharethis-inline-share-buttons"></div>
+                            </div>
+
+                            <form name="form_reservation" id="form_reservation" class="form-inline" action="{{ path('vmj_immersion', {'id':metier.id}) }}" method="POST">
+                            <div class="col-md-5 pd0" style="padding: 0;">
+                            <label for="form_dispos">
+                                    <div  class="fw300 mauve fs18">Choisir la date de <br>votre début d'immersion</div>
+                            </label>
+                                    <input type="text" id="debut" name="date_start" class="reserver-date form-control datepicker" data-provide="datepicker" data-date-format="dd-mm-yyyy"/>
+
+                                    {# <select name="form_dispos" id="form_dispos" class="form-control">
+                                         {% for dispo in dispos %}
+                                             <option value="{{ dispo.id }}">{{ dispo.start | date('d-m-Y') }} au {{ dispo.end | date('d-m-Y') }}</option>
+                                         {% endfor %}
+                                     </select>#}
+                            </div>
+                            <div class="container fw100 clearfix col-md-4 text-center pd0" style="padding: 0;">
+                                    <p class="cercletxt">{{ metier.weekPrice }} € </p>
+                                    <p>La semaine</p>
+                            </div>
+                            <div class="col-md-3 text-center pdl0" style="padding-left: 0;" >
+                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                        <button type="submit" name="form_reservation" value="Réserver" class="fw300 blanc fondrose br25 noborder fs20 paddingboutton">Réserver</button>
+                                    {% else %}
+                                        <a class="fw300 blanc fondrose br25 noborder fs20 paddingboutton" href="{{ path('fos_user_security_login')}}" role="button">Réserver</a>
+                                    {% endif %}
+                            </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+                    {% block temoignages %}
+                        {{ parent() }}
+                    {% endblock temoignages %}
+
+                    <!-- Autre proposition de la même entreprise detailmetier3-->
+                    {% if immersions|length > 1%}
+                        <section class="fondviolet clearfix pt10 pb10 paddingauto" >
+                            <div class="container fw100 fs20  ">
+                                <div class="container clearfix">
+                                    <h3 class="grisclair fw100 fs35  text-center">{{prenomPro}} {{nomPro}} vous propose aussi</h3> <br>
+                                </div>
+                                <div class="container text-left blanc lh1-3 casefooter">
+                                    {% for immersion in immersions %}
+                                        {% if immersion.id != metier.id %}
+                                            {% if immersion.lienImgPresentation is not null %}
+                                                {% set lienImage = 'uploads/'~immersion.lienImgPresentation %}
+                                            {% else %}
+                                                {% set lienImage = "uploads/immersion-neutre.jpg" %}
+                                            {% endif %}
+                                            <div class="col-sm-4 image-footer-immersion marginauto paddingauto">
+                                                <a href="{{ path('vmj_fiche_metier', {'slug': immersion.slug}) }}" style="color: white">
+                                                    <img alt="Image de l'immersion" src="{{asset(lienImage)}}" class="img-responsive image-footer-immersion" style="width:100%"><br>
+                                                    <p><span class="fw300">{{ immersion.title }}</span> <br>
+                                                        {{ immersion.advert|slice(0, 65) }}... <br>
+                                                        {{immersion.weekPrice }} € / semaine</p>
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </section>
+                    {% endif %}
+
+                    <!-- Vous aimerez peut-être aussi detailmetier4 -->
+                    <section class="clearfix pt10 pb10 marginauto" >
+                        <div class="container text-center fw100 fs20 marginauto">
+                            <div class="container text-center clearfix">
+                                <h3 class="mauve fw100 fs35 margin1515">Vous aimerez peut-être aussi</h3>
+                            </div>
+                            {% if metier.categorieJob is defined and metier.categorieJob is not null %}
+                                 {% set lesMetiers = immersions %}
+                            {% else %}
+                                {% set lesMetiers = null %}
+                            {% endif %}
+                            <div class="row text-left grisfonce lh1-3 casefooter">
+                                {% for category in metier.categories %}
+                                    {% set supImmersions = category.immersions %}
+                                    {% set cpt = 0 %}
+                                    {% for oneImmersion in supImmersions %}
+                                        {% if oneImmersion.id != metier.id and oneImmersion.weekPrice is not null and oneImmersion.actifAdmin == 1 %}
+                                            {% if oneImmersion.lienImgPresentation is not null %}
+                                                {% set lienImage = oneImmersion.lienImgPresentation %}
+                                            {% else %}
+                                                {% set lienImage = "immersion-neutre.jpg" %}
+                                            {% endif %}
+                                            {% if cpt == 0 %}
+                                                <div class="container">
+                                            {% endif %}
+                                            <div class="clearfix table-metier col-md-4 col-sm-4 graphic">
+                                                <div class="clearfix"></div>
+                                                <div class="image-footer-immersion marginauto paddingauto">
+                                                    <a href="{{ path('vmj_fiche_metier', {'slug':oneImmersion.slug}) }}">
+                                                        <img alt="Image de l'immersion" src="{{asset('uploads/'~lienImage)}}" class="img-responsive lh0" style="width: 100%">
+                                                    </a>
+                                                    <p class="mauve fs20">
+                                                        <a href="{{ path('vmj_fiche_metier', {'slug':oneImmersion.slug}) }}">
+                                                            {{ oneImmersion.title }}
+                                                            <span class="clearfix bleu fs18">{{ oneImmersion.weekprice }} €/semaine</span>
+                                                        </a>
+                                                    </p>
+                                                    <span style="font-size: 0.6em" class="fw100 gray-italic">
+                                                        {% if oneImmersion.professionnel.businessDescription is defined %}
+                                                            {{ oneImmersion.professionnel.businessDescription|slice(0, 76) }}...
+                                                        {% endif %}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                            {% set cpt = cpt + 1 %}
+                                            {% if cpt == 3 %}
+                                                </div>
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </section>
+
+            {% block footer %}
+                {{ parent() }}
+            {% endblock footer %}
+
+            {% endblock body %}
+
+            {% block javascripts %}
+                {{ parent() }}
+                <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+                <script src="{{ asset('bundles/vmj/js/french_datepicker.js') }}"></script>
+                <script>
+                    $(function () {
+                        $('#debut').datepicker({
+                            language: 'fr'
+                        });
+                    });
+                </script>
+            {% endblock javascripts %}

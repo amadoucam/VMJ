@@ -1,0 +1,24 @@
+immersion_index:
+    path:     /
+    defaults: { _controller: "VmjBundle:Immersion:index" }
+    methods:  GET
+
+immersion_show:
+    path:     /{id}/show
+    defaults: { _controller: "VmjBundle:Immersion:show" }
+    methods:  GET
+
+immersion_new:
+    path:     /new
+    defaults: { _controller: "VmjBundle:Immersion:new" }
+    methods:  [GET, POST]
+
+immersion_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VmjBundle:Immersion:edit" }
+    methods:  [GET, POST]
+
+immersion_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VmjBundle:Immersion:delete" }
+    methods:  DELETE

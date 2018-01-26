@@ -1,0 +1,59 @@
+pages_index:
+    path:     /
+    defaults: { _controller: "VmjBundle:Pages:index" }
+    methods:  GET
+
+pages_show:
+    path:     /{id}/show
+    defaults: { _controller: "VmjBundle:Pages:show" }
+    methods:  GET
+
+pages_new:
+    path:     /new
+    defaults: { _controller: "VmjBundle:Pages:new" }
+    methods:  [GET, POST]
+
+pages_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VmjBundle:Pages:edit" }
+    methods:  [GET, POST]
+
+pages_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VmjBundle:Pages:delete" }
+    methods:  DELETE
+    
+page_a_propos:
+    path:     /a-propos-de-nous
+    defaults: { _controller: "VmjBundle:Pages:aPropos" }
+    methods:  GET
+    
+page_aide:
+    path:     /aide
+    defaults: { _controller: "VmjBundle:Pages:aide" }
+    methods:  GET
+    
+page_on_parle_de_nous:
+    path:     /on-parle-de-nous
+    defaults: { _controller: "VmjBundle:Pages:onParleDeNous" }
+    methods:  GET
+    
+page_blog:
+    path:     /blog
+    defaults: { _controller: "VmjBundle:Pages:blog" }
+    methods:  GET
+    
+page_cgv:
+    path:     /cgv
+    defaults: { _controller: "VmjBundle:Pages:cgv" }
+    methods:  GET
+    
+page_mentions_legales:
+    path:     /mentions-legales
+    defaults: { _controller: "VmjBundle:Pages:mentionsLegales" }
+    methods:  GET
+
+page_partenaires:
+    path:     /partenaires
+    defaults: { _controller: "VmjBundle:Pages:partenaires" }
+    methods:  GET

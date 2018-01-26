@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrap">
+
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+        <!-- PAGE COORPORATE -->
+        <!-- À propos -->
+
+        <section>
+            <div class="row text-center"><img class="imgcoorpo" src="{{asset('theme/img/vmj-fond-coorpo.jpg')}}"> </div> 
+        </section>
+        <!-- Menu à propos -->  
+
+        <section>
+
+
+            <div class="container submenuapropos pt25 pb20"> 
+                <ul class="nav nav-tabs">
+                    <li><a href="{{path('page_a_propos')}}">À propos</a></li>
+                    <li><a href="{{path('page_aide')}}">Aide</a></li>
+                    <li><a href="{{path('page_on_parle_de_nous')}}">On parle de nous</a></li>
+                    <li class="active clearfix"><a href="{{path('page_blog')}}">Blog</a></li>
+                    <li><a href="{{path('page_cgv')}}">Conditions générales d'utilisation</a></li>
+                    <li><a href="{{path('page_mentions_legales')}}">Mentions légales</a></li> 
+                </ul>
+                <!-- Contenu --> 
+
+                <div class="tab-content display-inline submenuaproposcontent">
+
+
+                    <div id="apropos3" class="tab-pane fade in active fw100">
+                        <h1>Blog</h1><br>
+                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                    </div> 
+
+                </div>
+            </div>
+        </section> 
+
+        {% block temoignages %}
+            {{ parent() }}
+        {% endblock temoignages %}
+
+        {% block metiers %}
+            {{ parent() }}
+        {% endblock metiers %}
+
+        {% block newsletters %}
+            {{ parent() }}
+        {% endblock newsletters %}
+
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+    </div>
+{% endblock %}
+

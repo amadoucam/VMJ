@@ -1,0 +1,63 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block body %}
+    <h1>Metier</h1>
+
+    <table class="table">
+        <tbody>
+
+            <tr>
+                <th>Professionnel</th>
+                <td>{% if metier.professionnel is not null %}{{ metier.professionnel.firstname }} {{ metier.professionnel.lastname }} {% endif %}</td>
+            </tr>
+            <tr>
+                <th>Metier</th>
+                <td>{{ metier.name }}</td>
+            </tr>
+
+            <tr>
+                {% if metier.lienImgPresentation is defined and metier.lienImgPresentation is not null %}
+                    {% set lienImage = 'uploads/'~metier.lienImgPresentation %}
+                {% else %}
+                    {% set lienImage = "uploads/immersion-neutre.jpg" %}
+                {% endif %}
+
+                {% if metier.lienBanniere is defined and metier.lienBanniere is not null %}
+                    {% set lienBanniere = 'uploads/'~metier.lienBanniere %}
+                {% else %}
+                    {% set lienBanniere = "uploads/immersion-neutre.jpg" %}
+                {% endif %}
+                <th>Banniere</th>
+                <td>
+                    <img src="{{ asset(lienImage) }}" alt=""> 
+
+                </td>
+            </tr>
+            <tr>
+                <th>Image Metier</th>
+                <td>
+                    <img src="{{ asset(lienBanniere) }}" alt=""> 
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            {% if app.user.roles[0] == 'ROLE_PRO' %}
+                <a href="{{ path('dashboard_pro_metiers') }}">Retour à la liste</a>
+            {% else %}
+                <a href="{{ path('admin_metier_index') }}">Retour à la liste</a>
+            {% endif %}
+        </li>
+        <li>
+            <a href="{{ path('metier_edit', { 'id': metier.id }) }}" class="btn btn-success">Modifier</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" class="btn btn-danger" value="Supprimer">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

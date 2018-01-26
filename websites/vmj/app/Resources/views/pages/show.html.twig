@@ -1,0 +1,56 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block body %}
+    <h1>Pages</h1>
+
+    <table class="table table-bordered">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ page.id }}</td>
+            </tr>
+            <tr>
+                <th>Deletedat</th>
+                <td>{% if page.deletedAt %}{{ page.deletedAt|date('d-m-Y  H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Slug</th>
+                <td>{{ page.slug }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{% if page.created %}{{ page.created|date('d-m-Y H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Updated</th>
+                <td>{% if page.updated %}{{ page.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Titlechanged</th>
+                <td>{% if page.titleChanged %}{{ page.titleChanged|date('d-m-Y H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ page.titre }}</td>
+            </tr>
+            <tr>
+                <th>Contenu</th>
+                <td>{{ page.contenu|raw }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pages_index') }}">Retour à la liste</a>
+        </li>
+        <li>
+            <a href="{{ path('pages_edit', { 'id': page.id }) }}">Modifier la page</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Supprimer la page">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrap">
+
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+
+        <section>
+            <div class="page-title">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-5">
+                            <h3>Immersions</h3>
+                        </div>
+                        <div class="col-md-7 col-sm-7 hidden-xs">
+                            <div class="page-title-address">
+                                <a href="{{path('vmj_homepage')}}">Accueil</a><i class="fa fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section> <!-- and Page title -->
+        <section>
+            {% if immersion.lienImgPresentation is not null %}
+                                {% set lienImage = 'uploads/'~immersion.lienImgPresentation %}
+                               {% else %}
+                                   {% set lienImage = "uploads/immersion-neutre.jpg" %}
+                            {% endif %}
+            <div class="service">
+                <div class="container">
+                    <img class="tp-bgimg defaultimg" src="{{ asset(lienImage)}}">
+                </div>
+            </div>            
+        </section>
+        <section>
+            <div class="service-2">
+                <div class="container">
+                    
+                    {% if immersion.metier is defined and immersion.metier is not null%}
+                        <h2>{{ immersion.metier.name }}, {{ immersion.metier.professionnel.town }}</h2>
+                        <div class="row">
+                            <h3>
+                                <div class="col-sm-3">
+                                    Formateur : {{ immersion.metier.professionnel.firstname }} {{ immersion.metier.professionnel.lastname }}
+                                </div>
+                                <div class="col-sm-3">
+                                    Coût : {{ immersion.weekPrice }}€ / semaine
+                                </div>
+                            </h3>
+                        </div>
+                    {% endif %}
+                    <div class="row" style="margin-top: 50px;">
+
+                    </div>
+                </div>
+            </div>            
+        </section>
+        <section>
+            <div class="container">
+                {% if metier.professionnel is defined and metier.professionnel is not null %}
+                    {% set prenomPro = metier.professionnel.firstname %}
+                    {% set nomPro = metier.professionnel.lastname %}
+                    {% set villePro = metier.professionnel.town %}
+                {% else %}
+                    {% set prenomPro = '' %}
+                    {% set nomPro = '' %}
+                    {% set villePro = '' %}
+                {% endif %}
+                <div class="container col-xs-12 col-md-6 detailmetier11 text-center">
+                    <form name="form_reservation" id="form_reservation" class="form-inline" action="{{ path('vmj_immersion', {'id':immersion.id}) }}" method="POST">
+                        <h1 class="mauve fs35 fw100 pt25 text-left"></h1>
+                        <p class="fw100 text-left">{{ villePro }}</p>  
+
+                        <div class="container fw100 clearfix col-xs-6">     
+                            <p style="background:url({{ asset(lienImage)}}) no-repeat 0px 0px;" >&nbsp; </p> 
+                        </div>
+
+                        <div class="container fw100 clearfix col-xs-6"> 
+                            <p class="cercletxt">{{ immersion.weekPrice }} € </p>
+                        </div>
+
+                        <div class="container fw100 clearfix col-xs-6 ">     
+                            <p>{{prenomPro}} {{nomPro}} </p> 
+                        </div>
+
+                        <div class="container fw100 clearfix col-xs-6 "> 
+                            <p>La semaine</p> <br> 
+                        </div>
+
+                        <div class="container  fw100 clearfix col-xs-6 ">
+                            <label for="form_dispos">Les disponibilités</label>
+                            <select name="form_dispos" id="form_dispos" class="form-control">
+                                {% for dispo in dispos %}
+                                    <option value="{{ dispo.id }}">{{ dispo.start | date('d-m-Y') }} au {{ dispo.end | date('d-m-Y') }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="container fw100 clearfix col-xs-6"> 
+                            <button type="submit" name="form_reservation" value="Réserver" class="fw300 blanc fondrose br25 noborder fs20 paddingboutton">Je réserve</button>
+
+                        </div>
+                    </form>
+                </div>
+
+
+                <div class="row col-xs-12 col-sm-12 col-md-8 detailmetier12 " style="background-image: url({% if metier.imgPresentation is defined and metier.banniere is not null %}{{ metier.imgPresentation.AssetPath|imagine_filter('avatarPic') }}{% endif %})!important;">
+                    <!-- image du pro en css en fond -->&nbsp;
+                </div> 
+
+            </div>
+        </section>
+    </div>
+    {% block footer %}
+        {{ parent() }}
+    {% endblock footer %}
+{% endblock body %}
+
+{% block javascripts %}
+    <script>
+        $('#form_immersion').change(function () {
+
+        });
+    </script>
+{% endblock javascripts %}   

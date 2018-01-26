@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les informations légales du site de Viemonjob{% endblock %}
+{% block description %}Les mentions légales nécessaires et suffisantes du site de Viemonjob{% endblock %}
+{% block keywords %}Viemonjob, VMJ, mentions légales, tester un métier, test un métier, essayer un métier, reconversion professionnelle{% endblock %}
+
+
+{% block body %}
+    <div id="wrap">
+
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+        <!-- PAGE COORPORATE -->
+        <!-- À propos -->
+
+          <section class="  ">
+                <div class="row headerpageapropos  hidden-xs-down  ">
+                </div>
+            </section> 
+        <!-- Menu à propos -->  
+
+        <section>
+
+
+            <div class="container submenuapropos pt25 pb20"> 
+                <ul class="nav nav-tabs">
+                    <li><a href="{{path('page_a_propos')}}">À propos</a></li>
+                    <li><a href="{{path('page_aide')}}">FAQ</a></li>
+                    <li><a href="{{path('page_on_parle_de_nous')}}">On parle de nous</a></li>
+                    <li><a href="{{path('page_cgv')}}">Conditions générales d'utilisation</a></li>
+                    <li class="active clearfix"><a href="{{path('page_mentions_legales')}}">Mentions légales</a></li> 
+                </ul>
+                <!-- Contenu --> 
+
+                 <div class="col-sm-12 text-center"> <h1 class="fw100 mauve fs50 pt30">Mentions légales</h1>
+                    </div>
+
+                <div class="tab-content display-inline submenuaproposcontent">
+
+                    <div id="apropos5" class="padd10p tab-pane fade in active fw100">
+                      <br>
+                        <p>
+                            <br><span>Société </span> <br>
+
+                            VMJ SAS<br>
+                            77 RUE DE BELLEVUE<br>
+                            92100 BOULOGNE BILLANCOURT<br>
+                            Siret 815 361 746 00010<br>
+
+                            <br><span>Numéro d'enregistrement CNIL</span><br>
+
+                            1937036<br>
+
+                            <br><span>Responsable éditorial du site internet</span><br>
+
+                            Directeur de la publication : Celina ROCQUET<br>
+                            Responsable de la rédaction : Celina ROCQUET<br>
+
+                            <br><span>Hébergeur du site internet </span><br>
+
+                            OVH<br>
+                            SAS au capital de 10 069 020 € <br>
+                            RCS Lille Métropole 424 761 419 00045<br>
+                            Code APE 2620Z<br>
+                            N° TVA : FR 22 424 761 419<br>
+                            Siège social : 2 rue Kellermann - 59100 Roubaix - France<br> 
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        {% block temoignages %}
+            {{ parent() }}
+        {% endblock temoignages %} 
+
+        {% block metiers %}
+            {{ parent() }}
+        {% endblock metiers %}
+
+        {% block newsletters %}
+            {{ parent() }}
+        {% endblock newsletters %}
+
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+
+    </div>
+{% endblock %}

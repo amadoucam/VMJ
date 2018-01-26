@@ -1,0 +1,62 @@
+dashboard_pro:
+    path:     /accueil
+    defaults: { _controller: "VmjBundle:Professionnels:dashboard" }
+    
+edition_profile_pro:
+    path:     /editer-mon-profil
+    defaults: { _controller: "VmjBundle:Professionnels:editionProfilePro" }
+    
+voir_profile_pro:
+    path:     /voir-profil/{id}
+    defaults: { _controller: "VmjBundle:Professionnels:affichageProfilePro" }
+
+dashboard_pro_immersions:
+    path:     /immersions
+    defaults: { _controller: "VmjBundle:Professionnels:immersions" }
+    
+dashboard_pro_immersion_create:
+    path:     /immersion/create
+    defaults: { _controller: "VmjBundle:Professionnels:newImmersion" }
+    
+dashboard_pro_immersion_edit:
+    path:     /immersion/edit/{id}
+    defaults: { _controller: "VmjBundle:Professionnels:editImmersion" }
+    
+dashboard_pro_metier:
+    path:     /metier/{id}
+    defaults: { _controller: "VmjBundle:Metier:adminShow" }
+
+dashboard_pro_metiers:
+    path:     /metiers
+    defaults: { _controller: "VmjBundle:Metier:metiers" }
+    
+dashboard_pro_create_metier:
+    path:     /metier/create
+    defaults: { _controller: "VmjBundle:Metier:newMetier" }
+   
+dashboard_pro_edit_metier:
+    path:     /metier/edit/{id}
+    defaults: { _controller: "VmjBundle:Metier:edit" }
+    methods:  [GET, POST]
+    
+dashboard_pro_formations:
+    path:     /formations/{id}
+    defaults: { _controller: "VmjBundle:Professionnels:formations" }
+    
+dashboard_pro_create_formation:
+    path:     /formation/create/{id}
+    defaults: { _controller: "VmjBundle:Professionnels:newFormation" }
+
+dashboard_pro_commandes_all:
+    path:     /commandes
+    defaults: { _controller: "VmjBundle:Professionnels:myCommandes" }
+
+dashboard_pro_commandes:
+    path:     /commandes/{id}
+    defaults: { _controller: "VmjBundle:Professionnels:commandes" }
+    
+pro_immersion_delete:
+    path:     /immersion/{immersionId}/delete
+    defaults: { _controller: "VmjBundle:Professionnels:deleteImmersion" }
+    methods:  POST
+    

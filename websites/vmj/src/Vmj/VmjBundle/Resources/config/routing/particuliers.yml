@@ -1,0 +1,31 @@
+dashboard_particuliers:
+    path:     /accueil
+    defaults: { _controller: "VmjBundle:Particuliers:dashboard" }
+    
+particuliers_immersions:
+    path:     /mes-immersions
+    defaults: { _controller: "VmjBundle:Particuliers:mesImmersions" }
+    
+particuliers_search_immersion:
+    path:     /recherche-immersion
+    defaults: { _controller: "VmjBundle:Particuliers:searchImmersion" }
+
+particuliers_facture:
+    path:     /ma-facture/{id}
+    defaults: { _controller: "VmjBundle:Particuliers:maFacture" }
+    
+particuliers_print_facture:
+    path:     /print-facture/{id}
+    defaults: { _controller: "VmjBundle:Particuliers:printFacture" }
+
+particuliers_mail_facture:
+    path:     /mail-facture/{id}
+    defaults: { _controller: "VmjBundle:Particuliers:mailFacture" }
+
+edition_profile_perso:
+    path:     /editer-mon-profil
+    defaults: { _controller: "VmjBundle:Particuliers:editionProfilePerso" }
+    
+voir_profile_perso:
+    path:     /voir-profil/{id}
+    defaults: { _controller: "VmjBundle:Particuliers:affichageProfilePerso" }

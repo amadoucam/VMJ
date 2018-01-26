@@ -1,0 +1,89 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
+{% endblock %}
+{% block body %}
+    <div class="container margin">
+        <h1>Création de presse</h1>
+        <div class="row">
+            {{ form_start(presseForm, {'attr': {'class':'form-horizontal'} }) }}
+
+            <div class="form-group row">
+                <label for="presse_name">Nom</label>
+                {{ form_widget(presseForm.name, { 'id':'presse_name','attr': {
+                    'class': 'form-control'
+                    } })
+                }}
+            </div>
+            <div class="form-group row">
+                <label for="presse_lien">Lien de l'article ou de la vidéo</label>
+                {{ form_widget(presseForm.lien, { 'id':'presse_lien','attr': {
+                    'class': 'form-control'
+                } })
+                }}
+            </div>
+            <div class="form-group row">
+                <label for="presse_date">Date</label>
+                    {{ form_widget(presseForm.date, { 'id':'presse_date','attr': {
+                        'class': 'form-control'
+                    } })
+                    }}
+            </div>
+            <div class="form-group row">
+                <label for="presse_cat">Catégorie</label>
+                {{ form_widget(presseForm.cat, { 'id':'cat','attr': {
+                    'class': 'form-control'
+                } })
+                }}
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="logo">Logo du média</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-primary btn-file">
+                                <i class="fa fa-upload"></i>
+                            </span>
+                        </span>
+                        {{  form_widget(presseForm.logo, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <span class="help-block">fichiers approuvés: gif, png, jpg. Taille Max 4Mb</span>
+                </div>
+            </div>
+            {{ form_end(presseForm) }}
+    </div>
+
+{% endblock body %}
+{% block javascripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('bundles/vmj/js/french_datepicker.js') }}"></script>
+    <script>
+        var nowTemp = new Date();
+        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+        var checkin = $('#date_start').datepicker({
+            language: 'fr',
+            onRender: function (date) {
+                return date.valueOf() < now.valueOf() ? 'disabled' : '';
+            }
+        }).on('changeDate', function (ev) {
+            if (ev.date.valueOf() > checkout.date.valueOf()) {
+                var newDate = new Date(ev.date)
+                newDate.setDate(newDate.getDate() + 1);
+                checkout.setValue(newDate);
+            }
+            checkin.hide();
+            $('#date_end')[0].focus();
+        }).data('datepicker');
+        var checkout = $('#date_end').datepicker({
+            language: 'fr',
+            onRender: function (date) {
+                return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+            }
+        }).on('changeDate', function (ev) {
+            checkout.hide();
+        }).data('datepicker');
+    </script>
+
+{% endblock javascripts %}

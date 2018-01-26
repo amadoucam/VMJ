@@ -1,0 +1,41 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block titrepage %}Mon témoignage{% endblock titrepage %}
+{% block body %}
+    <h1>Temoignage</h1>
+
+    <table class="table table-bordered">
+        <tbody>
+
+            <tr>
+                <th>Temoignage</th>
+                <td>{{ temoignage.temoignage }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ temoignage.note }}</td>
+            </tr>
+            <tr>
+                <th>Date de création</th>
+                <td>{% if temoignage.created %}{{ temoignage.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Modifié le:</th>
+                <td>{% if temoignage.updated %}{{ temoignage.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('particuliers_immersions') }}">Retour à mes immersions</a>
+        </li>
+        <li>
+            <a href="{{ path('temoignages_edit', { 'id': temoignage.id }) }}">Modifier ce témoignage</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer</button>
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

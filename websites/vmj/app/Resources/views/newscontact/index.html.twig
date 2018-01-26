@@ -1,0 +1,55 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>
+{% endblock stylesheets %}
+
+{% block body %}
+    <h1>Liste des inscrits à la newsletter</h1>
+
+    <table id="list_contact" class="dataTable">
+        <thead>
+            <tr>
+          
+                <th>Email</th>
+                <th>Date de création</th>
+                <th>Date de modification</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for newscontact in newscontacts %}
+            <tr>
+               
+                <td>{{ newscontact.email }}</td>
+                <td>{% if newscontact.created %}{{ newscontact.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if newscontact.modified %}{{ newscontact.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('newscontact_show', { 'id': newscontact.id }) }}">Afficher</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('newscontact_edit', { 'id': newscontact.id }) }}">Modifier</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="row"><hr></div>
+    <div class="row" style="text-align: center">
+        <a href="{{ path('newscontact_new') }}" class="btn btn-info">Créer un nouveau contact</a>
+    </div>
+    <div class="row"><hr></div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#list_contact').DataTable({'language': french_datatable , 'order': [[ 0, 'asc' ]]});
+        });
+    </script>
+{% endblock javascripts %}

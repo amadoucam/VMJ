@@ -1,0 +1,298 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
+{% endblock %}
+{% block body %}
+    <div class="container margin">
+        <h1>Création d'une immersion</h1>
+        <div class="row">
+            {{ form_start(immersionForm, {'attr': {'class':'form-horizontal'} }) }}
+
+
+            <div class="form-group row">
+                <label for="immersion_title">Métier</label>
+                {{ form_widget(immersionForm.title, { 'id':'immersion_title','attr': {
+                    'class': 'form-control'
+                    } }) 
+                }}
+            </div>
+            <div class="form-group row">
+                <label for="immersion_metier">Catégories (Touche Ctrl + clique gauche pour sélectionner plusieurs catégories)</label>
+                {{ form_widget(immersionForm.categories, { 'id':'immersion_metier','attr': {
+                    'class': 'form-control'
+                    } }) 
+                }}
+            </div>
+            <div class="form-group row">
+                <label for="immersion_advert">Description de l'immersion</label>
+                {{ form_widget(immersionForm.advert, { 'id':'immersion_advert','attr': {
+                    'class': 'form-control'
+                    } }) 
+                }}
+            </div>
+
+            <label for="immersion_hours">Journées de présence pour l'immersion</label>
+            <div class="form-group row">
+                <div class="col-sm-1">L {{ form_widget(immersionForm.lundi) 
+                    }}</div>
+                <div class="col-sm-1">M {{ form_widget(immersionForm.mardi) }}</div>
+                <div class="col-sm-1">M {{ form_widget(immersionForm.mercredi) 
+                    }}</div>
+                <div class="col-sm-1">J {{ form_widget(immersionForm.jeudi) 
+                    }}</div>
+                <div class="col-sm-1">V{{ form_widget(immersionForm.vendredi)
+                    }}</div>
+                <div class="col-sm-1">S {{ form_widget(immersionForm.samedi) 
+                    }}</div>
+                <div class="col-sm-1">D {{ form_widget(immersionForm.dimanche) 
+                    }}</div>
+            </div>
+
+            <div class="form-group row">
+                <label for="immersion_conditions">Conditions particulières (tenue, vaccins, confidentialité...)</label>
+                {{ form_widget(immersionForm.conditions, { 'id':'immersion_conditions','attr': {
+                    'class': 'form-control'
+                    } }) 
+                }}
+            </div>
+
+            <div class="row">
+                <div class="form-group col-sm-3">
+                    <label for="weekPrice">Prix souhaité pour la semaine<br><span>(Viemonjob prélève une commission de 20% sur cette somme)</span></label>
+                        {{ form_widget(immersionForm.weekPrice, { 'id':'weekPrice','attr': {
+                        'class': 'form-control input-inline'
+                        } }) 
+                        }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="immersion_conditions">Avez vous la possibilité d’accueillir des personnes porteuses de handicap ? </label>
+                {{ form_widget(immersionForm.receiveHandicap, { 'id':'receiveHandicap','attr': {
+                    'class': 'form-control'
+                    } }) 
+                }}
+            </div>
+            <div id="content_handicap" style="display: none">
+                <label for="immersion_hours">Précisez :</label>
+                <div class="form-group row">
+                    <div class="col-sm-1">
+                        Moteur {{ form_widget(immersionForm.moteur) }}
+                    </div>
+                    <div class="col-sm-1">
+                        Visuel {{ form_widget(immersionForm.visuel) }}
+                    </div>
+                    <div class="col-sm-1">
+                        Auditif {{ form_widget(immersionForm.auditif) }}
+                    </div>
+                    <div class="col-sm-1">
+                        Mental {{ form_widget(immersionForm.mental) }}
+                    </div>
+                    <div class="col-sm-1">
+                        Autre {{ form_widget(immersionForm.autre) }}
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="immersion_champAutre">Précisez:</label>
+                    {{ form_widget(immersionForm.champAutre, { 'id':'immersion_champAutre','attr': {
+                        'class': 'form-control'
+                        } })
+                    }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="immersion_conditions">Êtes-vous la personne qui allez accueillir le particulier ? </label>
+                {{ form_widget(immersionForm.customerHost, { 'id':'customerHost','attr': {
+                    'class': 'form-control'
+                    } }) 
+                }}
+            </div>
+            <div id="content_condition" style="display: none">
+                <div class="form-group row">
+                    <label for="immersion_conditions">Si non précisez le prénom cette personne :</label>
+                    {{ form_widget(immersionForm.hostFirstname, { 'id':'hostFirstname','attr': {
+                        'class': 'form-control'
+                        } })
+                    }}
+                </div>
+                <div class="form-group row">
+                    <label for="immersion_conditions">Le nom cette personne :</label>
+                    {{ form_widget(immersionForm.hostLastname, { 'id':'hostLastname','attr': {
+                        'class': 'form-control'
+                        } })
+                    }}
+                </div>
+                <div class="form-group row">
+                    <label for="immersion_conditions">Son numéro de portable :</label>
+                    {{ form_widget(immersionForm.hostNumber, { 'id':'hostNumber','attr': {
+                        'class': 'form-control'
+                        } })
+                    }}
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="immersion_conditions">L’immersion se déroule-t-elle à la même adresse que celle du siège social de l’entreprise ?</label>
+                {{ form_widget(immersionForm.sameAddress, { 'id':'sameAddress','attr': {
+                    'class': 'form-control'
+                    } }) 
+                }}
+
+            </div>
+            <div id="content_address" style="display: none">
+                Si non, renseigner l’adresse
+
+                <div class="form-group row">
+                    <label for="immersion_conditions">Adresse</label>
+                    {{ form_widget(immersionForm.secondAddress, { 'id':'secondAddress','attr': {
+                        'class': 'form-control'
+                        } })
+                    }}
+                </div>
+                <div class="form-group row">
+                    <label for="immersion_conditions">CP</label>
+                    {{ form_widget(immersionForm.secondCp, { 'id':'secondCp','attr': {
+                        'class': 'form-control'
+                        } })
+                    }}
+                </div>
+                <div class="form-group row">
+                    <label for="immersion_conditions">Ville</label>
+                    {{ form_widget(immersionForm.secondTown, { 'id':'secondTown','attr': {
+                        'class': 'form-control'
+                        } })
+                    }}
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="immersion_conditions">Avez vous la possibilité d'héberger la personne en immersion ?</label>
+                {{ form_widget(immersionForm.hebergement, { 'id':'hebergement','attr': {
+                    'class': 'form-control'
+                    } }) 
+                }}
+            </div>
+            <div id="content_hebergement" style="display: none">
+                <div class="form-group row">
+                    <label for="immersion_conditions">Si oui, décrivez les conditions d'hébergement</label>
+                    {{ form_widget(immersionForm.champHebergement, { 'id':'champHebergement','attr': {
+                        'class': 'form-control'
+                        } })
+                    }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-md-5">
+                    <label for="avatar">Photo de l'accueillant</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-primary btn-file">
+                                <i class="fa fa-upload"></i>
+                            </span>
+                        </span>
+                        {{  form_widget(immersionForm.imgPresentation, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <span class="help-block">fichiers approuvés: gif, png, jpg. Taille Max 4Mb</span>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="form-group col-md-5">
+                    <label for="avatar">Photo illustrant le métier</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-primary btn-file">
+                                <i class="fa fa-upload"></i>
+                            </span>
+                        </span>
+                        {{  form_widget(immersionForm.banniere, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <span class="help-block">fichiers approuvés: gif, png, jpg. Taille Max 4Mb</span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                {{ form_widget(immersionForm.actifPro, { 'id':'actifPro' })}}
+                <label for="actifPro">Valider l'immersion</label>
+            </div>
+            <input type="checkbox" required="required"> <span>En cochant cette case, je certifie avoir lu et accepté <a href="{{path('page_cgv')}}" target="_blank">Conditions Générales de Ventes</a></span>
+
+            {{ form_end(immersionForm) }}
+        </div>
+    </div>
+
+{% endblock body %}
+{% block javascripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('bundles/vmj/js/french_datepicker.js') }}"></script>
+    <script>
+        var nowTemp = new Date();
+        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+        var checkin = $('#date_start').datepicker({
+            language: 'fr',
+            onRender: function (date) {
+                return date.valueOf() < now.valueOf() ? 'disabled' : '';
+            }
+        }).on('changeDate', function (ev) {
+            if (ev.date.valueOf() > checkout.date.valueOf()) {
+                var newDate = new Date(ev.date)
+                newDate.setDate(newDate.getDate() + 1);
+                checkout.setValue(newDate);
+            }
+            checkin.hide();
+            $('#date_end')[0].focus();
+        }).data('datepicker');
+        var checkout = $('#date_end').datepicker({
+            language: 'fr',
+            onRender: function (date) {
+                return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+            }
+        }).on('changeDate', function (ev) {
+            checkout.hide();
+        }).data('datepicker');
+    </script>
+    <script>
+        $(function () {
+            $('#receiveHandicap').change( function () {
+               if($(this).val() == 1){
+                   $('#content_handicap').show();
+               }else{
+                   $('#content_handicap').hide();
+               }
+            });
+
+            $('#customerHost').change( function () {
+                if($(this).val() == 1){
+                    $('#content_condition').hide();
+                }else{
+                    $('#content_condition').show();
+                }
+            });
+
+            $('#sameAddress').change( function () {
+                if($(this).val() == 1){
+                    $('#content_address').hide();
+                }else{
+                    $('#content_address').show();
+                }
+            });
+
+            $('#gainToAssociation').change( function () {
+                if($(this).val() == 1){
+                    $('#content_assos').show();
+                }else{
+                    $('#content_assos').hide();
+                }
+            });
+
+            $('#hebergement').change( function () {
+                if($(this).val() == 1){
+                    $('#content_hebergement').show();
+                }else{
+                    $('#content_hebergement').hide();
+                }
+            });
+        });
+    </script>
+{% endblock javascripts %}
+

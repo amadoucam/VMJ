@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="description" content="Admin, Dashboard, Bootstrap" />
+    <title>Viemonjob - Back office</title>
+
+    <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() ~ asset('bo-theme/libs/bower/font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() ~ asset('bo-theme/libs/bower/material-design-iconic-font/dist/css/material-design-iconic-font.css') }}">
+    <!-- build:css {{ app.request.getSchemeAndHttpHost() ~ asset('bo-theme/assets/css/app.min.css') }} -->
+    <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() ~ asset('bo-theme/assets/css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() ~ asset('bo-theme/assets/css/core.css') }}">
+    <link rel="stylesheet" href="{{ app.request.getSchemeAndHttpHost() ~ asset('bo-theme/assets/css/app.css') }}">
+    {% block stylesheets %}
+
+    {% endblock stylesheets %}
+    <!-- endbuild -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:400,500,600,700,800,900,300">
+</head>
+
+<body style="background-color: white;margin: 0;padding: 0;">
+
+    <div class="box box-primary">
+        <!-- title row -->
+        <div class="box-header with-border">
+                <h2 class="box-title">
+                    <i class="fa fa-inbox"></i> Facture
+                    <div class="box-tools pull-right">
+                        <img src="{{ app.request.getSchemeAndHttpHost() ~ asset('theme/img/vmj-logo.png') }}" alt="" width="130">
+                    </div>
+                </h2>
+
+            <!-- /.col -->
+        </div>
+        <div class="box-body">
+            <div class="col-sm-4 invoice-col">
+                <b>Date :</b> {{ commande.createdAt | date('d-m-Y') }}<br>
+                <b>Référence :</b> {{ commande.createdAt | date('Y') }}-{{ commande.id }}<br>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <!-- info row -->
+        <div class="box-body invoice-info">
+            <div class="col-xs-8">
+                de :
+                <address>
+                    <strong>VIEMONJOB SAS</strong><br>
+                    77, rue de Bellevue<br>
+                    92100 Boulogne Billancourt<br>
+                </address>
+            </div>
+            <div class="col-xs-4">
+                à :
+                <address>
+                    <strong>{{ commande.customer }}</strong><br>
+                    {{ commande.customer.address }}<br>
+                    {{ commande.customer.postalcode }} {{ commande.customer.town }}<br>
+                </address>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+        <!-- Table row -->
+        <div class="box-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date et description de la prestation</th>
+                            <th>TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                Immersion du {{ commande.start | date('d') }} <br>
+                                Metier : <br>
+                                <strong>{{ commande.immersion.title }}</strong>
+                            </td>
+                            <td>{{ commande.price|number_format(2,'.', ',') }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-xs-6"></div>
+            <div class="col-xs-6">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tr>
+                            <th>TOTAL HT</th>
+                            <td>{{ (commande.price * 0.8)|number_format(2,'.', ',') }}</td>
+                        </tr>
+                        <tr>
+                            <th>TVA (20%)</th>
+                            <td>{{ (commande.price * 0.2)|number_format(2,'.', ',') }}</td>
+                        </tr>
+                        <tr>
+                            <th>TOTAL TTC</th>
+                            <td>{{ commande.price|number_format(2,'.', ',') }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <br>
+            <div class="col-xs-6">
+                Viemonjob ®2016. SAS au capital de 1050€ - SIREN 815361746
+            </div>
+        </div>
+        <div class="row no-print"></div>
+    </div>
+</body>
+</html>
+

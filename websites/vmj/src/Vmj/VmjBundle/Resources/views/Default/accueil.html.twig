@@ -1,0 +1,243 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Viemonjob est le meilleur site pour tester un métier{% endblock %}
+{% block description %}Viemonjob permet à chacun de tester un métier auprès d’un professionnel pour valider un projet d’orientation ou de reconversion{% endblock %}
+{% block keywords %}Viemonjob, VMJ, tester un métier, test un métier, essayer un métier, reconversion professionnelle, orientation, emploi, immersion, découvrir, vismonjob, métier, job{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+{% block body %}
+    <div id="wrap">
+
+        {#    {% if app.session.flashBag.has('success') %}
+
+        <div class="alert alert-success">
+            {% for msg in app.session.flashBag.get('success') %}
+                {{ msg }}
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    #}
+
+        <!-- Top bar -->
+        <header>
+
+            <nav class="header" role="navigation">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-2 col-sm-2 col-xs-2">
+                            <!-- Your logo -->
+                            <div class="logo"><a href="{{path('vmj_homepage')}}"><img src="{{ asset('theme/img/vmj-logo.png') }}" alt="Viemonjob Logo"></a></div>
+                            <!-- and Your logo -->
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="glyphicon glyphicon-menu-hamburger"></span>
+                            </button>
+                        </div>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="col-md-10 col-sm-10 col-xs-10">
+                            <div class="collapse navbar-collapse menu-container" id="bs-example-navbar-collapse-1" style="float: right;">
+                                <ul class="nav navbar-nav" id="menu" style="text-align: center">
+                                    <li><a href="{{path('vmj_particuliers')}}">Particuliers</a></li>
+                                    <li><a href="{{path('vmj_professionnels')}}" >Professionnels</a></li>
+                                    <li><a href="{{path('vmj_metiers')}}">Métiers</a></li>
+
+                                    {% if is_granted('ROLE_PRO') and not is_granted('ROLE_ADMIN') %}
+                                        <li><a href="{{path('edition_profile_pro')}}">Mon espace pro</a></li>
+                                    {% elseif is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
+                                        <li><a href="{{path('dashboard_particuliers')}}">Mon compte</a></li>
+                                    {% elseif is_granted('ROLE_ADMIN') %}
+                                        <li><a href="{{path('dashboard_admin')}}">Administration</a></li>
+                                    {% endif %}
+
+                                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                        <li><a href="{{ path('fos_user_security_logout')}}">Déconnexion</a></li>
+                                    {% else %}
+                                        <li><a href="{{ path('fos_user_security_login')}}">Connexion</a></li>
+                                        <li><a class="btn-insctiption" href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+                                    {% endif %}
+                                    <li><a href="{{path('page_on_parle_de_nous')}}">On parle de nous</a></li>
+
+                                    <!-- Début bouton modal -->
+                                    <button type="button" class="btn bouton-vmj-rappelle" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-phone"></span>
+                                        Viemonjob vous rappelle
+                                    </button>
+                                    <!-- Fin bouton modal -->
+                                    <!-- Modal -->
+                                    {{ form_start(rappelForm, {'action': path('vmj_rappelconfirm')}) }}
+                                    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                    <h4 class="modal-title" id="myModalLabel">Viemonjob vous rappelle</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="txtrappel">Vous avez une question ? Vous ne trouvez pas le métier qui vous intéresse ? Vous pouvez nous laisser vos coordonnées, nous vous recontacterons prochainement.</div>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon glyphicon glyphicon-phone" id="basic-addon1"></span>
+                                                        <input type="tel" name="telephone" class="form-control" placeholder="06.00.00.00.00" aria-describedby="basic-addon1">
+                                                    </div>
+                                                    <div class="input-group">
+                                                        <span class="input-group-addon" id="basic-addon1">@</span>
+                                                        {{ form_widget(rappelForm.email, {'attr': {'class': 'form-control'}}) }}
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+                                                    <input type="submit" class="btn btn-primary">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{ form_end(rappelForm) }}
+                                    <!-- Fin modal -->
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+        </header> <!-- and header -->
+
+        <div class="index-4">
+            <!-- Slider -->
+
+            <!-- Home slider -->
+            <section class="hsh1row homeslider w100 col-xs-12 blanc hsh1">
+                 
+              <div class="blocktext1-vmj">
+                    <div class="container">
+                        <div class="col-md-6 text-center  ">
+                            <h1 class="fs28 blanc fw100">
+                                <span class="fs60 blanc fw100">Viemonjob</span> <br>
+                                    Vous permet de tester un métier ou<br>
+                                    de transmettre votre savoir-faire
+                            </h1>
+                        </div> 
+                        <div class="col-md-6">
+                        </div>
+                    </div><br>
+              </div>
+                <div class="text-bottom ">
+                {% if simpleSearchform is defined %}
+
+                            {{ form_start(simpleSearchform) }}
+                            <div class="container text-center">
+                                <div class="input-group">
+                                    {{ form_widget(simpleSearchform.metier) }}
+                                    <span class="input-group-btn zindex1">
+                                        <button class="btn btn-default bouton-recherche-bleu zindex1 pl20 pr20" src="/theme/img/loupe.png" type="submit">Rechercher</button>
+                                    </span>
+                                </div> 
+                                <br>
+                            </div>
+                            {{ form_end(simpleSearchform) }}
+
+                {% endif %}
+                </div>
+            </section>
+
+            <!-- 2 - Particuliers Pros  -->
+            <section class="clearfix">
+                <div class="col-md-6 home-particuliers wow fw100">
+                    <div class="container-particulier mt5p ml8p">
+                        <h2 class="blanc fw100 fs50">Particuliers</h2>
+                        <p class="blanc">Essayez et découvrez le métier <br>de vos rêves</p>
+
+                        <div class="text-left">
+                            <a href="{{path('vmj_particuliers')}}" title="Presentation Particuliers"> <button class="btn-accueil fondrose blanc br30 paddingboutton fw400 fs15">Je teste un métier</button> </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 home-professionnels background-gris wow fw100">
+                    <div class="container-particulier mt5p ml8p">
+                        <h2 class="blanc fw100 fs50">Professionnels</h2>
+                        <p class="blanc">Faites découvrir votre métier <br>
+                            à une personne motivée<br>
+                            et augmentez vos revenus</p>
+                        <div class="text-left">
+                            <a href="{{path('vmj_professionnels')}}" title="Presentation Professionnels"> <button class="btn-accueil fondmauve blanc br30 paddingboutton fw400 fs15">Je fais découvrir mon métier</button> </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pourquoi VMJ -->
+            <section class="row pt30">
+                <div class="container text-center pk-vmj wow pb30">
+                    <div class="container">
+                        <h2 class="fs45 bleu fw100">Pourquoi Viemonjob</h2>
+                        <p class="fs25 fw100 gris6 ">Viemonjob est la première plateforme de mise en relation entre professionnels et particuliers qui offre à chacun l’opportunité de vivre le métier de ses rêves, ou de transmettre sa passion à des personnes motivées.</p>
+                    </div>
+                </div> 
+            </section>
+
+            <!-- 3 icônes  -->	
+            <section class="clearfix pb30">
+                <div class="container 3icones pt30 pb20">
+
+                    <div class="col-md-4 text-center wow">
+                        <img src="{{ asset('theme/img/viemonjob-picto-coeur.png')}}"><br><br>
+                        <p>Aider chacun à s'épanouir<br>
+                            personnellement<br>
+                            et professionnellement</p>
+                    </div>
+                    <div class="col-md-4 text-center wow">
+                        <img src="{{ asset('theme/img/viemonjob-picto-metiers.png')}}"><br><br>
+                        <p>Apporter une solution<br>
+                            concrète, rapide et simple<br>
+                            à tous
+                    </div>
+                    <div class="col-md-4 text-center wow">
+                        <img src="{{ asset('theme/img/viemonjob-picto-solutions.png')}}"><br><br>
+                        <p>Un large choix de métiers<br>
+                            dans tous les domaines<br>
+                            et partout en France</p>
+                    </div>
+                </div>	
+            </section>
+
+
+            {% block temoignages %}
+                {{parent()}}
+            {% endblock temoignages %}
+
+            {% block metiers %}
+                {{parent()}}
+            {% endblock metiers %}
+
+            {% block newsletters %}
+                {{parent()}}
+            {% endblock newsletters %}
+
+
+        </div><!-- and index-4 -->
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+    </div> <!-- and wrap -->
+
+
+
+{% endblock body %}
+{%block javascripts %}
+    <script type="text/javascript">
+        var revapi;
+        jQuery(document).ready(function () {
+            revapi = jQuery('.tp-banner').revolution(
+                    {
+                        delay: 9999,
+                        startwidth: 1350,
+                        startheight: 588,
+                        hideThumbs: 10,
+                        fullWidth: "on",
+                        forceFullWidth: "on"
+                    });
+
+        });	//ready
+    </script>
+{%endblock javascripts %}

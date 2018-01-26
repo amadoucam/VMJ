@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+{% endblock %}
+{% block body %}
+    <div id="wrap">
+
+        {% block header %}
+        {{ parent() }}
+        {% endblock header %}
+
+
+        <section class="hsh1 row homeslider  w100 col-xs-12 blanc hsh1">
+            <div class="blocktext1-vmj">
+                <div class="container">
+                    <div class="col-md-6">
+                        <h1 class="fs28 blanc fw100">
+                            <span class="fs60 blanc fw100">Ooops !!!</span> <br>
+                            La page demandée n'est pas disponible.
+                        </h1>
+                        <br>
+                        <a class="btn btn-particuliers" href="{{path('vmj_particuliers')}}" role="button">Je teste un métier</a>
+                        <a class="btn btn-professionnels" href="{{path('vmj_professionnels')}}" role="button">Je fais découvrir mon métier</a>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+                <br>
+            </div>
+        </section>
+
+        <section class="clearfix">
+            <div class="col-md-6 home-particuliers wow fw100">
+                <div class="container-particulier mt5p ml8p">
+                    <h2 class="blanc fw100 fs50">Particuliers</h2>
+                    <p class="blanc">Essayez et découvrez le métier <br>de vos rêves</p>
+
+                    <div class="text-left">
+                        <a href="{{path('vmj_particuliers')}}" title="Presentation Particuliers"> <button class="btn-accueil fondrose blanc br30 paddingboutton fw400 fs15">Je teste un métier</button> </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 home-professionnels background-gris wow fw100">
+                <div class="container-particulier mt5p ml8p">
+                    <h2 class="blanc fw100 fs50">Professionnels</h2>
+                    <p class="blanc">Faites découvrir votre métier <br>
+                        à une personne motivée pendant<br>
+                        une semaine et augmentez<br>
+                        vos revenus</p>
+                    <div class="text-left">
+                        <a href="{{path('vmj_professionnels')}}" title="Presentation Professionnels"> <button class="btn-accueil fondmauve blanc br30 paddingboutton fw400 fs15">Je fais découvrir mon métier</button> </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+    </div> <!-- and wrap -->
+
+
+
+{% endblock body %}
+{%block javascripts %}
+    <script type="text/javascript">
+        var revapi;
+        jQuery(document).ready(function () {
+            revapi = jQuery('.tp-banner').revolution(
+                {
+                    delay: 9999,
+                    startwidth: 1350,
+                    startheight: 588,
+                    hideThumbs: 10,
+                    fullWidth: "on",
+                    forceFullWidth: "on"
+                });
+
+        });	//ready
+    </script>
+{%endblock javascripts %}

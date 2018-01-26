@@ -1,0 +1,48 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        roles:
+            ROLE_USER:          ROLE_USER   
+            ROLE_PRO:           ROLE_PRO
+            ROLE_ADMIN:         ROLE_ADMIN
+            ROLE_SUPER_ADMIN:   ROLE_SUPER_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+                # if you are using Symfony < 2.8, use the following config instead:
+                # csrf_provider: form.csrf_provider
+            oauth:
+                resource_owners:
+                    facebook:           "/connect/check-facebook"
+                    twitter:            "/connect/check-twitter"
+                    linkedin:            "/connect/check-linkedin"
+                login_path:        /connect
+               # use_forward:       false
+                failure_path:      /connect
+
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider.fosub_bridge
+            logout:       true
+            anonymous:    true
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/panier, role: IS_AUTHENTICATED_FULLY }

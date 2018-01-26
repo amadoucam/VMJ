@@ -1,0 +1,62 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block titrepage %} Mes commandes {% endblock titrepage %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>
+
+{% endblock stylesheets %}
+
+{% block body %}
+
+    <h1>Mes commandes</h1>
+    {% if commandes is defined and commandes is not null%}
+        {% for commande in commandes %}
+            <div class="row">
+                <h3>Immersion : {{ commande[0].immersion.title }}</h3>
+                <table class="commandes table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Client</th>
+                        <th>Date de l'immersion</th>
+                        <th>Prix facturé</th>
+                        <th>Date de commande</th>
+                        <th>Motivation</th>
+                        <th>Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for cmd in commande %}
+                        <tr>
+                            <td>{{ cmd.customer }}</td>
+                            <td>{{ cmd.start | date('d-m-Y') }}
+                                au
+                                {%  if cmd.end is null %}
+                                    {{ cmd.start | date_modify("+5 day")| date('d-m-Y') }}
+                                {% else %}
+                                    {{ cmd.end | date('d-m-Y') }}
+                                {% endif %}
+                            </td>
+                            <td>{{ cmd.price }}€</td>
+                            <td>{{ cmd.createdAt | date('d-m-Y') }}</td>
+                            <td>{{ cmd.motivation }}</td>
+                            <td>Payé</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3>Vous n'avez pas de commandes pour l'instant</h3>
+    {% endif %}
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.commandes').DataTable({'language': french_datatable });
+        });
+    </script>
+{% endblock javascripts %}

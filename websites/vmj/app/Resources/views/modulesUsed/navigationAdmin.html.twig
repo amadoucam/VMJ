@@ -1,0 +1,92 @@
+<ul class="app-menu">
+    <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-inbox zmdi-hc-lg"></i>
+            <span class="menu-text">Ma messagerie</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+        <ul class="submenu">
+            <li>
+                <a href="{{path('messages_inbox')}}">
+                    <span class="menu-text">Boite de reception</span>
+                    {% if compteNonLus is defined and compteNonLus != 0 %}<span class="label label-primary menu-label">{{compteNonLus}}</span>{% endif %}
+                </a>
+            </li>
+            <li><a href="{{path('messages_inbox')}}"><span class="menu-text">Messages envoyés</span></a></li>
+            <li><a href="{{path('messages_compose')}}"><span class="menu-text">Nouveau Message</span></a></li>
+        </ul>
+    </li>
+    <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+            <span class="menu-text">Immersions</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="{{path('admin_immersion_create')}}"><span class="menu-text">Créer une immersion</span></a></li>
+            <li><a href="{{path('admin_immersions')}}"><span class="menu-text">Liste des immersions</span></a></li>
+        </ul>
+    </li>
+    <li>
+        <a href="{{path('admin_commandes')}}">
+            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+            <span class="menu-text">Commandes</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+    </li>
+    <li>
+        <a href="{{path('admin_presse')}}">
+            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+            <span class="menu-text">Presse</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+    </li>
+    
+    
+    <li class="has-submenu">
+        <a href="{{path('admin_categoriejob_index')}}">
+            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+            <span class="menu-text">Categories Metiers</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+    </li>
+   
+    
+    <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+            <span class="menu-text">Témoignages</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="{{path('admin_temoignages_index')}}"><span class="menu-text">Liste des témoignages</span></a></li>
+        </ul>
+    </li>
+    
+    <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+            <span class="menu-text">Les utilisateurs</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="{{ path('admin_users_search') }}"><span class="menu-text">Rechercher des utilisateurs</span></a></li>
+            <li><a href="{{ path('admin_users_index') }}"><span class="menu-text">Liste des Professionnels</span></a></li>
+            <li><a href="{{ path('admin_particuliers_list') }}"><span class="menu-text">Liste des Particuliers</span></a></li>
+            <li><a href="{{ path('admin_users_add') }}"><span class="menu-text">Ajouter un utilisateur</span></a></li>
+        </ul>
+    </li>
+
+    <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+            <span class="menu-text">Newsletter</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="{{ path('newscontact_index') }}"><span class="menu-text">Liste des inscrits</span></a></li>
+            <li><a href="{{ path('newscontact_new') }}"><span class="menu-text">Ajouter un contact</span></a></li>
+        </ul>
+    </li>
+
+</ul><!-- .app-menu -->

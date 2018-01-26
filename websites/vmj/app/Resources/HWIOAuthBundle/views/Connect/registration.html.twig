@@ -1,0 +1,195 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bo-theme/libs/bower/bootstrap-datepicker/dist/css/bootstrap-datepicker.css') }}">
+{% endblock stylesheets %}
+
+{% block body %}
+    {% block header %}
+        {{ parent() }}
+    {% endblock header %}
+<div class="container-fluid fondbleuvert">
+    <section class="row fondrose">
+        <div class="page-title fondrose">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-5">
+                        <h3 class="blanc">Inscrivez-vous</h3>
+                    </div>
+                    <div class="col-md-7 col-sm-7 hidden-xs">
+                        <div class="page-title-address blanc">
+                            <a class="blanc" href="{{path('vmj_homepage')}}">Accueil</a><i class="fa fa-angle-right blanc"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> <!-- and Page title -->
+
+    <section>
+        <div class="login-register">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 fondfafafa pt30 pb20">
+                        <div class="login-sec">
+                            <div class="login">
+                                <div class="login-form">
+                                    {% if userInformation.response['formattedName'] is defined %}
+                                        {% set patronyme = userInformation.response['formattedName'] | split(' ') %}
+                                    {% endif %}
+                                    <h3>{{ 'header.register' | trans({'%name%': userInformation.realName}, 'HWIOAuthBundle') }}</h3>
+                                    {{ form_start(form, {'action': path('hwi_oauth_connect_registration', {'key': key}), 'attr': {'class': 'hwi_oauth_registration_register'}}) }}
+                                        <div class="form-row upp inscription-txt-1">
+                                            {{ form_label(form.user_profile.type, "Je suis un...") }}
+                                            {{ form_widget(form.user_profile.type, {'attr': {'class': 'radios radios-inline'} }) }}
+                                            {{ form_errors(form.user_profile.type) }}
+                                        </div>
+                                        <div class="form-row upp">
+                                            {% if userInformation.response['first_name'] is defined  %}
+                                                {{ form_widget(form.user_profile.firstname, {'attr': {'class': 'form-control', 'placeholder' : 'Prénom * '}, 'value': userInformation.response['first_name'] }) }}
+                                            {% else %}
+                                                {{ form_widget(form.user_profile.firstname, {'attr': {'class': 'form-control', 'placeholder' : 'Prénom * '}, 'value': patronyme['0'] }) }}
+                                            {% endif %}
+                                            {{ form_errors(form.user_profile.firstname) }}
+                                        </div>
+                                        <div class="form-row upp">
+                                            {% if userInformation.response['last_name'] is defined  %}
+                                                {{ form_widget(form.user_profile.lastname, {'attr': {'class': 'form-control', 'placeholder' : 'Nom * '}, 'value': userInformation.response['last_name']|upper }) }}
+                                            {% else %}
+                                                {{ form_widget(form.user_profile.lastname, {'attr': {'class': 'form-control', 'placeholder' : 'Nom * '}, 'value': patronyme['1']|upper }) }}
+                                            {% endif %}
+                                            {{ form_errors(form.user_profile.lastname) }}
+                                        </div>
+                                        <div class="form-row upp inscription-txt-1">
+                                            {{ form_label(form.user_profile.sexe, 'Sexe') }}
+                                            {{ form_widget(form.user_profile.sexe, {'attr': {'class': 'radios radios-inline'} }) }}
+                                        </div>
+
+                                        <div class="form-row upp inscription-txt-1">
+                                            {{ form_label(form.user_profile.birthday, 'Date de naissance') }}
+                                            {{ form_widget(form.user_profile.birthday, { 'id':'birthday', 'attr': {'class': 'form-control input-inline datepicker',
+                                                'data-provide': 'datepicker',
+                                                'data-date-format': 'dd-mm-yyyy'} }) }}
+                                        </div>
+
+                                        <div class="form-row upp inscription-txt-1">
+                                            {{ form_label(form.user_profile.address, 'Coordonnées') }}
+                                            {{ form_widget(form.user_profile.address, {'attr': {'class': 'form-control', 'placeholder' : 'Adresse '} }) }}
+                                            {{ form_errors(form.user_profile.address) }}
+                                        </div>
+
+                                        <div class="form-row upp">
+                                            {{ form_widget(form.user_profile.postalcode, {'attr': {'class': 'form-control', 'placeholder' : 'Code postal '} }) }}
+                                            {{ form_errors(form.user_profile.postalcode) }}
+                                        </div>
+                                        <div class="form-row upp">
+                                            {{ form_widget(form.user_profile.town, {'attr': {'class': 'form-control', 'placeholder' : 'Ville '} }) }}
+                                        </div>
+                                        <div class="form-row upp">
+                                            {{ form_widget(form.user_profile.phonenumber, {'attr': {'class': 'form-control', 'placeholder' : 'Téléphone Ex: 0123456789'} }) }}
+                                            {{ form_errors(form.user_profile.phonenumber) }}
+                                        </div>
+                                        <div id="individualForm" style="display: none;">
+                                            <div class="form-row upp inscription-txt-1">
+                                                {{ form_label(form.user_profile.businessName, 'Assurance Responsabilité Civile') }}
+                                                {{ form_widget(form.user_profile.insuranceName, {'attr': {'class': 'form-control', 'placeholder' : 'Nom de l\'assureur '} }) }}
+                                            </div>
+                                            <div class="form-row upp">
+                                                {{ form_widget(form.user_profile.insuranceNumber, {'attr': {'class': 'form-control', 'placeholder' : 'Numéro d\'assurance '} }) }}
+                                            </div>
+                                        </div>
+
+                                        <div id="businessForm">
+                                            <div class="form-row upp inscription-txt-1">
+                                                {{ form_label(form.user_profile.businessName, 'Informations de l\'entreprise') }}
+                                                {{ form_widget(form.user_profile.businessName, {'attr': {'class': 'form-control', 'placeholder' : 'Nom de l\'entreprise '} }) }}
+                                            </div>
+
+                                            <div class="form-row upp">
+                                                {{ form_widget(form.user_profile.businessDescription, {'attr': {'class': 'form-control', 'placeholder' : 'Description de l\'entreprise '} }) }}
+                                            </div>
+                                            <div class="form-row upp">
+                                                {{ form_widget(form.user_profile.siret, {'attr': {'class': 'form-control', 'placeholder' : 'SIRET '} }) }}
+                                            </div>
+
+
+
+                                            <div class="form-row upp">
+                                                {{ form_widget(form.user_profile.website, {'attr': {'class': 'form-control', 'placeholder' : 'Site web '} }) }}
+                                            </div>
+
+                                            <div class="form-row upp">
+                                                {{ form_widget(form.user_profile.facebookLink, {'attr': {'class': 'form-control', 'placeholder' : 'Lien Facebook '} }) }}
+                                            </div>
+
+                                            <div class="form-row upp">
+                                                {{ form_widget(form.user_profile.linkedinLink, {'attr': {'class': 'form-control', 'placeholder' : 'Lien LinkedIn '} }) }}
+                                            </div>
+                                        </div>
+
+                                        <div class="form-row upp inscription-txt-1">
+                                            {{ form_label(form.user_profile.birthday, 'Informations de connexion') }}
+                                            {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder' : 'Identifiant* '}, 'value':'' }) }}
+                                            {{ form_errors(form.username) }}
+                                        </div>
+
+                                        <div class="form-row upp">
+                                            {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder' : 'Adresse email* '} }) }}
+                                            {{ form_errors(form.email) }}
+                                        </div>
+                                        <div class="form-row upp">
+                                            {{ form_widget (form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder' : 'Mot de passe* '} }) }}
+                                            {{ form_errors(form.plainPassword.first) }}
+                                        </div>
+                                        <div class="form-row upp">
+                                            {{ form_widget (form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder' : 'Confirmation du mot de passe* '} }) }}
+                                            {{ form_errors(form.plainPassword.second) }}
+                                        </div>
+                                        <div>
+                                            <button type="submit" class="btn btn-primary">{{ 'connect.registration.submit'|trans({}, 'HWIOAuthBundle') }}</button>
+                                            <a href="{{ path('vmj_homepage') }}" class="btn">{{ 'connect.registration.cancel' | trans({}, 'HWIOAuthBundle') }}</a>
+                                        </div>
+                                    {{ form_end(form) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="span6">
+            {% if userInformation.profilePicture is not empty %}
+                <img src="{{ userInformation.profilePicture }}" />
+            {% endif %}
+        </div>
+    </section>
+</div>
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script src="{{ asset('bo-theme/libs/bower/jquery/dist/jquery.js') }}"></script>
+    <script src="{{ asset('bo-theme/libs/bower/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('bundles/vmj/js/french_datepicker.js') }}"></script>
+
+    <script>
+        var nowTemp = new Date();
+        var init_date = new Date(1990, nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+        $('#birthday').datepicker({
+            language: 'fr'
+        }).datepicker("setDate", init_date);
+
+        $("input[type=radio][name='fos_user_registration_form[user_profile][type]']").change(function() {
+            if (this.value == 1) {
+                $('#businessForm').hide();
+                $('#individualForm').show();
+            }
+            else if (this.value == 2) {
+                $('#businessForm').show();
+                $('#individualForm').hide();
+            }
+        });
+    </script>
+{% endblock javascripts %}

@@ -1,0 +1,24 @@
+admin_categoriejob_index:
+    path:     /
+    defaults: { _controller: "VmjBundle:CategorieJob:index" }
+    methods:  GET
+
+admin_categoriejob_show:
+    path:     /{id}/show
+    defaults: { _controller: "VmjBundle:CategorieJob:show" }
+    methods:  GET
+
+admin_categoriejob_new:
+    path:     /new
+    defaults: { _controller: "VmjBundle:CategorieJob:new" }
+    methods:  [GET, POST]
+
+admin_categoriejob_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VmjBundle:CategorieJob:edit" }
+    methods:  [GET, POST]
+
+admin_categoriejob_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VmjBundle:CategorieJob:delete" }
+    methods:  DELETE

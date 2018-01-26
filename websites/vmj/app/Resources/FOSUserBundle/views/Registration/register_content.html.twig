@@ -1,0 +1,78 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bo-theme/libs/bower/bootstrap-datepicker/dist/css/bootstrap-datepicker.css') }}">
+{% endblock stylesheets %}
+
+<section>
+    <div class="login-register">
+
+
+        <!-- Shop content -->
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+            <div class="login">
+                <h2 class="mauve fs45 fw300 text-center">Inscription <!--<span>standard ou avec vos réseaux sociaux</span>-->
+                </h2>
+
+                <!--<span>standard ou avec vos réseaux sociaux</span>-->
+
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 fs16 fw300 ">
+                    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                    <div class="form-row form-log upp inscription-txt-1">
+                        {{ form_widget(form.user_profile.type, {'attr': {'class': 'radios radios-inline'} }) }}
+                        {{ form_errors(form.user_profile.type) }}
+                    </div>
+                    <div class="form-row form-log upp">
+                        {{ form_widget(form.user_profile.firstname, {'attr': {'class': 'form-control', 'placeholder' : 'Prénom* '} }) }}
+                        {{ form_errors(form.user_profile.firstname) }}
+                    </div>
+                    <div class="form-row form-log upp">
+                        {{ form_widget(form.user_profile.lastname, {'attr': {'class': 'form-control', 'placeholder' : 'Nom* '} }) }}
+                    </div>
+                    <div class="form-row form-log upp inscription-txt-1">
+                        {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder' : 'Identifiant* '} }) }}
+                        {{ form_errors(form.username) }}
+                    </div>
+                    <div class="form-row form-log upp">
+                        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder' : 'Adresse email* '} }) }}
+                        {{ form_errors(form.email) }}
+                    </div>
+                    <div class="form-row form-log upp">
+                        {{ form_widget (form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder' : 'Mot de passe* '} }) }}
+                        {{ form_errors(form.plainPassword.first) }}
+                    </div>
+                    <div class="form-row form-log upp">
+                        {{ form_widget (form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder' : 'Confirmation du mot de passe* '} }) }}
+                        {{ form_errors(form.plainPassword.second) }}
+                    </div>
+                    <div class="bouton-connexion text-center bordconnexionradius fondbleuvert">
+                        <input type="submit" id="_submit" class=" boutonseconnecter  " name="_submit" value="S'inscrire" />
+                    </div>
+                    {{ form_end(form) }}
+                </div>
+
+                <!--ou avec vos réseaux sociaux</span>
+
+        <a class="c-pointer social social-google">
+            <i class="fa fa-google-plus"></i>
+            Connexion avec Google</a>
+
+        <a class="c-pointer social social-facebook">
+            <i class="fa fa-facebook"></i>
+            Connexion avec Facebook</a>-->
+            </div>
+
+        </div>
+        <div class="col-lg-7 col-md-7 hidden-xs hidden-sm padding-connexion">
+            <img class="image-connexion" src="../theme/img/vmj_connexion_background.jpg" alt="" />
+        </div>
+
+    </div> <!-- and Login Register -->
+</section>
+
+{% block javascripts %}
+    <script src="{{ asset('bo-theme/libs/bower/jquery/dist/jquery.js') }}"></script>
+    <script src="{{ asset('bo-theme/libs/bower/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('bundles/vmj/js/french_datepicker.js') }}"></script>
+{% endblock javascripts %}

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Viemonjob{% endblock %}</title>
+        <meta name="description" content="Viemonjob : Préparer une reconversion ou tester le métier de vos rêves. Essayer un nouveau métier c’est peut-être changer de vie."> 
+        <meta name="keywords" content="viemonjob, Essayer un métier, tester un métier, chercher une orientation, reconversion professionnel, solution au burn-out, sortir du chômage, faire de ma passion mon métier, complément de revenue pour les entreprises,  
+              particulier">
+        <meta name="author" content="La cinquième patte">
+        <meta name="designer" content="La cinquième patte">
+        <meta name="application-name" content="Nom de l’application">
+        <meta name="contact" content="06 18 14 16 25 77 rue de Bellevue, 92100 Boulogne-Billancourt"/>
+        <meta name="web_author" content="La cinquième patte"/>
+        <meta name="designer" content="MetaExtensions" /> 
+        <meta name="version" content="1.0"/>
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('vmj-favicon.png') }}" />
+        <!-- Main CSS Style -->
+        <link rel="stylesheet" href="{{ asset('theme/css/styles.css') }}" type="text/css" />
+
+        <!-- Main CSS Style (in less) delete in real project-->
+        <link rel="stylesheet/less" type="text/css" href="css/styles.less">
+
+
+        <!-- Bootstrap Grid Framework -->
+        <link rel="stylesheet" href="{{ asset('theme/css/bootstrap.css') }}" />
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('theme/css/font-awesome.css') }}">
+
+        <!-- Dropdown menu -->
+        <link rel="stylesheet" href="{{ asset('theme/css/slicknav.css') }}">
+
+        <!-- Select box -->
+        <link href="{{ asset('theme/css/jquery.selectbox.css') }}" type="text/css" rel="stylesheet" />
+
+        <!-- Owl Carousel Assets -->
+        <link href="{{ asset('theme/css/owl.carousel.css') }}" rel="stylesheet">
+
+        <!-- Animate css -->
+        <link rel="stylesheet" href="{{ asset('theme/css/animate.css') }}">
+
+        <!--Preaty Photo-->
+        <link rel="stylesheet" href="{{ asset('theme/css/prettyPhoto.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('theme/css/bxslider.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('theme/css/vmj-accueil.css') }}">
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+    {% block body %}
+        {% block header %}
+
+            <!-- Top bar -->
+            <header>
+
+                <div id="search">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <span id="search-beack"></span>
+                                <form action="{{ path('vmj_search') }}" method="GET">
+                                    <input name="search_metier" class="placeholder" type="search" placeholder="Quel métier voudriez-vous essayer ?"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dropdown menu -->
+                <nav>
+
+                    <div class="header">
+                        <div class="container">
+                            <div class="row">
+
+
+                                <div class="col-md-2 col-sm-2 col-xs-2">
+                                    <!-- Your logo -->
+                                    <div class="logo"><a href="{{path('vmj_homepage')}}"><img src="{{ asset('theme/img/vmj-logo.png') }}" alt="Viemonjob Logo"></a></div>
+                                    <!-- and Your logo -->
+                                </div>
+
+                                <div class="col-md-10 col-sm-10 col-xs-10">
+
+                                    <div class="menu-container">
+
+                                        <!-- Menu nav bar -->
+                                        <ul id="menu">
+                                            <li><a href="{{path('vmj_particuliers')}}">Particuliers</a>
+
+                                            </li>
+                                            <li><a href="{{path('vmj_professionnels')}}" >Professionnels</a>
+
+                                            </li>
+                                            <li><a href="{{path('vmj_metiers')}}" class="slideUp">Metiers</a>
+
+                                                {% if is_granted('ROLE_PRO') and not is_granted('ROLE_ADMIN') %}
+                                                <li>
+                                                    <a href="{{path('dashboard_pro')}}">Mon espace pro</a>
+                                                </li>
+                                            {% elseif is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
+                                                <li>
+                                                    <a href="{{path('dashboard_particuliers')}}">Mon compte</a>
+                                                </li>
+                                            {% elseif is_granted('ROLE_ADMIN') %}
+                                                <li>
+                                                    <a href="{{path('dashboard_admin')}}">Administration</a>
+                                                </li>  
+                                            {% endif %}
+
+
+                                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                                <li><a href="{{ path('fos_user_security_logout')}}">Deconnexion</a></li>
+                                                {% else %} 
+                                                <li><a href="{{path('fos_user_security_login')}}">Connexion</a></li>
+                                                {% endif %}
+                                        </ul>
+                                        <!-- and Menu nav bar -->
+                                    </div> <!-- and menu-container -->
+                                </div> <!-- and col-md-10 -->
+
+                            </div> <!-- and row -->
+                        </div> <!-- and container -->
+                    </div> <!-- and header -->
+
+                </nav> <!-- and Dropdown menu -->
+
+            </header> <!-- and header -->
+        {% endblock header %}
+
+        {% block temoignages %}
+            <!--caroussel -->
+            {% if temoignages is defined %}
+                <section class="fondjaune pt50 pb50 fondslidejaune">
+
+                    <div id="text-carousel" class="carousel slide" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="row ">
+                                <div class="col-xs-offset-3 col-xs-6">
+                                    <br>
+                                    <br>
+                                    <div class="carousel-inner"> 
+                                        <div class="item active">
+                                            <div class="carousel-content  ">
+                                                <div class=" ">
+                                                    <span class="  fs30 fsitalic blanc textshadow012">“J'ai testé le métier de fleuriste près de chez moi durant une semaine. Je suis allée à Rungis le matin pour choisir les fleurs, que j'ai préparées avant de composer des bouquets. J'ai adoré la relation privilégiée avec les clients, et j'ai découvert une vraie vie de quartier, unique chez les commerçants. Grâce à cette expérience, j'ai eu la chance d'être accueillie par une personne passionnée qui m'a fait découvrir tant les aspects positifs que les contraintes du métier de fleuriste.” <br>
+                                                        Mai 2015 </span><br>
+                                                        <div class="col-sm-6">
+                                                             &nbsp
+                                                        </div> 
+                                                        <div class="col-sm-6 text-left blanc textshadow012">
+                                                            <span class="text-left fs18 fw400">Tiphanie <br>
+                                                            <span class="text-left fs18 fw100">Fleuriste pendant une semaine</span>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="carousel-content">
+                                                <div>
+                                                    <span class=" fs30 fsitalic blanc textshadow012 ">“Mon immersion me sera bénéfique pour créer mon foodtruck ! Un grand merci à Violette et toute son équipe qui m'ont chaleureusement accueilli, toujours disponibles pour répondre à ma curiosité tant au niveau de la gestion, de l'accueil et du service client, de la cuisine et ses petits secrets. Je rêve de créer une affaire ou les employés travaillent en harmonie, et d'avoir une clientèle aussi fidèle et qui se régale à l'image de chez Violette. Merci d'avoir créé Viemonjob, c'est vraiment une excellente idée car je pense que ça correspond à un vrai besoin !” <br>
+                                                        Février 2016</span><br>
+                                                        <div class="col-sm-6">
+                                                             &nbsp
+                                                        </div> 
+                                                        <div class="col-sm-6 text-left blanc textshadow012">
+                                                            <span class="text-left fs18 fw400">Hervé <br>
+                                                            <span class="text-left fs18 fw100">Immersion en restauration</span>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="carousel-content">
+                                                <div>
+                                                   <span class=" fs30 fsitalic blanc textshadow012 ">“Le foodtruck est "the tendance" et voulant me lancer dans la restauration rapide, j'ai voulu avoir un aperçu. Cette immersion avec Marc m'a vraiment plu. Cela m'a permis de voir le fonctionnement d'un foodtruck. Dès le premier jour, Marc m'a mise à l'aise, il a pris son temps pour m'expliquer l'organisation et le fonctionnement de son commerce. J'ai pu apprendre des différentes problématiques du métier et voir toutes les étapes de A à Z. Ce n'est pas si simple que cela en a l'air ! Marc a été un instructeur patient, très clair dans ses explications, aimant ce qu'il fait. A mon plus grand plaisir, j'ai pu réaliser mes propres boulettes ! Bien sûr approuvé par Marc pour le service. Cette expérience a été très enrichissante humainement et professionnellement. Cela m' a permis d'avoir une idée plus clair de ce que je voulais faire. Merci à Viemonjob sans vous je n'aurai pas pu faire cette expérience et connu Marc. J'espère que mon témoignage aidera d'autres personnes à se lancer dans cette belle aventure.” <br>
+                                                        Juillet 2016</span><br>
+                                                        <div class="col-sm-6">
+                                                             &nbsp
+                                                        </div> 
+                                                        <div class="col-sm-6 text-left blanc textshadow012">
+                                                            <span class="text-left fs18 fw400">Stéphanie <br>
+                                                            <span class="text-left fs18 fw100">Immersion en food truck</span>
+                                                        </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Controls --> <a class="leftvmj1 carousel-control" href="#text-carousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                          </a>
+                         <a class="rightvmj1 carousel-control" href="#text-carousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                          </a>
+
+                        </div>
+
+ 
+                        <!-- and container -->
+
+                    </div>
+                </section>  
+            {% endif %}
+        {% endblock temoignages %}
+
+        {% block metiers %}
+            <!-- Découvrez les métier -->
+        
+            <section  class="clearfix team-of-prof-bg decouvrez-metier ">
+                <div class="row  ">
+                    <div class="text-center blanc">
+                        <h2 class="fs60 fw100 ">Viemonjob</h2>
+                        <p class="fs35 blanc">Maître fromager, coutelier, avocat, photo-reporter,<br>
+                            poissonnier, décorateur d’intérieur et bien d’autres encore...</p> <br>
+                        <a href="{{path('vmj_metiers')}}" title="decouvrez les metiers"><button class=" fs18 br30 fondrose2 blanc noborder paddingboutton fw400 fs18 ">   Découvrez tous les métiers </button> </a>
+                    </div>
+                </div>
+            </section>
+
+        {% endblock metiers %}
+
+        {% block newsletters %}
+            <!-- NEWSLETTER -->
+
+            <section class="clearfix text-center">
+                {% if newsletterForm is defined %}
+                    <div class="col-md-6 newsletter wow bounceInLeft"> 
+                        <div class=" text-center">
+                            <h2 class=" ">NEWSLETTER</h2> 
+                            <p class=" ">Toute l'actualité Viemonjob <br>
+                                et que des bonnes nouvelles <br> <br>
+                                {{ form_start(newsletterForm) }}
+                            <div class="col-lg-12">
+                                <div class="input-group">
+                                    {{ form_widget(newsletterForm.email) }}
+                                    <span class="input-group-btn zindex1">
+                                        <button class="btn btn-default bouton-rond-orange zindex1 pl20 pr20 fs25 fw400" type="submit">ok</button>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                            {{ form_end(newsletterForm) }}
+                        </div>  
+                    </div>
+                {% endif %}
+                <!-- DES QUESTIONS  -->
+                <div class="col-md-6   des-questions wow bounceInRight "> 
+                    <div class="   text-center grisfonce"> 
+                        <h2>DES QUESTION &#8239? </h2> 
+                        <p> Nous serons ravis de répondre <br>
+                            à vos questions ou suggestions</p> <br>
+                        <span class="input-group-btn   text-center">
+                        <button class="btn btn-default bouton-rond-mauve   pl20 pr20 fs25 fw400" type="submit">contacter nous</button></span>
+                    </div>
+                </div>       
+
+            </section>
+        {% endblock newsletters %}
+
+        {% block footer %}
+            <section class="footer-rose clearfix">
+                <div class="row">
+                    <div class="container fs24 lh1-5 fw400">
+                        <div class="container col-md-3 ">
+                            <table>
+                                <tr>
+                                    <th>Plan du site</th>
+                                </tr>
+
+                                <tr>
+                                    <td><a href="{{path('vmj_particuliers')}}">Particuliers</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('vmj_professionnels')}}">Professionnels</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('vmj_metiers')}}">Les métiers</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('page_a_propos')}}">À propos</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('page_aide')}}">Aide</a></td>
+                                </tr>
+                            </table>
+                        </div>                                  
+                        <div class="col-md-3 ">
+                            <table>
+                                <tr>
+                                    <th> <br></th>
+                                </tr>
+
+                                <tr>
+                                    <td><a href="{{path('page_on_parle_de_nous')}}">On parle de nous</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('page_blog')}}">Blog</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('page_cgv')}}">Conditions générales d'utilisation</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('page_mentions_legales')}}">Mentions légales</a></td>
+                                </tr> 
+                            </table>
+                        </div>
+                        <div class="col-md-3 "></div>
+                        <div class="col-md-3 "></div>
+
+                    </div> 
+                    <br>
+                    <div class="container text-center padtop">
+                        <p class="reseaux-sociaux fs30 fw300">Retrouvez nous sur <br> 
+                            <a href="https://www.facebook.com/viemonjob/"><img src="{{ asset('theme/img/facebook-Viemonjob.png')}}"> </a>
+                            <a href="https://www.linkedin.com/company/vie-mon-job?trk=biz-companies-cym"><img src="{{ asset('theme/img/linkedin.png')}}"> </a>
+                            <a href="https://twitter.com/viemonjob"><img src="{{ asset('theme/img/twitter.png')}}"> </a>
+                            <a href="https://www.youtube.com/channel/UCDBpFd6dSkzjSPyaFcAT5Mg"><img src="{{ asset('theme/img/youtube.png')}}"> </a>
+                            <a href="https://www.instagram.com/viemonjob/"><img src="{{ asset('theme/img/intagram.png')}}"> </a>
+                        </p></div>
+
+                </div>
+            </section>    
+
+
+            <a href="#" class="back-to-top"></a>
+        {% endblock %}
+    {% endblock %}
+
+
+    <!-- Modernizr -->
+    <script src="{{ asset('theme/js/modernizr.js') }}"></script>
+
+    <!-- jQuery -->
+    <script src="{{ asset('theme/js/jquery-1.11.1.min.js') }}"></script>
+
+    <script src="{{ asset('theme/js/isotope.pkgd.min.js') }}"></script>
+    <!-- Owl carousel -->
+    <script src="{{ asset('theme/js/owl.carousel.min.js') }}"></script>
+
+    <!-- Bootstrap Plagins -->
+    <script src="{{ asset('theme/js/bootstrap.min.js') }}"></script>
+
+    <!-- Dropdown menu if screen < 650px -->
+    <script src="{{ asset('theme/js/jquery.slicknav.min.js') }}"></script>
+
+    <!-- Fixed Dropdown menu if scroll -->
+    <script src="{{ asset('theme/js/jquery-scrolltofixed-min.js') }}" type="text/javascript"></script>
+
+    <!-- jQuery -->
+    <script src="{{ asset('theme/js/jquery-1.7.2.min.js') }}"></script>
+
+    <!-- Animation offset -->
+    <script src="{{ asset('theme/js/wow.js') }}"></script>
+
+    <!-- Select box -->
+    <script type="text/javascript" src="{{ asset('theme/js/jquery.selectbox-0.2.js') }}"></script>
+
+    <!-- Property select -->
+    <script type="text/javascript">
+        jQuery.noConflict()(function ($) {
+            $(function () {
+                $("#color-select").selectbox();
+            });
+        });
+    </script>
+
+    <!-- Layout Style -->
+    <script src="{{ asset('theme/js/layout.js') }}"></script>
+
+    <!-- Parallax -->
+    <script type="text/javascript" src="{{ asset('theme/js/jquery.parallax-1.1.3.js') }}"></script>
+    <script type="text/javascript">
+        jQuery.noConflict()(function ($) {
+            $(document).ready(function () {
+                $('.team-of-prof-bg').parallax("50%", 0.25);
+            });
+        });
+    </script>
+
+    <!--Preaty Photo-->
+    <script src="{{ asset('theme/js/jquery.prettyPhoto.js') }}" type="text/javascript" charset="utf-8"></script>
+
+    <!-- Other scripts -->
+    <script type="text/javascript" src="{{ asset('theme/js/script.js') }}"></script>
+
+    <!-- PrettyPhoto -->
+    <script type="text/javascript">
+        jQuery.noConflict()(function ($) {
+            $("a[data-rel^='prettyPhoto']").prettyPhoto();
+        });
+    </script>  
+    <script type="text/javascript" src="{{ asset('theme/js/jquery.bxslider.js') }}"></script>
+    
+
+    <!-- Script to Activate the Carousel -->
+    <script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+    </script>
+
+
+    <!-- and PrettyPhoto -->
+{% block javascripts %}{% endblock %}
+</body>
+</html>

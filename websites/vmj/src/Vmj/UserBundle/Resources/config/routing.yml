@@ -1,0 +1,12 @@
+vmj_user_userprofile:
+    resource: "@VmjUserBundle/Resources/config/routing/userprofile.yml"
+    prefix:   /userprofile
+
+vmj_user_homepage:
+    path:     /usershp
+    defaults: { _controller: VmjUserBundle:Default:index }
+    
+vmj_user_changepassword:
+    path:     /change_password
+    defaults: { _controller: "VmjUserBundle:ChangePassword:changePassword" }
+    methods:  [GET, POST]

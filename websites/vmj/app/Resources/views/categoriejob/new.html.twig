@@ -1,0 +1,16 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block body %}
+    <h1>Creer une categorie de metier</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input type="submit" value="Create" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_categoriejob_index') }}">Retour à la liste</a>
+        </li>
+    </ul>
+{% endblock %}

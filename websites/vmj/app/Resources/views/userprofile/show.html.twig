@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>UserProfile</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ userProfile.id }}</td>
+            </tr>
+            <tr>
+                <th>Birthday</th>
+                <td>{% if userProfile.birthday %}{{ userProfile.birthday|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ userProfile.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ userProfile.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Profession</th>
+                <td>{{ userProfile.profession }}</td>
+            </tr>
+            <tr>
+                <th>Town</th>
+                <td>{{ userProfile.town }}</td>
+            </tr>
+            <tr>
+                <th>Avatar</th>
+                <td>{{ userProfile.avatar }}</td>
+            </tr>
+            <tr>
+                <th>Language</th>
+                <td>{{ userProfile.language }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ userProfile.sexe }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userprofile_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('userprofile_edit', { 'id': userProfile.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

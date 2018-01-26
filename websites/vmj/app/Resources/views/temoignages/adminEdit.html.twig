@@ -1,0 +1,23 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block titrepage %}Changement d'avis ?{% endblock titrepage %}
+{% block body %}
+    <h1>Modifiez votre commentaire</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <button type="submit" class="btn btn-success"><i class="fa fa-edit"></i> Modifier</button>
+    {{ form_end(edit_form) }}
+
+    <table class="table"> 
+        <tr>
+        <td>
+            <a href="{{ path('admin_temoignages_index') }}"><button class="btn btn-info">Retour aux témoignages</button></a>
+        </td>
+        <td>
+            {{ form_start(delete_form) }}
+                <button type="submit" class="btn btn-danger"><i class="fa fa-trash"></i> Supprimer</button>
+            {{ form_end(delete_form) }}
+        </td>
+    </tr>
+    </table>
+{% endblock %}

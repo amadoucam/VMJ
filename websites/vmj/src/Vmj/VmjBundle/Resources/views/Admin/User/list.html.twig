@@ -1,0 +1,76 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>     
+{% endblock stylesheets %}
+
+{% block body %}
+    {% set type_user = {'1': 'Particulier', '2': 'Professionnel'} %}
+    <div class="row">
+        <h1>Liste des professionnels</h1>
+        <button id="export" class="btn btn-warning">Export Excel</button>
+        <table id="list_users">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Email</th>
+                    <th>Ville</th>
+                    <th>Type</th>
+                    <th>Date <br>creation</th>
+                    <th>Date <br>modification</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.firstname }}</td>
+                    <td>{{ user.lastname }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.town }}</td>
+                    <td>{{ type_user[user.type] }}</td>
+                    <td>{{ user.created | date('d-m-Y')}}</td>
+                    <td>{{ user.updated | date('d-m-Y')}}</td>
+                    <td><a href="{{ path('admin_users_edit', { 'id': user.id }) }}"><button class="btn btn-success" value="Modifier">Modifier</button></a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#list_users').DataTable({'language': french_datatable , "bSort": false});
+        });
+    </script>
+        <script>
+                                    $(document).ready(function () {
+                                        /* $('#form_brands').change(function(){
+                                         var idbrand = $(this).val();
+                                         window.location.href = "/vehicles/show/"+idbrand;
+                                         });
+                                         
+                                         $(".clickable-row").click(function() {
+                                         window.location.href = $(this).data("href");
+                                         });
+                                         */
+                                        $("#export").click(function () {
+
+                                            $("#list_users").table2excel({
+                                                // exclude CSS class
+                                                exclude: ".noExl",
+                                                //name: "Liste Immersions",
+                                                filename: "professionnels" //do not include extension
+                                            });
+                                        });
+
+                                    });
+                                </script>
+{% endblock javascripts %}

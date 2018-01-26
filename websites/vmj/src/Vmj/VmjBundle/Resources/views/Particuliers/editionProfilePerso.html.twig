@@ -1,0 +1,195 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('bo-theme/libs/bower/bootstrap-datepicker/dist/css/bootstrap-datepicker.css') }}">
+{% endblock stylesheets %}
+
+{% block body %}
+
+    <!-- row -->
+    <div class="row">
+
+
+
+
+        <!-- col 4 -->
+        <div class="col-md-4">
+
+        </div>
+        <!-- /col 4 -->
+
+
+        <!-- col 8 -->
+        <div class="col-md-8">
+
+
+
+            <!-- tile -->
+            <section class="tile transparent">
+                <div>
+                    {#
+                    {{ form_start(edit_form) }}
+                                        {{ form_widget(edit_form) }}
+                                        <input type="submit" value="Edit" />
+                                        {{ form_end(edit_form) }} #}
+                    <!-- <form class="profile-settings"> -->
+                    {{ form_start(edit_form) }}
+                    <div class="row">
+                        <div class="form-group col-md-12 legend">
+                            <h4><strong>informations </strong>personnelles</h4>
+                            <p>Paramètres de votre compte personnel</p>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label for="Language">Sexe</label>
+                            {{ form_widget(edit_form.sexe, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group col-sm-5">
+                            {#{{ form_label(edit_form.age) }}
+                            {{ form_errors(edit_form.age) }}
+                            {{ form_widget(edit_form.age) }}#}
+                            <label for="first-name">Prenom</label>
+                            {{  form_widget(edit_form.firstname, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                            <!-- <input type="text" class="form-control" id="first-name" value="John">-->
+                        </div>
+
+                        <div class="form-group col-sm-5">
+                            <label for="last-name">Nom</label>
+                            {{  form_widget(edit_form.lastname, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-4">
+                            {{ form_label(edit_form.birthday, 'Date de naissance') }}
+                            {{ form_widget(edit_form.birthday, { 'id':'birthday', 'attr': {'class': 'form-control input-inline datepicker',
+                                'data-provide': 'datepicker',
+                                'data-date-format': 'dd-mm-yyyy'}, 'value': userProfile.birthday | date('d-m-Y')  }) }}
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="phone">Profession</label>
+                            {{ form_widget(edit_form.profession, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <label for="Language">Langage</label>
+                            {{ form_widget(edit_form.language, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            {#{{ form_widget(edit_form) }}#}
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="form-group col-sm-4">
+                            <label for="city">Ville</label>
+                            {{  form_widget(edit_form.town, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <label for="insurancename">Nom de l'assureur</label>
+                            {{ form_widget(edit_form.insuranceName, {'attr': {'class': 'form-control', 'placeholder' : 'Nom de l\'assureur '} }) }}
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <label for="insurancenumber">Numéro d'assurance</label>
+                            {{ form_widget(edit_form.insuranceNumber, {'attr': {'class': 'form-control', 'placeholder' : 'Numéro d\'assurance '} }) }}
+                        </div>
+
+
+                    </div>
+
+                    <div class="row">
+
+
+
+                    </div>
+
+                    <div class="row">
+
+                        <!--  <div class="form-group col-sm-6">
+                              <label for="phone">Phone</label>
+                              <input type="text" class="form-control" id="phone" value="+(421) 903 669 478">
+                              <span class="help-block">+(421) 999 999 999</span>
+                          </div>-->
+
+                        <div class="form-group col-sm-6">
+                            <label for="avatar">Avatar</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        <i class="fa fa-upload"></i>
+                                    </span>
+                                </span>
+                                {{  form_widget(edit_form.avatar, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <span class="help-block">fichiers approuvés: gif, png, jpg. Taille Max 4Mb</span>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="avatar">Photo</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        <i class="fa fa-upload"></i>
+                                    </span>
+                                </span>
+                                {{  form_widget(edit_form.photo, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <span class="help-block">fichiers approuvés: gif, png, jpg. Taille Max 4Mb</span>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="row">
+
+                        <button type="submit" value="Edit" class="btn btn-success"/>Enregistrer</button>
+                        {{ form_end(edit_form) }}
+                    </div>
+                    <a href="{{ path('vmj_user_changepassword') }}">Modifier le mot de passe</a>
+
+                    <!--</form>-->
+
+
+                </div>
+
+            </section>
+            <!-- /tile -->
+
+
+
+        </div>
+        <!-- /col 8 -->
+
+
+
+    </div>
+    <!-- /row -->
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('bundles/vmj/js/french_datepicker.js') }}"></script>
+    <script>
+        var nowTemp = new Date();
+        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+        $('#birthday').datepicker({
+            language: 'fr'
+        });
+    </script>
+{% endblock javascripts %}

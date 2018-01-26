@@ -1,0 +1,24 @@
+newscontact_index:
+    path:     /
+    defaults: { _controller: "VmjBundle:Newscontact:index" }
+    methods:  GET
+
+newscontact_show:
+    path:     /{id}/show
+    defaults: { _controller: "VmjBundle:Newscontact:show" }
+    methods:  GET
+
+newscontact_new:
+    path:     /new
+    defaults: { _controller: "VmjBundle:Newscontact:new" }
+    methods:  [GET, POST]
+
+newscontact_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VmjBundle:Newscontact:edit" }
+    methods:  [GET, POST]
+
+newscontact_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VmjBundle:Newscontact:delete" }
+    methods:  DELETE

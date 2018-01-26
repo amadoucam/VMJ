@@ -1,0 +1,32 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block body %}
+    <h1>Creation d'un métier</h1>
+    {% set role_user = app.user.roles[0] %}
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_label(form.name, 'Nom') }}{{ form_widget(form.name) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.categorieJob, 'Catégorie') }}{{ form_widget(form.categorieJob) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.banniere, 'Bannière') }}{{ form_widget(form.banniere) }}
+    </div>
+    <div class="form-group">
+        {{ form_label(form.imgPresentation, 'Image de présentation') }}{{ form_widget(form.imgPresentation) }}
+    </div>
+    <input type="submit" class="btn btn-success" value="Créer" />
+    {{ form_widget(form._token) }}
+    {{ form_end(form, {'render_rest':false}) }}
+
+    <ul>
+        <li>
+            {% if role_user == 'ROLE_PRO' %}
+                <a href="{{ path('dashboard_pro_metiers') }}">Retour à la liste</a>
+            {% else %}
+                <a href="{{ path('admin_metier_index') }}">Retour à la liste</a>
+            {% endif %}
+        </li>
+    </ul>
+{% endblock %}

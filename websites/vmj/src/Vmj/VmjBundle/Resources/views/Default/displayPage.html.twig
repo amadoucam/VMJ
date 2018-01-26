@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrap">
+
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+
+
+        <div class="index-2">
+
+            <section>
+                <div class="team-of-prof" id="page-generique-header" >
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <h1>Je suis une page</h1>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About project -->
+            <section>
+
+                <div class="about-project">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8 col-sm-12 col-xs-12 col-xs-small our-servise-content">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h2>Je suis une autre page</h2>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <section>   Je suis encore une page </section>
+                                    </div>
+                                </div>
+
+
+                            </div> <!-- and our-service-content -->
+
+
+
+                        </div> <!-- and row -->
+                    </div> <!-- and container -->
+
+                </div> <!-- and about-project -->
+
+            </section> <!-- and About project -->
+
+
+        </div><!-- and index-2 -->
+
+
+
+
+
+
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+    </div> <!-- and wrap -->
+
+
+
+{% endblock body %}

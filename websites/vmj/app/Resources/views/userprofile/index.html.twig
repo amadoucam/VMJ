@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>UserProfile list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Birthday</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Profession</th>
+                <th>Town</th>
+                <th>Avatar</th>
+                <th>Language</th>
+                <th>Sexe</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for userProfile in userProfiles %}
+            <tr>
+                <td><a href="{{ path('userprofile_show', { 'id': userProfile.id }) }}">{{ userProfile.id }}</a></td>
+                <td>{% if userProfile.birthday %}{{ userProfile.birthday|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ userProfile.firstname }}</td>
+                <td>{{ userProfile.lastname }}</td>
+                <td>{{ userProfile.profession }}</td>
+                <td>{{ userProfile.town }}</td>
+                <td>{{ userProfile.avatar }}</td>
+                <td>{{ userProfile.language }}</td>
+                <td>{{ userProfile.sexe }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('userprofile_show', { 'id': userProfile.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('userprofile_edit', { 'id': userProfile.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('userprofile_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,172 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Immersion</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ immersion.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ immersion.title }}</td>
+            </tr>
+            <tr>
+                <th>Receivehandicap</th>
+                <td>{% if immersion.receiveHandicap %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Lundi</th>
+                <td>{% if immersion.lundi %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Mardi</th>
+                <td>{% if immersion.mardi %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Mercredi</th>
+                <td>{% if immersion.mercredi %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Jeudi</th>
+                <td>{% if immersion.jeudi %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Vendredi</th>
+                <td>{% if immersion.vendredi %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Samedi</th>
+                <td>{% if immersion.samedi %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Dimanche</th>
+                <td>{% if immersion.dimanche %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Autisme</th>
+                <td>{% if immersion.autisme %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Moteur</th>
+                <td>{% if immersion.moteur %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Visuel</th>
+                <td>{% if immersion.visuel %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Auditif</th>
+                <td>{% if immersion.auditif %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Mental</th>
+                <td>{% if immersion.mental %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Autre</th>
+                <td>{% if immersion.autre %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Champautre</th>
+                <td>{{ immersion.champAutre }}</td>
+            </tr>
+            <tr>
+                <th>Customerhost</th>
+                <td>{% if immersion.customerHost %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Hostfirstname</th>
+                <td>{{ immersion.hostFirstname }}</td>
+            </tr>
+            <tr>
+                <th>Hostlastname</th>
+                <td>{{ immersion.hostLastname }}</td>
+            </tr>
+            <tr>
+                <th>Hostnumber</th>
+                <td>{{ immersion.hostNumber }}</td>
+            </tr>
+            <tr>
+                <th>Sameaddress</th>
+                <td>{% if immersion.sameAddress %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Secondaddress</th>
+                <td>{{ immersion.secondAddress }}</td>
+            </tr>
+            <tr>
+                <th>Secondcp</th>
+                <td>{{ immersion.secondCp }}</td>
+            </tr>
+            <tr>
+                <th>Secondtown</th>
+                <td>{{ immersion.secondTown }}</td>
+            </tr>
+            <tr>
+                <th>Gaintoassociation</th>
+                <td>{% if immersion.gainToAssociation %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Association</th>
+                <td>{{ immersion.association }}</td>
+            </tr>
+            <tr>
+                <th>Hebergement</th>
+                <td>{% if immersion.hebergement %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Champhebergement</th>
+                <td>{{ immersion.champHebergement }}</td>
+            </tr>
+            <tr>
+                <th>Weekprice</th>
+                <td>{{ immersion.weekprice }}</td>
+            </tr>
+            <tr>
+                <th>Advert</th>
+                <td>{{ immersion.advert }}</td>
+            </tr>
+            <tr>
+                <th>Skills</th>
+                <td>{{ immersion.skills }}</td>
+            </tr>
+            <tr>
+                <th>Beginhour</th>
+                <td>{{ immersion.beginHour }}</td>
+            </tr>
+            <tr>
+                <th>Endhour</th>
+                <td>{{ immersion.endHour }}</td>
+            </tr>
+            <tr>
+                <th>Conditions</th>
+                <td>{{ immersion.conditions }}</td>
+            </tr>
+            <tr>
+                <th>Lienimgpresentation</th>
+                <td>{{ immersion.lienImgPresentation }}</td>
+            </tr>
+            <tr>
+                <th>Lienbanniere</th>
+                <td>{{ immersion.lienBanniere }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('immersion_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('immersion_edit', { 'id': immersion.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

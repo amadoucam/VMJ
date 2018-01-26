@@ -1,0 +1,100 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/> 
+
+{% endblock stylesheets %}
+
+{% block body %}
+
+    <h1>Immersions</h1>
+    <button id="export" class="btn btn-warning">Export Excel</button>
+    <table id="immersions" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Entreprise</th>
+                <th>Catégorie</th>
+                <th>Titre de l'immersion</th>
+                <th>Prix</th>
+                <th>Lien</th>
+                <th>Date de derniere modification</th>
+                <th>Edition</th>
+                {#<th>Disponibilité</th>#}
+                <th class="noExl">ON/OFF</th>
+                <th class="noExl">Voir Metier</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for immersion in immersions %}
+                {% set categories = '' %}
+                {% for cat in immersion.categories %}
+                    {% if categories == '' %}
+                        {% set categories = cat %}
+                    {% else %}
+                        {% set categories = categories~', '~cat %}
+                    {% endif %}
+                {% endfor %}
+                <tr>
+                    <td>{% if immersion.professionnel is defined and immersion.professionnel is not null  %}
+                        {{immersion.professionnel.businessName}}
+                        {% endif %}
+                    </td>
+                    <td>{{categories}}</td>
+                    <td>{{ immersion.title }}</td>
+                    <td>{{ immersion.weekPrice }}</td>
+                    <td>{{ immersion.slug }}</td>
+                    <td>{{immersion.updated|date('d-m-Y')}}</td>
+                    <td><a href="{{ path('dashboard_admin_immersion_edit', {'id':immersion.id}) }}">Editer</a></td>
+                   {# <td><a href="{{ path('dashboard_admin_formations', {'id':immersion.id}) }}">Disponibilités</a></td>#}
+                    <td class="noExl">{% if immersion.actifAdmin == true %}<span class="btn-success">Validé par l'admin</span>{% else %}<span class="btn-warning">En attente de validation <br /> administration</span>{% endif %}</td>
+                    <td class="noExl"><a href="{{ path('vmj_fiche_metier', {'slug':immersion.slug}) }}"><i class="fa fa-eye-slash"></i></a></td>
+                </tr>                
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#immersions').DataTable({
+                'language': french_datatable,
+                'order': [[ 4, 'desc' ]]
+            });
+
+            {% if app.session.flashbag.peekAll|length > 0 %}
+                {% for type, messages in app.session.flashbag.all %}
+                    {% for message in messages %}
+                            alert("{{ message|trans({}, domain|default('messages')) }}");
+                    {% endfor %}
+                {% endfor %}
+            {% endif %}
+        });
+    </script>
+    <script>
+                                    $(document).ready(function () {
+                                        /* $('#form_brands').change(function(){
+                                         var idbrand = $(this).val();
+                                         window.location.href = "/vehicles/show/"+idbrand;
+                                         });
+                                         
+                                         $(".clickable-row").click(function() {
+                                         window.location.href = $(this).data("href");
+                                         });
+                                         */
+                                        $("#export").click(function () {
+
+                                            $("#immersions").table2excel({
+                                                // exclude CSS class
+                                                exclude: ".noExl",
+                                                //name: "Liste Immersions",
+                                                filename: "immersions" //do not include extension
+                                            });
+                                        });
+
+                                    });
+                                </script>
+{% endblock javascripts %}

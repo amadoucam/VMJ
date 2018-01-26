@@ -1,0 +1,220 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Faire découvrir son métier avec Viemonjob{% endblock %}
+{% block description %}Viemonjob propose aux professionnels de partager leur métier avec des talents motivés, pour parler de leur activité, partager leur expérience et percevoir un complément de revenus{% endblock %}
+{% block keywords %}reconversion, cession d’entreprise, création d’entreprise, formation, mobilité, RH, recrutement, emploi, embauche, innovation, sociale, digital, collaboratif, immersion, métier, job, tester, essayer, découvrir{% endblock %}
+
+{% block body %}
+    <div id="wrap">
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+        <div class="index-4">
+            <!-- PAGE PROFESSIONNELS -->
+            <!-- Heade page professionnels -->
+            <section class="  ">
+                <div class="row headerpageprofessionnels hidden-xs-down">
+                    <div class="col-sm-6 text-center"><h1 class="fw100 mauve fs50">Professionnels</h1>
+                        <p class="fs25 grisfonce">Accueillez un particulier, <br>
+                            partagez votre passion<br>
+                            et augmentez vos revenus </p>
+                        <a href="{{ path('fos_user_registration_register') }}" title="Inscription Professionnels">
+                            <button class="fs18 fondmauve fw400 blanc br30 noborder paddingboutton">Je m'inscris gratuitement</button>
+                        </a>
+                    </div>
+                    <div class="col-sm-6"></div>
+                </div>
+            </section>
+
+            <!-- Pourquoi VMJ -->
+            <section>
+                <div class="container text-center wow pb10 pk-vmj">
+                    <div class="container">
+                        <h2 class="mauve fs45 fw100">L’expérience Viemonjob</h2>
+                        <p class="fw100 fs25">Vous aimez partager et parler de votre métier, vous souhaitez faire
+                            connaître votre activité, vous voulez rencontrer des profils motivés et curieux, ou trouver
+                            celui ou celle qui reprendra votre entreprise… <br><br>
+                            <span class="bleu fs30">  Viemonjob, c’est oser&nbsp:</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3 icônes  -->
+            <section class="clearfix pb30">
+                <div class=" container 3icones pt50 pb40">
+                    <div class="col-md-4 text-center wow">
+                        <img src="{{ asset('theme/img/viemonjob-picto-coeur.png') }}"><br><br>
+                        <p>
+                            <span class="bleu"> Partagez votre passion.</span><br>
+                            Parce que votre métier, c'est<br>
+                            votre expertise. Qui mieux que<br>
+                            vous saura en parler ?
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-center wow">
+                        <img src="{{ asset('theme/img/viemonjob-picto-metiers.png') }}"><br> <br>
+                        <p>
+                            <span class="bleu">Flexibilité et facilité.</span><br>
+                            Choisissez vos disponibilités<br>
+                            facilement et faites partie<br>
+                            de la communauté<br>
+                            Viemonjob en un clin d'oeil !
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-center wow">
+                        <img src="{{ asset('theme/img/viemonjob-picto-solutions.png') }}"><br> <br>
+                        <p>
+                            <span class="bleu">Complétez vos revenus.</span><br>
+                            Choisissez votre tarif et accueillez quelqu'un à vos cotés <br>
+                            (de 200€ à 500€/semaine TTC*) <br>
+                            <span class="fs15">*viemonjob prélève une commission de 20%</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Div 4  uneexperienceunique -->
+            <section class="clearfix">
+                <div class="row professionnels-fond-bleu pt20 pb20">
+                    <div class="container blanc">
+                        <div class="col-md-6">
+                            <h2 class="fw100">Une expérience unique</h2>
+                            <p class="blanc">
+                                L’immersion, une relation humaine.
+                                Vivre une immersion Viemonjob, c’est simple. Vous aurez plaisir à transmettre votre passion
+                                en faisant découvrir tous les aspects de votre profession à une personne motivée. Cet échange
+                                permet aussi de raconter sa propre expérience, expliquer les caractéristiques
+                                de votre métier.
+                            </p>
+                        </div>
+                        <div class="col-md-6 ">
+                            <h2 class="fw100">Professionnel : un rôle important</h2>
+                            <p class="blanc">
+                                Au delà d’un complément de revenus, cela vous permettra de bénéficier d’un
+                                regard neuf sur votre métier. Parallèlement, vous participez à améliorer la vie de
+                                nombreuses personnes, et vous avez un impact positif sur le marché du travail.
+                                Viemonjob encourage les entreprises à faire don de leurs revenus à des associations
+                                caritatives.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Viemonjob en 3 étapes -->
+            <section class="clearfix">
+                <div class="container text-center">
+                    <h2>Viemonjob en 3 étapes</h2><br>
+                    <img src="{{ asset('theme/img/viemonjob-picto-inscrivez-vous.png') }}"><br><br>
+                    <p>
+                        Inscrivez-vous gratuitement en ligne et complétez votre profil. <br>
+                        Personnalisez-le avec une jolie photo et une description de l'immersion <br>
+                        que les particuliers vivront à vos côtés. <br>
+                        Choisissez vos disponibilités et modifiez-les quand vous le souhaitez.
+                    </p><br>
+                    <img src="{{ asset('theme/img/viemonjob-picto-vide-rose.png') }}"><br><br>
+                    <p>
+                        Recevez une personne motivée et partagez votre passion.<br>
+                        Les personnes que vous recevez financent elles-même leur expérience, <br>
+                        preuve d'une implication totale. Augmentez vos revenus : à l'issue de la semaine,<br>
+                        recevez par virement le montant de l'immersion.
+                    </p><br><br>
+
+                    <img src="{{ asset('theme/img/viemonjob-picto-vide-vert.png') }}">&nbsp
+                    <img src="{{ asset('theme/img/viemonjob-picto-vide-vert.png') }}">&nbsp
+                    <img src="{{ asset('theme/img/viemonjob-picto-vide-vert.png') }}"><br><br>
+                    <p>
+                        Passez du temps avec une personne motivée qui a soif d'apprendre votre métier.
+                    </p><br>
+
+                    <a href="{{ path('fos_user_registration_register') }}" title="Inscription professionnels">
+                        <button class="blanc fw400 fw100 br30 fondviolet paddingboutton noborder fs18"
+                                href="fos_user_security_login"> Je m'inscris gratuitement
+                        </button>
+                    </a>
+                    <br><br>
+                </div>
+            </section>
+
+            {% block temoignages %}
+                <!--caroussel -->
+                {% if temoignages is defined %}
+                    {% set compteurTemoignage = 0 %}
+                    <section class="fondmauve pt50 fondslidejaune">
+
+                        <div id="text-carousel" class="carousel slide" data-ride="carousel">
+                            <!-- Wrapper for slides -->
+                            <div class="row ">
+                                <div class="col-md-offset-3 col-md-6 col-xs-offset-1 col-xs-10">
+                                    <br>
+                                    <br>
+                                    <div class="carousel-inner txt1slid">
+                                        {% for temoignage in temoignages %}
+                                        {% set compteurTemoignage = compteurTemoignage + 1 %}
+                                        <div class="item {% if compteurTemoignage == 1 %}active{% endif %}">
+                                            <div class="carousel-content">
+                                                <div>
+                                                    <span class="fsitalic blanc">{{temoignage.temoignage}} <br>
+                                                    </span> 
+                                                    <div class="col-sm-6">
+                                                        &#8239;
+                                                    </div> 
+                                                    <div class="col-sm-6 text-left blanc txt2slid">
+                                                        <span class="text-left fw400">{{temoignage.redacteur.firstname}} </span><br>
+                                                        <span class="text-left fw100">{{temoignage.immersion.title}} pendant une semaine</span><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Controls -->
+                            <a class="leftvmj1 carousel-control" href="#text-carousel" data-slide="prev">
+                                <span class="fa fa-chevron-left"></span>
+                            </a>
+                            <a class="rightvmj1 carousel-control" href="#text-carousel" data-slide="next">
+                                <span class="fa fa-chevron-right"></span>
+                            </a>
+                        </div>
+                        <!-- and container -->
+                    </section>
+                {% endif %}
+            {% endblock temoignages %}
+
+            {% block metiers %}
+                {{ parent() }}
+            {% endblock metiers %}
+
+            {% block newsletters %}
+                {{ parent() }}
+            {% endblock newsletters %}
+        </div><!-- and index-4 -->
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+    </div> <!-- and wrap -->
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script type="text/javascript">
+        var revapi;
+        jQuery(document).ready(function () {
+            revapi = jQuery('.tp-banner').revolution(
+                    {
+                        delay: 9999,
+                        startwidth: 1350,
+                        startheight: 588,
+                        hideThumbs: 10,
+                        fullWidth: "on",
+                        forceFullWidth: "on"
+                    });
+
+        });	//ready
+    </script>
+{% endblock  javascripts %}

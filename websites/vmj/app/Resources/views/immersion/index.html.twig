@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Immersion list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Receivehandicap</th>
+                <th>Lundi</th>
+                <th>Mardi</th>
+                <th>Mercredi</th>
+                <th>Jeudi</th>
+                <th>Vendredi</th>
+                <th>Samedi</th>
+                <th>Dimanche</th>
+                <th>Autisme</th>
+                <th>Moteur</th>
+                <th>Visuel</th>
+                <th>Auditif</th>
+                <th>Mental</th>
+                <th>Autre</th>
+                <th>Champautre</th>
+                <th>Customerhost</th>
+                <th>Hostfirstname</th>
+                <th>Hostlastname</th>
+                <th>Hostnumber</th>
+                <th>Sameaddress</th>
+                <th>Secondaddress</th>
+                <th>Secondcp</th>
+                <th>Secondtown</th>
+                <th>Gaintoassociation</th>
+                <th>Association</th>
+                <th>Hebergement</th>
+                <th>Champhebergement</th>
+                <th>Weekprice</th>
+                <th>Advert</th>
+                <th>Skills</th>
+                <th>Beginhour</th>
+                <th>Endhour</th>
+                <th>Conditions</th>
+                <th>Lienimgpresentation</th>
+                <th>Lienbanniere</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for immersion in immersions %}
+            <tr>
+                <td><a href="{{ path('immersion_show', { 'id': immersion.id }) }}">{{ immersion.id }}</a></td>
+                <td>{{ immersion.title }}</td>
+                <td>{% if immersion.receiveHandicap %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.lundi %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.mardi %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.mercredi %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.jeudi %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.vendredi %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.samedi %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.dimanche %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.autisme %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.moteur %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.visuel %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.auditif %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.mental %}Yes{% else %}No{% endif %}</td>
+                <td>{% if immersion.autre %}Yes{% else %}No{% endif %}</td>
+                <td>{{ immersion.champAutre }}</td>
+                <td>{% if immersion.customerHost %}Yes{% else %}No{% endif %}</td>
+                <td>{{ immersion.hostFirstname }}</td>
+                <td>{{ immersion.hostLastname }}</td>
+                <td>{{ immersion.hostNumber }}</td>
+                <td>{% if immersion.sameAddress %}Yes{% else %}No{% endif %}</td>
+                <td>{{ immersion.secondAddress }}</td>
+                <td>{{ immersion.secondCp }}</td>
+                <td>{{ immersion.secondTown }}</td>
+                <td>{% if immersion.gainToAssociation %}Yes{% else %}No{% endif %}</td>
+                <td>{{ immersion.association }}</td>
+                <td>{% if immersion.hebergement %}Yes{% else %}No{% endif %}</td>
+                <td>{{ immersion.champHebergement }}</td>
+                <td>{{ immersion.weekprice }}</td>
+                <td>{{ immersion.advert }}</td>
+                <td>{{ immersion.skills }}</td>
+                <td>{{ immersion.beginHour }}</td>
+                <td>{{ immersion.endHour }}</td>
+                <td>{{ immersion.conditions }}</td>
+                <td>{{ immersion.lienImgPresentation }}</td>
+                <td>{{ immersion.lienBanniere }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('immersion_show', { 'id': immersion.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('immersion_edit', { 'id': immersion.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('immersion_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

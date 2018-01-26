@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Découvrez l’équipe fondatrice à l’origine de Viemonjob{% endblock %}
+{% block description %}Découvrez l’origine de Viemonjob, ses deux fondatrices, Célina et Tiphanie, ainsi que son équipe{% endblock %}
+{% block keywords %}Viemonjob, VMJ, équipe, Célina Rocquet, Tiphanie de Malherbe, tester un métier, essayer un métier, test un metier{% endblock %}
+
+{% block body %}
+    <div id="wrap">
+
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+        <!-- PAGE COORPORATE -->
+        <!-- À propos -->
+        <section class="  ">
+            <div class="row headerpageapropos  hidden-xs-down  ">
+
+
+
+            </div>
+
+
+        </section>
+        <!-- Menu à propos -->
+
+        <section>
+
+
+            <div class="col-sm-6"></div>
+            <div class="container submenuapropos pt25 pb20">
+                <ul class="nav nav-tabs">
+                    <li class="active clearfix"><a href="{{path('page_a_propos')}}">À propos</a></li>
+                    <li><a href="{{path('page_aide')}}">FAQ</a></li>
+                    <li><a href="{{path('page_on_parle_de_nous')}}">On parle de nous</a></li>
+                    <li><a href="{{path('page_cgv')}}">Conditions générales d'utilisation</a></li>
+                    <li><a href="{{path('page_mentions_legales')}}">Mentions légales</a></li>
+                </ul>
+
+                <div class="col-sm-12 text-center clearfix"> <h1 class="titreapropos fw100 mauve fs50 pt30 bleu">À propos</h1>
+                </div>
+        </section>
+
+        <section class="clearfix">
+            <div class="col-md-6 propos-celina wow fw100">
+                <div class="container-particulier mt5p ml2p">
+                    <div class="avatar avatar-md avatar-circle">
+                        <img class="imgrondequipe inline-flex text-center" src="{{ asset('theme/img/equipe_celina_rocquet.jpeg') }}" alt="Photo Célina Rocquet">
+                    <p class="blanc">Avec un cursus scientifique puis Marketing, Celina se spécialise en Innovation et Développement Durable / RSE). Après 15 ans d’expérience professionnelle dans l’Innovation et le Développement Durable pour et dans des grands groupes (LVMH, Publicis, Chanel, Hermes, Sanofi, Nestlé, Yves Rocher, Saint Gobain, Total, Nuxe…), dans des PME, et déjà entrepreneur depuis 2010, elle souhaite construire un projet d’innovation sociale qui offre une solution inédite sur les enjeux sociétaux de formation et d’emploi. Elle crée donc Viemonjob avec Tiphanie. #stratégie #innovation #rse</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 propos-tiphanie wow fw100">
+                <div class="container-particulier mt5p ml2p">
+                    <div class="avatar avatar-md avatar-circle">
+                        <img class="imgrondequipe inline-flex text-center" src="{{ asset('theme/img/equipe_tiphanie_de_malherbe.jpg') }}" alt="Photo Tiphanie de Malherbe">
+                    <p class="blanc">Après une formation de psychologie et de communication, puis une expérience professionnelle en tant qu’infographiste, elle a pensé à une reconversion professionnelle. Elle a vécu la vie de fleuriste pendant une semaine et réalise le gap existant entre l’idée qu’elle se faisait de ce métier et la réalité / complexité de celui-ci. Elle crée alors Viemonjob avec Celina et se lance dans cette aventure qui lui tient énormément à coeur. #psychologie #communication #infographie</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pourquoi VMJ -->
+        <section class="row pt30">
+            <div class="container text-cente wow pb30">
+                <div class="container">
+                    <h2 class="fs45 bleu fw100">L'idée</h2>
+                    <p class="fs25 fw100 gris6 ">Pourquoi ne pas changer de cap ? Pourquoi ne pourrais-je pas enfin suivre ma vocation ?
+                        Ce sont les premières questions que s’est posée Tiphanie avant de quitter son métier d’infographiste. Elle avait toujours rêvé d’être fleuriste et de travailler parmi les fleurs.
+                        <br><br>
+                        Avant de se lancer dans cette reconversion, elle décide d’en apprendre plus sur le métier. Tiphanie se tourne alors vers une amie fleuriste. Celle-ci lui permet de découvrir les aspects du métier sans détours. Après une semaine d’immersion riche en apprentissage Tiphanie réalise que ce métier n’est pas fait pour elle et que la réalité est différente de l’idée qu’elle avait de cette profession. Cette expérience lui ouvre les yeux sur l’importance de tester un métier avant de se lancer.
+                        <br><br>
+                        Avec Célina, elles constatent le manque d’informations et d’offres mises à disposition des particuliers concernant l’orientation professionnelle. Elles réalisent que beaucoup de gens souhaitent changer de métier mais que peu d’outils existent pour les aider dans cette démarche. L’idée leur vient : pourquoi ne pas permettre aux gens qui veulent changer d’horizon d’essayer un métier avant de se lancer, de façon simple et efficace ?
+                        <br><br>
+                        Tiphanie et Célina lancent ainsi Viemonjob en décembre 2015 : la première plateforme qui permet à chacun de tester n’importe quel métier !
+                        <br><br>
+                        Pour Viemonjob, la transparence est synonyme de confiance. C’est pour cela qu’on vous explique le modèle. Le Particulier paye à Viemonjob sa semaine d’immersion, le montant étant fixé par le Professionnel, qui en perçoit la majeure partie pour le dédommager de son implication. Payer pour tester un métier ? Oui, car ce qui est gratuit n’a que peu de valeur! Le Particulier montre ainsi qu’il est motivé et qu’il respecte le professionnel en le rétribuant pour son accueil et son partage.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        {% block metiers %}
+            {{ parent() }}
+        {% endblock metiers %}
+
+        {% block newsletters %}
+            {{ parent() }}
+        {% endblock newsletters %}
+
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+
+    </div>
+{% endblock %}

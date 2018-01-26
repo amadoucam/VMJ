@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription à Viemonjob{% endblock %}
+{% block description %}Inscrivez-vous sur Viemonjob afin de pouvoir essayer un métier ou proposer une immersion professionnelle{% endblock %}
+{% block keywords %}tester un métier, essayer un métier, test un metier, reconversion, orientation, transition, formation, employabilité, emploi, immersion, stage, métier, job, tester, essayer, découvrir{% endblock %}
+
+{% block body %}
+    <div id="wrap">
+    {% block header %}
+        {{parent()}}
+    {% endblock header %}
+
+
+    {% block fos_user_content %}
+        {% include "FOSUserBundle:Registration:register_content.html.twig" %}
+    {% endblock fos_user_content %}
+
+
+    {% block footer %}
+        {{parent()}}
+    {% endblock footer %}
+    </div>
+{% endblock body %}

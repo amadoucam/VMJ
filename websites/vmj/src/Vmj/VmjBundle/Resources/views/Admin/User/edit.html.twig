@@ -1,0 +1,166 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
+{% endblock %}
+
+{% block body %}
+    <section>
+        <div class="login-register">
+            <div class="container">
+                <div class="row">
+                    <h1>Modifier un utilisateur</h1>
+                </div>
+                <div class="row">
+                    <div class="col-sm-10">
+                        <div class="login-sec">
+                            <div class="login">
+                                <div class="login-form">
+                                    {{ form_start(form, {'method': 'post', 'action': path('admin_users_edit', {'id': form.user_profile.vars.value.id} ), 'attr': {'class': 'fos_user_registration_register'}}) }}
+                                    <div class="form-row upp">
+                                        {{ form_label(form.user_profile.type, "Type d'utilisateur") }}
+                                        {{ form_widget(form.user_profile.type, {'attr': {'class': 'radios radios-inline'} }) }}
+                                    </div>
+                                    <div class="form-row upp">
+                                        {{ form_widget(form.user_profile.firstname, {'attr': {'class': 'form-control', 'placeholder' : 'Prénom * '} }) }}
+                                    </div>
+                                    <div class="form-row upp">
+                                        {{ form_widget(form.user_profile.lastname, {'attr': {'class': 'form-control', 'placeholder' : 'Nom * '} }) }}
+                                    </div>
+                                    <div class="form-row upp">
+                                        {{ form_label(form.user_profile.sexe, 'Sexe') }}
+                                        {{ form_widget(form.user_profile.sexe, {'attr': {'class': 'radios radios-inline'} }) }}
+                                    </div>
+                                    <div class="form-row upp">
+                                        {{ form_label(form.user_profile.birthday, 'Date de naissance') }}
+                                        {{ form_widget(form.user_profile.birthday, { 'id':'birthday', 'attr': {'class': 'form-control input-inline datepicker',
+                                                'data-provide': 'datepicker',
+                                                'data-date-format': 'dd-mm-yyyy'}, 'value': userprofile.birthday | date('d-m-Y')  }) }}
+                                    </div>
+                                    <div class="form-row upp">
+                                        {{ form_widget(form.user_profile.postalcode, {'attr': {'class': 'form-control', 'placeholder' : 'Code postal '} }) }}
+                                    </div>
+                                    <div class="form-row upp">
+                                        {{ form_widget(form.user_profile.town, {'attr': {'class': 'form-control', 'placeholder' : 'Ville '} }) }}
+                                    </div>
+                                    <div class="form-row upp">
+                                        {{ form_widget(form.user_profile.phonenumber, {'attr': {'class': 'form-control', 'placeholder' : 'Téléphone '} }) }}
+                                    </div>
+                                    <div class="form-row upp">
+                                        {{ form_widget(form.username, {'attr': {'class': 'form-control', 'placeholder' : 'Identifiant* '} }) }}
+                                    </div>
+                                    <div class="form-row upp">
+                                        {{ form_widget(form.email, {'attr': {'class': 'form-control', 'placeholder' : 'Adresse email* '} }) }}
+                                    </div>
+                                    {#<div class="form-row upp">
+                                        {{ form_widget (form.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder' : 'Mot de passe* '} }) }}  
+                                    </div>
+                                    <div class="form-row upp"> 
+                                        {{ form_widget (form.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder' : 'Confirmation* '} }) }}
+                                    </div>#}
+
+                                    <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            <label for="imgrondepro">Photo actuelle</label><br>
+                                            <div class="avatar avatar-md avatar-circle">
+                                                <img class="imgrondepro inline-flex text-center" src="{%if form.vars.value.userProfile.lienPhoto is defined and form.vars.value.userProfile.lienPhoto is not null %}{{ asset('uploads/'~form.vars.value.userProfile.lienPhoto) }}{% else %} {{ asset('uploads/user-icone.jpg') }} {% endif %}" alt="Photo">
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                            <label for="avatar">Photo</label>
+                                            <div class="input-group">
+                                                <span class="input-group-btn">
+                                                    <span class="btn btn-primary btn-file">
+                                                        <i class="fa fa-upload"></i>
+                                                    </span>
+                                                </span>
+                                                {{  form_widget(form.user_profile.photo, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                            <span class="help-block">fichiers approuvés: gif, png, jpg. Taille Max 4Mb</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            <h3>Champs ci-dessous à ignorer pour les particuliers</h3>
+                                        </div>
+
+                                    </div>
+                                            
+                                    <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            <label for="Metier">Nom de l'entreprise</label>
+                                            {{ form_widget(form.user_profile.businessName, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                        </div>
+
+                                        <div class="form-group col-sm-6">
+                                            <label for="Site Web">Site Web</label>
+                                            {{  form_widget(form.user_profile.website, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                            <!-- <input type="text" class="form-control" id="first-name" value="John">-->
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            <label for="Description">Description de l'entreprise</label>
+                                            {{ form_widget(form.user_profile.businessDescription, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            <label for="Description">Adresse</label>
+                                            {{ form_widget(form.user_profile.address, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            <label for="Description">Siret</label>
+                                            {{ form_widget(form.user_profile.siret, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                        </div>
+
+                                        <div class="form-group col-sm-6">
+                                            <label for="Description">Lien Facebook</label>
+                                            {{ form_widget(form.user_profile.facebookLink, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                        </div>
+
+                                        <div class="form-group col-sm-6">
+                                            <label for="Description">Lien Linkedin</label>
+                                            {{ form_widget(form.user_profile.linkedinLink, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="form-group col-sm-6">
+                                            <input type="submit" class="btn btn-success" value="Enregistrer" />                                        
+                                        </div>
+                                    </div>
+                                    {{  form_widget(form._token) }}
+                                    {{ form_end(form, {'render_rest': false}) }}
+                                    {{ form_start(deleteform) }}
+                                    <input type="submit" class="btn btn-danger" value="Supprimer" />
+                                    {{ form_end(deleteform) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('bundles/vmj/js/french_datepicker.js') }}"></script>
+    <script>
+        var nowTemp = new Date();
+        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+        $('#birthday').datepicker({
+            language: 'fr'
+        }).datepicker("setDate", now);
+    </script>
+{% endblock javascripts %}

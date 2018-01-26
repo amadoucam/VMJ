@@ -1,0 +1,1039 @@
+/* Formulaire de contact  */ 
+
+.formulaire-border fieldset div div input , .formulaire-border fieldset div div textarea{ border: 1px solid #ccc}
+
+/* Page métiers */
+
+.table-metier {  overflow: hidden!important; min-height: 420px; margin-left: auto; margin-right: auto; margin-bottom: 30px;}
+
+.table-metier-img {min-width: 270px!important; min-height: 270px!important;}
+
+.portfolioContainer  img {
+    vertical-align: middle!important;
+    width: 270px!important;
+    height: 270px!important;
+} 
+
+.bouton-contact-page-contact  {     border-radius: 37px; -moz-border-radius :37px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 7px;
+    padding-bottom: 8px; }
+
+.clearfix.table-metier.col-md-4.col-sm-4 span.fw100.gray-italic 
+  {     width: 270px!important;
+    text-overflow: ellipsis;
+    display: table-cell;}
+
+
+.pddmetiernom { padding-left: 11%;
+                padding-right: 2%;}
+.banniere-metier {
+    min-width: 300px;
+    min-height: 150px;
+    max-height: 395px;
+    max-width: 590px;
+}
+.partage-metier {
+    padding-left: 0!important;
+    padding-top:10px!important;
+    padding-bottom: 10px!important;
+}
+
+.service-2 { padding-top: 0 ; padding-bottom: 0;}
+
+.reserver-date  {border: solid 1px #55C9C8;}
+
+ .position-a-propos { 
+  width: 100%;
+   } 
+
+.img-immersion-banniere img {
+    /* width: 100%; */
+    max-height: 440px;
+    text-align: center;
+    float: right;
+}
+.img-immersion-banniere   {
+    
+    text-align: center;
+}
+
+.position-immersion-cell1 { position:relative; left: 30px;}
+
+.casefooter   {
+ float: none;
+     margin-left: auto;
+    margin-right: auto;
+    }
+.max-width350  { max-width: 350px;}
+
+.hauteur-case-metier-recherche { height: 470px!important;} 
+
+.image-footer-immersion    { max-width: 380px!important;}
+
+/* Body */
+
+p {
+    font-weight: 100!important;
+    font-size: 23px!important;
+}
+
+.logotop {
+    margin-left: 20px
+}
+
+a:hover {
+    color:#55c9c8!important;
+}
+
+ul#menu > li:hover > a {
+    background-color: transparent!important;
+    color: #55c9c8 !important;}
+
+/* Footer */
+.thhauteurfooter {
+    height: 42px!important;
+} 
+/* Formulaire de contact */ 
+
+#success_message{ 
+  display: none;
+}
+                                        
+#contact_form label {  
+  color: #333333;
+  font-weight: 300;
+  font-size: 18px;
+  }
+#contact_form .glyphicon {  
+  color: #55C9C8;
+  }
+#contact_form {  
+  background-color: #fafafa!important; 
+  }
+
+/* Fin formulaire de contact */ 
+
+.landing-page {
+  min-height: 50%!important;
+  background-image: url(../img/logo-retina-vmj.jpg);
+   background-repeat: no-repeat!important;
+   background-position: center !important;
+   background-size: contain!important;
+}
+
+
+.landing-page {
+  background-color: #55c9c8!important;  
+  min-height: 50%!important;
+  color:white!important;
+
+}
+
+.portfoliometier { padding-left: 10%!important; padding-right: 10%!important;}
+
+body{
+    font-family: 'Roboto';
+    font-size: 22px!important;
+    line-height: 1.42857143!important;
+    font-weight: 100!important;
+}
+
+.home-particuliers {   
+    height: 500px!important;
+    background-image: url("../img/homepage_particuliers_2.jpg")!important;
+    background-repeat: no-repeat!important; 
+    background-position: 
+        right bottom!important; }
+
+.home-professionnels {height: 500px!important; 
+                      background-color: #361d9b !important;
+                      background-image: url("../img/professionnels.png")!important;
+                      background-repeat: no-repeat!important; 
+                      background-position: 
+                          right bottom!important ;} 
+
+.fondslidejaune   { background-image: url(../img/slidpict1.png);
+                    background-repeat: no-repeat;
+                    background-position: center center;
+                    background-position-y: 10%;
+                   
+
+                  }
+
+
+.carousel-content {
+    color:black;
+    display:flex;
+    align-items:center;
+}
+
+#text-carousel {
+    width: 100%;
+    height: auto;
+    padding: 50px;
+}
+ 
+
+
+
+ 
+@media screen and (min-width: 1900px)  {
+  .hsh1 {
+    height: 500px!important;
+  }
+}
+
+
+
+
+/* Titre h2 NEWSLETTER et DES QUESTION ? */
+
+@media screen and (min-width: 599px)  {
+  .fs-h2-responsive  {
+    font-size: 25px!important;
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 768px) {
+  .fs-h2-responsive  {
+    font-size: 35px!important;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .fs-h2-responsive  {
+    font-size: 45px!important;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .fs-h2-responsive  {
+    font-size: 50px!important;
+  }
+}
+@media screen and (min-width: 1200px)  {
+  .fs-h2-responsive  {
+    font-size: 50px!important;
+  }
+}
+
+
+
+@media screen and (min-width: 0px)  {
+  .fontstyleinput2 {
+    font-size: 15px!important;
+  }
+}
+ 
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .fontstyleinput2 {
+    font-size: 20px!important;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+  .fontstyleinput2 {
+    font-size: 20px!important;
+  }
+}
+@media screen and (min-width: 1200px)  {
+  .fontstyleinput2 {
+    font-size: 20px!important;
+  }
+}
+
+
+@media screen and (min-width: 0px)  {
+  .fontstyleinput {
+    font-size: 10px!important;
+  }
+}
+ 
+@media screen and (min-width: 768px) and (max-width: 1199px) {
+  .fontstyleinput {
+    font-size: 20px!important;
+  }
+}
+ 
+@media screen and (min-width: 1200px)  {
+  .fontstyleinput {
+    font-size: 20px!important;
+  }
+}
+
+
+
+
+
+.text-shadow-grey { text-shadow: 2px 2px 2px grey;}
+ 
+.professionnels-fond-bleu {
+    background-image: url("../img/professionnels-fond-bleu.jpg"); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+}
+
+@media screen and (min-width: 0px) and (max-width: 960px) {
+  .professionnels-fond-bleu {
+    background-image: url("../img/professionnels-fond-bleu.jpg")!important;
+    background-repeat: no-repeat!important;
+       background-position: center center;
+}
+}
+
+
+.particuliers-fond-orange {
+    background-image: url("../img/une-experience-unique.jpg"); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+
+}
+
+
+@media screen and (min-width: 0px) and (max-width: 960px) {
+  .particuliers-fond-orange {
+    background-image: url(../img/une-experience-unique.jpg)!important;
+    background-repeat: no-repeat!important;
+       background-position: center center;
+}
+}
+
+
+
+
+#apropos0 span, #apropos5 span, #apropos4 span, #apropos1 span {font-weight: bold!important;}
+#apropos5 p,  #apropos4 p, #apropos1 p {font-weight: 100!important;}
+#apropos0 span {font-weight: 400!important;}
+
+.submenuapropos li { font-size: 18px!important;}
+.submenuapropos li a:hover { color:#005edb!important;}
+
+.submenuapropos ul {float:right;}
+
+.submenuaproposcontent h3 {color: #005edd!important;
+                           font-size: 55px!important;
+                           font-weight: 100!important;
+}
+/* */
+.imgcoorpo {width: 100%!important;
+            max-width: 1750px!important;
+            margin-right: auto!important;
+            margin-left:auto!important; 
+} 
+ 
+
+
+
+
+.bouton-connexion { padding: 19px 0 19px 0!important;
+                    margin: 6px 0 6px 0px;}
+.bouton-connexion2 {   ;
+                       padding: 0px 0 0px 0!important;
+                       margin: 6px 0 6px 0px;}
+
+.bouton-connexion2 input { height:60px ;
+                           padding: 0px 0 0px 15px!important;
+                           margin: 0px 0 0px 0;
+                           background-color: white!important;}
+
+.bordconnexionradius { border-radius:10px;}
+
+.bordconnexioncouleur { border: solid 1px grey}
+.bordconnexioncouleur2 { border: solid 1px #55c9c8!important}
+
+.ligneconnexion { border-bottom: solid 1px grey;}
+
+
+.boutonconnexiontextleft { text-align: left!important;}
+
+
+.floatleft {float: left!important}
+
+.floatright {float: right!important}
+
+.display-inline {display: inline-block;}
+
+.twittercouleur {color:#30D8F0;} 
+.facebookcouleur {color: #3B5999;}
+.linkedincouleur {color: #5b5b5b;}
+
+ 
+
+input#fos_user_registration_form_user_profile_sexe_1 ,input#fos_user_registration_form_user_profile_sexe_0 ,#fos_user_registration_form_user_profile_type input,
+#fos_user_registration_form_user_profile_type label, input#fos_user_registration_form_user_profile_type_0, label#fos_user_registration_form_user_profile_type_0
+  {
+      margin-left: 10px!important;
+  }
+
+input#fos_user_registration_form_user_profile_sexe_1 , input#fos_user_registration_form_user_profile_sexe_0
+  {
+      margin-right: 10px!important;
+  }
+
+
+ 
+.inscription-txt-1 label ,
+.inscription-txt-1 form
+{font-size: 15px;
+ font-weight: 300;
+ color:#333!important;} 
+
+/* Couleurs */ 
+
+.mauve {color:#361d9b!important;}
+.blanc {color:#ffffff!important;}
+.rose {color: #ff1782!important;}
+.grisfonce {color: #333333!important; }
+.grisclair {color: #cccccc!important; }
+.gris6 {color: #666666!important; }
+.bleu {color:#005edd!important; }
+.mauvef {color:#1d0b63!important;}
+.bleuvert {color: #55c9c8!important;}
+
+/* Fonds */ 
+
+
+.fondmauve {background-color:#361d9b!important;}
+.fondrose {background-color: #ff1782!important;}
+.fondbleuvert {background-color: #55c9c8!important;}
+.fondrose2 {background-color: #fe288b!important;}
+.fondviolet {background-color: #4429b0!important;}
+.fondf7f8f8 { background-color: #f7f8f8!important; }
+.fondjaune { background-color: #ffc600!important; }
+.fondf6f6f6 {background-color: #f6f6f6!important;}
+.fondf2f2f2 {background-color: 	#f2f2f2!important;}
+.fonde8e8e8 {background-color:  #e8e8e8!important;}
+.fondfafafa {background-color:  #fafafa!important;}
+.fondededed {background-color:  #ededed!important;}
+.fond777777 {background-color:  #777777!important;}
+
+/* Police */ 
+
+.fsitalic {font-style : italic!important; }
+
+
+.fs1 {font-size: 1px!important; }
+.fs2 {font-size: 2px!important; }
+.fs3 {font-size: 3px!important; }
+.fs4 {font-size: 4px!important; }
+.fs5 {font-size: 5px!important; }
+.fs6 {font-size: 6px!important; }
+.fs7 {font-size: 7px!important; }
+.fs8 {font-size: 8px!important; } 
+.fs9 {font-size: 9px!important; }
+
+.fs10 {font-size: 10px!important; }
+.fs11 {font-size: 11px!important; }
+.fs12 {font-size: 12px!important; }
+.fs13 {font-size: 13px!important; }
+.fs14 {font-size: 14px!important; }
+.fs15 {font-size: 15px!important; }
+.fs16 {font-size: 16px!important; }
+.fs17 {font-size: 17px!important; }
+.fs18 {font-size: 18px!important; }
+.fs19 {font-size: 19px!important; }
+.fs20 {font-size: 20px!important; }
+.fs21 {font-size: 21px!important; }
+.fs22 {font-size: 22px!important; }
+.fs23 {font-size: 23px!important; }
+.fs24 {font-size: 24px!important; }
+.fs25 {font-size: 25px!important; }
+.fs26 {font-size: 26px!important; }
+.fs27 {font-size: 27px!important; }
+.fs28 {font-size: 28px!important; }
+.fs30 {font-size: 30px!important; }
+.fs35 {font-size: 35px!important; }
+
+.fs40 {font-size: 40px!important; }
+.fs45 {font-size: 45px!important; }
+.fs50 {font-size: 50px!important; }
+.fs55 {font-size: 55px!important; }
+.fs60 {font-size: 60px!important; }
+
+.fw100i {font-weight:100i!important;}
+.fw100 {font-weight:100!important;}
+.fw300i {font-weight:300i!important;}
+.fw300 {font-weight:300!important;}  
+.fw400i {font-weight:400i!important;}
+.fw400 {font-weight:400!important;}
+.fw500i {font-weight:500i!important;}
+.fw500 {font-weight:500!important;}
+.fw700i {font-weight:700i!important;}
+.fw700 {font-weight:700!important;}
+.fw900i {font-weight:900i!important;}
+.fw900 {font-weight:900!important;}  
+
+.lh0 {line-height: 0!important;}
+.lh0-5 {line-height: 0.5!important;}
+.lh1 {line-height: 1!important;}
+.lh1-3 {line-height: 1.3!important;}
+.lh1-5 {line-height: 1.5!important;}
+.lh2 {line-height: 2!important;}
+.lh3 {line-height: 3!important;} 
+
+/* Réseau sociaux */ 
+
+.twitterfond {background-color:#30D8F0;} 
+.facebookfond {background-color: #3B5999;}
+.linkedinfond {background-color: #5b5b5b;}
+
+#newscontact_email::-webkit-input-placeholder {
+    color: #666!important;
+}
+
+#simple_search_metier::-webkit-input-placeholder {
+    color: #666!important;
+}
+
+#simple_search_metier{border: none!important;}
+
+.tablecellbottom {display:table-cell;
+                  vertical-align: bottom;}
+.tablecellbottom2 { }
+
+input#username {background-color: white!important;}
+
+#username::-webkit-input-placeholder  {background-color: white!important;}
+
+#password:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {background-color: white!important;}
+#password  {background-color: white!important;}
+
+.icon-conex img {
+    width: 25px!important;
+    text-align: left!important;
+    position: absolute;
+    left: 30px;}
+
+.icon-conex-fb img {
+    left: 15px!important;
+}
+
+.inputnewsletter { width: 85%;  
+                   margin-left: auto;
+                   margin-right: auto;
+                   left: 6%;}
+.boutonseconnecter { background-color: transparent; 
+                     border: transparent;
+                     font-size: 20px;
+                     color:white;
+                     font-weight: 300;}
+
+.textshadow012 {text-shadow: 0 1px 2px rgba(0, 0, 0, .6);}
+
+.recherche-home-vmj {     width: 70%;
+                          text-align: center;
+                          margin-left: auto;
+                          margin-right: auto; }
+
+.br25 {border-radius: 25px!important;
+       -webkit-border-radius:25px;
+       -moz-border-radius:25px;
+}
+.br30 {border-radius: 30px!important;
+       -webkit-border-radius:30px;
+       -moz-border-radius:30px;
+}
+
+.noborder {border: none!important;}
+
+.paddingboutton { padding: 10px 25px 10px 25px;}
+
+.paddingboutton2 { padding: 5px 6px 5px 6px ; border-radius: 30px;}
+
+
+
+.imgrondepro {     overflow:hidden;     
+                   -webkit-border-radius:100px;
+                   -moz-border-radius:100px;
+                   border-radius:100px;
+                   width:105px;
+                   height:105px;
+} 
+
+.cercletxt {    
+      padding-left: 12px!important;
+      border: solid 2px #dddddd!important;
+                height: 105px!important;
+                border-radius: 100px!important;
+                width: 105px!important;
+                padding-top: 34px!important;
+                margin-left: auto!important;
+                margin-right: auto!important;
+}
+.wd100 {width: 100%!important}
+.detailmetier12 { 
+    background-size: contain!important;
+    min-height: 390px!important;
+    background-repeat: no-repeat!important;
+    background-position:center center!important;}
+
+.inline-flex {display:inline-flex!important;}
+
+/* Padding Margin */
+
+.marginauto {margin-right: auto!important; margin-left: auto!important;}
+
+.paddingauto {padding-right: auto!important; padding-left: auto!important;}
+ 
+.mt5p {margin-top: 5%!important;}
+.ml8p {margin-left: 8%!important;}
+.ml2p {margin-left: 2%!important;}
+
+.pl10 {padding-left: 10px!important; }
+.pr10 {padding-right: 10px!important; }
+.pl20 {padding-left: 20px!important; }
+.pr20 {padding-right: 20px!important; }
+.pl30 {padding-left: 30px!important; }
+.pr30 {padding-right: 30px!important; }
+
+.pt10 {padding-top: 10px!important; }
+.pt15 {padding-top: 15px!important; }
+.pt20 {padding-top: 20px!important; }
+.pt25 {padding-top: 25px!important; }
+.pt30 {padding-top: 30px!important; }
+.pt35 {padding-top: 35px!important; }
+.pt40 {padding-top: 40px!important; }
+.pt45 {padding-top: 45px!important; }
+.pt50 {padding-top: 50px!important; }
+.pt60 {padding-top: 60px!important; }	
+.pt90 {padding-top: 90px!important; }	
+
+.pb10 { padding-bottom: 10px!important;}
+.pb20 { padding-bottom: 20px!important;}
+.pb25 { padding-bottom: 25px!important;}
+.pb30 { padding-bottom: 30px!important;}
+.pb35 { padding-bottom: 35px!important;}
+.pb40 { padding-bottom: 40px!important;}
+.pb45 { padding-bottom: 45px!important;}
+.pb50 { padding-bottom: 50px!important;}
+.pb60 { padding-bottom: 60px!important;}
+.pb70 { padding-bottom: 70px!important;}
+.pb80 { padding-bottom: 80px!important;}
+.pb90 { padding-bottom: 90px!important;}
+
+.mt10 {margin-top: 10px!important}
+.mb25 {margin-bottom: 25px;}
+
+.ml10 {margin-left: 10px!important}
+.ml50 {margin-left: 50px!important}
+.ml90 {margin-left: 90px!important}
+
+.padd10p { padding-left: 10%!important; padding-right: 10%!important;}
+.padd15p { padding-left: 15%!important; padding-right: 15%!important;}
+.padd20p { padding-left: 20%!important; padding-right: 20%!important;}
+.padd25p { padding-left: 25%!important; padding-right: 25%!important;}
+
+
+.marge10p { margin-left: 10%!important; margin-right: 10%!important;}
+.marge15p { margin-left: 15%!important; margin-right: 15%!important;}
+.marge20p { margin-left: 20%!important; margin-right: 20%!important;}
+.marge25p { margin-left: 25%!important; margin-right: 25%!important;}
+
+
+.margin1010 {margin-top: 10px!important;
+             margin-bottom: 10px!important;}
+.margin1515 {margin-top: 15px!important;
+             margin-bottom: 15px!important;}	
+
+.margeauto {margin-right: auto!important; margin-left: auto!important;}
+
+/* Position */
+
+.position-relative {position:relative!important; }
+
+.top33 {top:33px!important;} 
+
+/*   */ 
+
+.h2-particuliers { margin:0 0 10px 0!important; 
+                   color:#ff1782!important;
+                   font-size: 50px!important; 
+                   font-weight: 100!important;   }
+.h2-professionnels { margin:0 0 10px 0!important ;   
+                     color:#361d9b!important;
+                     font-size: 50px!important; 
+                     font-weight: 100!important; }
+.h2blanc-particulier { color: #ffffff!important; 
+                       font-weight: 100!important;}
+
+
+.decouvrez-metier  {
+  background-color: black!important 0.5;
+   
+  background-image: url(../img/tous-les-metiers-de-Viemonjob.jpg)!important ; 
+                    padding: 100px 30px 130px 30px!important; 
+                    background-repeat: no-repeat ; 
+                    background-size: cover!important;
+                    background-position-y: 90%!important;
+}
+
+
+.pk-vmj h2 {
+    margin-left: auto;
+    margin-right: auto;
+}
+ 
+
+
+@media screen and (min-width: 500px)  and (max-width: 700px) { 
+  .pk-vmj div  { padding-left: 10%!important;
+  padding-right: 10%!important;
+}
+}
+
+@media screen and (min-width: 701px)  and (max-width: 4500px) { 
+  .pk-vmj div  { padding-left: 15%!important;
+  padding-right: 15%!important;
+}
+}
+ 
+
+
+
+
+@media screen and (min-width: 0px)  and (max-width: 600px) { 
+  .txt1slid span { font-size: 20px!important; font-weight: 300!important; }
+}
+
+@media screen and (min-width: 0px)  and (max-width: 600px) { 
+  .txt2slid span { font-size: 23px!important;font-weight: 300!important; }
+}
+
+ @media screen and (min-width: 601px)  and (max-width: 4000px) { 
+  .txt1slid span { font-size: 23px!important;font-weight: 300!important; }
+}
+
+@media screen and (min-width: 601px)  and (max-width: 4000px) { 
+  .txt2slid span { font-size: 20px!important;font-weight: 300!important; }
+}
+ 
+
+
+ @media screen and (min-width: 01px)  and (max-width: 430px) { 
+  .fondslidejaune   {  min-height: 680px!important;}
+} 
+ @media screen and (min-width: 431px)  and (max-width: 500px) { 
+  .fondslidejaune   {  min-height: 580px!important;}
+} 
+ @media screen and (min-width: 501px)  and (max-width: 590px) { 
+  .fondslidejaune   {  min-height: 530px!important;}
+} 
+@media screen and (min-width: 591px)  and (max-width: 650px) { 
+  .fondslidejaune   {  min-height: 530px!important;}
+} 
+
+ @media screen and (min-width: 651px)  and (max-width: 729px) { 
+  .fondslidejaune   {  min-height: 530px!important;}
+} 
+@media screen and (min-width: 730px)  and (max-width: 899px) { 
+  .fondslidejaune   {  min-height: 550px!important;}
+} 
+
+@media screen and (min-width: 900px)  and (max-width: 4000px) { 
+  .fondslidejaune   {  min-height: 580px!important;}
+} 
+
+.des-questions { background-color: #f4f4f4!important;    padding-top: 150px!important; min-height: 475px!important;  }
+.newsletter { background-color: #55c9c8!important;  padding-top: 150px!important; min-height: 475px!important;  } 
+.newsletter h2 {color: white!important; font-weight: 100!important;  line-height: 5px!important;}
+.des-questions h2 {color: #ff8f00!important; font-weight: 100!important;  line-height: 5px!important; }
+.newsletter p { color: white!important; font-weight: 100!important;  }
+.des-questions p {color: #333333!important; font-weight: 100!important; }
+
+.bouton-rond-orange {background-color: #ffc600!important; 
+                     color: white!important;
+                     border-radius: 30px!important;
+                     z-index: 1!important;
+}
+
+.bouton-rond-mauve {background-color: #361d9b!important; 
+                    color: white!important;
+                    border-radius: 30px!important;
+                    z-index: 1!important;
+}
+
+.margetoplogin { margin-top: -18px!important}
+
+.bouton-recherche-bleu {background-color: #55c9c8!important; 
+                        color: white!important;
+                        border-radius: 30px!important;
+                        z-index: 1!important;
+}
+
+
+.zindex1 {z-index: 1!important;}
+.zindex5 {z-index: 5!important;}
+.zindex10 {z-index: 10!important;}
+.zindex100 {z-index: 100!important;}
+
+
+input.form-control.zindex100 {
+    z-index: 20!important;
+}
+
+
+.footer-rose p {color: white!important;}
+.footer-rose a {color: white!important;}
+.footer-rose a:hover {color: #55c9c8!important;}
+.footer-rose table {color:white!important;}
+
+.footer-rose {padding-top: 40px!important ; padding-bottom: 40px!important; 
+              background-color: #fe288b!important; 
+              background-image: url(../img/fond-footer-Viemonjob.png)!important; 
+              background-repeat: no-repeat;
+              background-size: cover!important;}
+
+.reseaux-sociaux  p {
+    margin-bottom: 20px!important;}
+
+
+.reseaux-sociaux a  
+{    margin: 0 1% 0 1%;}
+.reseaux-sociaux   {  
+
+    line-height: 50px!important; }	
+
+.reseaux-sociaux img {width: 45px!important;}
+
+
+span.input-group-btn.zindex1 {
+    right: 41px;
+    position: relative;
+    z-index: 11!important;
+}
+
+.maxwidth500 { max-width: 500px!important;}
+
+ 
+.fontitalic { font-style: italic;}
+
+.slidericoneimg { size:75%;}
+
+.table150 table {width: 230px!important;}
+
+.nav-tabs > li.active > a {
+    border : none!important;
+    background-color: transparent;!important;
+    border-radius: none!important;
+}
+.nav-tabs > li > a {
+    background-color: transparent;!important;
+    border: none!important;
+
+
+}
+.nav-tabs > li > a:hover {
+    color:#005edd!important;
+
+
+}
+
+.rechercheavance { 
+    text-align:center ;
+    color: white; 
+    text-decoration : underline;
+    font-size: 18px; 
+    bottom: 25px; 
+    position: relative;
+     }
+.pr150 {padding-right: 150px}
+
+.pl150 {padding-left: 150px}
+
+.homeslider {
+    background-image: url(http://www.viemonjob.com/theme/img/header.jpg)!important;
+    background-repeat: no-repeat!important;
+    background-position: top right!important;
+    background-size: cover!important; 
+    padding: 0 0 0 0!important;
+    margin:0 0 0 0!important;
+    float: none;
+    height: 300px;
+}
+
+.w100 {
+  width: 100%!important;
+}
+
+.blocktext1-vmj {
+  position: relative!important;
+  top: 10%!important;
+}
+
+.positionrecherche {
+  position: relative;
+  bottom: 50px;
+}
+
+.text-bottom {   
+  vertical-align: bottom!important;
+  position: absolute;
+  bottom: 0;
+  width: 100%!important;
+  padding-left: 10%;
+  padding-right:10%;
+    }
+/* 
+input#remember_me {
+    position: relative;
+    left: 20px;
+    top: 3px;
+}
+  
+
+@media screen and (min-width: 0px)  and (max-width: 475px) { 
+  .souvienstoi { 
+                position: relative;
+    top: -25px!important;
+    font-size: 11px!important;
+    }
+    input#remember_me {
+            position: relative;
+    left: 6px!important;
+    top: 19px!important;
+    }
+}
+
+@media screen and (min-width: 0px)  and (max-width: 475px) { 
+  .souvienstoi { 
+    .motdepassevmj {
+                position: relative!important;
+    top: 25px!important;
+    }
+    .vnpdc  {
+                font-size: 15px!important;
+    }
+    
+}
+
+
+
+.souvienstoi input { position: relative;
+  left:20px;}
+
+
+*/
+[type="checkbox"] {
+    opacity: 1!important;
+}
+
+
+.motdepassevmj {
+    position: relative;
+    top: 1px;
+}
+
+.positionrecherche h1 {
+    line-height: 40px;
+}
+.positionrecherche2 {
+  top:30px!important;
+}
+
+.positionrecherche3 {
+  position:relative;
+}
+
+.slicknav_btn {
+    margin: -45px 0 6px!important;
+}
+
+.logo img { 
+    min-width: 150px!important;
+}
+
+/*  A PROPOS */
+
+.h2apropos {     
+  margin-bottom: 0!important;
+    margin-top: 0!important;
+    line-height: 40px!important;
+
+}
+
+.titreapropos { margin: 0 0 15px 0 ; }
+
+.headerpageapropos {
+    background-image: url(../img/vmj-fond-coorpo.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: right;
+    min-height: 245px;
+    background-position-y: -40px;
+}
+.headerpageparticuliers { background-image: url(../img/particuliers-vmj.png);
+                          background-size: contain;
+                          background-repeat: no-repeat;
+                          background-position: bottom right;
+                          min-height: 400px;
+                          background-color: #f6f6f6!important;
+}
+.headerpageparticuliers h1 , .headerpageprofessionnels h1 { margin-top: 60px; margin-left: 20px;} 
+.headerpageprofessionnels { background-image: url(../img/professionnels-vmj.png);
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            background-position: bottom right;
+                            background-color: #f6f6f6!important;
+                            min-height: 400px;
+}
+
+@media screen and (max-width: 800px) {
+    .headerpageparticuliers , .headerpageprofessionnels { 
+        background-color: white!important; 
+        opacity: 0.8!important;
+    }
+}
+
+.onparledenous h2 { font-weight: 100; color:#ff1782; }
+
+
+
+
+
+.onparledenous a:hover { color:#55c9c8!important;}
+.onparledenous p:hover { color:#55c9c8!important;}
+
+.inlineblock { display:inline-block;}
+
+.bienvenue-d1-vmj { 
+  min-height: 150px!important
+  vertical-align: middle;
+  padding: 60px 0 60px 30px!important;
+  width: 100%;
+  }
+
+.majusculepremierelettre:first-letter {text-transform:capitalize;} 
+
+
+.filter-link { font-size: 15px!important;}
+
+.portfolioFilter > .filter-link > a.current
+
+{     background-color: #55C9C8!important; 
+}
+
+
+
+.p-item-img img {  }
+
+.full-width{
+    width: 100%;
+}
+
+.btn-particuliers{
+    border-radius: 30px;
+    background-color: #ff1782;
+    color: #fff;
+}
+
+.btn-professionnels{
+    border-radius: 30px;
+    background-color: #361d9b;
+    color: #fff;
+}
+
+.btn-accueil{border: solid 1px white}
+
+.btn-trio-hp{
+    padding-left: 20%;
+}

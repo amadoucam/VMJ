@@ -1,0 +1,51 @@
+imports:
+    - { resource: config.yml }
+
+parameters:
+    locale: fr
+    vads_action_mode: 'INTERACTIVE'
+    vads_ctx_mode: 'TEST'
+    #vads_ctx_mode: 'PRODUCTION'
+    vads_currency: 978
+    vads_page_action: 'PAYMENT'
+    vads_payment_config: 'SINGLE'
+    vads_site_id: '22280098'
+    vads_version: 'V2'
+    certificate: 8874865971259140
+    #certificate: 3982065106572664
+    vads_capture_delay: 0
+    vads_return_mode: 'GET'
+    vads_redirect_success_timeout : 0
+    vads_redirect_error_timeout : 10
+
+framework:
+    router:
+        resource: "%kernel.root_dir%/config/routing_dev.yml"
+        strict_requirements: true
+    profiler: { only_exceptions: false }
+
+web_profiler:
+    toolbar: true
+    intercept_redirects: false
+
+monolog:
+    handlers:
+        main:
+            type: stream
+            path: "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+            channels: [!event]
+        console:
+            type:   console
+            channels: [!event, !doctrine]
+        # uncomment to get logging in your browser
+        # you may have to allow bigger header sizes in your Web server configuration
+        #firephp:
+        #    type:   firephp
+        #    level:  info
+        #chromephp:
+        #    type:   chromephp
+        #    level:  info
+
+swiftmailer:
+    delivery_address: cachedon.t@gmail.com

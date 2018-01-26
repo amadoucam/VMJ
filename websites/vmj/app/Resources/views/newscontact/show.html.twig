@@ -1,0 +1,35 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block body %}
+    <h1>Contact</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ newscontact.id }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ newscontact.email }}</td>
+            </tr>
+            <tr>
+                <th>Date de création</th>
+                <td>{% if newscontact.created %}{{ newscontact.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Date de modification</th>
+                <td>{% if newscontact.modified %}{{ newscontact.modified|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('newscontact_edit', { 'id': newscontact.id }) }}">Modifier</a>
+        </li>
+        <li>
+            <a href="{{ path('newscontact_index') }}">Retour à la liste</a>
+        </li>
+    </ul>
+{% endblock %}

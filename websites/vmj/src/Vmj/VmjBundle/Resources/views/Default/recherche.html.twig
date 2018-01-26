@@ -1,0 +1,179 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Trouvez le métier qui vous plait parmis les immersions Viemonjob{% endblock %}
+{% block description %}Avant de vous lancer dans une reconversion professionnelle, Viemonjob vous permet d'essayer le métier de vos rêves.{% endblock %}
+{% block keywords %}tester un métier, essayer un métier, test un metier, reconversion, orientation, transition, formation, employabilité, emploi, immersion, stage, métier, job, tester, essayer, découvrir{% endblock %}
+
+{% block body %}
+    <div id="wrap">
+
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+        <!-- Home slider -->
+        <section class="hsh1 row homeslider w100 col-xs-12 blanc hsh1">
+
+            <div class="blocktext1-vmj">
+                <div class="container">
+                    <div class="col-md-6 text-center">
+                        <h1 class="fs28 blanc fw100">
+                            <span class="fs60 blanc fw100">Viemonjob</span> <br>
+                        </h1>
+                    </div>
+                    <div class="col-md-6">
+                    </div>
+                </div>
+                <br>
+            </div>
+
+            <div class="text-bottom">
+                {% if simpleSearchform is defined %}
+                    {{ form_start(simpleSearchform) }}
+                    <div class="container text-center">
+                        <div class="input-group">
+                            {{ form_widget(simpleSearchform.metier) }}
+                            <span class="input-group-btn zindex1">
+                                <button class="btn btn-default bouton-recherche-bleu zindex1 pl20 pr20" type="submit">Rechercher
+                                </button>
+                            </span>
+                        </div>
+                        <br>
+                        {#<span class="rechercheavance">
+                            <a class="blanc  text-shadow-grey" href="{{ path('vmj_metiers') }}">Recherche avancée</a>
+                        </span>#}
+                    </div>
+                    {{ form_end(simpleSearchform) }}
+                {% endif %}
+            </div>
+        </section>
+
+        <section>
+            <div class="page-title fondjaune">
+                <div class="container ">
+                    <div class="row  ">
+                        <div class="col-md-6 col-sm-6 ">
+                            {% if isSearch is defined and isSearch %}
+                                <h3 class="blanc fw300">Résultats de votre recherche</h3>
+                            {% else %}
+                                <h3 class="blanc fw300">Découvrez tous nos {{ immersions | length }} métiers à tester</h3>
+                            {% endif %}
+                        </div>
+                        <div class="col-md-6 col-sm-6 hidden-xs">
+                            <div class="page-title-address">
+                                <a class="blanc" href="{{ path('vmj_homepage') }}">Accueil</a><i
+                                        class="blanc fa fa-angle-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- and Page title -->
+        <!-- Portfolio -->
+        <section class="portfoliometier">
+            <div class="portfolio">
+                <div class="container">
+
+                    <div class="container">
+                        <div class="col-md-12 hidden-xs">
+                            <div class="portfolioFilter">
+                                <div class="filter-link"><a href="#" data-filter="*" class="current">Toutes les catégories</a>
+                                    <div class="bottom-border"></div>
+                                </div>
+                                {% for categorieJob in categorieJobs %}
+                                    <div class="filter-link">
+                                        <a href="#"
+                                           data-filter=".categorie{{ categorieJob.id }}">{{ categorieJob.name }}</a>
+                                        <div class="bottom-border"></div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="portfolioContainer">
+                            {% for metier in immersions %}
+                                {% if metier.lienImgPresentation is defined and metier.lienImgPresentation is not null %}
+                                    {% set lienImage = 'uploads/'~metier.lienImgPresentation %}
+                                {% else %}
+                                    {% set lienImage = "uploads/immersion-neutre.jpg" %}
+                                {% endif %}
+
+                                {% if metier.categories is defined and metier.categories is not null %}
+                                    {% set categories_classes = '' %}
+                                    {% for cat in metier.categories %}
+                                        {% set categories_classes = categories_classes~' categorie'~cat.id %}
+                                    {% endfor %}
+                                    {% set metierCategorieId = '' %}
+                                {% else %}
+                                    {% set categories_classes = '' %}
+                                {% endif %}
+
+                                <div class="clearfix table-metier col-md-4 col-sm-4 graphic {{ categories_classes }}">
+                                    <div class="clearfix"></div>
+                                    <a href="{{ path('vmj_fiche_metier', {'slug':metier.slug}) }}">
+                                        <img alt="{{metier.title}} {{metier.professionnel.town}} {{metier.professionnel.postalcode}} Viemonjob" src="{{ asset(lienImage) }}" class="clearfix table-metier-img">
+                                    </a>
+                                    <p class="mauve fs20">
+                                        <a href="{{ path('vmj_fiche_metier', {'slug':metier.slug}) }}">
+                                            {{ metier.title }}
+                                            <span class="  clearfix bleu fs18">{{ metier.weekprice }} €/semaine</span>
+                                        </a>
+                                    </p>
+
+                                    <span style="font-size: 0.6em"
+                                          class="fw100 gray-italic">{% if metier.professionnel.businessDescription is defined %}
+                                            {{ metier.professionnel.businessDescription|slice(0, 76) }}...
+                                        {% endif %}
+                                            </span>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+    </div> <!-- and wrap -->
+
+    {% block javascripts %}
+
+        <script type="text/javascript">
+            /* Isotope launch */
+            $(window).load(function () {
+                var $container = $('.portfolioContainer');
+                $container.isotope({
+                    filter: '*',
+                    animationOptions: {
+                        duration: 750,
+                        easing: 'linear',
+                        queue: false,
+                    }
+                });
+
+                $('.portfolioFilter a').click(function () {
+                    $('.portfolioFilter .current').removeClass('current');
+                    $(this).addClass('current');
+
+                    var selector = $(this).attr('data-filter');
+                    $container.isotope({
+                        filter: selector,
+                        animationOptions: {
+                            duration: 750,
+                            easing: 'linear',
+                            queue: false,
+                        }
+                    });
+                    return false;
+                });
+            });
+            /* and Isotope launch */
+        </script>
+
+    {% endblock javascripts %}
+{% endblock body %}

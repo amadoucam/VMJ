@@ -1,0 +1,60 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>
+{% endblock stylesheets %}
+
+{% block body %}
+    <h1>Liste des témoignages</h1>
+
+    <table id="list_temoignages" class="table table-bordered table-stripped dataTable">
+        <thead>
+            <tr>
+                <th>Date de dernière modification</th>
+                <th>Nom de l'accueillant</th>
+                <th>Nom du témoignant</th>
+                <th>Temoignage</th>
+                <th>Note</th>
+                <th>Valide</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for temoignage in temoignages %}
+                <tr>
+                    <td>{% if temoignage.updated %}{{ temoignage.updated|date('d-m-Y H:i:s') }}{% endif %}</td>
+                    <td>{% if temoignage.immersion.professionnel is defined and temoignage.immersion.professionnel is not null %}{{ temoignage.immersion.professionnel.firstname }} {{ temoignage.immersion.professionnel.lastname }} {% endif %}</td>
+                    <td>{{ temoignage.redacteur }}</td>
+                    <td>{{ temoignage.temoignage }}</td>
+                    <td>{{ temoignage.note }}</td>
+
+                    <td>{% if temoignage.valide %}Validé{% else %}À valider{% endif %}</td>
+                    <td>
+                        <ul>
+                            <li>
+                                <a href="{{ path('temoignages_show', { 'id': temoignage.id }) }}">Voir</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('admin_temoignages_edit', { 'id': temoignage.id }) }}">Modifier</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="row"><hr></div>
+    <div class="row" style="text-align: center">
+            <a href="{{ path('temoignages_new') }}" class="btn btn-info">Créer un nouveau commentaire</a>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#list_temoignages').DataTable({'language': french_datatable , 'order': [[ 0, 'asc' ]]});
+        });
+    </script>
+{% endblock javascripts %}

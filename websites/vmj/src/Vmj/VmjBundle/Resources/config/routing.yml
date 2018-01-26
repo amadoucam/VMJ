@@ -1,0 +1,1363 @@
+#vmj_admin_categoriejob:
+ #   resource: "@VmjBundle/Resources/config/routing/categoriejob.yml"
+ #   prefix:   /categoriejob
+
+#vmj_homepage_temporaire:
+#    path:     /
+#    defaults: { _controller: VmjBundle:Default:temporaire }
+
+# Redirections 301
+
+# Anciennes URL avec ID
+
+vmj_metier_15:
+    path:     /metier/15
+    defaults: { _controller: VmjBundle:Redirection:redirect15 }
+
+vmj_fiche_metier_15:
+    path:     /metier/15
+    defaults: { _controller: VmjBundle:Redirection:redirect15 }
+
+vmj_metier_17:
+    path:     /metier/17
+    defaults: { _controller: VmjBundle:Redirection:redirect17 }
+
+vmj_fiche_metier_17:
+    path:     /metier/17
+    defaults: { _controller: VmjBundle:Redirection:redirect17 }
+
+vmj_metier_18:
+   path:     /metier/18
+   defaults: { _controller: VmjBundle:Redirection:redirect18 }
+
+vmj_fiche_metier_18:
+   path:     /metier/18
+   defaults: { _controller: VmjBundle:Redirection:redirect18 }
+
+vmj_metier_19:
+   path:     /metier/19
+   defaults: { _controller: VmjBundle:Redirection:redirect19 }
+
+vmj_fiche_metier_19:
+   path:     /metier/19
+   defaults: { _controller: VmjBundle:Redirection:redirect19 }
+
+vmj_metier_20:
+   path:     /metier/20
+   defaults: { _controller: VmjBundle:Redirection:redirect20 }
+
+vmj_fiche_metier_20:
+   path:     /metier/20
+   defaults: { _controller: VmjBundle:Redirection:redirect20 }
+
+vmj_metier_21:
+   path:     /metier/21
+   defaults: { _controller: VmjBundle:Redirection:redirect21 }
+
+vmj_fiche_metier_21:
+   path:     /metier/21
+   defaults: { _controller: VmjBundle:Redirection:redirect21 }
+
+vmj_metier_22:
+   path:     /metier/22
+   defaults: { _controller: VmjBundle:Redirection:redirect22 }
+
+vmj_fiche_metier_22:
+   path:     /metier/22
+   defaults: { _controller: VmjBundle:Redirection:redirect22 }
+
+vmj_metier_23:
+   path:     /metier/23
+   defaults: { _controller: VmjBundle:Redirection:redirect23 }
+
+vmj_fiche_metier_23:
+   path:     /metier/23
+   defaults: { _controller: VmjBundle:Redirection:redirect23 }
+
+vmj_metier_24:
+   path:     /metier/24
+   defaults: { _controller: VmjBundle:Redirection:redirect24 }
+
+vmj_metier_20:
+   path:     /metier/20
+   defaults: { _controller: VmjBundle:Redirection:redirect20 }
+
+vmj_fiche_metier_20:
+   path:     /metier/20
+   defaults: { _controller: VmjBundle:Redirection:redirect20 }
+
+vmj_metier_21:
+   path:     /metier/21
+   defaults: { _controller: VmjBundle:Redirection:redirect21 }
+
+vmj_fiche_metier_21:
+   path:     /metier/21
+   defaults: { _controller: VmjBundle:Redirection:redirect21 }
+
+vmj_metier_22:
+   path:     /metier/22
+   defaults: { _controller: VmjBundle:Redirection:redirect22 }
+
+vmj_fiche_metier_22:
+   path:     /metier/22
+   defaults: { _controller: VmjBundle:Redirection:redirect22 }
+
+vmj_metier_23:
+   path:     /metier/23
+   defaults: { _controller: VmjBundle:Redirection:redirect23 }
+
+vmj_fiche_metier_23:
+   path:     /metier/23
+   defaults: { _controller: VmjBundle:Redirection:redirect23 }
+
+vmj_metier_24:
+   path:     /metier/24
+   defaults: { _controller: VmjBundle:Redirection:redirect24 }
+
+vmj_fiche_metier_24:
+   path:     /metier/24
+   defaults: { _controller: VmjBundle:Redirection:redirect24 }
+
+vmj_metier_26:
+   path:     /metier/26
+   defaults: { _controller: VmjBundle:Redirection:redirect26 }
+
+vmj_fiche_metier_26:
+   path:     /metier/26
+   defaults: { _controller: VmjBundle:Redirection:redirect26 }
+
+vmj_metier_27:
+   path:     /metier/27
+   defaults: { _controller: VmjBundle:Redirection:redirect27 }
+
+vmj_fiche_metier_27:
+   path:     /metier/27
+   defaults: { _controller: VmjBundle:Redirection:redirect27 }
+
+vmj_metier_28:
+   path:     /metier/28
+   defaults: { _controller: VmjBundle:Redirection:redirect28 }
+
+vmj_fiche_metier_28:
+   path:     /metier/28
+   defaults: { _controller: VmjBundle:Redirection:redirect28 }
+
+vmj_metier_29:
+   path:     /metier/29
+   defaults: { _controller: VmjBundle:Redirection:redirect29 }
+
+vmj_fiche_metier_29:
+   path:     /metier/29
+   defaults: { _controller: VmjBundle:Redirection:redirect29 }
+
+vmj_metier_30:
+   path:     /metier/30
+   defaults: { _controller: VmjBundle:Redirection:redirect30 }
+
+vmj_fiche_metier_30:
+   path:     /metier/30
+   defaults: { _controller: VmjBundle:Redirection:redirect30 }
+
+vmj_metier_31:
+   path:     /metier/31
+   defaults: { _controller: VmjBundle:Redirection:redirect31 }
+
+vmj_fiche_metier_31:
+   path:     /metier/31
+   defaults: { _controller: VmjBundle:Redirection:redirect31 }
+
+vmj_metier_32:
+   path:     /metier/32
+   defaults: { _controller: VmjBundle:Redirection:redirect32 }
+
+vmj_fiche_metier_32:
+   path:     /metier/32
+   defaults: { _controller: VmjBundle:Redirection:redirect32 }
+
+vmj_metier_33:
+   path:     /metier/33
+   defaults: { _controller: VmjBundle:Redirection:redirect33 }
+
+vmj_fiche_metier_33:
+   path:     /metier/33
+   defaults: { _controller: VmjBundle:Redirection:redirect33 }
+
+vmj_metier_34:
+   path:     /metier/34
+   defaults: { _controller: VmjBundle:Redirection:redirect34 }
+
+vmj_fiche_metier_34:
+   path:     /metier/34
+   defaults: { _controller: VmjBundle:Redirection:redirect34 }
+
+vmj_metier_36:
+   path:     /metier/36
+   defaults: { _controller: VmjBundle:Redirection:redirect36 }
+
+vmj_fiche_metier_36:
+   path:     /metier/36
+   defaults: { _controller: VmjBundle:Redirection:redirect36 }
+
+vmj_metier_35:
+   path:     /metier/35
+   defaults: { _controller: VmjBundle:Redirection:redirect35 }
+
+vmj_fiche_metier_35:
+   path:     /metier/35
+   defaults: { _controller: VmjBundle:Redirection:redirect35 }
+
+vmj_metier_37:
+   path:     /metier/37
+   defaults: { _controller: VmjBundle:Redirection:redirect37 }
+
+vmj_fiche_metier_37:
+   path:     /metier/37
+   defaults: { _controller: VmjBundle:Redirection:redirect37 }
+
+vmj_metier_38:
+   path:     /metier/38
+   defaults: { _controller: VmjBundle:Redirection:redirect38 }
+
+vmj_fiche_metier_38:
+   path:     /metier/38
+   defaults: { _controller: VmjBundle:Redirection:redirect38 }
+
+vmj_metier_39:
+   path:     /metier/39
+   defaults: { _controller: VmjBundle:Redirection:redirect39 }
+
+vmj_fiche_metier_39:
+   path:     /metier/39
+   defaults: { _controller: VmjBundle:Redirection:redirect39 }
+
+vmj_metier_41:
+   path:     /metier/41
+   defaults: { _controller: VmjBundle:Redirection:redirect41 }
+
+vmj_fiche_metier_41:
+   path:     /metier/41
+   defaults: { _controller: VmjBundle:Redirection:redirect41 }
+
+vmj_metier_42:
+   path:     /metier/42
+   defaults: { _controller: VmjBundle:Redirection:redirect42 }
+
+vmj_fiche_metier_42:
+   path:     /metier/42
+   defaults: { _controller: VmjBundle:Redirection:redirect42 }
+
+vmj_metier_43:
+   path:     /metier/43
+   defaults: { _controller: VmjBundle:Redirection:redirect43 }
+
+vmj_fiche_metier_43:
+   path:     /metier/43
+   defaults: { _controller: VmjBundle:Redirection:redirect43 }
+
+vmj_metier_44:
+   path:     /metier/44
+   defaults: { _controller: VmjBundle:Redirection:redirect44 }
+
+vmj_fiche_metier_44:
+   path:     /metier/44
+   defaults: { _controller: VmjBundle:Redirection:redirect44 }
+
+vmj_metier_46:
+   path:     /metier/46
+   defaults: { _controller: VmjBundle:Redirection:redirect46 }
+
+vmj_fiche_metier_46:
+   path:     /metier/46
+   defaults: { _controller: VmjBundle:Redirection:redirect46 }
+
+vmj_metier_47:
+   path:     /metier/47
+   defaults: { _controller: VmjBundle:Redirection:redirect47 }
+
+vmj_fiche_metier_47:
+   path:     /metier/47
+   defaults: { _controller: VmjBundle:Redirection:redirect47 }
+
+vmj_metier_48:
+   path:     /metier/48
+   defaults: { _controller: VmjBundle:Redirection:redirect48 }
+
+vmj_fiche_metier_48:
+   path:     /metier/48
+   defaults: { _controller: VmjBundle:Redirection:redirect48 }
+
+vmj_metier_49:
+   path:     /metier/49
+   defaults: { _controller: VmjBundle:Redirection:redirect49 }
+
+vmj_fiche_metier_49:
+   path:     /metier/49
+   defaults: { _controller: VmjBundle:Redirection:redirect49 }
+
+vmj_metier_50:
+   path:     /metier/50
+   defaults: { _controller: VmjBundle:Redirection:redirect50 }
+
+vmj_fiche_metier_50:
+   path:     /metier/50
+   defaults: { _controller: VmjBundle:Redirection:redirect50 }
+
+vmj_metier_51:
+   path:     /metier/51
+   defaults: { _controller: VmjBundle:Redirection:redirect51 }
+
+vmj_fiche_metier_51:
+   path:     /metier/51
+   defaults: { _controller: VmjBundle:Redirection:redirect51 }
+
+vmj_metier_52:
+   path:     /metier/52
+   defaults: { _controller: VmjBundle:Redirection:redirect52 }
+
+vmj_fiche_metier_52:
+   path:     /metier/52
+   defaults: { _controller: VmjBundle:Redirection:redirect52 }
+
+vmj_metier_53:
+   path:     /metier/53
+   defaults: { _controller: VmjBundle:Redirection:redirect53 }
+
+vmj_fiche_metier_53:
+   path:     /metier/53
+   defaults: { _controller: VmjBundle:Redirection:redirect53 }
+
+vmj_metier_54:
+   path:     /metier/54
+   defaults: { _controller: VmjBundle:Redirection:redirect54 }
+
+vmj_fiche_metier_54:
+   path:     /metier/54
+   defaults: { _controller: VmjBundle:Redirection:redirect54 }
+
+vmj_metier_55:
+   path:     /metier/55
+   defaults: { _controller: VmjBundle:Redirection:redirect55 }
+
+vmj_fiche_metier_55:
+   path:     /metier/55
+   defaults: { _controller: VmjBundle:Redirection:redirect55 }
+
+vmj_metier_56:
+   path:     /metier/56
+   defaults: { _controller: VmjBundle:Redirection:redirect56 }
+
+vmj_fiche_metier_56:
+   path:     /metier/56
+   defaults: { _controller: VmjBundle:Redirection:redirect56 }
+
+vmj_metier_57:
+   path:     /metier/57
+   defaults: { _controller: VmjBundle:Redirection:redirect57 }
+
+vmj_fiche_metier_57:
+   path:     /metier/57
+   defaults: { _controller: VmjBundle:Redirection:redirect57 }
+
+vmj_metier_59:
+   path:     /metier/59
+   defaults: { _controller: VmjBundle:Redirection:redirect59 }
+
+vmj_fiche_metier_59:
+   path:     /metier/59
+   defaults: { _controller: VmjBundle:Redirection:redirect59 }
+
+vmj_metier_60:
+   path:     /metier/60
+   defaults: { _controller: VmjBundle:Redirection:redirect60 }
+
+vmj_fiche_metier_60:
+   path:     /metier/60
+   defaults: { _controller: VmjBundle:Redirection:redirect60 }
+
+vmj_metier_61:
+   path:     /metier/61
+   defaults: { _controller: VmjBundle:Redirection:redirect61 }
+
+vmj_fiche_metier_61:
+   path:     /metier/61
+   defaults: { _controller: VmjBundle:Redirection:redirect61 }
+
+vmj_metier_62:
+   path:     /metier/62
+   defaults: { _controller: VmjBundle:Redirection:redirect62 }
+
+vmj_fiche_metier_62:
+   path:     /metier/62
+   defaults: { _controller: VmjBundle:Redirection:redirect62 }
+
+vmj_metier_63:
+   path:     /metier/63
+   defaults: { _controller: VmjBundle:Redirection:redirect63 }
+
+vmj_fiche_metier_63:
+   path:     /metier/63
+   defaults: { _controller: VmjBundle:Redirection:redirect63 }
+
+vmj_metier_64:
+   path:     /metier/64
+   defaults: { _controller: VmjBundle:Redirection:redirect64 }
+
+vmj_fiche_metier_64:
+   path:     /metier/64
+   defaults: { _controller: VmjBundle:Redirection:redirect64 }
+
+vmj_metier_65:
+   path:     /metier/65
+   defaults: { _controller: VmjBundle:Redirection:redirect65 }
+
+vmj_fiche_metier_65:
+   path:     /metier/65
+   defaults: { _controller: VmjBundle:Redirection:redirect65 }
+
+vmj_metier_66:
+   path:     /metier/66
+   defaults: { _controller: VmjBundle:Redirection:redirect66 }
+
+vmj_fiche_metier_66:
+   path:     /metier/66
+   defaults: { _controller: VmjBundle:Redirection:redirect66 }
+
+vmj_metier_67:
+   path:     /metier/67
+   defaults: { _controller: VmjBundle:Redirection:redirect67 }
+
+vmj_fiche_metier_67:
+   path:     /metier/67
+   defaults: { _controller: VmjBundle:Redirection:redirect67 }
+
+vmj_metier_68:
+   path:     /metier/68
+   defaults: { _controller: VmjBundle:Redirection:redirect68 }
+
+vmj_fiche_metier_68:
+   path:     /metier/68
+   defaults: { _controller: VmjBundle:Redirection:redirect68 }
+
+vmj_metier_69:
+   path:     /metier/69
+   defaults: { _controller: VmjBundle:Redirection:redirect69 }
+
+vmj_fiche_metier_69:
+   path:     /metier/69
+   defaults: { _controller: VmjBundle:Redirection:redirect69 }
+
+vmj_metier_71:
+   path:     /metier/71
+   defaults: { _controller: VmjBundle:Redirection:redirect71 }
+
+vmj_fiche_metier_71:
+   path:     /metier/71
+   defaults: { _controller: VmjBundle:Redirection:redirect71 }
+
+vmj_metier_73:
+   path:     /metier/73
+   defaults: { _controller: VmjBundle:Redirection:redirect73 }
+
+vmj_fiche_metier_73:
+   path:     /metier/73
+   defaults: { _controller: VmjBundle:Redirection:redirect73 }
+
+vmj_fiche_metier_24:
+   path:     /metier/24
+   defaults: { _controller: VmjBundle:Redirection:redirect24 }
+
+vmj_metier_74:
+    path:     /metier/74
+    defaults: { _controller: VmjBundle:Redirection:redirect74 }
+
+vmj_fiche_metier_74:
+    path:     /metier/74
+    defaults: { _controller: VmjBundle:Redirection:redirect74 }
+
+vmj_metier_75:
+    path:     /metier/75
+    defaults: { _controller: VmjBundle:Redirection:redirect75 }
+
+vmj_fiche_metier_75:
+    path:     /metier/75
+    defaults: { _controller: VmjBundle:Redirection:redirect75 }
+
+vmj_metier_76:
+    path:     /metier/76
+    defaults: { _controller: VmjBundle:Redirection:redirect76 }
+
+vmj_fiche_metier_76:
+    path:     /metier/76
+    defaults: { _controller: VmjBundle:Redirection:redirect76 }
+
+vmj_metier_77:
+    path:     /metier/77
+    defaults: { _controller: VmjBundle:Redirection:redirect77 }
+
+vmj_fiche_metier_77:
+    path:     /metier/77
+    defaults: { _controller: VmjBundle:Redirection:redirect77 }
+
+vmj_metier_78:
+    path:     /metier/78
+    defaults: { _controller: VmjBundle:Redirection:redirect78 }
+
+vmj_fiche_metier_78:
+    path:     /metier/78
+    defaults: { _controller: VmjBundle:Redirection:redirect78 }
+
+vmj_metier_79:
+    path:     /metier/79
+    defaults: { _controller: VmjBundle:Redirection:redirect79 }
+
+vmj_fiche_metier_79:
+    path:     /metier/79
+    defaults: { _controller: VmjBundle:Redirection:redirect79 }
+
+vmj_metier_80:
+    path:     /metier/80
+    defaults: { _controller: VmjBundle:Redirection:redirect80 }
+
+vmj_fiche_metier_80:
+    path:     /metier/80
+    defaults: { _controller: VmjBundle:Redirection:redirect80 }
+
+vmj_metier_81:
+    path:     /metier/81
+    defaults: { _controller: VmjBundle:Redirection:redirect81 }
+
+vmj_fiche_metier_81:
+    path:     /metier/81
+    defaults: { _controller: VmjBundle:Redirection:redirect81 }
+
+vmj_metier_82:
+    path:     /metier/82
+    defaults: { _controller: VmjBundle:Redirection:redirect82 }
+
+vmj_fiche_metier_82:
+    path:     /metier/82
+    defaults: { _controller: VmjBundle:Redirection:redirect82 }
+
+vmj_metier_83:
+    path:     /metier/83
+    defaults: { _controller: VmjBundle:Redirection:redirect83 }
+
+vmj_fiche_metier_83:
+    path:     /metier/83
+    defaults: { _controller: VmjBundle:Redirection:redirect83 }
+
+vmj_metier_85:
+    path:     /metier/85
+    defaults: { _controller: VmjBundle:Redirection:redirect85 }
+
+vmj_fiche_metier_85:
+    path:     /metier/85
+    defaults: { _controller: VmjBundle:Redirection:redirect85 }
+
+vmj_metier_86:
+    path:     /metier/86
+    defaults: { _controller: VmjBundle:Redirection:redirect86 }
+
+vmj_fiche_metier_86:
+    path:     /metier/86
+    defaults: { _controller: VmjBundle:Redirection:redirect86 }
+
+vmj_metier_87:
+    path:     /metier/87
+    defaults: { _controller: VmjBundle:Redirection:redirect87 }
+
+vmj_fiche_metier_87:
+    path:     /metier/87
+    defaults: { _controller: VmjBundle:Redirection:redirect87 }
+
+vmj_metier_88:
+    path:     /metier/88
+    defaults: { _controller: VmjBundle:Redirection:redirect88 }
+
+vmj_fiche_metier_88:
+    path:     /metier/88
+    defaults: { _controller: VmjBundle:Redirection:redirect88 }
+
+vmj_metier_89:
+    path:     /metier/89
+    defaults: { _controller: VmjBundle:Redirection:redirect89 }
+
+vmj_fiche_metier_89:
+    path:     /metier/89
+    defaults: { _controller: VmjBundle:Redirection:redirect89 }
+
+vmj_metier_90:
+    path:     /metier/90
+    defaults: { _controller: VmjBundle:Redirection:redirect90 }
+
+vmj_fiche_metier_90:
+    path:     /metier/90
+    defaults: { _controller: VmjBundle:Redirection:redirect90 }
+
+vmj_metier_93:
+    path:     /metier/93
+    defaults: { _controller: VmjBundle:Redirection:redirect93 }
+
+vmj_fiche_metier_93:
+    path:     /metier/93
+    defaults: { _controller: VmjBundle:Redirection:redirect93 }
+
+vmj_metier_94:
+    path:     /metier/94
+    defaults: { _controller: VmjBundle:Redirection:redirect94 }
+
+vmj_fiche_metier_94:
+    path:     /metier/94
+    defaults: { _controller: VmjBundle:Redirection:redirect94 }
+
+vmj_metier_95:
+    path:     /metier/95
+    defaults: { _controller: VmjBundle:Redirection:redirect95 }
+
+vmj_fiche_metier_95:
+    path:     /metier/95
+    defaults: { _controller: VmjBundle:Redirection:redirect95 }
+
+vmj_metier_96:
+    path:     /metier/96
+    defaults: { _controller: VmjBundle:Redirection:redirect96 }
+
+vmj_fiche_metier_96:
+    path:     /metier/96
+    defaults: { _controller: VmjBundle:Redirection:redirect96 }
+
+vmj_metier_97:
+    path:     /metier/97
+    defaults: { _controller: VmjBundle:Redirection:redirect97 }
+
+vmj_fiche_metier_97:
+    path:     /metier/97
+    defaults: { _controller: VmjBundle:Redirection:redirect97 }
+
+vmj_metier_98:
+    path:     /metier/98
+    defaults: { _controller: VmjBundle:Redirection:redirect98 }
+
+vmj_fiche_metier_98:
+    path:     /metier/98
+    defaults: { _controller: VmjBundle:Redirection:redirect98 }
+
+vmj_metier_99:
+    path:     /metier/99
+    defaults: { _controller: VmjBundle:Redirection:redirect99 }
+
+vmj_fiche_metier_99:
+    path:     /metier/99
+    defaults: { _controller: VmjBundle:Redirection:redirect99 }
+
+vmj_metier_100:
+   path:     /metier/100
+   defaults: { _controller: VmjBundle:Redirection:redirect100 }
+
+vmj_fiche_metier_100:
+   path:     /metier/100
+   defaults: { _controller: VmjBundle:Redirection:redirect100 }
+
+vmj_metier_101:
+   path:     /metier/101
+   defaults: { _controller: VmjBundle:Redirection:redirect101 }
+
+vmj_fiche_metier_101:
+   path:     /metier/101
+   defaults: { _controller: VmjBundle:Redirection:redirect101 }
+
+vmj_metier_102:
+   path:     /metier/102
+   defaults: { _controller: VmjBundle:Redirection:redirect102 }
+
+vmj_fiche_metier_102:
+   path:     /metier/102
+   defaults: { _controller: VmjBundle:Redirection:redirect102 }
+
+vmj_metier_103:
+   path:     /metier/103
+   defaults: { _controller: VmjBundle:Redirection:redirect103 }
+
+vmj_fiche_metier_103:
+   path:     /metier/103
+   defaults: { _controller: VmjBundle:Redirection:redirect103 }
+
+
+# Autres URL
+
+vmj_metier_1_1:
+    path:     /metier/coach-fitness
+    defaults: { _controller: VmjBundle:Redirection:redirect1bis }
+
+vmj_fiche_metier_1_1:
+    path:     /metier/coach-fitness
+    defaults: { _controller: VmjBundle:Redirection:redirect1bis }
+
+vmj_metier_2_1:
+    path:     /metier/creative-technologist-et-chef-operateur-video
+    defaults: { _controller: VmjBundle:Redirection:redirect2bis }
+
+vmj_fiche_metier_2_1:
+    path:     /metier/creative-technologist-et-chef-operateur-video
+    defaults: { _controller: VmjBundle:Redirection:redirect2bis }
+
+vmj_metier_3_1:
+    path:     /metier/datascientist-co-founder-start-up-e-sport
+    defaults: { _controller: VmjBundle:Redirection:redirect3bis }
+
+vmj_fiche_metier_3_1:
+    path:     /metier/datascientist-co-founder-start-up-e-sport
+    defaults: { _controller: VmjBundle:Redirection:redirect3bis }
+
+vmj_metier_4_1:
+    path:     /cgu
+    defaults: { _controller: VmjBundle:Redirection:redirect4bis }
+
+vmj_fiche_metier_4_1:
+    path:     /cgu
+    defaults: { _controller: VmjBundle:Redirection:redirect4bis }
+
+vmj_metier_5_1:
+    path:     /metier/11/libraire
+    defaults: { _controller: VmjBundle:Redirection:redirect5bis }
+
+vmj_fiche_metier_5_1:
+    path:     /metier/11/libraire
+    defaults: { _controller: VmjBundle:Redirection:redirect5bis }
+
+vmj_metier_6_1:
+    path:     /metier/17/traiteur-boulogne
+    defaults: { _controller: VmjBundle:Redirection:redirect6bis }
+
+vmj_fiche_metier_6_1:
+    path:     /metier/17/traiteur-boulogne
+    defaults: { _controller: VmjBundle:Redirection:redirect6bis }
+
+vmj_metier_7_1:
+    path:     /metier/18/commerante-sur-les-marchs
+    defaults: { _controller: VmjBundle:Redirection:redirect7bis }
+
+vmj_fiche_metier_7_1:
+    path:     /metier/18/commerante-sur-les-marchs
+    defaults: { _controller: VmjBundle:Redirection:redirect7bis }
+
+vmj_metier_8_1:
+    path:     /metier/19/foodtrucker
+    defaults: { _controller: VmjBundle:Redirection:redirect8bis }
+
+vmj_fiche_metier_8_1:
+    path:     /metier/19/foodtrucker
+    defaults: { _controller: VmjBundle:Redirection:redirect8bis }
+
+vmj_metier_9_1:
+    path:     /metier/24/boucher-
+    defaults: { _controller: VmjBundle:Redirection:redirect9bis }
+
+vmj_fiche_metier_9_1:
+    path:     /metier/24/boucher-
+    defaults: { _controller: VmjBundle:Redirection:redirect9bis }
+
+vmj_metier_10_1:
+    path:     /metier/25/lectricien
+    defaults: { _controller: VmjBundle:Redirection:redirect10bis }
+
+vmj_fiche_metier_10_1:
+    path:     /metier/25/lectricien
+    defaults: { _controller: VmjBundle:Redirection:redirect10bis }
+
+vmj_metier_11_1:
+    path:     /metier/26/matre-fromager
+    defaults: { _controller: VmjBundle:Redirection:redirect11bis }
+
+vmj_fiche_metier_11_1:
+    path:     /metier/26/matre-fromager
+    defaults: { _controller: VmjBundle:Redirection:redirect11bis }
+
+vmj_metier_12_1:
+    path:     /metier/27/cratrice-de-sites-web
+    defaults: { _controller: VmjBundle:Redirection:redirect12bis }
+
+vmj_fiche_metier_12_1:
+    path:     /metier/27/cratrice-de-sites-web
+    defaults: { _controller: VmjBundle:Redirection:redirect12bis }
+
+vmj_metier_13_1:
+    path:     /metier/28/directeur-dune-association
+    defaults: { _controller: VmjBundle:Redirection:redirect13bis }
+
+vmj_fiche_metier_13_1:
+    path:     /metier/28/directeur-dune-association
+    defaults: { _controller: VmjBundle:Redirection:redirect13bis }
+
+vmj_metier_14_1:
+    path:     /metier/30/chanteur-crooner
+    defaults: { _controller: VmjBundle:Redirection:redirect14bis }
+
+vmj_fiche_metier_14_1:
+    path:     /metier/30/chanteur-crooner
+    defaults: { _controller: VmjBundle:Redirection:redirect14bis }
+
+vmj_metier_15_1:
+    path:     /metier/37/professeur-de-golf
+    defaults: { _controller: VmjBundle:Redirection:redirect15bis }
+
+vmj_fiche_metier_15_1:
+    path:     /metier/37/professeur-de-golf
+    defaults: { _controller: VmjBundle:Redirection:redirect15bis }
+
+vmj_metier_16_1:
+    path:     /metier/4/primeur
+    defaults: { _controller: VmjBundle:Redirection:redirect16bis }
+
+vmj_fiche_metier_16_1:
+    path:     /metier/4/primeur
+    defaults: { _controller: VmjBundle:Redirection:redirect16bis }
+
+vmj_metier_17_1:
+    path:     /metier/43/forgeron-coutelier-
+    defaults: { _controller: VmjBundle:Redirection:redirect17bis }
+
+vmj_fiche_metier_17_1:
+    path:     /metier/43/forgeron-coutelier-
+    defaults: { _controller: VmjBundle:Redirection:redirect17bis }
+
+vmj_metier_18_1:
+    path:     /metier/47/htel-restaurant-
+    defaults: { _controller: VmjBundle:Redirection:redirect18bis }
+
+vmj_fiche_metier_18_1:
+    path:     /metier/47/htel-restaurant-
+    defaults: { _controller: VmjBundle:Redirection:redirect18bis }
+
+vmj_metier_19_1:
+    path:     /metier/5/concepteur-graphique
+    defaults: { _controller: VmjBundle:Redirection:redirect19bis }
+
+vmj_fiche_metier_19_1:
+    path:     /metier/5/concepteur-graphique
+    defaults: { _controller: VmjBundle:Redirection:redirect19bis }
+
+vmj_metier_20_1:
+    path:     /metier/8/architecte-et-ingnieur-immobilier
+    defaults: { _controller: VmjBundle:Redirection:redirect20bis }
+
+vmj_fiche_metier_20_1:
+    path:     /metier/8/architecte-et-ingnieur-immobilier
+    defaults: { _controller: VmjBundle:Redirection:redirect20bis }
+
+vmj_metier_21_1:
+    path:     /metier/9/photographe-reportage
+    defaults: { _controller: VmjBundle:Redirection:redirect21bis }
+
+vmj_fiche_metier_21_1:
+    path:     /metier/9/photographe-reportage
+    defaults: { _controller: VmjBundle:Redirection:redirect21bis }
+
+vmj_metier_22_1:
+    path:     /metier/realisateur-et-chef-de-projet-video
+    defaults: { _controller: VmjBundle:Redirection:redirect22bis }
+
+vmj_fiche_metier_22_1:
+    path:     /metier/realisateur-et-chef-de-projet-video
+    defaults: { _controller: VmjBundle:Redirection:redirect22bis }
+
+vmj_metier_23_1:
+    path:     /metier/restauratrice-de-tableaux-1
+    defaults: { _controller: VmjBundle:Redirection:redirect23bis }
+
+vmj_fiche_metier_23_1:
+    path:     /metier/restauratrice-de-tableaux-1
+    defaults: { _controller: VmjBundle:Redirection:redirect23bis }
+
+vmj_metier_24_1:
+    path:     /particulier
+    defaults: { _controller: VmjBundle:Redirection:redirect24bis }
+
+vmj_fiche_metier_24_1:
+    path:     /particulier
+    defaults: { _controller: VmjBundle:Redirection:redirect24bis }
+
+vmj_metier_25_1:
+    path:     /philosophie
+    defaults: { _controller: VmjBundle:Redirection:redirect25bis }
+
+vmj_fiche_metier_25_1:
+    path:     /philosophie
+    defaults: { _controller: VmjBundle:Redirection:redirect25bis }
+
+vmj_metier_26_1:
+    path:     /presse
+    defaults: { _controller: VmjBundle:Redirection:redirect26bis }
+
+vmj_fiche_metier_26_1:
+    path:     /presse
+    defaults: { _controller: VmjBundle:Redirection:redirect26bis }
+
+vmj_metier_27_1:
+    path:     /professionnel/new
+    defaults: { _controller: VmjBundle:Redirection:redirect27bis }
+
+vmj_fiche_metier_27_1:
+    path:     /professionnel/new
+    defaults: { _controller: VmjBundle:Redirection:redirect27bis }
+
+vmj_metier_27_2:
+    path:     professionnel/augmentez-vos-revenus
+    defaults: { _controller: VmjBundle:Redirection:redirect27bis }
+
+vmj_fiche_metier_27_2:
+    path:     professionnel/augmentez-vos-revenus
+    defaults: { _controller: VmjBundle:Redirection:redirect27bis }
+
+vmj_metier_27_3:
+    path:     /professionnel
+    defaults: { _controller: VmjBundle:Redirection:redirect27bis }
+
+vmj_fiche_metier_27_3:
+    path:     /professionnel
+    defaults: { _controller: VmjBundle:Redirection:redirect27bis }
+
+# Redirections HP
+
+vmj_metier_0_1:
+    path:     /metier/cto-cofounder
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_1:
+    path:     /metier/cto-cofounder
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_2:
+    path:     /metier/docteur-veterinaire-cofondateur-de-start-up-service
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_2:
+    path:     /metier/docteur-veterinaire-cofondateur-de-start-up-service
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_3:
+    path:     /metier/fondateur-ceo-de-start-up-dans-l-efficacite-energetique
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_3:
+    path:     /metier/fondateur-ceo-de-start-up-dans-l-efficacite-energetique
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_4:
+    path:     /metier/fondateur-ceo-de-startup-dans-l-efficacite-energetique
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_5:
+    path:     /metier/fondateur-ceo-de-startup-dans-l-efficacite-energetique
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_6:
+    path:     /metier/fondateur-et-gerant-de-start-up
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_6:
+    path:     /metier/fondateur-et-gerant-de-start-up
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_7:
+    path:     /metier/fondatrice-d-une-start-up-emploi
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_7:
+    path:     /metier/fondatrice-d-une-start-up-emploi
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_8:
+    path:     /metier/gersdomicile.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_8:
+    path:     /metier/gersdomicile.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_9:
+    path:     /metier/gestionnaire-immobilier
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_9:
+    path:     /metier/gestionnaire-immobilier
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_10:
+    path:     /metier/lepiondelisle.fr
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_10:
+    path:     /metier/lepiondelisle.fr
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_11:
+    path:     /metier/reservation/11?week=
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_11:
+    path:     /metier/reservation/11?week=
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_12:
+    path:     /metier/reservation/20?week=2017-W18
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_12:
+    path:     /metier/reservation/20?week=2017-W18
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_13:
+    path:     /metier/reservation/20?week=2017-W30
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_13:
+    path:     /metier/reservation/20?week=2017-W30
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_14:
+    path:     /metier/reservation/23?week=
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_14:
+    path:     /metier/reservation/23?week=
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_15:
+    path:     /metier/reservation/24?week=
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_15:
+    path:     /metier/reservation/24?week=
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_16:
+    path:     /metier/reservation/31?week=2016-W45
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_16:
+    path:     /metier/reservation/31?week=2016-W45
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_17:
+    path:     /metier/reservation/40?week=
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_17:
+    path:     /metier/reservation/40?week=
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_18:
+    path:     /metier/reservation/6?week=2016-W42
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_18:
+    path:     /metier/reservation/6?week=2016-W42
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_19:
+    path:     /metier/reservation/6?week=2017-W35
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_19:
+    path:     /metier/reservation/6?week=2017-W35
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_20:
+    path:     /metier/reservation/7?week=
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_20:
+    path:     /metier/reservation/7?week=
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_21:
+    path:     /metier/taysonvodao.fr
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_21:
+    path:     /metier/taysonvodao.fr
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_22:
+    path:     /metier/www.auditconcept.fr
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_22:
+    path:     /metier/www.auditconcept.fr
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_23:
+    path:     /metier/www.bahalors.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_23:
+    path:     /metier/www.bahalors.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_24:
+    path:     /metier/www.bellaspa.fr
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_24:
+    path:     /metier/www.bellaspa.fr
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_25:
+    path:     /metier/www.christophe-gautrand.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_26:
+    path:     /metier/www.christophe-gautrand.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_27:
+    path:     /metier/www.crooner.eu
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_27:
+    path:     /metier/www.crooner.eu
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_28:
+    path:     /metier/www.instantzen.fr
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_28:
+    path:     /metier/www.instantzen.fr
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+
+vmj_metier_0_29:
+    path:     /metier/www.kaosconsulting.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_29:
+    path:     /metier/www.kaosconsulting.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+
+vmj_metier_0_30:
+    path:     /metier/www.lolakhalfa.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_30:
+    path:     /metier/www.lolakhalfa.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+
+vmj_metier_0_31:
+    path:     /metier/www.mariechristinesabinen.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_31:
+    path:     /metier/www.mariechristinesabinen.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+
+vmj_metier_0_32:
+    path:     /metier/www.misterfly.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_32:
+    path:     /metier/www.misterfly.com
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+
+vmj_metier_0_33:
+    path:     /metier/www.plethore.fr
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_33:
+    path:     /metier/www.plethore.fr
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_34:
+    path:     /list
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_34:
+    path:     /list
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_35:
+    path:     /member/forgot-password
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_35:
+    path:     /member/forgot-password
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_36:
+    path:     /metier/14/restaurateur
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_36:
+    path:     /metier/14/restaurateur
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_37:
+    path:     /metier/2/avocat-droit-des-affaires
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_37:
+    path:     /metier/2/avocat-droit-des-affaires
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_38:
+    path:     /metier/22/fleuriste
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_38:
+    path:     /metier/22/fleuriste
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_39:
+    path:     /metier/31/directeur-dagence-de-communication
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_39:
+    path:     /metier/31/directeur-dagence-de-communication
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_40:
+    path:     /metier/42/htelier
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_40:
+    path:     /metier/42/htelier
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_41:
+    path:     /metier/6/entrepreneur-e-commerce
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_41:
+    path:     /metier/6/entrepreneur-e-commerce
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_metier_0_42:
+    path:     /metier/92
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+vmj_fiche_metier_0_42:
+    path:     /metier/92
+    defaults: { _controller: VmjBundle:Redirection:redirect0 }
+
+# Fin redirections 301
+
+vmj_homepage:
+    path:     /
+    defaults: { _controller: VmjBundle:Default:index }
+
+vmj_particuliers:
+    path:     /particuliers
+    defaults: { _controller: VmjBundle:Default:particuliers }
+    
+pages_display:
+    path:     /infos/{slug}
+    defaults: { _controller: "VmjBundle:Default:displayPage" }
+    
+vmj_professionnels:
+    path:     /professionnels
+    defaults: { _controller: VmjBundle:Default:professionnels }
+    
+vmj_metiers:
+    path:     /metiers
+    defaults: { _controller: VmjBundle:Default:metiers }
+    
+vmj_metier:
+    path:     /metier/{slug}
+    defaults: { _controller: VmjBundle:Default:metier }
+
+vmj_fiche_metier:
+    path:     /metier/{slug}
+    defaults: { _controller: VmjBundle:Default:ficheMetier }
+    
+findJob:
+    path:     /resultats-recherche/{texte}
+    defaults: { _controller: VmjBundle:Default:searchResult }
+    
+vmj_immersion:
+    path:     /immersion/{id}
+    defaults: { _controller: VmjBundle:Default:immersion }
+    
+vmj_panier:
+    path:     /panier
+    defaults: { _controller: VmjBundle:Default:panier }
+    
+vmj_retour_paiement:
+    path:     /retour-paiement
+    defaults: { _controller: VmjBundle:Default:retourPaiement }
+
+vmj_reservation:
+    path:     /reservation
+    defaults: { _controller: VmjBundle:Default:reservation }
+
+vmj_motivation:
+    path:     /motivation/{id}
+    defaults: { _controller: VmjBundle:Default:motivation }
+    
+vmj_media:
+    resource: "@VmjBundle/Resources/config/routing/media.yml"
+    prefix:   /media
+
+vmj_espace_admin:
+    resource: "@VmjBundle/Resources/config/routing/admin.yml"
+    prefix:   /admin
+
+vmj_espace_particuliers:
+    resource: "@VmjBundle/Resources/config/routing/particuliers.yml"
+    prefix:   /espace-particuliers
+
+vmj_espace_professionnels:
+    resource: "@VmjBundle/Resources/config/routing/professionnels.yml"
+    prefix:   /espace-professionnels
+
+fos_user_registration_register:
+    path:   /register
+    defaults: { _controller: FOSUserBundle:Registration:register }
+    
+vmj_conversations:
+        resource: "@VmjBundle/Resources/config/routing/conversations.yml"
+        prefix:   /conversations
+        
+vmj_messages:
+        resource: "@VmjBundle/Resources/config/routing/messages.yml"
+        prefix:   /messages
+        
+vmj_pages:
+        resource: "@VmjBundle/Resources/config/routing/pages.yml"
+        prefix:   /pages
+        
+vmj_temoignages:
+        resource: "@VmjBundle/Resources/config/routing/temoignages.yml"
+        prefix:   /temoignages
+        
+vmj_show_profile:
+    path:     /voir-profil/{id}
+    defaults: { _controller: "VmjBundle:Professionnels:afficherPro" }
+
+vmj_search:
+    path:   /search
+    defaults: { _controller: VmjBundle:Default:search }
+    
+vmj_contact:
+    path:   /contact
+    defaults: { _controller: VmjBundle:Default:contact }
+    
+vmj_newscontact:
+    resource: "@VmjBundle/Resources/config/routing/newscontact.yml"
+    prefix:   /newscontact
+
+vmj_rappelconfirm:
+    path: /rappel-confirmation
+    defaults: { _controller: VmjBundle:Default:rappel }
+
+vmj_newsletterconfirm:
+    path: /newsletter-confirmation
+    defaults: { _controller: VmjBundle:Default:newsletterconfirmation }
+
+vmj_contactconfirm:
+    path: /contact-confirmation
+    defaults: { _controller: VmjBundle:Default:contactconfirmation }

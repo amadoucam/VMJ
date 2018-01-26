@@ -1,0 +1,62 @@
+<ul class="app-menu">
+    <li>
+        <a href="{{ path('dashboard_pro') }}">
+            <i class="menu-icon zmdi zmdi-settings zmdi-hc-lg"></i>
+            <span class="menu-text">Mon espace pro</span>
+        </a>
+    </li>
+    <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-inbox zmdi-hc-lg"></i>
+            <span class="menu-text">Ma messagerie</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+        <ul class="submenu">
+            <li>
+                <a href="{{path('messages_inbox')}}">
+                    <span class="menu-text">Boite de reception</span>
+                    {% if compteNonLus is defined and compteNonLus != 0 %}<span class="label label-primary menu-label">{{compteNonLus}}</span>{% endif %}
+                </a>
+            </li>
+            <li><a href="{{path('messages_inbox')}}"><span class="menu-text">Messages envoyés</span></a></li>
+            <li><a href="{{path('messages_compose')}}"><span class="menu-text">Nouveau Message</span></a></li>
+        </ul>
+    </li>
+    <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+            <span class="menu-text">Mes immersions</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="{{path('dashboard_pro_immersion_create')}}"><span class="menu-text">Créer une immersion</span></a></li>
+            <li><a href="{{path('dashboard_pro_immersions')}}"><span class="menu-text">Liste des immersions</span></a></li>
+        </ul>
+    </li>
+
+    {#<li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+            <span class="menu-text">Mes commandes</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="{{path('dashboard_pro_commandes_all')}}"><span class="menu-text">Liste des commandes</span></a></li>
+        </ul>
+    </li>#}
+
+    {#<li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+            <span class="menu-text">Mes métiers</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="{{path('pro_metier_new')}}"><span class="menu-text">Creer un metier</span></a></li>
+            <li><a href="{{path('dashboard_pro_metiers')}}"><span class="menu-text">Mes metiers</span></a></li>
+        </ul>
+    </li>#}
+
+
+
+</ul><!-- .app-menu -->

@@ -1,0 +1,56 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>     
+{% endblock stylesheets %}
+
+{% block body %}
+    {% set type_user = {'1': 'Particulier', '2': 'Professionel'} %}
+    <section>
+        <h1>Recherche de profiles</h1>
+        <form action="{{ path('admin_users_search') }}" method="POST">
+            <input type="search" name="search" class="form-control" placeholder="Recherche libre"/>
+        </form>
+    </section>
+    <section>
+        <h2>Résultats de la recherche</h2>
+        <table id="list_users">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Date de naissace</th>
+                    <th>Profession</th>
+                    <th>Ville</th>
+                    <th>Type</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if users %}
+                    {% for user in users %}
+                    <tr>
+                        <td>{{ user.lastname }}</td>
+                        <td>{{ user.firstname }}</td>
+                        <td>{{ user.birthday | date('d-m-Y') }}</td>
+                        <td>{{ user.profession }}</td>
+                        <td>{{ user.town }}</td>
+                        <td>{{ type_user[user.type] }}</td>
+                        <td><a href="{{ path('admin_users_edit', { 'id': user.id }) }}"><button class="btn btn-success" value="Modifier">Modifier</button></a></td>
+                    </tr>
+                    {% endfor %}
+                {% endif %}
+            </tbody>
+        </table>
+    </section>
+
+{% endblock body %}
+
+{% block javascripts %}
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#list_users').DataTable({'language': french_datatable });
+        });
+    </script>
+{% endblock javascripts %}

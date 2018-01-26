@@ -1,0 +1,71 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block titrepage %} Mes Immersions {% endblock titrepage %}
+{% block body %}
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Metier</th>
+                <th>Professionnel</th>
+                <th>Debut</th>
+                <th>Fin</th>
+                <th>Prix</th>
+                <th>Témoignage/Commentaire</th>
+                <th>Facture</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% if mesCommandes|length > 0%}
+                {% for commande in mesCommandes %}
+                    {% set immersion = commande.immersion %}
+                    <tr>
+                        <td>
+                            {{immersion.title}}
+                        </td>
+                        <td>
+                            {{ immersion.professionnel.firstname }} {{ immersion.professionnel.lastname }}
+                        </td>
+                        <td>
+                            {{commande.start | date('d-m-Y')}}
+                        </td>
+                        <td>
+                            {{ commande.end | date('d-m-Y') }}
+                        </td>
+                        <td>
+                            {{ immersion.weekprice }} €
+                        </td>
+
+                        <td>
+                            {% if immersion.temoignages|length > 0%}
+                                {% set immersionTemoignages = immersion.temoignages %}
+                                {% for temoignage in immersionTemoignages %}
+                                    {% if temoignage.redacteur.id == app.user.userProfile.id %}
+                                        <a href="{{ path('temoignages_show', {'id' : temoignage.id})}}">Voir mon commentaire</a>
+                                    {% endif %}
+                                {% endfor %}
+                            {% else %}
+                                <form method="POST" action="{{path('temoignages_new')}}">
+                                    <input type="hidden" name="immersion" value="{{immersion.id}}"/>
+                                    <button class="btn btn-primary" type="submit">Laisser un commentaire</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a href="{{ path('particuliers_facture', {'id' : commande.id})}}">Voir ma facture</a>
+                        </td>
+
+
+
+                    <tr>
+                    {% endfor %}
+                    {% else %}
+                    <tr>
+                        <td clospan="5">Vous n'avez pas encore soucrit à une immersion</td>
+                    </tr>
+                {% endif %}
+
+        </tbody>
+    </table>
+
+
+{% endblock body %}

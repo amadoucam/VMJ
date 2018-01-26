@@ -1,0 +1,76 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block titrepage %} Mes metiers {% endblock titrepage %}
+{% block body %}
+    <h1>Mes métiers</h1>
+    {% set role_user = app.user.roles[0] %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Professionnel</th>
+                    {# <th>Businessnickname</th>
+                     <th>Siret</th>
+                     <th>Type_tva</th>
+                     <th>Insurancenumber</th>
+                     <th>Insurancename</th>
+                     <th>Businessdescription</th>
+                     <th>Website</th>
+                     <th>Facebooklink</th>
+                     <th>Linkedinlink</th>
+                     <th>Rib</th>
+                     <th>Averagedailyrate</th>#}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for metier in metiers %}
+                <tr>
+
+                    <td>{{ metier.name }}</td>
+                    <td>{% if metier.professionnel is not null %}{{ metier.professionnel.firstname }} {{ metier.professionnel.lastname }}{% endif %}</td>
+                    {# <td>{{ metier.businessNickname }}</td>
+                     <td>{{ metier.siret }}</td>
+                     <td>{{ metier.typetva }}</td>
+                     <td>{{ metier.insuranceNumber }}</td>
+                     <td>{{ metier.insuranceName }}</td>
+                     <td>{{ metier.businessDescription }}</td>
+                     <td>{{ metier.website }}</td>
+                     <td>{{ metier.facebookLink }}</td>
+                     <td>{{ metier.linkedinLink }}</td>
+                     <td>{{ metier.rib }}</td>
+                     <td>{{ metier.averageDailyRate }}</td>#}
+                    <td>
+                        <ul>
+                            {% if role_user == 'ROLE_PRO' %}
+                                <li>
+                                    {% if role_user == 'ROLE_PRO' %}
+                                        <a href="{{ path('dashboard_pro_metier', { 'id': metier.id }) }}"><i class="fa fa-eye"></i></a>
+                                        {% else %}
+                                        <a href="{{ path('admin_metier_show', { 'id': metier.id }) }}"><i class="fa fa-eye"></i></a>
+                                        {% endif %}
+
+                                </li>
+                                <li>
+                                    <a href="{{ path('dashboard_pro_edit_metier', { 'id': metier.id }) }}">Modifier</a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a href="{{ path('admin_metier_show', { 'id': metier.id }) }}"><i class="fa fa-eye"></i></a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('metier_edit', { 'id': metier.id }) }}">Modifier</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('pro_metier_new') }}">Creer nouveau metier</a>
+        </li>
+    </ul>
+{% endblock %}

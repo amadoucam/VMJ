@@ -1,0 +1,202 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prenez contact avec l’équipe de Viemonjob{% endblock %}
+{% block description %}Contacter l'équipe de Viemonjob, poser une question ou demander que l'on vous rappelle, grâce à un formulaire simple{% endblock %}
+{% block keywords %}Viemonjob, VMJ, contact, contacter, équipe, particulier, professionnel, reconversion professionnelle{% endblock %}
+
+{% block head %}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+{% endblock %}
+{% block body %}
+    <div id="wrap">
+
+        {% block header %}
+            {{ parent() }}
+        {% endblock header %}
+
+        <section class="  ">
+            <div class="row headerpageapropos  hidden-xs-down  "></div>
+        </section>
+                 
+        <div class="row fondfafafa">
+            {{ form_start(newsletterForm, {'attr': {'class': 'well form-horizontal formulaire-border', 'id': 'contact_form'}}) }}
+                <fieldset>
+
+                    <!-- Form Name -->
+                    <legend class="text-center"> <h1 class="fw100 rose fs50 pt30">Contactez-nous</h1><br>
+                    Tél: 06 89 95 26 83
+                    <br>
+                    Email: contact@viemonjob.com</legend>
+
+                    <!-- Text input-->
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label border-label-contact">Prénom</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input  name="first_name" placeholder="Prénom" class="form-control"  type="text" required/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" >Nom</label> 
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input name="last_name" placeholder="Nom de famille" class="form-control"  type="text" required/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">E-Mail</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                {{ form_widget(newsletterForm.email, {'attr': {'class': 'form-control'}}) }}
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Text input-->
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Numéro de téléphone</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                                <input name="phone" placeholder="0601020304" class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Adresse</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input name="address" placeholder="Adresse" class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <!-- Text input
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Ville</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input name="city" placeholder="Ville" class="form-control"  type="text">
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <!-- Text input
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Code postal</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                                <input name="zip" placeholder="Code postal" class="form-control"  type="text">
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <!-- Text input
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Votre site internet</label>  
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                                <input name="website" placeholder="www..." class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>-->
+
+                    <!-- Text area -->
+
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Votre message</label>
+                        <div class="col-md-4 inputGroupContainer">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
+                                <textarea class="form-control" name="comment" placeholder="Votre message" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Success message -->
+                    <div class="alert alert-success" role="alert" id="success_message">Merci de votre message <i class="glyphicon glyphicon-thumbs-up"></i> Nous vous répondrons aussi vite que possible. </div>
+
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-5">
+                            <div class="g-recaptcha" data-sitekey="6Le7LBQUAAAAABBYQhVfVD3wDMHK8mQC73xqNvyU"></div>
+                        </div>
+                    </div>
+
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label"></label>
+                        <div class="col-md-4">
+                            <input type="submit" name="submit" value="Envoyer" class="bouton-contact-page-contact btn btn-info text-center">
+                        </div>
+                    </div>
+
+                </fieldset>
+            {{ form_end(newsletterForm) }}
+        </div>
+
+
+        {% block temoignages %}
+            {{ parent() }}
+        {% endblock temoignages %} 
+
+        {% block metiers %}
+            {{ parent() }}
+        {% endblock metiers %}
+
+        {% block newsletters %}
+            {{ parent() }}
+        {% endblock newsletters %}
+
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function checkRecaptcha() {
+            res = $('#g-recaptcha-response').val();
+
+            if (res == "" || res == undefined || res.length == 0)
+                return false;
+            else
+                return true;
+        }
+
+        //...
+
+        $('#contact_form').submit(function(e) {
+
+            if(!checkRecaptcha()) {
+                alert("Es-tu un robot ?");
+                return false;
+            }
+            //...
+        });
+    </script>
+{% endblock %}

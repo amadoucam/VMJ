@@ -1,0 +1,24 @@
+temoignages_index:
+    path:     /
+    defaults: { _controller: "VmjBundle:Temoignages:index" }
+    methods:  GET
+
+temoignages_show:
+    path:     /{id}/show
+    defaults: { _controller: "VmjBundle:Temoignages:show" }
+    methods:  GET
+
+temoignages_new:
+    path:     /new
+    defaults: { _controller: "VmjBundle:Temoignages:new" }
+    methods:  [GET, POST]
+
+temoignages_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VmjBundle:Temoignages:edit" }
+    methods:  [GET, POST]
+
+temoignages_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VmjBundle:Temoignages:delete" }
+    methods:  DELETE

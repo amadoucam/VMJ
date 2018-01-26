@@ -1,0 +1,175 @@
+dashboard_admin:
+    path:     /tableau-de-bord
+    defaults: { _controller: "VmjBundle:Admin:dashboard" }
+
+# Routes de l'administration de pages
+manage_pages_index:
+    path:     /liste-pages
+    defaults: { _controller: "VmjBundle:Pages:index" }
+    methods:  GET
+
+manage_pages_show:
+    path:     /page/{id}/show
+    defaults: { _controller: "VmjBundle:Pages:show" }
+    methods:  GET
+
+manage_pages_new:
+    path:     /page/new
+    defaults: { _controller: "VmjBundle:Pages:new" }
+    methods:  [GET, POST]
+
+manage_pages_edit:
+    path:     /page/{id}/edit
+    defaults: { _controller: "VmjBundle:Pages:edit" }
+    methods:  [GET, POST]
+
+manage_pages_delete:
+    path:     /page/{id}/delete
+    defaults: { _controller: "VmjBundle:Pages:delete" }
+    methods:  DELETE
+    
+#Route de l'administration des categories de metier
+admin_categoriejob_index:
+    path:     /categories-metier
+    defaults: { _controller: "VmjBundle:CategorieJob:index" }
+    methods:  GET
+
+admin_categoriejob_show:
+    path:     /categories-metier/{id}/show
+    defaults: { _controller: "VmjBundle:CategorieJob:show" }
+    methods:  GET
+
+admin_categoriejob_new:
+    path:     /categories-metier/new
+    defaults: { _controller: "VmjBundle:CategorieJob:new" }
+    methods:  [GET, POST]
+
+admin_categoriejob_edit:
+    path:     /categories-metier/{id}/edit
+    defaults: { _controller: "VmjBundle:CategorieJob:edit" }
+    methods:  [GET, POST]
+
+admin_categoriejob_delete:
+    path:     /categories-metier/{id}/delete
+    defaults: { _controller: "VmjBundle:CategorieJob:delete" }
+    methods:  DELETE
+    
+
+#Routes vers les vue d'administration de metiers
+
+admin_metier_index:
+    path:     /administrer-metier
+    defaults: { _controller: "VmjBundle:Metier:index" }
+    methods:  GET
+
+admin_metier_show:
+    path:     /show-metier/{id}
+    defaults: { _controller: "VmjBundle:Metier:adminShow" }
+    methods:  GET
+
+admin_metier_new:
+    path:     /nouveau-metier
+    defaults: { _controller: "VmjBundle:Metier:new" }
+    methods:  [GET, POST]
+
+admin_metier_edit:
+    path:     /modif-metier/{id}/edit
+    defaults: { _controller: "VmjBundle:Metier:edit" }
+    methods:  [GET, POST]
+
+admin_metier_delete:
+    path:     /supprimer-metier/{id}
+    defaults: { _controller: "VmjBundle:Metier:delete" }
+    methods:  DELETE
+
+
+#Routes vers les vues d'administration des utilisateurs
+
+admin_users_index:
+    path:     /users
+    defaults: { _controller: "VmjBundle:Admin:indexUser" }
+    methods:  GET
+    
+admin_particuliers_list:
+    path:     /list-particuliers
+    defaults: { _controller: "VmjBundle:Admin:listParticuliers" }
+    methods:  GET
+    
+admin_users_add:
+    path:     /users/add
+    defaults: { _controller: "VmjBundle:Admin:addUser" }
+    methods:  [GET, POST]
+    
+admin_users_edit:
+    path:     /users/{id}/edit
+    defaults: { _controller: "VmjBundle:Admin:editUser" }
+    methods:  [GET, POST]
+    
+admin_users_delete:
+    path:     /users/{id}/delete
+    defaults: { _controller: "VmjBundle:Admin:deleteUser" }
+    methods:  DELETE
+    
+admin_users_search:
+    path:     /users/search
+    defaults: { _controller: "VmjBundle:Admin:searchUser" }
+    methods:  [GET, POST]
+
+#Routes administration des témoignages
+admin_temoignages_index:
+    path:     /temoignages
+    defaults: { _controller: "VmjBundle:Temoignages:index" }
+    methods:  GET
+    
+admin_temoignages_nonvalide:
+    path:     /temoignages-a-valider
+    defaults: { _controller: "VmjBundle:Temoignages:nonvalide" }
+    methods:  GET
+
+admin_temoignages_show:
+    path:     /{id}/show
+    defaults: { _controller: "VmjBundle:Temoignages:show" }
+    methods:  GET
+
+admin_temoignages_new:
+    path:     /new
+    defaults: { _controller: "VmjBundle:Temoignages:new" }
+    methods:  [GET, POST]
+
+admin_temoignages_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VmjBundle:Temoignages:adminEdit" }
+    methods:  [GET, POST]
+
+admin_temoignages_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VmjBundle:Temoignages:delete" }
+    methods:  DELETE
+    
+#Routes de l'administration des immersions
+admin_immersions:
+    path:     /immersions
+    defaults: { _controller: "VmjBundle:Admin:adminImmersions" }
+    
+admin_immersion_create:
+    path:     /immersion/create
+    defaults: { _controller: "VmjBundle:Admin:createImmersion" }
+    
+dashboard_admin_immersion_edit:
+    path:     /immersion/edit/{id}
+    defaults: { _controller: "VmjBundle:Admin:editImmersion" }
+
+admin_immersion_delete:
+    path:     /immersion/delete/{id}
+    defaults: { _controller: "VmjBundle:Admin:deleteImmersion" }
+    
+#Routes de l'administration des commandes
+admin_commandes:
+    path:     /commandes-validees
+    defaults: { _controller: "VmjBundle:Admin:adminCommandes" }
+
+#Routes de l'administration presse
+admin_presse:
+    path:     /presse
+    defaults: { _controller: "VmjBundle:Admin:createPresse" }
+    

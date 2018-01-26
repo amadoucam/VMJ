@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Viemonjob : le meilleur site pour tester un métier{% endblock %}</title>
+        <meta name="description" content="{% block description %}Viemonjob : Préparer une reconversion ou tester le métier de vos rêves. Essayer un nouveau métier c’est peut-être changer de vie.{% endblock %}">
+        <meta name="keywords" content="{% block keywords %}viemonjob, essayer un métier, tester un métier, chercher une orientation, reconversion professionnelle, solution au burn-out, sortir du chômage, faire de ma passion mon métier, complément de revenus pour les entreprises,
+              particulier, vis mon job, vismonjob, vie mon job, vismavie, vis ma vie {% endblock %}">
+        <meta name="google-site-verification" content="ZMW2mlteOL8NafGg3YpOh8e9V34fBrSA1vwbALGAgA0" />
+        <meta name="google-site-verification" content="u1s4c5Y_TMAs6MuqHpAwveGip8WKmFjZz-zwv7Wxr_k" />
+        <meta name="designer" content="MetaExtensions" /> 
+        <meta name="version" content="1.0"/>
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('vmj-favicon.png') }}" />
+        <!-- Main CSS Style -->
+        <link rel="stylesheet" href="{{ asset('theme/css/styles.css') }}" type="text/css" />
+
+        <!-- Bootstrap Grid Framework -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{ asset('theme/css/font-awesome.css') }}">
+
+        <!-- Dropdown menu -->
+        <link rel="stylesheet" href="{{ asset('theme/css/slicknav.css') }}">
+
+        <!-- Select box -->
+        <link href="{{ asset('theme/css/jquery.selectbox.css') }}" type="text/css" rel="stylesheet" />
+
+        <!-- Owl Carousel Assets -->
+        <link href="//cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" rel="stylesheet">
+
+        <!-- Animate css -->
+        <link rel="stylesheet" href="{{ asset('theme/css/animate.css') }}">
+
+        <!--Preaty Photo-->
+        <link rel="stylesheet" href="{{ asset('theme/css/prettyPhoto.css') }}" type="text/css"/>
+        <link rel="stylesheet" href="{{ asset('theme/css/vmj-accueil.css') }}">
+
+        <!-- Partage -->
+        <script type='text/javascript' src='//platform-api.sharethis.com/js/sharethis.js#property=5967536b1ea3fa0012d4d944&product=inline-share-buttons' async='async'></script>
+
+        <style>
+            .carousel-control.leftvmj1 {
+                color: white;
+                top: 50% !important;
+                left: 0;
+                right: auto;
+                background-repeat: repeat-x;
+            }
+            .carousel-control.rightvmj1 {
+                color: white;
+                right: 0;
+                left: auto;
+                top: 50% !important;
+                background-repeat: repeat-x;
+            }
+        </style>
+    {% block stylesheets %}{% endblock %}
+{% block head %}{% endblock %}
+</head>
+<body>
+    {% block body %}
+
+
+        {% block header %}
+            {#    {% if app.session.flashBag.has('success') %}
+    
+                    <div class="alert alert-success">
+                        {% for msg in app.session.flashBag.get('success') %}
+                            {{ msg }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                
+                #}
+
+
+            <!-- Top bar -->
+            <header>
+
+                <nav class="header" role="navigation">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                                <!-- Your logo -->
+                                <div class="logo"><a href="{{path('vmj_homepage')}}"><img src="{{ asset('theme/img/vmj-logo.png') }}" alt="Viemonjob Logo"></a></div>
+                                <!-- and Your logo -->
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                    <span class="glyphicon glyphicon-menu-hamburger"></span>
+                                </button>
+                            </div>
+                            <!-- Collect the nav links, forms, and other content for toggling -->
+                            <div class="col-md-10 col-sm-10 col-xs-10">
+                                <div class="collapse navbar-collapse menu-container" id="bs-example-navbar-collapse-1" style="float: right;">
+                                    <ul class="nav navbar-nav" id="menu" style="text-align: center">
+                                        <li><a href="{{path('vmj_particuliers')}}">Particuliers</a></li>
+                                        <li><a href="{{path('vmj_professionnels')}}" >Professionnels</a></li>
+                                        <li><a href="{{path('vmj_metiers')}}">Métiers</a></li>
+
+                                        {% if is_granted('ROLE_PRO') and not is_granted('ROLE_ADMIN') %}
+                                            <li><a href="{{path('edition_profile_pro')}}">Mon espace pro</a></li>
+                                        {% elseif is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
+                                            <li><a href="{{path('dashboard_particuliers')}}">Mon compte</a></li>
+                                        {% elseif is_granted('ROLE_ADMIN') %}
+                                            <li><a href="{{path('dashboard_admin')}}">Administration</a></li>
+                                        {% endif %}
+
+                                        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                            <li><a href="{{ path('fos_user_security_logout')}}">Déconnexion</a></li>
+                                        {% else %}
+                                            <li><a href="{{ path('fos_user_security_login')}}">Connexion</a></li>
+                                            <li><a class="btn-insctiption" href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+                                        {% endif %}
+                                        <li><a href="{{path('page_on_parle_de_nous')}}">On parle de nous</a></li>
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+            </header> <!-- and header -->
+        {% endblock header %}
+
+        {% block temoignages %}
+            <!--caroussel -->
+            {% if temoignages is defined and temoignages %}
+                {% set compteurTemoignage = 0 %}
+                <section class="fondjaune pt50   fondslidejaune">
+
+                    <div id="text-carousel" class="carousel slide" data-ride="carousel">
+                        <!-- Wrapper for slides -->
+                        <div class="row ">
+                            <div class="col-md-offset-3 col-md-6 col-xs-offset-1 col-xs-10">
+                                <br>
+                                <br>
+                                <div class="carousel-inner txt1slid"> 
+                                    {% for temoignage in temoignages %}
+                                        {% set compteurTemoignage = compteurTemoignage + 1 %}
+                                        <div class="item {% if compteurTemoignage == 1 %}active{% endif %}">
+                                            <div class="carousel-content  ">
+                                                <div class=" ">
+                                                    <div class="row blanc" style="text-align: center">
+                                                        {% for i in 1..5 %}
+                                                            {% if i <= temoignage.note %}
+                                                                <i class="glyphicon glyphicon-star"></i>
+                                                            {% else %}
+                                                                <i class="glyphicon glyphicon-star-empty"></i>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                    </div>
+                                                    <span class=" fsitalic blanc  ">{{temoignage.temoignage}}  <br>
+                                                    </span> 
+                                                    <div class="col-sm-6">
+                                                        &#8239;
+                                                    </div> 
+                                                    <div class="col-sm-6 text-left blanc txt2slid">
+
+                                                        <span class="text-left fw400">{{temoignage.redacteur.firstname}} </span><br>
+                                                        <span class="text-left fw100">Immersion « {{temoignage.immersion.title}} »</span><br>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Controls -->
+                        <a class="leftvmj1 carousel-control" href="#text-carousel" data-slide="prev">
+                            <span class="fa fa-chevron-left"></span>
+                        </a>
+                        <a class="rightvmj1 carousel-control" href="#text-carousel" data-slide="next">
+                            <span class="fa fa-chevron-right"></span>
+                        </a>
+                    </div>
+                    <!-- and container -->
+                </section>
+            {% endif %}
+        {% endblock temoignages %}
+        {% block metiers %}
+            <!-- Découvrez les métier -->
+            <section  class="clearfix team-of-prof-bg decouvrez-metier">
+                <div class="row  ">
+                    <div class="text-center blanc">
+                        <h2 class="fs60 fw100 ">Viemonjob</h2>
+                        <p class="fs35 blanc">Maître fromager, coutelier, avocat, data scientist,<br>
+                            motion designer et bien d’autres encore...</p> <br>
+                        <a href="{{path('vmj_metiers')}}" title="decouvrez les metiers"><button class=" fs18 br30 fondrose2 blanc noborder paddingboutton fw400 fs18 ">   Découvrez toutes les immersions </button> </a>
+                    </div>
+                </div>
+            </section>
+        {% endblock metiers %}
+
+        {% block newsletters %}
+            <!-- NEWSLETTER -->
+
+            <section class="clearfix text-center">
+                {% if newsletterForm is defined %}
+                    <div class="col-md-6 newsletter ">
+                        <div class=" text-center">
+                            <h2 class="fs-h2-responsive">Newsletter</h2>
+                            <p>Toute l'actualité Viemonjob <br>
+                                et que des bonnes nouvelles&#8239;! <br> <br>
+                                {{ form_start(newsletterForm) }}
+                            <div class="col-lg-12 inputnewsletter">
+                                <div class="input-group">
+                                        {{ form_widget(newsletterForm.email) }}
+                                    <span class="input-group-btn zindex1">
+                                        <button class="btn btn-default bouton-rond-orange zindex1 pl20 pr20 fontstyleinput2 fw400" type="submit">ok</button>
+                                    </span>
+                                </div><!-- /input-group -->
+                            </div><!-- /.col-lg-6 -->
+                                {{ form_end(newsletterForm) }}
+                        </div>
+                    </div>
+                {% endif %}
+                <!-- DES QUESTIONS  -->
+                <div class="col-md-6   des-questions ">
+                    <div class="text-center grisfonce">
+                        <h2 class="fs-h2-responsive">Des questions ?</h2>
+                        <p> Nous serons ravis de répondre <br>
+                            à vos questions ou suggestions</p> <br>
+                        <span class="input-group-btn   text-center">
+                            <a href="{{path('vmj_contact')}}"><button class="btn btn-default bouton-rond-mauve pl20 pr20 fontstyleinput2 fw400" type="submit">Contactez-nous</button></a>
+                        </span>
+                    </div>
+                </div>
+
+            </section>
+        {% endblock newsletters %}
+
+        {% block footer %}
+
+            <section class="row footer-rose clearfix">
+                <div class="container">
+                    <div class="container fs20 lh1-5  ">
+                        <div class="container col-md-3 ">
+                            <table>
+                                <tr>
+                                    <th class="fw400 fs28">Plan du site</th>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('vmj_particuliers')}}">Particuliers</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('vmj_professionnels')}}">Professionnels</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('vmj_metiers')}}">Métiers</a></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="container col-md-3 ">
+                            <table>
+                                <tr>
+                                    <th class="thhauteurfooter">&#8239;</th>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('page_on_parle_de_nous')}}">On parle de nous</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('page_partenaires')}}">Partenaires</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('page_aide')}}">FAQ</a></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="container col-md-3 ">
+                            <table>
+                                <tr>
+                                    <th class="thhauteurfooter">&#8239;</th>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('page_a_propos')}}">À propos</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a alt="Blog" href="http://webzine.viemonjob.com/">Webzine</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('vmj_contact')}}">Contact</a></td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="container col-md-3 ">
+                            <table>
+                                <tr>
+                                    <th class="thhauteurfooter">&#8239;</th>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('page_cgv')}}">CGU</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="{{path('page_mentions_legales')}}">Mentions légales</a></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <br>
+
+                    <div class="container text-center padtop">
+                        <p class="reseaux-sociaux fs25 fw300">Retrouvez nous sur <br>
+                            <a target="_blank" href="https://www.facebook.com/viemonjob/"><img src="{{ asset('theme/img/facebook-Viemonjob.png')}}"  alt="Facebook logo"> </a>
+                            <a target="_blank" href="https://www.linkedin.com/company/vie-mon-job?trk=biz-companies-cym"><img src="{{ asset('theme/img/linkedin.png')}}" alt="Linkedin logo"> </a>
+                            <a target="_blank" href="https://twitter.com/viemonjob"><img src="{{ asset('theme/img/twitter.png')}}" alt="Twitter logo"> </a>
+                            <a target="_blank" href="https://www.youtube.com/channel/UC-Igq5DnWcnPxOlsG7Apylw"><img src="{{ asset('theme/img/youtube.png')}}" alt="Youtube logo"> </a>
+                            <a target="_blank" href="https://www.instagram.com/viemonjob/"><img src="{{ asset('theme/img/intagram.png')}}" alt="Instagram logo"> </a>
+                        </p>
+                    </div>
+                </div>
+
+            </section>
+            <a href="#" class="back-to-top"></a>
+        {% endblock %}
+    {% endblock %}
+
+    <!-- Modernizr -->
+
+
+    <!-- jQuery -->
+    <!-- script src="{{ asset('theme/js/jquery-1.11.1.min.js') }}"></script-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+    <!-- Bootstrap Plagins -->
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- Owl carousel -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+    <!-- Script to Activate the Carousel -->
+    <script>
+        $('.carousel').carousel({
+            interval: 5000 //changes the speed
+        })
+    </script>
+	
+    <script src="{{ asset('theme/js/isotope.pkgd.min.js') }}"></script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-73567403-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>

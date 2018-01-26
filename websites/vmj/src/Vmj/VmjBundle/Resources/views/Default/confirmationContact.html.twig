@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+{% endblock %}
+{% block body %}
+    <div id="wrap">
+
+        {% block header %}
+        {{ parent() }}
+        {% endblock header %}
+
+
+        <section class="hsh1 row homeslider  w100 col-xs-12 blanc hsh1">
+
+            <div class="blocktext1-vmj">
+                <div class="container">
+                    <div class="col-md-9">
+                        <h1 class="fs28 blanc fw100">
+                            <span class="fs60 blanc fw100">Merci de nous avoir contactés.</span> <br>
+                            L'équipe Viemonjob se fera un plaisir de vous répondre <br>dans les plus brefs délais. <br>
+                            À bientôt !
+                        </h1>
+                            <p class="reseaux-sociaux fs25 fw300">Retrouvez nous sur <br>
+                                <a target="_blank" href="https://www.facebook.com/viemonjob/"><img src="{{ asset('theme/img/facebook-Viemonjob.png')}}"  alt="Facebook logo"> </a>
+                                <a target="_blank" href="https://www.linkedin.com/company/vie-mon-job?trk=biz-companies-cym"><img src="{{ asset('theme/img/linkedin.png')}}" alt="Linkedin logo"> </a>
+                                <a target="_blank" href="https://twitter.com/viemonjob"><img src="{{ asset('theme/img/twitter.png')}}" alt="Twitter logo"> </a>
+                                <a target="_blank" href="https://www.youtube.com/channel/UC-Igq5DnWcnPxOlsG7Apylw"><img src="{{ asset('theme/img/youtube.png')}}" alt="Youtube logo"> </a>
+                                <a target="_blank" href="https://www.instagram.com/viemonjob/"><img src="{{ asset('theme/img/intagram.png')}}" alt="Instagram logo"> </a>
+                            </p>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                </div>
+                <br>
+            </div>
+        </section>
+
+        <section class="clearfix">
+            <div class="col-md-6 home-particuliers wow fw100">
+                <div class="container-particulier mt5p ml8p">
+                    <h2 class="blanc fw100 fs50">Particuliers</h2>
+                    <p class="blanc">Essayez et découvrez le métier <br>de vos rêves</p>
+
+                    <div class="text-left">
+                        <a href="{{path('vmj_particuliers')}}" title="Presentation Particuliers"> <button class="btn-accueil fondrose blanc br30 paddingboutton fw400 fs15">Je teste un métier</button> </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 home-professionnels background-gris wow fw100">
+                <div class="container-particulier mt5p ml8p">
+                    <h2 class="blanc fw100 fs50">Professionnels</h2>
+                    <p class="blanc">Faites découvrir votre métier <br>
+                        à une personne motivée pendant<br>
+                        une semaine et augmentez<br>
+                        vos revenus</p>
+                    <div class="text-left">
+                        <a href="{{path('vmj_professionnels')}}" title="Presentation Professionnels"> <button class="btn-accueil fondmauve blanc br30 paddingboutton fw400 fs15">Je fais découvrir mon métier</button> </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        {% block footer %}
+            {{ parent() }}
+        {% endblock footer %}
+
+    </div> <!-- and wrap -->
+
+{% endblock body %}
+{%block javascripts %}
+    <script type="text/javascript">
+        var revapi;
+        jQuery(document).ready(function () {
+            revapi = jQuery('.tp-banner').revolution(
+                {
+                    delay: 9999,
+                    startwidth: 1350,
+                    startheight: 588,
+                    hideThumbs: 10,
+                    fullWidth: "on",
+                    forceFullWidth: "on"
+                });
+
+        });	//ready
+    </script>
+{%endblock javascripts %}

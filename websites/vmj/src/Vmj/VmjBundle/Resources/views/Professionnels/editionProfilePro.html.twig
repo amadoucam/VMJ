@@ -1,0 +1,284 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block titrepage %} Compléter mes informations {% endblock titrepage %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
+{% endblock %}
+
+{% block body %}
+    <!-- row -->
+    <div class="row">
+        <!-- col 4 -->
+        <div class="col-md-4">
+
+        </div>
+        <!-- /col 4 -->
+        <!-- col 8 -->
+        <div class="col-md-8">
+            <!-- tile -->
+            <section class="tile transparent">
+                <div>
+                    {{ form_start(edit_form) }}
+                    <div class="row">
+                        <div class="form-group col-md-12 legend">
+                            <h4><strong>Informations personnelles</strong></h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-2">
+                            <label for="Language">Sexe</label>
+                            {{ form_widget(edit_form.sexe, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <div class="form-group col-sm-5">
+                            <label for="first-name">Prenom</label>
+                            {{  form_widget(edit_form.firstname, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group col-sm-5">
+                            <label for="last-name">Nom</label>
+                            {{  form_widget(edit_form.lastname, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-sm-4">
+                            <label for="Language">Date de naissance</label>
+                            {{ form_widget(edit_form.birthday, { 'id':'birthday','attr': {
+                        'class': 'form-control datepicker',
+                        'data-provide': 'datepicker',
+                        'data-date-format': 'dd-mm-yyyy'
+                        } }) }}
+                        </div>
+                        <div class="form-group col-sm-4">
+                            <label for="phone">Profession</label>
+                            {{ form_widget(edit_form.profession, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <label for="Language">Pays</label>
+                            {{ form_widget(edit_form.language, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+
+                            {#{{ form_widget(edit_form) }}#}
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                    </div>
+
+
+                    <div class="row">
+
+                        <div class="form-group col-sm-4">
+                            <label for="city">Adresse</label>
+                            {{  form_widget(edit_form.address, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <label for="city">Ville</label>
+                            {{  form_widget(edit_form.town, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+                        <div class="form-group col-sm-4">
+                            <label for="postalcode">Code Postal</label>
+                            {{  form_widget(edit_form.postalcode, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="row">
+
+
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-sm-6">
+                            <label for="avatar">Photo</label>
+                            <div class="input-group">
+                                <span class="input-group-btn">
+                                    <span class="btn btn-primary btn-file">
+                                        <i class="fa fa-upload"></i>
+                                    </span>
+                                </span>
+                                {{  form_widget(edit_form.photo, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                            </div>
+                            <span class="help-block">fichiers approuvés: gif, png, jpg. Taille Max 4Mb</span>
+                        </div>
+
+                        <div class="form-group col-sm-6">
+                            <label for="postalcode">Numéro de téléphone</label>
+                            {{  form_widget(edit_form.phonenumber, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                        </div>
+                    </div>
+
+ 
+
+
+                                        <div class="row">
+                                            <div class="form-group col-md-12 legend">
+                                                <h4><strong>informations professionnelles</strong></h4>
+                                            </div>
+
+                                        {#<div class="row">
+
+                                            <div class="form-group col-sm-6">
+                                                <label for="avatar">Banniere</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <span class="btn btn-primary btn-file">
+                                                            <i class="fa fa-upload"></i>
+                                                        </span>
+                                                    </span>
+                                                    {{  form_widget(edit_form.banniere, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                                <span class="help-block">Allowed files: gif, png, jpg. Max file size 1Mb</span>
+                                            </div>
+                                            <div class="form-group col-sm-6">
+                                                <label for="avatar">Image activité</label>
+                                                <div class="input-group">
+                                                    <span class="input-group-btn">
+                                                        <span class="btn btn-primary btn-file">
+                                                            <i class="fa fa-upload"></i>
+                                                        </span>
+                                                    </span>
+                                                    {{  form_widget(edit_form.imgPresentation, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                                <span class="help-block">Allowed files: gif, png, jpg. Max file size 1Mb</span>
+                                            </div>
+
+                                        </div>#}
+
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    <label for="Metier">Nom de l'entreprise</label>
+                                                    {{ form_widget(edit_form.businessName, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                                </div>
+
+                                                <div class="form-group col-sm-6">
+                                                    <label for="Site Web">Site Web</label>
+                                                    {{  form_widget(edit_form.website, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                                    <!-- <input type="text" class="form-control" id="first-name" value="John">-->
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    <label for="Description">Biographie de l’accueillant</label>
+                                                    {{ form_widget(edit_form.businessDescription, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    <label for="Siret">Siret</label>
+                                                    {{ form_widget(edit_form.siret, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label for="Categoriename">Type de TVA</label>
+                                                    {{  form_widget(edit_form.type_tva, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                                    <!-- <input type="text" class="form-control" id="first-name" value="John">-->
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    <label for="N° Assurance">N° Assurance</label>
+                                                    {{ form_widget(edit_form.insuranceNumber, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label for="Assurance">Nom de l'assurance</label>
+                                                    {{  form_widget(edit_form.insuranceName, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                                    <!-- <input type="text" class="form-control" id="first-name" value="John">-->
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    <label for="facebook">Facebook</label>
+                                                    {{ form_widget(edit_form.facebookLink, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                                </div>
+                                                <div class="form-group col-sm-6">
+                                                    <label for="linkedin">LinkedIn</label>
+                                                    {{  form_widget(edit_form.linkedinLink, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                                    <!-- <input type="text" class="form-control" id="first-name" value="John">-->
+                                                </div>
+
+                                            </div>
+
+                                            <div class="row">
+                                                <div class="form-group col-sm-6">
+                                                    <label for="Rib">Rib</label>
+                                                    {{ form_widget(edit_form.rib, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+ 
+                    <div class="row">
+
+                        <button type="submit" value="Edit" class="btn btn-success"/>Enregistrer</button>
+                        {{ form_end(edit_form) }}
+                    </div>
+
+                    <!--</form>-->
+
+
+                </div>
+            </section>
+            <!-- /tile -->
+
+
+
+        </div>
+        <!-- /col 8 -->
+
+
+
+    </div>
+    <!-- /row -->
+
+{% endblock body %}
+{% block javascripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('bundles/vmj/js/french_datepicker.js') }}"></script>
+    <script>
+        var nowTemp = new Date();
+        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
+
+        var checkin = $('#birthday').datepicker({
+            language: 'fr',
+            onRender: function(date) {
+                return date.valueOf() < now.valueOf() ? 'disabled' : '';
+            }
+        }).on('changeDate', function(ev) {
+          if (ev.date.valueOf() > checkout.date.valueOf()) {
+            var newDate = new Date(ev.date)
+            newDate.setDate(newDate.getDate() + 1);
+            checkout.setValue(newDate);
+          }
+          checkin.hide();
+          $('#date_end')[0].focus();
+        }).data('datepicker');
+        var checkout = $('#date_end').datepicker({
+            language: 'fr',
+            onRender: function(date) {
+                return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
+            }
+        }).on('changeDate', function(ev) {
+          checkout.hide();
+        }).data('datepicker');
+    </script>
+{% endblock javascripts %}
