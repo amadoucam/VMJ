@@ -230,19 +230,22 @@
                     <span class="help-block">fichiers approuvés: gif, png, jpg. Taille Max 4Mb</span>
                 </div>
             </div>
-
+            <br>
             <div class="form-group row">
-                {{ form_widget(immersionForm.actifAdmin, { 'id':'actifAdmin' })}}
-                <label for="actifPro">Valider l'immersion</label>
+                <div class="btn btn-info" style="float: right">{{ form_widget(immersionForm.actifAdmin, { 'id':'actifAdmin' })}}
+                <label for="actifPro">Valider l'immersion</label></div>
             </div>
             {{ form_end(immersionForm) }}
         </div>
+
         {% if deleteForm is defined %}
+        <br>
         <div class="row">
             {{ form_start(deleteForm) }}
             <input type="submit" class="btn btn-danger" value="Supprimer l'immersion" style="float: right" />
             {{ form_end(deleteForm) }}
         </div>
+        <br>
         {% endif %}
     </div>
 
