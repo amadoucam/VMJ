@@ -21,7 +21,7 @@
         "sensio/distribution-bundle": "~5.0",
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "~2.0",
-        "liip/imagine-bundle" : "dev-master",
+        "liip/imagine-bundle" : "^1.9",
         "gedmo/doctrine-extensions":      "2.3.*",
         "stof/doctrine-extensions-bundle": "~1.1@dev",
         "friendsofsymfony/user-bundle": "~2.0@dev",
@@ -29,7 +29,8 @@
         "webchemistry/invoice": "^1.1",
         "nette/utils": "^2.4",
         "knplabs/knp-snappy-bundle": "^1.4",
-        "twig/extensions": "^1.4"
+        "twig/extensions": "^1.4",
+        "knplabs/knp-paginator-bundle": "^2.7"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

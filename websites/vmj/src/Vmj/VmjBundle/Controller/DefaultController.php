@@ -250,8 +250,12 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
 		Votre inscription à bien été prise en compte ! <br>
 Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. </p>');
         }
-        $searchResult = $em->getRepository('VmjBundle:Immersion')->recherche($texte, '', '', '');
+        $findSearchResult = $em->getRepository('VmjBundle:Immersion')->recherche($texte, '', '', '');
         $categorieJobs = $em->getRepository('VmjBundle:CategorieJob')->findAll();
+        /* PAGINATION */
+       $searchResult = $this->get('knp_paginator')->paginate(
+            $findSearchResult, $this->get('request')->query->get('page', 1), 6);
+
         $simpleSearchform = $this->createForm('Vmj\VmjBundle\Form\SimpleSearchType', null, array(
             'action' => $this->generateUrl('vmj_homepage')
         ));
@@ -272,8 +276,17 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         ));
 
         $em = $this->getDoctrine()->getManager();
+
         $categorieJobs = $em->getRepository('VmjBundle:CategorieJob')->findAll();
-        $immersions = $em->getRepository('VmjBundle:Immersion')->valideImmersion();
+
+        $findImmersions = $em->getRepository('VmjBundle:Immersion')->valideImmersion();
+
+        /* PAGINATION */
+        /*$categorieJobs = $this->get('knp_paginator')->paginate(
+            $findCategorieJobs, $this->get('request')->query->get('page', 1), 100);*/
+
+        $immersions = $this->get('knp_paginator')->paginate(
+            $findImmersions, $this->get('request')->query->get('page', 1), 15);
 
         return $this->render('VmjBundle:Default:metiers.html.twig', array(
             'categorieJobs' => $categorieJobs,
