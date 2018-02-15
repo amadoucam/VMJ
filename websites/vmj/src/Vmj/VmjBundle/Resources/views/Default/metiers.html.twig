@@ -55,7 +55,7 @@
                             {% if isSearch is defined and isSearch %}
                                 <h3 class="blanc fw300">Résultats de votre recherche</h3>
                             {% else %}
-                                <h3 class="blanc fw300">Découvrez tous nos {{ immersions | length }} métiers à tester</h3>
+                                <h3 class="blanc fw300">Découvrez tous nos {{ findImmersions | length }} métiers à tester</h3>
                             {% endif %}
                         </div>
                         <div class="col-md-6 col-sm-6 hidden-xs">
@@ -82,8 +82,7 @@
                                 </div>
                                 {% for categorieJob in categorieJobs %}
                                     <div class="filter-link">
-                                        <a href="#"
-                                           data-filter=".categorie{{ categorieJob.id }}">{{ categorieJob.name }}</a>
+                                        <a href="{{ path('categorieImmersions', {'categorie' : categorieJob.id}) }}">{{ categorieJob.name }}</a>
                                         <div class="bottom-border"></div>
                                     </div>
                                 {% endfor %}
@@ -93,6 +92,7 @@
 
                     <div class="row">
                         <div class="portfolioContainer">
+
                             {% for metier in immersions %}
                                 {% if metier.lienImgPresentation is defined and metier.lienImgPresentation is not null %}
                                     {% set lienImage = 'uploads/'~metier.lienImgPresentation %}
@@ -109,7 +109,7 @@
                                 {% else %}
                                     {% set categories_classes = '' %}
                                 {% endif %}
-
+                                
                                 <div class="clearfix table-metier col-md-4 col-sm-4 graphic {{ categories_classes }}">
                                     <div class="clearfix"></div>
                                     <a href="{{ path('vmj_fiche_metier', {'slug':metier.slug}) }}">
@@ -117,7 +117,7 @@
                                     </a>
                                     <p class="mauve fs20">
                                         <a href="{{ path('vmj_fiche_metier', {'slug':metier.slug}) }}">
-                                            {{ metier.title }}
+                                            {{ metier.title }} /{{metier.professionnel.postalcode}} - {{metier.professionnel.town}}
                                             <span class="  clearfix bleu fs18">{{ metier.weekprice }} €/semaine</span>
                                         </a>
                                     </p>
@@ -126,9 +126,10 @@
                                           class="fw100 gray-italic">{% if metier.professionnel.businessDescription is defined %}
                                             {{ metier.professionnel.businessDescription|slice(0, 76) }}...
                                         {% endif %}
-                                            </span>
+                                    </span>
                                 </div>
                             {% endfor %}
+
                         </div>
                     </div>
 
@@ -149,7 +150,7 @@
 
         <script type="text/javascript">
             /* Isotope launch */
-            $(window).load(function () {
+           /* $(window).load(function () {
                 var $container = $('.portfolioContainer');
                 $container.isotope({
                     filter: '*',
@@ -175,7 +176,7 @@
                     });
                     return false;
                 });
-            });
+            }); */
             /* and Isotope launch */
         </script>
 

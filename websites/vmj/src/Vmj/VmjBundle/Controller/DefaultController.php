@@ -12,6 +12,7 @@ use Vmj\VmjBundle\Form\CommandeType;
 use Vmj\VmjBundle\Form\MotivationType;
 use Vmj\VmjBundle\Form\SimpleSearchType;
 use Vmj\VmjBundle\Form\NewscontactType;
+use Vmj\VmjBundle\Entity\CategorieJob;
 
 class DefaultController extends Controller
 {
@@ -252,6 +253,7 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         }
         $findSearchResult = $em->getRepository('VmjBundle:Immersion')->recherche($texte, '', '', '');
         $categorieJobs = $em->getRepository('VmjBundle:CategorieJob')->findAll();
+        
         /* PAGINATION */
        $searchResult = $this->get('knp_paginator')->paginate(
             $findSearchResult, $this->get('request')->query->get('page', 1), 6);
@@ -269,7 +271,7 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         ));
     }
 
-    public function metiersAction(Request $request)
+    public function metiersAction(Request $request, CategorieJob $categorie = null)
     {
         $simpleSearchform = $this->createForm(SimpleSearchType::class, null, array(
             'action' => $this->generateUrl('vmj_homepage')
@@ -279,12 +281,17 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
 
         $categorieJobs = $em->getRepository('VmjBundle:CategorieJob')->findAll();
 
-        $findImmersions = $em->getRepository('VmjBundle:Immersion')->valideImmersion();
+        if($categorie != null)
+        {
+            $findImmersions = $em->getRepository('VmjBundle:Immersion')->valideImmersionByCategorie($categorie);
+        }
+        else
+        {
+
+            $findImmersions = $em->getRepository('VmjBundle:Immersion')->valideImmersion();
+        }
 
         /* PAGINATION */
-        /*$categorieJobs = $this->get('knp_paginator')->paginate(
-            $findCategorieJobs, $this->get('request')->query->get('page', 1), 100);*/
-
         $immersions = $this->get('knp_paginator')->paginate(
             $findImmersions, $this->get('request')->query->get('page', 1), 15);
 
@@ -292,6 +299,7 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             'categorieJobs' => $categorieJobs,
             'listPages' => $this->getPagesList(),
             'immersions' => $immersions,
+            'findImmersions' => $findImmersions,
             'simpleSearchform' => $simpleSearchform->createView()
         ));
     }

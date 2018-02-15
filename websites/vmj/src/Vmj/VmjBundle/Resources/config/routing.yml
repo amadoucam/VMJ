@@ -1265,6 +1265,10 @@ vmj_professionnels:
 vmj_metiers:
     path:     /metiers
     defaults: { _controller: VmjBundle:Default:metiers }
+
+categorieImmersions:
+    path:     /categorie/{categorie}
+    defaults: { _controller: VmjBundle:Default:metiers }
     
 vmj_metier:
     path:     /metier/{slug}

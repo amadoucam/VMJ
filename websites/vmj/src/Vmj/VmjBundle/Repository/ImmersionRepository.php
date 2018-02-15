@@ -28,6 +28,19 @@ class ImmersionRepository extends \Doctrine\ORM\EntityRepository {
         return $qb->getQuery()->getResult();
     }   
 
+    /* Pour tri par catégorie */
+    public function valideImmersionByCategorie($categorie) {
+        $qb = $this->createQueryBuilder('i')
+            ->Select('i')
+            ->leftJoin('i.categories', 'c')
+            ->addSelect('c')
+            ->Where('i.weekprice is not null')
+            ->andWhere('i.actifAdmin = 1')
+            ->andWhere('c = :categories')
+            ->setParameter('categories', $categorie);
+        return $qb->getQuery()->getResult();
+    }  
+
     public function findByProfessionnalAndStatut($idPro, $statut) {
         $qb = $this->createQueryBuilder('i')
                 ->Select('i')

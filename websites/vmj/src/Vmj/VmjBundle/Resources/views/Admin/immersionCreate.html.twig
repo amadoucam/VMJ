@@ -56,7 +56,6 @@
 
             </div>
 
-
             <div class="form-group row">
                 <label for="immersion_conditions">Conditions particulières (tenue, vaccins, confidentialité...)</label>
                 {{ form_widget(immersionForm.conditions, { 'id':'immersion_conditions','attr': {
@@ -230,16 +229,17 @@
                     <span class="help-block">fichiers approuvés: gif, png, jpg. Taille Max 4Mb</span>
                 </div>
             </div>
-            <br>
+
             <div class="form-group row">
                 <div class="btn btn-info" style="float: right">{{ form_widget(immersionForm.actifAdmin, { 'id':'actifAdmin' })}}
                 <label for="actifPro">Valider l'immersion</label></div>
             </div>
             {{ form_end(immersionForm) }}
         </div>
-
-        {% if deleteForm is defined %}
         <br>
+        <br>
+        <br>
+        {% if deleteForm is defined %}
         <div class="row">
             {{ form_start(deleteForm) }}
             <input type="submit" class="btn btn-danger" value="Supprimer l'immersion" style="float: right" />
