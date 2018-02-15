@@ -1007,9 +1007,21 @@ input#remember_me {
 
 .filter-link { font-size: 15px!important;}
 
-.portfolioFilter > .filter-link > a.current
+/*.portfolioFilter > .filter-link > a.current
+{   
+  /*background-color: #55C9C8!important;
+}
+*/
 
-{     background-color: #55C9C8!important; 
+.portfolioFilter > .filter-link > a:active
+{  
+    background-color: #55C9C8!important;
+}
+
+
+.portfolioFilter > .filter-link > a
+{  
+    background-color: white!important;
 }
 
 
