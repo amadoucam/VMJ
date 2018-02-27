@@ -12,7 +12,6 @@ use Vmj\VmjBundle\Form\CommandeType;
 use Vmj\VmjBundle\Form\MotivationType;
 use Vmj\VmjBundle\Form\SimpleSearchType;
 use Vmj\VmjBundle\Form\NewscontactType;
-use Vmj\VmjBundle\Entity\CategorieJob;
 
 class DefaultController extends Controller
 {
@@ -251,13 +250,8 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
 		Votre inscription à bien été prise en compte ! <br>
 Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. </p>');
         }
-        $findSearchResult = $em->getRepository('VmjBundle:Immersion')->recherche($texte, '', '', '');
+        $searchResult = $em->getRepository('VmjBundle:Immersion')->recherche($texte, '', '', '');
         $categorieJobs = $em->getRepository('VmjBundle:CategorieJob')->findAll();
-        
-        /* PAGINATION */
-       $searchResult = $this->get('knp_paginator')->paginate(
-            $findSearchResult, $this->get('request')->query->get('page', 1), 6);
-
         $simpleSearchform = $this->createForm('Vmj\VmjBundle\Form\SimpleSearchType', null, array(
             'action' => $this->generateUrl('vmj_homepage')
         ));
@@ -271,35 +265,20 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         ));
     }
 
-    public function metiersAction(Request $request, CategorieJob $categorie = null)
+    public function metiersAction(Request $request)
     {
         $simpleSearchform = $this->createForm(SimpleSearchType::class, null, array(
             'action' => $this->generateUrl('vmj_homepage')
         ));
 
         $em = $this->getDoctrine()->getManager();
-
         $categorieJobs = $em->getRepository('VmjBundle:CategorieJob')->findAll();
-
-        if($categorie != null)
-        {
-            $findImmersions = $em->getRepository('VmjBundle:Immersion')->valideImmersionByCategorie($categorie);
-        }
-        else
-        {
-
-            $findImmersions = $em->getRepository('VmjBundle:Immersion')->valideImmersion();
-        }
-
-        /* PAGINATION */
-        $immersions = $this->get('knp_paginator')->paginate(
-            $findImmersions, $this->get('request')->query->get('page', 1), 15);
+        $immersions = $em->getRepository('VmjBundle:Immersion')->valideImmersion();
 
         return $this->render('VmjBundle:Default:metiers.html.twig', array(
             'categorieJobs' => $categorieJobs,
             'listPages' => $this->getPagesList(),
             'immersions' => $immersions,
-            'findImmersions' => $findImmersions,
             'simpleSearchform' => $simpleSearchform->createView()
         ));
     }
@@ -466,13 +445,16 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
                 $commande->setStatut(1);
                 $em->persist($commande);
                 $em->flush();
-                $this->addFlash('success', 'Votre paiement a été validé avec succès.');
 
                 $html = $this->renderView('VmjBundle:Particuliers:printFacture.html.twig', array(
                     'commande' => $commande
                 ));
 
                 $pdf = $this->get('knp_snappy.pdf')->getOutputFromHtml($html);
+
+                $this->addFlash('success', 'Votre paiement a été validé avec succès.');
+                
+                return $this->render('VmjBundle:Particuliers:confirmationPaiement.html.twig', array('commande' => $commande));
 
                 $user = $em->getRepository('VmjUserBundle:User')->findOneBy(array('user_profile' => $commande->getCustomer()));
 
@@ -504,14 +486,26 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
                     )))
                 ;
                 $this->get('mailer')->send($message);
+                
+                //Mail Zapier pour unsubscribe Mailchimp panier abandonné
+				$message = \Swift_Message::newInstance()
+                    ->setSubject('Unsubscribe')
+                    ->setFrom(array('contact@viemonjob.com' => "Viemonjob"))
+                    ->setTo('ak3aikcb@robot.zapier.com')
+                    ->setCharset('utf-8')
+                    ->setContentType('text/html')
+                    ->setBody($this->renderView('VmjBundle:MailTemplates:achat.html.twig', array(
+                        'mail' => $user->getEmail()
+                    )));
+                $this->get('mailer')->send($message);
 
                 return $this->redirectToRoute('vmj_motivation', array('id' => $commande->getId()));
+                
             } else {
                 $this->addFlash('danger', 'Votre paiement a échoué');
                 return $this->redirectToRoute('vmj_homepage');
             }
         }
-
         return $this->redirectToRoute('vmj_homepage');
     }
 
