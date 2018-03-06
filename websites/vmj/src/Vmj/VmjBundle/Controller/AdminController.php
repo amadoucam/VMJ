@@ -411,4 +411,8 @@ class AdminController extends Controller {
         }
     }
 
+    public function statsAction(Request $request)
+    {
+        return $this->render('VmjBundle:Admin:statistiques.html.twig');
+    }
 }
