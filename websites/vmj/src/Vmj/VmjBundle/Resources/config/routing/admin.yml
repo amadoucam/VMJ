@@ -172,4 +172,8 @@ admin_commandes:
 admin_presse:
     path:     /presse
     defaults: { _controller: "VmjBundle:Admin:createPresse" }
-    
+
+#Routes de l'administration des statistiques
+dashboard_admin:
+    path:     /stats
+    defaults: { _controller: "VmjBundle:Admin:?" }

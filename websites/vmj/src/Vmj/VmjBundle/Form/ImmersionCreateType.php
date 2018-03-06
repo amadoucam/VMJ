@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Vmj\VmjBundle\Entity\CategorieJob;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class ImmersionCreateType extends AbstractType {
 
@@ -18,7 +19,7 @@ class ImmersionCreateType extends AbstractType {
         $builder
                 ->add('title')
                 ->add('categories')
-                ->add('weekPrice')
+                ->add('weekPrice', NumberType::class, array('attr' => array('min' => 200, 'max' => 500)))
                 ->add('advert', null, array('required' => false))
                 ->add('conditions', null, array('required' => false))
                 ->add('imgPresentation', 'file', array('required' => false))
