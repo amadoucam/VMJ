@@ -1,7 +1,7 @@
 {# {% extends 'layout/layoutBO.html.twig' %} #}
 {% block stylesheets %}
    {# <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css"> #}
-
+   	<link rel="icon" type="image/x-icon" href="{{ asset('vmj-favicon.png') }}" />
 
     <link rel="stylesheet" href="{{ asset('dashboard/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
 	 <!-- Font Awesome -->
@@ -32,7 +32,7 @@
 
 <header class="main-header">
 	<!-- Logo -->
-	<a href="index2.html" class="logo">
+	<a href="{{path('vmj_homepage')}}" class="logo">
 	<!-- mini logo for sidebar mini 50x50 pixels -->
 	<span class="logo-mini"><b>VMJ</b></span>
 	<!-- logo for regular state and mobile devices -->
@@ -47,8 +47,8 @@
 		<div class="navbar-custom-menu">
 			<ul class="nav navbar-nav"> 
 			  	<li class="dropdown user user-menu">
-			    	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-			      		<span class="hidden-xs">Administrateur</span>
+			    	<a href="{{path('dashboard_admin')}}" class="dropdown-toggle">
+			      		<span class="hidden-xs">Accueil Administration</span>
 			    	</a>
 			   	</li>
 			</ul>
@@ -83,24 +83,98 @@
         Statistiques 
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+        <li><a href="{{path('dashboard_admin')}}"><i class="fa fa-dashboard"></i> Accueil</a></li>
         <li class="active">Dashboard</li>
       </ol>
     </section>
 
 	<section class="content">
 		<!-- Small boxes (Stat box) -->
-		<h3>Particuliers</h3>
+		<h3>Particuliers inscrits</h3>
 		<div class="row">
-			<div class="col-lg-3 col-xs-6">
+
+			<div class="col-lg-4 col-xs-6">
 				<!-- small box -->
 				<div class="small-box bg-aqua">
 					<div class="inner">
-	  					<h3>??</h3>
+	  					<h3>{{ particuliers }}</h3>
 	  					<p>Total particuliers</p>
 					</div>
 					<div class="icon">
 		  				<i class="fa fa-users"></i>
+					</div>
+					<a href="#" class="small-box-footer">Détail <i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-green">
+					<div class="inner">
+						<h3>{{ particuliers_f }}</h3>
+						<p>Total femmes</p>
+					</div>
+					<div class="icon">
+					   <i class="fa fa-female"></i>
+					</div>
+					<a href="#" class="small-box-footer">Détail <i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-yellow">
+					<div class="inner">
+						<h3>{{ particuliers_h }}</h3>
+						<p>Total hommes</p>
+					</div>
+					<div class="icon">
+					   <i class="fa fa-male"></i>
+					</div>
+					<a href="#" class="small-box-footer">Détail <i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+		</div>
+
+		<h3>Professionnels inscrits</h3>
+		<div class="row">
+			<div class="col-lg-4 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-aqua">
+					<div class="inner">
+						<h3>{{ professionnels }}</h3>
+						<p>Total professionnels</p>
+					</div>
+					<div class="icon">
+						<i class="fa fa-suitcase"></i>
+					</div>
+					<a href="#" class="small-box-footer">Détail <i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+
+			<div class="col-lg-4 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-green">
+					<div class="inner">
+						<h3>{{ professionnels_f }}</h3>
+						<p>Total femmes</p>
+					</div>
+					<div class="icon">
+						<i class="fa fa-female"></i>
+					</div>
+					<a href="#" class="small-box-footer">Détail <i class="fa fa-arrow-circle-right"></i></a>
+				</div>
+			</div>
+
+			 <div class="col-lg-4 col-xs-6">
+				<!-- small box -->
+				<div class="small-box bg-yellow">
+					<div class="inner">
+						<h3>{{ professionnels_h }}</h3>
+						<p>Total hommes</p>
+					</div>
+					<div class="icon">
+						<i class="fa fa-male"></i>
 					</div>
 					<a href="#" class="small-box-footer">Détail <i class="fa fa-arrow-circle-right"></i></a>
 				</div>

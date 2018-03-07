@@ -15,6 +15,7 @@ use Vmj\VmjBundle\Entity\Immersion;
 use Vmj\VmjBundle\Entity\Presse;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Vmj\VmjBundle\Form\AdminImmersionType;
+use Vmj\UserBundle\Entity\UserProfile;
 
 class AdminController extends Controller {
 
@@ -413,6 +414,30 @@ class AdminController extends Controller {
 
     public function statsAction(Request $request)
     {
-        return $this->render('VmjBundle:Admin:statistiques.html.twig');
+        $em = $this->getDoctrine()->getManager();
+
+        $particuliers = $em->getRepository('VmjUserBundle:UserProfile')->countAllParticuliers();
+
+        $particuliers_f = $em->getRepository('VmjUserBundle:UserProfile')->countAllParticuliersWomen();
+
+        $particuliers_h = $em->getRepository('VmjUserBundle:UserProfile')->countAllParticuliersMen();
+
+        $professionnels = $em->getRepository('VmjUserBundle:UserProfile')->countAllPro();
+
+        $professionnels_f = $em->getRepository('VmjUserBundle:UserProfile')->countAllProWomen();
+
+        $professionnels_h = $em->getRepository('VmjUserBundle:UserProfile')->countAllProMen();
+
+        $immersions = $immersion = $em->getRepository('VmjBundle:Commande')->countAllCommandes();
+
+        return $this->render('VmjBundle:Admin:statistiques.html.twig', array(
+            'particuliers' => $particuliers,
+            'immersions' => $immersions,
+            'particuliers_f' => $particuliers_f,
+            'particuliers_h' => $particuliers_h,
+            'professionnels' => $professionnels,
+            'professionnels_f' => $professionnels_f,
+            'professionnels_h' => $professionnels_h
+        ));
     }
 }

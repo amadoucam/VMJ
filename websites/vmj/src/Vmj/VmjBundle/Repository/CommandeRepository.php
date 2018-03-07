@@ -44,4 +44,13 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
             ->orderBy('i.id');
         return $qb->getQuery()->getResult();
     }
+
+    /* Pour page statistiques */
+    public function countAllCommandes()
+    {
+        return $this->createQueryBuilder('c')
+        ->Select('COUNT(c)')
+        ->getQuery()
+        ->getSingleScalarResult();
+    }
 }
