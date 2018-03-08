@@ -2,6 +2,23 @@
 
 namespace Vmj\VmjBundle\Repository;
 
+use Doctrine\ORM\Query\ResultSetMapping;
+
+use Doctrine\DBAL\Exception\ForeignKeyConstraintViolationException;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Vmj\UserBundle\Form\UserEditType;
+use Vmj\UserBundle\Entity\User;
+use FOS\UserBundle\Event\GetResponseUserEvent;
+use FOS\UserBundle\FOSUserEvents;
+use FOS\UserBundle\Event\FormEvent;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Vmj\VmjBundle\Entity\Immersion;
+use Vmj\VmjBundle\Entity\Presse;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Vmj\VmjBundle\Form\AdminImmersionType;
+use Vmj\UserBundle\Entity\UserProfile;
+
 /**
  * CommandeRepository
  *
@@ -52,5 +69,90 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
         ->Select('COUNT(c)')
         ->getQuery()
         ->getSingleScalarResult();
+    }
+
+    public function countAllCommandesF()
+    {
+        $date = date('Y-m-d');
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT COUNT(*) FROM commande, user_profile WHERE user_profile.id =commande.customer_id AND user_profile.sexe = "F" AND start < "'.$date.'" ');
+        $statement->execute();
+        $results = $statement->fetch();
+
+        return $results;
+    }
+
+    public function countAllCommandesM()
+    {
+        $date = date('Y-m-d');
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT COUNT(*) FROM commande, user_profile WHERE user_profile.id =commande.customer_id AND user_profile.sexe = "M" AND start < "'.$date.'" ');
+        $statement->execute();
+        $results = $statement->fetch();
+
+        return $results;
+    }
+
+    public function immersionsKo()
+    {
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT COUNT(*) FROM commande WHERE start IS NULL');
+        $statement->execute();
+        $results = $statement->fetch();
+
+        return $results;
+    }
+
+    public function immersionsRun()
+    {
+        $date = date('Y-m-d');
+
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT COUNT(*) FROM commande WHERE start > "'.$date.'"');
+        $statement->execute();
+        $results = $statement->fetch();
+
+        return $results;
+    }
+
+    public function immersionsEnd()
+    {
+        $date = date('Y-m-d');
+
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT COUNT(*) FROM commande WHERE start < "'.$date.'"');
+        $statement->execute();
+        $results = $statement->fetch();
+
+        return $results;
+    }
+
+    public function topPro()
+    {
+        $date = date('Y-m-d');
+
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT user_profile.firstname, user_profile.lastname , immersion_id, COUNT(*) as score FROM commande, user_profile , immersion where commande.immersion_id = immersion.id and immersion.professionnel_id = user_profile.id GROUP BY immersion_id ORDER BY COUNT(*) DESC LIMIT 5');
+        $statement->execute();
+        $results = $statement->fetchall(\PDO::FETCH_ASSOC);
+
+        return $results;
+    }
+
+    public function countTemoin()
+    {
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT COUNT(*) FROM temoignages');
+        $statement->execute();
+        $results = $statement->fetch();
+
+        return $results;
     }
 }

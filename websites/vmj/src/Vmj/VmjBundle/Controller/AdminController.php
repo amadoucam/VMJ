@@ -422,22 +422,49 @@ class AdminController extends Controller {
 
         $particuliers_h = $em->getRepository('VmjUserBundle:UserProfile')->countAllParticuliersMen();
 
+        $particuliers_null = $particuliers - ( $particuliers_f + $particuliers_h);
+
         $professionnels = $em->getRepository('VmjUserBundle:UserProfile')->countAllPro();
 
         $professionnels_f = $em->getRepository('VmjUserBundle:UserProfile')->countAllProWomen();
 
         $professionnels_h = $em->getRepository('VmjUserBundle:UserProfile')->countAllProMen();
 
-        $immersions = $immersion = $em->getRepository('VmjBundle:Commande')->countAllCommandes();
+        $professionnels_null = $professionnels - ($professionnels_f + $professionnels_h);
+
+        $immersions = $em->getRepository('VmjBundle:Commande')->countAllCommandes();
+
+        $commande_stat_f = $em->getRepository('VmjBundle:Commande')->countAllCommandesF();
+
+        $commande_stat_h = $em->getRepository('VmjBundle:Commande')->countAllCommandesM();
+
+        $immersions_ko = $em->getRepository('VmjBundle:Commande')->immersionsKo();
+
+        $immersions_run = $em->getRepository('VmjBundle:Commande')->immersionsRun();
+
+        $immersions_end = $em->getRepository('VmjBundle:Commande')->immersionsEnd();
+
+        $top_pro = $em->getRepository('VmjBundle:Commande')->topPro();
+
+        $temoignages = $em->getRepository('VmjBundle:Commande')->countTemoin();
 
         return $this->render('VmjBundle:Admin:statistiques.html.twig', array(
             'particuliers' => $particuliers,
             'immersions' => $immersions,
+            'particuliers_null' => $particuliers_null,
             'particuliers_f' => $particuliers_f,
             'particuliers_h' => $particuliers_h,
             'professionnels' => $professionnels,
             'professionnels_f' => $professionnels_f,
-            'professionnels_h' => $professionnels_h
+            'professionnels_h' => $professionnels_h,
+            'professionnels_null' => $professionnels_null,
+            'commande_stat_f' => $commande_stat_f,
+            'commande_stat_h' => $commande_stat_h,
+            'immersions_ko' => $immersions_ko,
+            'immersions_run' => $immersions_run,
+            'immersions_end' => $immersions_end,
+            'top_pro' => $top_pro,
+            'temoignages' => $temoignages
         ));
     }
 }
