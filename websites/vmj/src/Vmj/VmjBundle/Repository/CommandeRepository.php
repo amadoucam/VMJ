@@ -125,7 +125,7 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
 
         $em = $this->getEntityManager();
         $connection = $em->getConnection();
-        $statement = $connection->prepare('SELECT COUNT(*) FROM commande WHERE start < "'.$date.'"');
+        $statement = $connection->prepare('SELECT COUNT(*) FROM commande WHERE statut=1');
         $statement->execute();
         $results = $statement->fetch();
 
@@ -154,15 +154,5 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
         $results = $statement->fetch();
 
         return $results;
-    }
-
-    public function commandesValidees()
-    {
-        $qb = $this->createQueryBuilder('c')
-            ->Select('c')
-            ->Where('c.statut = 1')
-            ->orderBy('c.start', 'DESC');
-
-        return $qb->getQuery()->getResult();   
     }
 }
