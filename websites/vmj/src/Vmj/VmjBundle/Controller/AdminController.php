@@ -373,14 +373,15 @@ class AdminController extends Controller {
     
     public function adminCommandesAction(Request $request) {
         $em = $this->getDoctrine()->getManager();
-        $commandes = $em->getRepository('VmjBundle:Commande')->findBy(
-                array());
+        /*$commandes = $em->getRepository('VmjBundle:Commande')->findBy(
+                array());*/
         /*if ($res) {
             $commandes[] = $res;
         }*/
         //dump($commandes);
         //die();
-        return $this->render('VmjBundle:Admin:Commandes/adminCommandes.html.twig', array(
+        $commandes = $em->getRepository('VmjBundle:Commande')->commandesValidees();
+        return $this->render('VmjBundle:Admin:Commandes/adminCommandesValidees.html.twig', array(
                     'commandes' => $commandes
         ));
     }

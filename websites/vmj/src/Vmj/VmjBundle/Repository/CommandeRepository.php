@@ -155,4 +155,14 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
 
         return $results;
     }
+
+    public function commandesValidees()
+    {
+        $qb = $this->createQueryBuilder('c')
+            ->Select('c')
+            ->Where('c.statut = 1')
+            ->orderBy('c.start', 'DESC');
+
+        return $qb->getQuery()->getResult();   
+    }
 }
