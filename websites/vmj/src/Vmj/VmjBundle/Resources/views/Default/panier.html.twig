@@ -56,6 +56,11 @@
                                         </button>
                                     {{ form_end(codePromoform) }}
                                 </form>
+                                {% if code == promo or code == promo2 %}
+                                    <p style="color:green">Votre code a bien été pris en compte !</p>
+                                {# {% elseif code is not null and code != promo or code != promo2 %}
+                                    <p style="color:red">Code non valide</p> #}
+                                {% endif %}
                             </div>
 
 
@@ -95,8 +100,6 @@
                                     <br>
                                 </div>
                             </form>
-
-                            
 
 
                             <br><br>

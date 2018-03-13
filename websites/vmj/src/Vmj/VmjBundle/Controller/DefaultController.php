@@ -392,15 +392,10 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         ));
     }
 
-    /* Code promo */
-    /*public function promoAction(Request $request, $code)
+    public function panierAction(Request $request, $code = null)
     {
-        $findSearchResult = $em->getRepository('VmjBundle:Immersion')->recherche($texte, '', '', '');
-    }*/
-
-    public function panierAction(Request $request, $code ='')
-    {
-        $promo = 'VMJ30';
+        $promo = 'VMJ20';
+        $promo2 = 'VMJ10';
 
 		date_default_timezone_set('UTC');
 		
@@ -421,14 +416,21 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
 
         $codePromoform->handleRequest($request);
 
-        $code = $codePromoform['code']->getData();
+        if($codePromoform->isSubmitted() && $codePromoform->isValid())
+        {
+            $code = $codePromoform['code']->getData();
+        }
 
         //$findCodePromo = $em->getRepository('VmjBundle:Immersion')->recherchePromo($code, $price);
 
-        if($code == $promo)
+        if($code === $promo)
         {
-            $price = $price - ($price * 0.30);
-            $this->addFlash('success', 'Votre code promo est valide');
+            $price = $price - ($price * 0.20);
+        }
+
+        if($code === $promo2)
+        {
+            $price = $price - ($price * 0.10);
         }
 
         $commande = $this->initCommande($userProfile, $dateDebut, $immersion);
@@ -474,6 +476,9 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             'vads' => $vads,
             'immersion' => $immersion,
             'price' => $price,
+            'promo' => $promo,
+            'promo2' => $promo2,
+            'code' => $code,
             'codePromoform' => $codePromoform->createView()
         ));
     }
