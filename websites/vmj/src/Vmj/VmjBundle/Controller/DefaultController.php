@@ -11,6 +11,7 @@ use Vmj\VmjBundle\Entity\Rappel;
 use Vmj\VmjBundle\Form\CommandeType;
 use Vmj\VmjBundle\Form\MotivationType;
 use Vmj\VmjBundle\Form\SimpleSearchType;
+use Vmj\VmjBundle\Form\CodePromoType;
 use Vmj\VmjBundle\Form\NewscontactType;
 use Vmj\VmjBundle\Entity\CategorieJob;
 
@@ -391,9 +392,16 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         ));
     }
 
-    public function panierAction(Request $request)
+    /* Code promo */
+    /*public function promoAction(Request $request, $code)
     {
-		
+        $findSearchResult = $em->getRepository('VmjBundle:Immersion')->recherche($texte, '', '', '');
+    }*/
+
+    public function panierAction(Request $request, $code ='')
+    {
+        $promo = 'VMJ30';
+
 		date_default_timezone_set('UTC');
 		
         $em = $this->getDoctrine()->getManager();
@@ -406,7 +414,22 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
 
         $userProfile = $this->getUser()->getUserProfile();
         $immersion = $em->getRepository('VmjBundle:Immersion')->findOneById($immersionId);
+
         $price = $immersion->getWeekprice();
+
+        $codePromoform = $this->createForm(CodePromoType::class, null);
+
+        $codePromoform->handleRequest($request);
+
+        $code = $codePromoform['code']->getData();
+
+        //$findCodePromo = $em->getRepository('VmjBundle:Immersion')->recherchePromo($code, $price);
+
+        if($code == $promo)
+        {
+            $price = $price - ($price * 0.30);
+            $this->addFlash('success', 'Votre code promo est valide');
+        }
 
         $commande = $this->initCommande($userProfile, $dateDebut, $immersion);
 
@@ -446,9 +469,12 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         $captureDelay = utf8_encode($this->container->getParameter('vads_redirect_success_timeout'));
         $captureDelay = utf8_encode($this->container->getParameter('vads_redirect_error_timeout'));
         $vads = $this->getVADS($idCommande, $price, $userProfile, $actionMode, $ctx_mode, $currency, $page_action, $payment_config, $siteId, $version, $captureDelay, $certificate);
+
         return $this->render('VmjBundle:Default:panier.html.twig', array(
             'vads' => $vads,
-            'immersion' => $immersion
+            'immersion' => $immersion,
+            'price' => $price,
+            'codePromoform' => $codePromoform->createView()
         ));
     }
 

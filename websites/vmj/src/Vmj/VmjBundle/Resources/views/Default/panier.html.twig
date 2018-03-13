@@ -44,6 +44,22 @@
                                 {{ immersion.weekPrice }} € / semaine
                             </div>
 
+
+                            
+                            <div class="col-sm-3">
+                                <form action="{{ path('vmj_panier') }}" method="post">
+                                    {{ form_start(codePromoform) }}
+                            
+                                    {{ form_widget(codePromoform) }}
+                                    
+                                        <button class="btn btn-info">Valider
+                                        </button>
+                                    {{ form_end(codePromoform) }}
+                                </form>
+                            </div>
+
+
+
                             <form class="form-inline" method="POST" action="https://paiement.systempay.fr/vads-payment/">
                                 <input type="hidden" name="vads_action_mode" value="{{ vads['vads_action_mode'] }}" />
                                 <input type="hidden" name="vads_amount" value="{{ vads['vads_amount'] }}" />
@@ -71,15 +87,20 @@
                                 <input type="hidden" name="vads_trans_id" value="{{ vads['vads_trans_id'] }}" />
                                 <input type="hidden" name="vads_version" value="{{ vads['vads_version'] }}" />
                                 <input type="hidden" name="signature" value="{{ vads['signature'] }}"/> <br /><br>
-                                <input type="checkbox" required="required"> <span>En cochant cette case, je certifie avoir lu et accepté <a href="{{path('page_cgv')}}" target="_blank">Conditions Générales de Ventes</a></span>
+                                <input type="checkbox" required="required"> <span>En cochant cette case, je certifie avoir lu et accepté <a href="{{path('page_cgv')}}" target="_blank">Conditions Générales de Ventes 
+                                </a></span>
                                 <div>
                                     <br>
-                                    <input type="submit" class="btn btn-success col-sm-3" value="Payer"/>
+                                    <input type="submit" class="btn btn-success col-sm-3" value="Payer {{ price }}€"/>
                                     <br>
                                 </div>
                             </form>
 
+                            
+
+
                             <br><br>
+
                         </div>
 
                     {% else %}

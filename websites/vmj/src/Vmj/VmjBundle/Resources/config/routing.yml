@@ -1288,7 +1288,7 @@ vmj_immersion:
     
 vmj_panier:
     path:     /panier
-    defaults: { _controller: VmjBundle:Default:panier }
+    defaults: { _controller: VmjBundle:Default:panier}
     
 vmj_retour_paiement:
     path:     /retour-paiement

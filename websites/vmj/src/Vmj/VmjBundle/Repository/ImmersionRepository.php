@@ -133,4 +133,16 @@ class ImmersionRepository extends \Doctrine\ORM\EntityRepository {
         return $qb->getQuery()->getResult();
     }
 
+    public function recherchePromo($code, $price)
+    {
+        $promo = 'VMJ30';
+
+        if($code == $promo)
+        {
+            $price = $price - ($price * 0.30);
+            $this->addFlash('success', 'Votre code promo est valide');
+        }
+
+        return $price;
+    }
 }
