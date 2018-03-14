@@ -78,12 +78,25 @@
                 <div class="table-responsive">
                     <table class="table table-striped">
                         <tr>
-                            <th style="width:50%">TOTAL HT</th>
+                            <th style="width:50%">Prix immersion (prix intial)</th>
+                            <td>{{ commande.initialPrice|number_format(2,'.', ',') }}</td>
+                        </tr>
+
+                        <tr>
+                            <th style="width:50%"></th>
+                        </tr>
+
+                        <tr>
+                            <th style="width:50%">TOTAL COMMANDE HT</th>
                             <td>{{ (commande.price * 0.8)|number_format(2,'.', ',') }}</td>
                         </tr>
                         <tr>
                             <th>TVA (20%)</th>
                             <td>{{ (commande.price * 0.2)|number_format(2,'.', ',') }}</td>
+                        </tr>
+                        <tr>
+                            <th style="width:50%">Code Promo</th>
+                            <td>{{ commande.codePromo }}</td>
                         </tr>
                         <tr>
                             <th>TOTAL TTC</th>

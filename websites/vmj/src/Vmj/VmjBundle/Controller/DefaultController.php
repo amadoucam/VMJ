@@ -397,6 +397,8 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         $promo = 'VMJ20';
         $promo2 = 'VMJ10';
 
+        $insertCode = '-';
+
 		date_default_timezone_set('UTC');
 		
         $em = $this->getDoctrine()->getManager();
@@ -418,7 +420,7 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
 
         if($codePromoform->isSubmitted() && $codePromoform->isValid())
         {
-            $code = $codePromoform['code']->getData();
+            $code = $codePromoform['code_promo']->getData();
         }
 
         //$findCodePromo = $em->getRepository('VmjBundle:Immersion')->recherchePromo($code, $price);
@@ -426,14 +428,16 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         if($code === $promo)
         {
             $price = $price - ($price * 0.20);
+            $insertCode = $promo;
         }
 
         if($code === $promo2)
         {
             $price = $price - ($price * 0.10);
+            $insertCode = $promo2;
         }
 
-        $commande = $this->initCommande($userProfile, $dateDebut, $immersion);
+        $commande = $this->initCommande($userProfile, $dateDebut, $immersion, $price, $insertCode);
 
         $idCommande = $commande->getId();
 
@@ -602,14 +606,17 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         return $page;
     }
 
-    public function initCommande($customer, $dateDebut, $immersion)
+    public function initCommande($customer, $dateDebut, $immersion, $price, $insertCode)
     {
         $em = $this->getDoctrine()->getManager();
         $commande = new Commande();
         $commande->setCustomer($customer);
         $commande->setImmersion($immersion);
         $commande->setStart($dateDebut);
-        $commande->setPrice($immersion->getWeekPrice());
+        $commande->setPrice($price);
+        //$commande->setPrice($immersion->getWeekPrice());
+        $commande->setInitialPrice($immersion->getWeekPrice());
+        $commande->setCodePromo($insertCode);
         $commande->setQuantity(1);
         $commande->setStatut(0);
         $em->persist($commande);

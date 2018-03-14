@@ -97,6 +97,20 @@ class Commande
      */
     private $createdAt;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="codePromo", type="string", nullable=true, length=255)
+     */
+    private $codePromo;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="initialPrice", type="float")
+     */
+    private $initialPrice;
+
 
     /**
      * Get id
@@ -348,5 +362,53 @@ class Commande
     public function getMotivation()
     {
         return $this->motivation;
+    }
+
+    /**
+     * Set codePromo
+     *
+     * @param string $codePromo
+     *
+     * @return Commande
+     */
+    public function setCodePromo($codePromo)
+    {
+        $this->codePromo = $codePromo;
+
+        return $this;
+    }
+
+    /**
+     * Get codePromo
+     *
+     * @return string
+     */
+    public function getCodePromo()
+    {
+        return $this->codePromo;
+    }
+
+    /**
+     * Set initialPrice
+     *
+     * @param float $initialPrice
+     *
+     * @return Commande
+     */
+    public function setInitialPrice($initialPrice)
+    {
+        $this->initialPrice = $initialPrice;
+
+        return $this;
+    }
+
+    /**
+     * Get initialPrice
+     *
+     * @return commande
+     */
+    public function getInitialPrice()
+    {
+        return $this->initialPrice;
     }
 }

@@ -14,7 +14,7 @@ class CodePromoType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
-                ->add('code', 'text', array(
+                ->add('code_promo', 'text', array(
                     'required' => false,
                     'attr' => array(
                         'class' => 'form-control',
