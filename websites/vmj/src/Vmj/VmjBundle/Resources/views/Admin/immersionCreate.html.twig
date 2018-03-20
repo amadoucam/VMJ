@@ -66,7 +66,7 @@
 
             <div class="row">
                 <div class="form-group col-sm-3">
-                    <label for="weekPrice">Prix souhaité pour la semaine<br><span>(Viemonjob prélève une commission de 20% sur cette somme)</span></label>
+                    <label for="weekPrice">Prix souhaité pour la semaine<br><span>(Viemonjob prélève une commission de 30% sur cette somme)</span></label>
                     {{ form_widget(immersionForm.weekPrice, { 'id':'weekPrice','attr': {
                         'class': 'form-control input-inline'
                     } })
@@ -237,8 +237,7 @@
             {{ form_end(immersionForm) }}
         </div>
         <br>
-        <br>
-        <br>
+
         {% if deleteForm is defined %}
         <div class="row">
             {{ form_start(deleteForm) }}

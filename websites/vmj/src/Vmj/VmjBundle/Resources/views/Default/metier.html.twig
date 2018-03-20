@@ -53,7 +53,7 @@
                                 <br>
                                 <p class="pddmetiernom fs20">{{ metier.advert }}</p>
                                 <br>
-                                <p class="pddmetiernom fs20">
+                                {# <p class="pddmetiernom fs20">
                                     <b>Entreprise :</b>
                                         {% if metier.professionnel.website is not null %}
                                             <a href='{{ metier.professionnel.website }}' target="_blank">{{ metier.professionnel.businessName }}</a>
@@ -69,6 +69,7 @@
                                             {{metier.professionnel.address}} {{metier.professionnel.postalcode }} {{metier.professionnel.town }} {{metier.professionnel.region}}
                                         {% endif %}
                                 </p>
+                                #}
                                 {% if metier.conditions is not null %}
                                     <p class="pddmetiernom fs20">
                                         <b>Conditions particulières :</b> {{metier.conditions}}
@@ -108,7 +109,7 @@
                                                 alt="{{metier.professionnel.firstname}} {{metier.professionnel.lastname}} {{metier.title}} Viemonjob">
                                 </div>
                                 <h3 class="pddmetiernom mauve fs22 text-center">
-                                    {{ prenomPro }} {{ nomPro }}
+                                    {{ prenomPro }} {# {{ nomPro }} #}
                                 </h3>
                                 <p class="pddmetiernom fs20">
                                         {% if metier.professionnel is defined and metier.professionnel is not null %}
