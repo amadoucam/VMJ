@@ -345,7 +345,87 @@ class AdminController extends Controller {
         ));
     }
 
-    public function createPresseAction(Request $request) {
+    public function listPresseAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $articles = $em->getRepository('VmjBundle:Presse')->findAll();
+
+        return $this->render('VmjBundle:Admin:presseList.html.twig', array(
+            'articles' => $articles
+        ));
+    }
+
+    public function editPresseAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $article = $em->getRepository('VmjBundle:Presse')->findOneById($id);
+
+        $presseForm = $this->createForm('Vmj\VmjBundle\Form\AdminPresse', $article);
+
+        $presseForm->add('submit', SubmitType::class, array(
+            'label' => 'Modifier l\'article',
+            'attr' => array('class' => 'btn btn-success pull-right')
+        ));
+
+        $presseForm->handleRequest($request);
+
+        if ($presseForm->isValid())
+        {
+            $article->uploadLogo();
+
+            $em->persist($article);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_presse_list');
+        }
+
+        $deleteArticleForm = $this->createDeletePresseForm($article);
+
+        return $this->render('VmjBundle:Admin:presseCreate.html.twig', array(
+            'presseForm' => $presseForm->createView(),
+            'deleteArticleForm' => $deleteArticleForm->createView()));
+    }
+
+    public function deletePresseAction(Request $request, Presse $article)
+    {
+        $form = $this->createDeletePresseForm($article);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($article);
+            $em->flush();
+
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Votre article a été supprimé avec succès')
+            ;
+        }
+
+        return $this->redirectToRoute('admin_presse_list');
+    }
+
+    /**
+     * Creates a form to delete a Presse entity.
+     *
+     * @param Presse $presse The Presse entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeletePresseForm(Presse $presse)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('admin_presse_delete', array('id' => $presse->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
+    }
+
+    public function createPresseAction(Request $request)
+    {
         $em = $this->getDoctrine()->getManager();
 
         $presse = new Presse();
@@ -357,15 +437,19 @@ class AdminController extends Controller {
 
         $presseForm->handleRequest($request);
 
-        if ($presseForm->isValid()) {
+        if ($presseForm->isValid())
+        {
             $presse->uploadLogo();
             $em->persist($presse);
             $em->flush();
 
-            return $this->render('VmjBundle:Admin:presseCreate.html.twig', array (
+            /*return $this->render('VmjBundle:Admin:presseCreate.html.twig', array (
                 'presseForm' => $presseForm->createView()
-            ));
+            ));*/
+
+            return $this->redirectToRoute('admin_presse_list');
         }
+        
         return $this->render('VmjBundle:Admin:presseCreate.html.twig', array(
             'presseForm' => $presseForm->createView()
         ));

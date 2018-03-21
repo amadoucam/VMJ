@@ -20,7 +20,7 @@ class AdminPresse extends AbstractType {
 
                 ->add('name')
                 ->add('date', 'date')
-                ->add('logo', 'file')
+                ->add('logo', 'file', array('required' => false))
                 ->add('lien', null, array('required' => false))
                 ->add('cat', ChoiceType::class, array(
                     'choices' => array('television', 'web', 'radio'),

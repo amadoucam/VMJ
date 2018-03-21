@@ -173,6 +173,18 @@ admin_presse:
     path:     /presse
     defaults: { _controller: "VmjBundle:Admin:createPresse" }
 
+admin_presse_list:
+    path:     /presseList
+    defaults: { _controller: "VmjBundle:Admin:ListPresse" }
+
+admin_presse_edit:
+    path:     /presse/edit/{id}
+    defaults: { _controller: "VmjBundle:Admin:editPresse" }
+
+admin_presse_delete:
+    path:     /presse/delete/{id}
+    defaults: { _controller: "VmjBundle:Admin:deletePresse" }
+
 #Routes de l'administration des statistiques
 admin_statistiques:
     path:     /stats

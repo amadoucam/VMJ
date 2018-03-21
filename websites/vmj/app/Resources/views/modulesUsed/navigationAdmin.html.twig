@@ -34,14 +34,22 @@
             <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
         </a>
     </li>
-    <li>
-        <a href="{{path('admin_presse')}}">
+
+    <!-- -->
+
+    <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
             <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
             <span class="menu-text">Presse</span>
             <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
         </a>
+        <ul class="submenu">
+            <li><a href="{{ path('admin_presse_list') }}"><span class="menu-text">Liste des articles</span></a></li>
+            <li><a href="{{ path('admin_presse') }}"><span class="menu-text">Créer nouvel article</span></a></li>
+        </ul>
     </li>
     
+    <!-- -->
     
     <li class="has-submenu">
         <a href="{{path('admin_categoriejob_index')}}">

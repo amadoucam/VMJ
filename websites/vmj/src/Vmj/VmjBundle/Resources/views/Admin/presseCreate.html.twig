@@ -54,6 +54,16 @@
             {{ form_end(presseForm) }}
     </div>
 
+{% if deleteArticleForm is defined %}
+    <div class="row">
+        {{ form_start(deleteArticleForm) }}
+        <input type="submit" class="btn btn-danger" value="Supprimer l'immersion" style="float: right" />
+        {{ form_end(deleteArticleForm) }}
+    </div>
+    <br>
+ {% endif %}
+
+
 {% endblock body %}
 {% block javascripts %}
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
