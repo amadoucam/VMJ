@@ -1,14 +1,14 @@
 {% extends 'layout/layoutBO.html.twig' %}
 {% block stylesheets %}
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>
 {% endblock %}
 
 {% block body %}
 
-<div class="container margin">
+
     <h1>Liste des articles</h1>
-	<div class="table-responsive">
-		<table class="table table-bordered">
+	<div class="row">
+		<table class="commandes table table-bordered">
 			<thead>
 				<tr>
 					<th>Nom</th>
@@ -29,39 +29,16 @@
 		</tbody>
 		</table>
 	</div>
-</div>
+
 
 {% endblock body %}
 
 {% block javascripts %}
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
-    <script src="{{ asset('bundles/vmj/js/french_datepicker.js') }}"></script>
+   <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script>
-        var nowTemp = new Date();
-        var now = new Date(nowTemp.getFullYear(), nowTemp.getMonth(), nowTemp.getDate(), 0, 0, 0, 0);
-
-        var checkin = $('#date_start').datepicker({
-            language: 'fr',
-            onRender: function (date) {
-                return date.valueOf() < now.valueOf() ? 'disabled' : '';
-            }
-        }).on('changeDate', function (ev) {
-            if (ev.date.valueOf() > checkout.date.valueOf()) {
-                var newDate = new Date(ev.date)
-                newDate.setDate(newDate.getDate() + 1);
-                checkout.setValue(newDate);
-            }
-            checkin.hide();
-            $('#date_end')[0].focus();
-        }).data('datepicker');
-        var checkout = $('#date_end').datepicker({
-            language: 'fr',
-            onRender: function (date) {
-                return date.valueOf() <= checkin.date.valueOf() ? 'disabled' : '';
-            }
-        }).on('changeDate', function (ev) {
-            checkout.hide();
-        }).data('datepicker');
+        $(document).ready(function(){
+            $('.commandes').DataTable({'language': french_datatable });
+        });
     </script>
 
 {% endblock javascripts %}
