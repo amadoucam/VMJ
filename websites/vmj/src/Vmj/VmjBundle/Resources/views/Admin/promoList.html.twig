@@ -1,0 +1,52 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>
+{% endblock %}
+
+{% block body %}
+
+
+    <h1>Liste des codes promo</h1>
+	<div class="row">
+		<table class="commandes table table-bordered">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Coeff</th>
+					<th>Remise</th>
+					<th>Statut</th>
+					<th>Edition</th>
+				</tr>
+			</thead>
+		<tbody>
+			{% for code in codes %}
+				<tr>
+					<td>{{ code.name }}</td>
+					<td>{{ code.coeff }}</td>
+					<td>{{ code.coeff * 100 }}%</td>
+					<td>
+						{% if code.statut == 0 %}
+							Désactivé
+						{% else  %}
+							Actif
+						{% endif %}
+					</td>
+					<td><a href="{{ path('admin_promo_edit', {'id':code.id}) }}">Editer</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+		</table>
+	</div>
+
+
+{% endblock body %}
+
+{% block javascripts %}
+   <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.commandes').DataTable({'language': french_datatable });
+        });
+    </script>
+
+{% endblock javascripts %}

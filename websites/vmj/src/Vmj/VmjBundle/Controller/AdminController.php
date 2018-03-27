@@ -16,6 +16,7 @@ use Vmj\VmjBundle\Entity\Presse;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Vmj\VmjBundle\Form\AdminImmersionType;
 use Vmj\UserBundle\Entity\UserProfile;
+use Vmj\VmjBundle\Entity\Promo;
 
 class AdminController extends Controller {
 
@@ -345,6 +346,8 @@ class AdminController extends Controller {
         ));
     }
 
+                    /* ADMIN PRESSE */
+
     public function listPresseAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -454,6 +457,104 @@ class AdminController extends Controller {
             'presseForm' => $presseForm->createView()
         ));
     }
+
+                    /* ADMIN PROMO */
+
+    public function createPromoAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $promo = new Promo();
+        $promoForm = $this->createForm('Vmj\VmjBundle\Form\AdminPromoType', $promo);
+        $promoForm->add('submit', SubmitType::class, array(
+            'label' => 'Valider',
+            'attr' => array('class' => 'btn btn-default pull-right')
+        ));
+
+        $promoForm->handleRequest($request);
+
+        if ($promoForm->isValid())
+        {
+            $em->persist($promo);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_promo_create');
+        }
+        
+        return $this->render('VmjBundle:Admin:promoCreate.html.twig', array(
+            'promoForm' => $promoForm->createView()
+        ));
+    }
+
+    public function listPromoAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $codes = $em->getRepository('VmjBundle:Promo')->findAll();
+
+        return $this->render('VmjBundle:Admin:promoList.html.twig', array(
+            'codes' => $codes
+        ));
+    }
+
+    private function createDeletePromoForm(Promo $promo) {
+        return $this->createFormBuilder()
+                        ->setAction($this->generateUrl('admin_promo_delete', array('id' => $promo->getId())))
+                        ->setMethod('DELETE')
+                        ->getForm()
+        ;
+    }
+
+    public function deletePromoAction(Request $request, Promo $promo)
+    {
+        $form = $this->createDeletePromoForm($promo);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($promo);
+            $em->flush();
+
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Le code promo a été supprimé avec succès')
+            ;
+        }
+
+        return $this->redirectToRoute('admin_promo_list');
+    }
+
+    public function editPromoAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $promo = $em->getRepository('VmjBundle:Promo')->findOneById($id);
+
+        $promoForm = $this->createForm('Vmj\VmjBundle\Form\AdminPromoType', $promo);
+
+        $promoForm->add('submit', SubmitType::class, array(
+            'label' => 'Modifier le code promo',
+            'attr' => array('class' => 'btn btn-success pull-right')
+        ));
+
+        $promoForm->handleRequest($request);
+
+        if ($promoForm->isValid())
+        {
+            $em->persist($promo);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_promo_list');
+        }
+
+        $deleteCodeForm = $this->createDeletePromoForm($promo);
+
+        return $this->render('VmjBundle:Admin:promoCreate.html.twig', array(
+            'promoForm' => $promoForm->createView(),
+            'deleteCodeForm' => $deleteCodeForm->createView()));
+    }
+
     
     public function adminCommandesAction(Request $request) {
         $em = $this->getDoctrine()->getManager();

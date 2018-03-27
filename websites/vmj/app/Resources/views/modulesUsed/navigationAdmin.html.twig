@@ -35,7 +35,17 @@
         </a>
     </li>
 
-    <!-- -->
+    <li class="has-submenu">
+        <a href="javascript:void(0)" class="submenu-toggle">
+            <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
+            <span class="menu-text">Codes Promo</span>
+            <i class="menu-caret zmdi zmdi-hc-sm zmdi-chevron-right"></i>
+        </a>
+        <ul class="submenu">
+            <li><a href="{{ path('admin_promo_list') }}"><span class="menu-text">Liste des codes promo</span></a></li>
+            <li><a href="{{ path('admin_promo_create') }}"><span class="menu-text">Créer un code promo</span></a></li>
+        </ul>
+    </li>
 
     <li class="has-submenu">
         <a href="javascript:void(0)" class="submenu-toggle">
@@ -48,9 +58,7 @@
             <li><a href="{{ path('admin_presse') }}"><span class="menu-text">Créer nouvel article</span></a></li>
         </ul>
     </li>
-    
-    <!-- -->
-    
+
     <li class="has-submenu">
         <a href="{{path('admin_categoriejob_index')}}">
             <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>
@@ -59,7 +67,6 @@
         </a>
     </li>
    
-    
     <li class="has-submenu">
         <a href="javascript:void(0)" class="submenu-toggle">
             <i class="menu-icon zmdi zmdi-view-dashboard zmdi-hc-lg"></i>

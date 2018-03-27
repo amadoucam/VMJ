@@ -185,6 +185,23 @@ admin_presse_delete:
     path:     /presse/delete/{id}
     defaults: { _controller: "VmjBundle:Admin:deletePresse" }
 
+#Routes de l'administration des codes promo
+admin_promo_create:
+    path:     /promo/create
+    defaults: { _controller: "VmjBundle:Admin:createPromo" }
+
+admin_promo_list:
+    path:     /promo/list
+    defaults: { _controller: "VmjBundle:Admin:ListPromo" }
+
+admin_promo_edit:
+    path:     /promo/edit/{id}
+    defaults: { _controller: "VmjBundle:Admin:editPromo" }
+
+admin_promo_delete:
+    path:     /promo/delete/{id}
+    defaults: { _controller: "VmjBundle:Admin:deletePromo" }
+
 #Routes de l'administration des statistiques
 admin_statistiques:
     path:     /stats

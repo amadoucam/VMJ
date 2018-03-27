@@ -1,0 +1,45 @@
+{% extends 'layout/layoutBO.html.twig' %}
+
+{% block body %}
+    <div class="container margin">
+        <h1>Création d'un code promo</h1>
+        <br>
+        <div class="row">
+            {{ form_start(promoForm, {'attr': {'class':'form-horizontal'} }) }}
+
+            <div class="form-group row">
+                <label for="promo_name">Nom</label>
+                {{ form_widget(promoForm.name, { 'id':'promo_name','attr': {
+                    'class': 'form-control'
+                    } })
+                }}
+            </div>
+            <div class="form-group row">
+                <label for="promo_coeff">Coeff</label>
+                {{ form_widget(promoForm.coeff, { 'id':'promo_coeff','attr': {
+                    'class': 'form-control'
+                } })
+                }}
+                <span class="help-block">La valeur doit être comprise entre 0 et 1</span>
+            </div>
+            <div class="form-group row">
+                <label for="promo_statut">Statut</label>
+                    {{ form_widget(promoForm.statut, { 'id':'promo_statut','attr': {
+                        'class': 'form-control'
+                    } })
+                    }}
+                <span class="help-block"> 0 = désactivé; 1 = activé</span>
+            {{ form_end(promoForm) }}
+            </div>
+        </div>
+
+        {% if deleteCodeForm is defined %}
+            <div class="row">
+                {{ form_start(deleteCodeForm) }}
+                <input type="submit" class="btn btn-danger" value="Supprimer le code promo" style="float: right" />
+                {{ form_end(deleteCodeForm) }}
+            </div>
+            <br>
+        {% endif %}
+    </div>
+{% endblock body %}
