@@ -457,6 +457,7 @@ class AdminController extends Controller {
             'presseForm' => $presseForm->createView()
         ));
     }
+                    /* END ADMIN PRESSE */
 
                     /* ADMIN PROMO */
 
@@ -554,6 +555,8 @@ class AdminController extends Controller {
             'promoForm' => $promoForm->createView(),
             'deleteCodeForm' => $deleteCodeForm->createView()));
     }
+
+                    /* END ADMIN PROMO */
 
     
     public function adminCommandesAction(Request $request) {

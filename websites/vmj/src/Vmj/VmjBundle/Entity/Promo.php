@@ -126,4 +126,8 @@ class Promo
     {
         return $this->statut;
     }
+
+    /*public function __construct() {
+        
+    }*/
 }

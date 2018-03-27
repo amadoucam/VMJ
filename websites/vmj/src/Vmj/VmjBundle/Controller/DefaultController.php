@@ -14,6 +14,7 @@ use Vmj\VmjBundle\Form\SimpleSearchType;
 use Vmj\VmjBundle\Form\CodePromoType;
 use Vmj\VmjBundle\Form\NewscontactType;
 use Vmj\VmjBundle\Entity\CategorieJob;
+use Vmj\VmjBundle\Entity\Promo;
 
 class DefaultController extends Controller
 {
@@ -394,9 +395,6 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
 
     public function panierAction(Request $request, $code = null)
     {
-        $promo = 'VMJ20';
-        $promo2 = 'VMJ10';
-
         $insertCode = '-';
 
 		date_default_timezone_set('UTC');
@@ -421,20 +419,19 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         if($codePromoform->isSubmitted() && $codePromoform->isValid())
         {
             $code = $codePromoform['code_promo']->getData();
+            $promo = $em->getRepository('VmjBundle:Promo')->findOneByName($code);
+
+            if($promo)
+            {
+                $name = $promo->getName();
+                $coeff = $promo->getCoeff();  
+            }
         }
 
-        //$findCodePromo = $em->getRepository('VmjBundle:Immersion')->recherchePromo($code, $price);
-
-        if($code === $promo)
+        if($code === $name)
         {
-            $price = $price - ($price * 0.20);
-            $insertCode = $promo;
-        }
-
-        if($code === $promo2)
-        {
-            $price = $price - ($price * 0.10);
-            $insertCode = $promo2;
+            $price = $price - ($price * $coeff);
+            $insertCode = $name;
         }
 
         $commande = $this->initCommande($userProfile, $dateDebut, $immersion, $price, $insertCode);
@@ -480,9 +477,9 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             'vads' => $vads,
             'immersion' => $immersion,
             'price' => $price,
-            'promo' => $promo,
-            'promo2' => $promo2,
             'code' => $code,
+            'name' => $name,
+            'promo' => $promo,
             'codePromoform' => $codePromoform->createView()
         ));
     }
