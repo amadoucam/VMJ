@@ -479,7 +479,7 @@ class AdminController extends Controller {
             $em->persist($promo);
             $em->flush();
 
-            return $this->redirectToRoute('admin_promo_create');
+            return $this->redirectToRoute('admin_promo_list');
         }
         
         return $this->render('VmjBundle:Admin:promoCreate.html.twig', array(

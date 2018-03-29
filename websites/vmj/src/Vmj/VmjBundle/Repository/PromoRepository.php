@@ -10,13 +10,5 @@ namespace Vmj\VmjBundle\Repository;
  */
 class PromoRepository extends \Doctrine\ORM\EntityRepository
 {
-	public function findByName($name)
-	{
-		$qb = $this->createQueryBuilder('p')
-            ->Select('p')
-            ->Where('p.name = :name')
-            ->andWhere('p.statut = 1')
-            ->setParameter('name', $name);
-        return $qb->getQuery()->getResult();
-	}
+
 }

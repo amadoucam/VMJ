@@ -40,12 +40,18 @@
                             <div class="col-sm-3">
                                 {{ immersion.title }}
                             </div>
-                            <div class="col-sm-3">
-                                {{ immersion.weekPrice }} € / semaine
-                            </div>
 
+                            {% if code == name and name is not null and statut == 1 %}
+                                <div class="col-sm-3">
+                                    <strike>{{ immersion.weekPrice }} € / semaine</strike>
+                                    <p>{{ price }} € / semaine</p>
+                                </div>
+                            {% else %}
+                                <div class="col-sm-3">
+                                    {{ immersion.weekPrice }} € / semaine
+                                </div>
+                            {% endif %}
 
-                            
                             <div class="col-sm-3">
                                 <form action="{{ path('vmj_panier') }}" method="post">
                                     {{ form_start(codePromoform) }}
@@ -56,14 +62,12 @@
                                         </button>
                                     {{ form_end(codePromoform) }}
                                 </form>
-                                {% if code == name and name is not null %} 
+                                {% if code == name and name is not null and statut == 1 %} 
                                     <p style="color:green">Votre code a bien été pris en compte !</p>
-                                {# {% elseif code is not null and code != promo or code != promo2 %}
-                                    <p style="color:red">Code non valide</p> #}
+                                {% elseif (code is not null and code != name and statut != 1) or ( code is not null and code == name and statut != 1) %}
+                                    <p style="color:red">Code incorrect</p>
                                 {% endif %}
                             </div>
-
-
 
                             <form class="form-inline" method="POST" action="https://paiement.systempay.fr/vads-payment/">
                                 <input type="hidden" name="vads_action_mode" value="{{ vads['vads_action_mode'] }}" />

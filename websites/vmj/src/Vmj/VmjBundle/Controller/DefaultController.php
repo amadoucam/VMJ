@@ -424,11 +424,12 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             if($promo)
             {
                 $name = $promo->getName();
-                $coeff = $promo->getCoeff();  
+                $coeff = $promo->getCoeff();
+                $statut = $promo->getStatut();
             }
         }
 
-        if($code === $name)
+        if($code === $name && $statut === 1)
         {
             $price = $price - ($price * $coeff);
             $insertCode = $name;
@@ -479,7 +480,7 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             'price' => $price,
             'code' => $code,
             'name' => $name,
-            'promo' => $promo,
+            'statut' => $statut,
             'codePromoform' => $codePromoform->createView()
         ));
     }
