@@ -80,7 +80,14 @@
                     <tbody>
                         <tr>
                             <td>
-                                Immersion du {{ commande.start | date('d') }} <br>
+                                Immersion du {{ commande.start | date('Y-m-d') }} au 
+
+                                {%  if commande.end is null %}
+                                    {{ commande.start | date_modify("+5 day")| date('Y-m-d') }}
+                                {% else %}
+                                    {{ commande.end | date('Y-m-d') }}
+                                {% endif %}
+                                <br>
                                 Metier : <br>
                                 <strong>{{ commande.immersion.title }}</strong>
                             </td>
