@@ -30,70 +30,21 @@ class UserProfileRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
 
+    /* Test filtre recherche */
+    public function findAllProByCity(){
+        $qb = $this->createQueryBuilder('u')
+            ->Select('u')
+            ->Where('u.type = 2')
+            ->groupBy('u.town')
+            ->orderBy('u.town', 'ASC');
+        return $qb->getQuery()->getResult();
+    }
+
     public function findAllParticulier(){
         $qb = $this->createQueryBuilder('u')
             ->Select('u')
             ->Where('u.type = 1')
             ->orderBy('u.updated', 'DESC');
         return $qb->getQuery()->getResult();
-    }
-
-    /* Pour page statistiques */
-    public function countAllParticuliers()
-    {
-        return $this->createQueryBuilder('u')
-        ->Select('COUNT(u)')
-        ->Where('u.type = 1')
-        ->getQuery()
-        ->getSingleScalarResult();
-    }
-
-    public function countAllParticuliersWomen()
-    {
-        return $this->createQueryBuilder('u')
-        ->Select('COUNT(u)')
-        ->Where('u.type = 1')
-        ->andWhere("u.sexe = 'F'")
-        ->getQuery()
-        ->getSingleScalarResult();
-    }
-
-    public function countAllParticuliersMen()
-    {
-        return $this->createQueryBuilder('u')
-        ->Select('COUNT(u)')
-        ->Where('u.type = 1')
-        ->andWhere("u.sexe = 'M'")
-        ->getQuery()
-        ->getSingleScalarResult();
-    }
-
-    public function countAllPro()
-    {
-        return $this->createQueryBuilder('u')
-        ->Select('COUNT(u)')
-        ->Where('u.type = 2')
-        ->getQuery()
-        ->getSingleScalarResult();
-    }
-
-    public function countAllProWomen()
-    {
-        return $this->createQueryBuilder('u')
-        ->Select('COUNT(u)')
-        ->Where('u.type = 2')
-        ->andWhere("u.sexe = 'F'")
-        ->getQuery()
-        ->getSingleScalarResult();
-    }
-
-    public function countAllProMen()
-    {
-        return $this->createQueryBuilder('u')
-        ->Select('COUNT(u)')
-        ->Where('u.type = 2')
-        ->andWhere("u.sexe = 'M'")
-        ->getQuery()
-        ->getSingleScalarResult();
     }
 }
