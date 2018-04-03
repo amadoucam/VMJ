@@ -93,12 +93,64 @@
 		<h3>Particuliers inscrits</h3>
 		<div class="row">
 
+			{% set particuliers = 0 %}
+			{% set particuliers_f = 0 %}
+			{% set particuliers_h = 0 %}
+			{% set particuliers_null = 0 %}
+
+			{% set professionnels = 0 %}
+			{% set professionnels_f = 0 %}
+			{% set professionnels_h = 0 %}
+			{% set professionnels_null = 0 %}
+
+			{% set commande_tot = 0 %}
+			{% set commande_stat_f = 0 %}
+			{% set commande_stat_h = 0 %}
+
+			{% for user in users %}
+				{% if user.type == 1 %}
+					{% set particuliers = particuliers + 1 %}
+
+					{% if user.sexe == 'F' %}
+						{% set particuliers_f = particuliers_f + 1 %}
+					{% endif %}
+
+					{% if user.sexe == 'M' %}
+						{% set particuliers_h = particuliers_h + 1 %}
+					{% endif %}
+				{% endif %}
+
+				{% if user.type == 2 %}
+					{% set  professionnels = professionnels + 1 %}
+
+					{% if user.sexe == 'F' %}
+						{% set professionnels_f = professionnels_f + 1 %}
+					{% endif %}
+
+					{% if user.sexe == 'M' %}
+						{% set professionnels_h = professionnels_h + 1 %}
+					{% endif %}
+				{% endif %}
+			{% endfor %}
+
+			{% for commande in commandes %}
+				{% set commande_tot = commande_tot + 1 %}
+
+				{% if commande.sexe == 'F' %}
+					{% set commande_stat_f = commande_stat_f + 1 %}
+				{% endif %}
+
+				{% if commande.sexe == 'M' %}
+					{% set commande_stat_h = commande_stat_h + 1 %}
+				{% endif %}
+			{% endfor %}
+
 			<div class="col-lg-4 col-xs-6">
 				<!-- small box -->
 				<div class="small-box bg-aqua">
 					<div class="inner">
 	  					<h3>{{ particuliers }}</h3>
-	  					<p>Total particuliers dont {{ particuliers_null }} sans profile complet</p>
+	  					<p>Total particuliers dont {{ particuliers - (particuliers_f + particuliers_h) }} sans profile complet</p>
 					</div>
 					<div class="icon">
 		  				<i class="fa fa-users"></i>
@@ -143,7 +195,7 @@
 				<div class="small-box bg-aqua">
 					<div class="inner">
 						<h3>{{ professionnels }}</h3>
-						<p>Total professionnels dont {{ professionnels_null }} sans profile complet</p>
+						<p>Total professionnels dont {{ professionnels - (professionnels_f + professionnels_h) }} sans profile complet</p>
 					</div>
 					<div class="icon">
 						<i class="fa fa-suitcase"></i>
@@ -187,8 +239,8 @@
 				<!-- small box -->
 				<div class="small-box bg-aqua">
 					<div class="inner">
-						<h3>{{ immersions }}</h3>
-						<p>Total immersions dont {{ immersions - (commande_stat_f|first + commande_stat_h|first) }} sans profile complet</p>
+						<h3>{{ commande_tot }}</h3>
+						<p>Total immersions dont {{ commande_tot - (commande_stat_f + commande_stat_h) }} sans profile complet</p>
 					</div>
 					<div class="icon">
 						<i class="fa fa-building-o"></i>
@@ -201,7 +253,7 @@
 				<!-- small box -->
 				<div class="small-box bg-green">
 					<div class="inner">
-						<h3>{{ commande_stat_f|first }}</h3>
+						<h3>{{ commande_stat_f }}</h3>
 						<p>Nombre de femmes</p>
 					</div>
 					<div class="icon">
@@ -215,7 +267,7 @@
 				<!-- small box -->
 				<div class="small-box bg-yellow">
 					<div class="inner">
-						<h3>{{ commande_stat_h|first }}</h3>
+						<h3>{{ commande_stat_h }}</h3>
 						<p>Nombre d'hommes</p>
 					</div>
 					<div class="icon">

@@ -63,34 +63,14 @@ class CommandeRepository extends \Doctrine\ORM\EntityRepository
     }
 
     /* Pour page statistiques */
-    public function countAllCommandes()
-    {
-        return $this->createQueryBuilder('c')
-        ->Select('COUNT(c)')
-        ->getQuery()
-        ->getSingleScalarResult();
-    }
-
-    public function countAllCommandesF()
+    public function AllCommandesByCustomer()
     {
         $date = date('Y-m-d');
         $em = $this->getEntityManager();
         $connection = $em->getConnection();
-        $statement = $connection->prepare('SELECT COUNT(*) FROM commande, user_profile WHERE user_profile.id =commande.customer_id AND user_profile.sexe = "F" AND start < "'.$date.'" ');
+        $statement = $connection->prepare('SELECT * FROM commande, user_profile WHERE user_profile.id =commande.customer_id');
         $statement->execute();
-        $results = $statement->fetch();
-
-        return $results;
-    }
-
-    public function countAllCommandesM()
-    {
-        $date = date('Y-m-d');
-        $em = $this->getEntityManager();
-        $connection = $em->getConnection();
-        $statement = $connection->prepare('SELECT COUNT(*) FROM commande, user_profile WHERE user_profile.id =commande.customer_id AND user_profile.sexe = "M" AND start < "'.$date.'" ');
-        $statement->execute();
-        $results = $statement->fetch();
+        $results = $statement->fetchAll();
 
         return $results;
     }
