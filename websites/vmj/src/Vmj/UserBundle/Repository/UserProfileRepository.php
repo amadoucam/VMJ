@@ -35,8 +35,8 @@ class UserProfileRepository extends EntityRepository
         $qb = $this->createQueryBuilder('u')
             ->Select('u')
             ->Where('u.type = 2')
-            ->groupBy('u.town')
-            ->orderBy('u.town', 'ASC');
+            ->groupBy('u.region')
+            ->orderBy('u.region', 'ASC');
         return $qb->getQuery()->getResult();
     }
 

@@ -3,6 +3,9 @@
 namespace Vmj\VmjBundle\Repository;
 
 use Vmj\VmjBundle\Entity\Metier;
+use Vmj\UserBundle\Entity\UserProfile;
+use Vmj\VmjBundle\Entity\Immersion;
+
 
 /**
  * ImmersionRepository
@@ -133,16 +136,14 @@ class ImmersionRepository extends \Doctrine\ORM\EntityRepository {
         return $qb->getQuery()->getResult();
     }
 
-    public function recherchePromo($code, $price)
+    public function filter()
     {
-        $promo = 'VMJ30';
+        $em = $this->getEntityManager();
+        $connection = $em->getConnection();
+        $statement = $connection->prepare('SELECT * FROM immersion INNER JOIN user_profile ON immersion.professionnel_id = user_profile.id WHERE immersion.actifAdmin ="1" AND user_profile.town ="paris"');
+        $statement->execute();
+        $results = $statement->fetchall();
 
-        if($code == $promo)
-        {
-            $price = $price - ($price * 0.30);
-            $this->addFlash('success', 'Votre code promo est valide');
-        }
-
-        return $price;
+        return $results;
     }
 }

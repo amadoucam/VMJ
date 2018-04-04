@@ -89,6 +89,53 @@
                             </div>
                         </div>
                     </div>
+                    <br>
+                    <br>
+
+                    {# <div class="container">
+                        <div class="col-md-4 hidden-xs">
+                            {{ form_start(filterSearchform) }}
+                            
+                            {{ form_widget(filterSearchform) }}
+                            
+                                <button class="btn btn-info">Valider
+                                </button>
+                            {{ form_end(filterSearchform) }}
+                        </div>
+                    </div>
+
+                    #}
+
+                    <form action="{{ path('vmj_filter') }}" method="post">
+                        <p>
+                            Catégories : 
+                            <br>
+                            <select name="categories" value="Choisissez">
+                                <option value="" selected="selected"></option>
+
+                            {% for categorieJob in categorieJobs %}
+                                <option>{{ categorieJob.name }}</option>
+                            {% endfor %}
+
+                            </select>
+                            <br>
+                        </p>
+
+                        <p>
+                            Régions : 
+                            <br>
+                            <select name="regions" value="Choisissez">
+                                <option value="" selected="selected"></option>
+
+                            {% for metier in jobsByCity %}
+                                <option >{{ metier.region }}</option>
+                            {% endfor %}
+
+                            </select>
+                            <br>
+                        </p>
+                        <input type="submit" value="Rechecher" /><br />
+                    </form>
 
                     <div class="row">
                         <div class="portfolioContainer">

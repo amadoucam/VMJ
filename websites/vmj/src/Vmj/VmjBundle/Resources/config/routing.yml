@@ -1365,3 +1365,7 @@ vmj_newsletterconfirm:
 vmj_contactconfirm:
     path: /contact-confirmation
     defaults: { _controller: VmjBundle:Default:contactconfirmation }
+
+vmj_filter:
+    path: /filter
+    defaults: { _controller: VmjBundle:Default:filterSearch }

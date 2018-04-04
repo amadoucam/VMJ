@@ -12,6 +12,7 @@ use Vmj\VmjBundle\Form\CommandeType;
 use Vmj\VmjBundle\Form\MotivationType;
 use Vmj\VmjBundle\Form\SimpleSearchType;
 use Vmj\VmjBundle\Form\CodePromoType;
+use Vmj\VmjBundle\Form\FilterSearchType;
 use Vmj\VmjBundle\Form\NewscontactType;
 use Vmj\VmjBundle\Entity\CategorieJob;
 use Vmj\VmjBundle\Entity\Promo;
@@ -255,6 +256,9 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         }
         $findSearchResult = $em->getRepository('VmjBundle:Immersion')->recherche($texte, '', '', '');
         $categorieJobs = $em->getRepository('VmjBundle:CategorieJob')->findAll();
+
+        /* Test filtre recherche */
+        $jobsByCity = $em->getRepository('VmjUserBundle:UserProfile')->findAllProByCity();
         
         /* PAGINATION */
        $searchResult = $this->get('knp_paginator')->paginate(
@@ -267,6 +271,7 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             'categorieJobs' => $categorieJobs,
             'immersions' => $searchResult,
             'listPages' => $this->getPagesList(),
+            'jobsByCity' => $jobsByCity,
             'newsletterForm' => $form->createView(),
             'simpleSearchform' => $simpleSearchform->createView(),
             'isSearch' => true
@@ -279,9 +284,15 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             'action' => $this->generateUrl('vmj_homepage')
         ));
 
+        /* Test filtre recherche */
+        //$filterSearchForm = $this->createForm(FilterSearchType::class, null);
+
         $em = $this->getDoctrine()->getManager();
 
         $categorieJobs = $em->getRepository('VmjBundle:CategorieJob')->findAll();
+
+        /* Test filtre recherche */
+        $jobsByCity = $em->getRepository('VmjUserBundle:UserProfile')->findAllProByCity();
 
         if($categorie != null)
         {
@@ -302,9 +313,28 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             'listPages' => $this->getPagesList(),
             'immersions' => $immersions,
             'findImmersions' => $findImmersions,
+            'jobsByCity' => $jobsByCity,
             'simpleSearchform' => $simpleSearchform->createView()
         ));
     }
+
+    public function filterSearchAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $query ='';
+
+        $categorie = $_POST["categories"];
+        $region = $_POST["regions"];
+
+        $immersions = $em->getRepository('VmjBundle:Immersion')->filter();
+
+        return $this->render('VmjBundle:Default:test.html.twig', array( 'categorie' => $categorie,
+            'region' => $region,
+            'immersions' => $immersions
+        ));
+    }
+
     public function metierAction(Request $request, $slug)
     {
 		
