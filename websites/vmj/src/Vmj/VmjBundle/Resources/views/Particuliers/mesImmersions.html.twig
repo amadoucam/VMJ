@@ -29,10 +29,14 @@
                             {{commande.start | date('d-m-Y')}}
                         </td>
                         <td>
-                            {{ commande.end | date('d-m-Y') }}
+                            {%  if commande.end is null %}
+                                {{ commande.start | date_modify("+5 day")| date('d-m-Y') }}
+                            {% else %}
+                                {{ commande.end | date('d-m-Y') }}
+                            {% endif %}
                         </td>
                         <td>
-                            {{ immersion.weekprice }} €
+                            {{ commande.price }} €
                         </td>
 
                         <td>

@@ -135,15 +135,28 @@ class ImmersionRepository extends \Doctrine\ORM\EntityRepository {
 
         return $qb->getQuery()->getResult();
     }
-
-    public function filter()
+    
+    public function filter($categorie, $region)
     {
         $em = $this->getEntityManager();
         $connection = $em->getConnection();
-        $statement = $connection->prepare('SELECT * FROM immersion INNER JOIN user_profile ON immersion.professionnel_id = user_profile.id WHERE immersion.actifAdmin ="1" AND user_profile.town ="paris"');
+        $statement = $connection->prepare('
+            SELECT * FROM immersion
+            INNER JOIN user_profile 
+            ON immersion.professionnel_id = user_profile.id
+            INNER JOIN categoriejob_immersion
+            ON immersion.id = categoriejob_immersion.immersion_id
+            INNER JOIN categorie_job
+            ON categorie_job.id = categoriejob_immersion.categoriejob_id 
+            WHERE immersion.actifAdmin ="1"
+            AND categorie_job.name = :categorie
+            /*AND user_profile.region = :region*/');
+        $statement->bindParam(':categorie', $categorie);
+        //$statement->bindParam(':region', $region);
         $statement->execute();
         $results = $statement->fetchall();
 
         return $results;
     }
 }
+ 

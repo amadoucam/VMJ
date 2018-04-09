@@ -292,7 +292,7 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         $categorieJobs = $em->getRepository('VmjBundle:CategorieJob')->findAll();
 
         /* Test filtre recherche */
-        $jobsByCity = $em->getRepository('VmjUserBundle:UserProfile')->findAllProByCity();
+        //$jobsByCity = $em->getRepository('VmjUserBundle:UserProfile')->findAllProByCity();
 
         if($categorie != null)
         {
@@ -313,12 +313,13 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             'listPages' => $this->getPagesList(),
             'immersions' => $immersions,
             'findImmersions' => $findImmersions,
-            'jobsByCity' => $jobsByCity,
+            /*'jobsByCity' => $jobsByCity,*/
             'simpleSearchform' => $simpleSearchform->createView()
         ));
     }
 
-    public function filterSearchAction(Request $request)
+    /* Test filtre recherche */
+    /*public function filterSearchAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -327,13 +328,13 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         $categorie = $_POST["categories"];
         $region = $_POST["regions"];
 
-        $immersions = $em->getRepository('VmjBundle:Immersion')->filter();
+        $immersions = $em->getRepository('VmjBundle:Immersion')->filter($categorie, $region);
 
         return $this->render('VmjBundle:Default:test.html.twig', array( 'categorie' => $categorie,
             'region' => $region,
             'immersions' => $immersions
         ));
-    }
+    }*/
 
     public function metierAction(Request $request, $slug)
     {
