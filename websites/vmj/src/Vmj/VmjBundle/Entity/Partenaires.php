@@ -108,7 +108,7 @@ class Partenaires
         return $this->name;
     }
 
-    public function uploadLogo() {
+    public function uploadLogoPartner() {
         if (null === $this->logo) {
             return;
         }
@@ -119,12 +119,12 @@ class Partenaires
         $name = trim($name);
         // $url = "imgPresentation-" . $this->id . "." . $extension;
         //move
-        $this->logo->move($this->getUploadRootDir(), $name);
+        $this->logo->move($this->getUploadDir(), $name);
         //save
         $this->logolien = $name;
     }
 
-    public function getUploadRootDir() {
+    public function getUploadDir() {
         return __dir__ . '/../../../../web/theme/img/logo';
     }
 
