@@ -1,0 +1,64 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css">
+{% endblock %}
+{% block body %}
+    <div class="container margin">
+        <h1>Création d'un partenaire</h1>
+        <div class="row">
+            {{ form_start(partnerForm, {'attr': {'class':'form-horizontal'} }) }}
+
+            <div class="form-group row">
+                <label for="partner_name">Nom</label>
+                {{ form_widget(partnerForm.name, { 'id':'partner_name','attr': {
+                    'class': 'form-control'
+                    } })
+                }}
+            </div>
+            <div class="form-group row">
+                <label for="partner_lien">Lien du partenaire</label>
+                {{ form_widget(partnerForm.lien, { 'id':'partner_lien','attr': {
+                    'class': 'form-control'
+                } })
+                }}
+            </div>
+            <div class="form-group row">
+                <label for="partner_cat">Catégorie</label>
+                {{ form_widget(partnerForm.cat, { 'id':'cat','attr': {
+                    'class': 'form-control'
+                } })
+                }}
+            </div>
+
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="logo">Logo du partenaire</label>
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <span class="btn btn-primary btn-file">
+                                <i class="fa fa-upload"></i>
+                            </span>
+                        </span>
+                        {{  form_widget(partnerForm.logo, {'id': 'form.groupe', 'attr': {'class': 'form-control'}}) }}
+                    </div>
+                    <span class="help-block">fichiers approuvés: gif, png, jpg. Taille Max 4Mb</span>
+                </div>
+            </div>
+            {{ form_end(partnerForm) }}
+        </div>
+
+        {% if deletePartnerForm is defined %}
+            <div class="row">
+                {{ form_start(deletePartnerForm) }}
+                <input type="submit" class="btn btn-danger" value="Supprimer le partenaire" style="float: right" />
+                {{ form_end(deletePartnerForm) }}
+            </div>
+            <br>
+        {% endif %}
+
+    </div>
+{% endblock body %}
+{% block javascripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.min.js"></script>
+    <script src="{{ asset('bundles/vmj/js/french_datepicker.js') }}"></script>
+{% endblock javascripts %}

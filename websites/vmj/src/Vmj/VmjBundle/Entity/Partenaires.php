@@ -48,6 +48,13 @@ class Partenaires
     /**
      * @var string
      *
+     * @ORM\Column(name="lien", type="string", length=255)
+     */
+    private $lien;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="cat", type="string", length=20)
      */
     private $cat;

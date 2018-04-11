@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Vmj\VmjBundle\Form\AdminImmersionType;
 use Vmj\UserBundle\Entity\UserProfile;
 use Vmj\VmjBundle\Entity\Promo;
+use Vmj\VmjBundle\Entity\Partenaires;
 
 class AdminController extends Controller {
 
@@ -459,6 +460,109 @@ class AdminController extends Controller {
     }
                     /* END ADMIN PRESSE */
 
+                    /* ADMIN PARTENAIRE */
+     public function createPartnerAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $partner = new Partenaires();
+        $partnerForm = $this->createForm('Vmj\VmjBundle\Form\AdminPartenaires', $partner);
+        $partnerForm->add('submit', SubmitType::class, array(
+            'label' => 'Valider',
+            'attr' => array('class' => 'btn btn-default pull-right')
+        ));
+
+        $partnerForm->handleRequest($request);
+
+        if ($partnerForm->isValid())
+        {
+            $partner->uploadLogoPartner();
+            $em->persist($partner);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_partner_list');
+        }
+        
+        return $this->render('VmjBundle:Admin:partenaireCreate.html.twig', array(
+            'partnerForm' => $partnerForm->createView()
+        ));
+    }
+
+    public function listPartnerAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $partners = $em->getRepository('VmjBundle:Partenaires')->findAll();
+
+        return $this->render('VmjBundle:Admin:partenaireList.html.twig', array(
+            'partners' => $partners
+        ));
+    }
+
+    public function editPartnerAction(Request $request, $id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $partner = $em->getRepository('VmjBundle:Partenaires')->findOneById($id);
+
+        $partnerForm = $this->createForm('Vmj\VmjBundle\Form\AdminPartenaires', $partner);
+
+        $partnerForm->add('submit', SubmitType::class, array(
+            'label' => 'Modifier un partenaire',
+            'attr' => array('class' => 'btn btn-success pull-right')
+        ));
+
+        $partnerForm->handleRequest($request);
+
+        if ($partnerForm->isValid())
+        {
+            $partner->uploadLogoPartner();
+
+            $em->persist($partner);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_partner_list');
+        }
+
+        $deletePartnerForm = $this->createDeletePartnerForm($partner);
+
+        return $this->render('VmjBundle:Admin:partenaireCreate.html.twig', array(
+            'partnerForm' => $partnerForm->createView(),
+            'deletePartnerForm' => $deletePartnerForm->createView()));
+    }
+
+    private function createDeletePartnerForm(Partenaires $partner)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('admin_partner_delete', array('id' => $partner->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
+    }
+
+    public function deletePartnerAction(Request $request, Partenaires $partner)
+    {
+        $form = $this->createDeletePartnerForm($partner);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($partner);
+            $em->flush();
+
+            $request->getSession()
+                ->getFlashBag()
+                ->add('success', 'Le partenaire a été supprimé avec succès')
+            ;
+        }
+
+        return $this->redirectToRoute('admin_partner_list');
+    }
+
+                    /* END ADMIN PARTENAIRE */
+
+
                     /* ADMIN PROMO */
 
     public function createPromoAction(Request $request)
@@ -607,17 +711,11 @@ class AdminController extends Controller {
         $em = $this->getDoctrine()->getManager();
 
         $users = $em->getRepository('VmjUserBundle:UserProfile')->findAll();
-
         $commandes = $em->getRepository('VmjBundle:Commande')->AllCommandesByCustomer();
-
         $immersions_ko = $em->getRepository('VmjBundle:Commande')->immersionsKo();
-
         $immersions_run = $em->getRepository('VmjBundle:Commande')->immersionsRun();
-
         $immersions_end = $em->getRepository('VmjBundle:Commande')->immersionsEnd();
-
         $top_pro = $em->getRepository('VmjBundle:Commande')->topPro();
-
         $temoignages = $em->getRepository('VmjBundle:Commande')->countTemoin();
 
         return $this->render('VmjBundle:Admin:statistiques.html.twig', array(

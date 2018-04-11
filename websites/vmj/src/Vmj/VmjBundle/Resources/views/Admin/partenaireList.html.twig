@@ -1,0 +1,41 @@
+{% extends 'layout/layoutBO.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css"/>
+{% endblock %}
+
+{% block body %}
+
+
+    <h1>Liste des partenaires</h1>
+	<div class="row">
+		<table class="commandes table table-bordered">
+			<thead>
+				<tr>
+					<th>Nom</th>
+					<th>Lien</th>
+					<th>Edition</th>
+				</tr>
+			</thead>
+		<tbody>
+			{% for partner in partners %}
+				<tr>
+					<td>{{ partner.name }}</td>
+					<td>{{ partner.lien }}</td>
+					<td><a href="{{ path('admin_partner_edit', {'id':partner.id}) }}">Editer</a></td>
+				</tr>
+			{% endfor %}
+		</tbody>
+		</table>
+	</div>
+
+{% endblock body %}
+
+{% block javascripts %}
+   <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('.commandes').DataTable({'language': french_datatable });
+        });
+    </script>
+
+{% endblock javascripts %}
