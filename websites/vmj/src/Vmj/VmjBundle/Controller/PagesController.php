@@ -98,6 +98,8 @@ class PagesController extends Controller {
         $form = $this->createForm('Vmj\VmjBundle\Form\NewscontactType', $contact);
         $form->handleRequest($request);
 
+        $partenaires = $em->getRepository('VmjBundle:Partenaires')->findAll();
+
         $commentaires = $em->getRepository('VmjBundle:Temoignages')->findBy(array(
             'valide' => 1
         ));
@@ -110,7 +112,9 @@ class PagesController extends Controller {
 
         return $this->render('pages/partenaires.html.twig', array(
             'newsletterForm' => $form->createView(),
-            'temoignages' => $commentaires));
+            'temoignages' => $commentaires,
+            'partenaires' => $partenaires
+        ));
     }
 
     public function blogAction() {

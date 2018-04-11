@@ -42,7 +42,44 @@
                         <!--Div1--> 
                         <div class="container">
                             <div class="row text-center onparledenous">
+                                <!--ORGANISATIONS-->
+                                <div class="container clearfix inlineblock">
+                                    <h2>Organisations</h2>
+                                </div>
+                                {% for partenaire in partenaires %}
+                                    {% if partenaire.cat == 0 %}
+                                        <div class="clearfix">
+                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
+                                                <a href="{{ partenaire.lien }}" target="_blank"><img src="{{ asset('theme/img/logo/'~partenaire.logolien) }}">
+                                                <p>{{ partenaire.name }}</p></a>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
 
+                                <!--Accélérateurs/incubateurs-->
+                                <div class="container clearfix inlineblock">
+                                    <h2>Accélérateurs / incubateurs</h2>
+                                </div>
+                                {% for partenaire in partenaires %}
+                                    {% if partenaire.cat == 1 %}
+                                        <div class="clearfix">
+                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
+                                                <a href="{{ partenaire.lien }}" target="_blank"><img src="{{ asset('theme/img/logo/'~partenaire.logolien) }}">
+                                                <p>{{ partenaire.name }}</p></a>
+                                            </div>
+                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                                {# 
                                 <!--ORGANISATIONS-->
                                 <div class="container clearfix inlineblock">
                                     <h2>Organisations</h2>
@@ -203,6 +240,7 @@
                                             <p>ESSCA</p></a>
                                     </div>
                                 </div>
+                                #}
 
                             </div>
                         </div> 
