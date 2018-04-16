@@ -37,8 +37,7 @@
                  </div>
 
                 <div class="tab-content display-inline submenuaproposcontent">
-                    <div id="apropos2" class="padd10p tab-pane fade in active fw100">
-                    
+                    <div id="apropos2" class="padd10p tab-pane fade in active fw100">                  
                         <!--Div1--> 
                         <div class="container">
                             <div class="row text-center onparledenous">
@@ -48,15 +47,9 @@
                                 </div>
                                 {% for partenaire in partenaires %}
                                     {% if partenaire.cat == 0 %}
-                                        <div class="clearfix">
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                            </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                                <a href="{{ partenaire.lien }}" target="_blank"><img src="{{ asset('theme/img/logo/'~partenaire.logolien) }}">
-                                                <p>{{ partenaire.name }}</p></a>
-                                            </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                            </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
+                                            <a href="{{ partenaire.lien }}" target="_blank"><img src="{{ asset('theme/img/logo/'~partenaire.logolien) }}">
+                                            <p>{{ partenaire.name }}</p></a>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
@@ -67,19 +60,12 @@
                                 </div>
                                 {% for partenaire in partenaires %}
                                     {% if partenaire.cat == 1 %}
-                                        <div class="clearfix">
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                            </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                                <a href="{{ partenaire.lien }}" target="_blank"><img src="{{ asset('theme/img/logo/'~partenaire.logolien) }}">
-                                                <p>{{ partenaire.name }}</p></a>
-                                            </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                            </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
+                                            <a href="{{ partenaire.lien }}" target="_blank"><img src="{{ asset('theme/img/logo/'~partenaire.logolien) }}">
+                                            <p>{{ partenaire.name }}</p></a>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
-
 
                                 <!--Économie sociale et solidaire-->
                                 <div class="container clearfix inlineblock">
@@ -87,15 +73,9 @@
                                 </div>
                                 {% for partenaire in partenaires %}
                                     {% if partenaire.cat == 2 %}
-                                        <div class="clearfix">
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                            </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                                <a href="{{ partenaire.lien }}" target="_blank"><img src="{{ asset('theme/img/logo/'~partenaire.logolien) }}">
-                                                <p>{{ partenaire.name }}</p></a>
-                                            </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                            </div>
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
+                                            <a href="{{ partenaire.lien }}" target="_blank"><img src="{{ asset('theme/img/logo/'~partenaire.logolien) }}">
+                                            <p>{{ partenaire.name }}</p></a>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
@@ -105,182 +85,13 @@
                                     <h2>Écoles</h2>
                                 </div>
                                 {% for partenaire in partenaires %}
-                                    {% if partenaire.cat == 3 %}
-                                        <div class="clearfix">
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                            </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                                <a href="{{ partenaire.lien }}" target="_blank"><img src="{{ asset('theme/img/logo/'~partenaire.logolien) }}">
-                                                <p>{{ partenaire.name }}</p></a>
-                                            </div>
-                                            <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                            </div>
+                                    {% if partenaire.cat == 3 %}  
+                                        <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
+                                            <a href="{{ partenaire.lien }}" target="_blank"><img src="{{ asset('theme/img/logo/'~partenaire.logolien) }}">
+                                            <p>{{ partenaire.name }}</p></a>
                                         </div>
                                     {% endif %}
                                 {% endfor %}
-                                {# 
-                                <!--ORGANISATIONS-->
-                                <div class="container clearfix inlineblock">
-                                    <h2>Organisations</h2>
-                                </div>
-                                <div class="clearfix">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="https://logs1407.xiti.com/gopc.url?xts=574063&xtor=AD-31-[Viemonjob]-[Page_partenaires]-[]-[viemonjob.com]-[]-[]&url=https://cotepro.laposte.fr/" target="_blank"><img src="{{ asset('theme/img/logo/logo_laposte_cote_pro.png')}}">
-                                            <p>La Poste Côté Pro</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-
-                                    </div>
-                                </div>
-
-                                <div class="clearfix">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://www.obs-commedia.com/" target="_blank"><img src="{{ asset('theme/img/logo/logo_observatoire_com_media.png')}}">
-                                            <p>L'Observatoire Com Media</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://www.medef.com/medef-tv.html" target="_blank"><img src="{{ asset('theme/img/logo/logo_medef.png')}}">
-                                            <p>MEDEF</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://www.bpifrance.fr/Toutes-nos-solutions/Aides-concours-et-labels/Aides-a-l-innovation-projets-individuels/Bourse-French-Tech" target="_blank"><img src="{{ asset('theme/img/logo/logo_french_tech.png')}}">
-                                            <p>Frenchtech / BPI France</p></a>
-                                    </div>
-                                </div>
-
-                                <div class="clearfix">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="https://www.iledefrance.fr/" target="_blank"><img src="{{ asset('theme/img/logo/logo_ile_de_france.png')}}">
-                                            <p>Conseil régional d'Île de France</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://bleublanczebre.fr/" target="_blank"><img src="{{ asset('theme/img/logo/logo_bleu_blanc_zebre.png')}}">
-                                            <p>Bleu Blanc Zèbre</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://www.pole-emploi.fr/accueil/" target="_blank"><img src="{{ asset('theme/img/logo/logo_pole_emploi.png')}}">
-                                            <p>Pôle Emploi</p></a>
-                                    </div>
-                                </div>
-
-                                <div class="clearfix">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://www.bpi-group.com/fr/index.php" target="_blank"><img src="{{ asset('theme/img/logo/logo_bpi_group.png')}}">
-                                            <p>BPI Group</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="https://www.ufdi.fr/" target="_blank"><img src="{{ asset('theme/img/logo/logo_ufdi.jpg')}}">
-                                            <p>UFDI</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="https://www.lab-rh.com/" target="_blank"><img src="{{ asset('theme/img/logo/logo_le_labrh.png')}}">
-                                            <p>Le LabRH</p></a>
-                                    </div>
-                                </div>
-
-                                <!--Accélérateurs/incubateurs-->
-                                <div class="container clearfix inlineblock">
-                                    <h2>Accélérateurs / incubateurs</h2>
-                                </div>
-                                <div class="clearfix">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://seineouestdigital.fr/" target="_blank"><img src="{{ asset('theme/img/logo/16-blog-logo-so-digital.png')}}">
-                                            <p>SoDigital</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-
-                                    </div>
-                                </div>
-
-                                <div class="clearfix">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://www.mercurehec.com/" target="_blank"><img src="{{ asset('theme/img/logo/logo_mercure_hec.png')}}">
-                                            <p>Mercure HEC Booster</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="https://upbym6.fr/" target="_blank"><img src="{{ asset('theme/img/logo/logo_up_by_m6.jpg')}}">
-                                            <p>UpByM6</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://www.plugandstart.com/" target="_blank"><img src="{{ asset('theme/img/logo/logo_plug_start.png')}}">
-                                            <p>Plug&Start</p></a>
-                                    </div>
-                                </div>
-
-                                <!--Économie sociale et solidaire-->
-                                <div class="container clearfix inlineblock">
-                                    <h2>Économie sociale et solidaire</h2>
-                                </div>
-                                <div class="clearfix">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://somanyways.org/" target="_blank"><img src="{{ asset('theme/img/logo/logo_somanyways.png')}}">
-                                            <p>SoManyWays</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="https://www.workuper.com/" target="_blank"><img src="{{ asset('theme/img/logo/logo_workup.png')}}">
-                                            <p>WorkUp</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-
-                                    </div>
-                                </div>
-
-                                <div class="clearfix">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="https://www.myjobglasses.com/" target="_blank"><img src="{{ asset('theme/img/logo/logo_my_job_glasses.png')}}">
-                                            <p>MyJobGlasses</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="https://www.oscarh.com/" target="_blank"><img src="{{ asset('theme/img/logo/logo_oscarh.png')}}">
-                                            <p>OscarH</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="https://www.monkey-tie.com/" target="_blank"><img src="{{ asset('theme/img/logo/logo_monkey_tie.png')}}">
-                                            <p>Monkey Tie</p></a>
-                                    </div>
-                                </div>
-
-                                <div class="clearfix">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://eklore.fr/" target="_blank"><img src="{{ asset('theme/img/logo/logo_eklore.png')}}">
-                                            <p>EKlore</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <img src="{{ asset('theme/img/logo/logo_rebondir_apres_une_epreuve.png')}}">
-                                            <p>Rebondir après une épreuve</p>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="https://www.bloomr.org/" target="_blank"><img src="{{ asset('theme/img/logo/logo_bloomr.png')}}">
-                                            <p>BloomR</p></a>
-                                    </div>
-                                </div>
-
-                                <!--Écoles-->
-                                <div class="container clearfix inlineblock">
-                                    <h2>Écoles</h2>
-                                </div>
-                                <div class="clearfix">
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://www.hecalumni.fr/" target="_blank"><img src="{{ asset('theme/img/logo/logo_hec_paris_alumni.png')}}">
-                                            <p>HEC Paris Alumni</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="http://www.isep.fr/" target="_blank"><img src="{{ asset('theme/img/logo/logo_isep.png')}}">
-                                            <p>ISEP</p></a>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-4 col-xs-12 clearfix">
-                                        <a href="https://www.essca.fr/" target="_blank"><img src="{{ asset('theme/img/logo/logo_essca.jpg')}}">
-                                            <p>ESSCA</p></a>
-                                    </div>
-                                </div>
-                                #}
-
                             </div>
                         </div> 
                     </div>
@@ -303,7 +114,5 @@
         {% block footer %}
             {{ parent() }}
         {% endblock footer %}
-
     </div>
     {% endblock %}
-
