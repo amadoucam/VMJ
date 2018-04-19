@@ -103,6 +103,9 @@
                                         <li><a href="{{path('vmj_professionnels')}}" >Professionnels</a></li>
                                         <li><a href="{{path('vmj_metiers')}}">Métiers</a></li>
 
+                                        <li><a href="{{path('page_on_parle_de_nous')}}">On parle de nous</a></li>
+                                        <li><a href="http://webzine.viemonjob.com/">Webzine</a></li>
+
                                         {% if is_granted('ROLE_PRO') and not is_granted('ROLE_ADMIN') %}
                                             <li><a href="{{path('edition_profile_pro')}}">Mon espace pro</a></li>
                                         {% elseif is_granted('ROLE_USER') and not is_granted('ROLE_ADMIN') %}
@@ -117,8 +120,6 @@
                                             <li><a href="{{ path('fos_user_security_login')}}">Connexion</a></li>
                                             <li><a class="btn-insctiption" href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
                                         {% endif %}
-                                        <li><a href="{{path('page_on_parle_de_nous')}}">On parle de nous</a></li>
-                                        <li><a href="http://webzine.viemonjob.com/">Webzine</a></li>
                                     </ul>
                                 </div>
                             </div>
