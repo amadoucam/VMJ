@@ -16,6 +16,7 @@ use Vmj\VmjBundle\Form\FilterSearchType;
 use Vmj\VmjBundle\Form\NewscontactType;
 use Vmj\VmjBundle\Entity\CategorieJob;
 use Vmj\VmjBundle\Entity\Promo;
+use Vmj\VmjBundle\Form\DurationType;
 
 class DefaultController extends Controller
 {
@@ -435,16 +436,23 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
 
         $panier = $session->get('panier');
 
+        //durée immersion
+        $duration = $panier['duration'];
+        $adjustDate = $duration - 1;
+
         $immersionId = $panier['metier'];
         $dateDebut = new \DateTime($panier['debut']);
+
+        $end = new \DateTime($panier['debut']);
+        $end->add(new \DateInterval('P' . $adjustDate . 'D'));
 
         $userProfile = $this->getUser()->getUserProfile();
         $immersion = $em->getRepository('VmjBundle:Immersion')->findOneById($immersionId);
 
-        $price = $immersion->getWeekprice();
+        $price = ($immersion->getWeekprice() / 5) * $duration;
+        //$price = ($price/5) * $duration;
 
         $codePromoform = $this->createForm(CodePromoType::class, null);
-
         $codePromoform->handleRequest($request);
 
         if($codePromoform->isSubmitted() && $codePromoform->isValid())
@@ -466,7 +474,7 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             $insertCode = $name;
         }
 
-        $commande = $this->initCommande($userProfile, $dateDebut, $immersion, $price, $insertCode);
+        $commande = $this->initCommande($userProfile, $dateDebut, $immersion, $price, $insertCode, $duration, $end);
 
         $idCommande = $commande->getId();
 
@@ -512,7 +520,8 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             'code' => $code,
             'name' => $name,
             'statut' => $statut,
-            'codePromoform' => $codePromoform->createView()
+            'duration' => $duration,
+            'codePromoform' => $codePromoform->createView(),
         ));
     }
 
@@ -635,7 +644,7 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         return $page;
     }
 
-    public function initCommande($customer, $dateDebut, $immersion, $price, $insertCode)
+    public function initCommande($customer, $dateDebut, $immersion, $price, $insertCode, $duration, $end)
     {
         $em = $this->getDoctrine()->getManager();
         $commande = new Commande();
@@ -648,6 +657,8 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         $commande->setCodePromo($insertCode);
         $commande->setQuantity(1);
         $commande->setStatut(0);
+        $commande->setDuration($duration);
+        $commande->setEnd($end);
         $em->persist($commande);
         $em->flush();
 
@@ -673,18 +684,26 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         if (!$session->has('panier')) {
             $session->set('panier', array(
                 'metier' => null,
-                'actif' => false
+                'actif' => false,
+                'duration' => 5
             ));
         }
 
         if ($request->getMethod() == 'POST') {
             $debut = $request->request->get('date_start');
 
+            //durée immersion
+            $duration = $request->request->get('duration');
+
             $session = $request->getSession();
             $panier = $session->get('panier');
             $panier['debut'] = $debut;
             $panier['metier'] = $immersion->getId();
             $panier['actif'] = true;
+
+            //durée immersion
+            $panier['duration'] = $duration;
+            
             $session->set('panier', $panier);
             return $this->redirect($this->generateUrl('vmj_panier'));
         }

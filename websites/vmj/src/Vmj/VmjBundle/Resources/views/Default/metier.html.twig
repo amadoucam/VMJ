@@ -131,14 +131,25 @@
                             <label for="form_dispos">
                                     <div  class="fw300 mauve fs18">Choisir la date de <br>votre début d'immersion</div>
                             </label>
-                                    <input type="text" id="debut" name="date_start" class="reserver-date form-control datepicker" data-provide="datepicker" data-date-format="dd-mm-yyyy"/>
+                                    <input type="text" id="debut" name="date_start" class="reserver-date form-control datepicker" data-provide="datepicker" data-date-format="dd-mm-yyyy" required/>
 
                                     {# <select name="form_dispos" id="form_dispos" class="form-control">
                                          {% for dispo in dispos %}
                                              <option value="{{ dispo.id }}">{{ dispo.start | date('d-m-Y') }} au {{ dispo.end | date('d-m-Y') }}</option>
                                          {% endfor %}
                                      </select>#}
+                                <hr>
+                                <div class="fw300 mauve fs18">Durée de l'immersion
+                                    <select name="duration" class="form-control">
+                                        <option value="1">1 jour</option>
+                                        <option value="2">2 jours</option>
+                                        <option value="3">3 jours</option>
+                                        <option value="4">4 jours</option>
+                                        <option selected="selected" value="5">5 jours (1 semaine)</option>
+                                    </select>
+                                </div>
                             </div>
+
                             <div class="container fw100 clearfix col-md-4 text-center pd0" style="padding: 0;">
                                     <p class="cercletxt">{{ metier.weekPrice }} € </p>
                                     <p>La semaine</p>

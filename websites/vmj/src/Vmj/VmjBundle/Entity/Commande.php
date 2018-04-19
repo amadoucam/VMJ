@@ -111,6 +111,12 @@ class Commande
      */
     private $initialPrice;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="duration", type="integer")
+     */
+    private $duration;
 
     /**
      * Get id
@@ -121,8 +127,6 @@ class Commande
     {
         return $this->id;
     }
-
-    
 
     /**
      * Set price
@@ -410,5 +414,29 @@ class Commande
     public function getInitialPrice()
     {
         return $this->initialPrice;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param integer $duration
+     *
+     * @return Commande
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return commande
+     */
+    public function getDuration()
+    {
+        return $this->duration;
     }
 }
