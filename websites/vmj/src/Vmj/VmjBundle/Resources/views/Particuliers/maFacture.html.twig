@@ -57,19 +57,19 @@
                     <tbody>
                     <tr>
                         <td>
-                            Semaine(s) d'Immersion du {{ commande.start | date('Y-m-d') }} au 
+                            Semaine(s) d'Immersion du {{ commande.start | date('d-m-Y') }} au 
 
                             {%  if commande.end is null %}
-                                {{ commande.start | date_modify("+5 day")| date('Y-m-d') }}
+                                {{ commande.start | date_modify("+5 day")| date('d-m-Y') }}
                             {% else %}
-                                {{ commande.end | date('Y-m-d') }}
+                                {{ commande.end | date('d-m-Y') }}
                             {% endif %}
 
                             {# {{ commande.end | localizeddate('none', 'none', app.request.locale, "Europe/Paris", "cccc d MMMM Y") }} #} <br>
                             Metier : <br>
                             <strong>{{ commande.immersion.title }}</strong>
                         </td>
-                        <td>{{ commande.price|number_format(2,'.', ',') }}</td>
+                        <td>{{ commande.price|number_format(2,'.', ',') }} €</td>
                     </tr>
                     </tbody>
                 </table>
@@ -94,6 +94,10 @@
                             <th style="width:50%">Code Promo</th>
                             <td>{{ commande.codePromo }}</td>
                         </tr>
+                        <tr>
+                            <th style="width:50%">Durée de l'immersion</th>
+                            <td>{{ commande.duration }} jour(s)</td>
+                        </tr>
 
                         <tr>
                             <th style="width:50%">TOTAL COMMANDE HT</th>
@@ -105,7 +109,7 @@
                         </tr>
                         <tr>
                             <th>TOTAL TTC</th>
-                            <td>{{ commande.price|number_format(2,'.', ',') }}</td>
+                            <td>{{ commande.price|number_format(2,'.', ',') }} €</td>
                         </tr>
                     </table>
                 </div>

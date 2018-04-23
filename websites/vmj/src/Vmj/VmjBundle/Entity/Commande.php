@@ -4,6 +4,7 @@ namespace Vmj\VmjBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Commande
@@ -68,14 +69,14 @@ class Commande
     
     /**
      * @var \DateTime
-     *
+     * 
      * @ORM\Column(name="start", type="date", nullable=true)
      */
     private $start;
 
     /**
      * @var \DateTime
-     *
+     * 
      * @ORM\Column(name="end", type="date", nullable=true)
      */
     private $end;
@@ -113,7 +114,7 @@ class Commande
 
     /**
      * @var int
-     *
+     * 
      * @ORM\Column(name="duration", type="integer")
      */
     private $duration;

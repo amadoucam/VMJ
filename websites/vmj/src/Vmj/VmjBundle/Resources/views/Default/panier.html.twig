@@ -12,7 +12,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-md-5 col-sm-5">
-                            <h3>Mon panier {{duration}}</h3>
+                            <h3>Mon panier</h3>
                         </div>
                         <div class="col-md-7 col-sm-7 hidden-xs">
                             <div class="page-title-address">
@@ -43,12 +43,21 @@
 
                             {% if code == name and name is not null and statut == 1 %}
                                 <div class="col-sm-3">
-                                    <strike>{{ immersion.weekPrice }} € / semaine</strike>
-                                    <p>{{ price }} € / semaine</p>
+                                    {% if duration == 5 %}
+                                        <strike>{{ immersion.weekPrice }} € / semaine</strike>
+                                        <p>{{ price }} € / semaine</p>
+                                    {% else %}
+                                        <strike>{{ pricePromoFree }} € pour {{ duration }} jour(s)</strike>
+                                        <p>{{ price }} € pour {{ duration }} jour(s)</p>
+                                    {% endif %}
                                 </div>
                             {% else %}
                                 <div class="col-sm-3">
-                                    {{ immersion.weekPrice }} € / semaine
+                                    {% if duration == 5 %}
+                                        {{ immersion.weekPrice }} € / semaine
+                                    {% else %}
+                                        {{ price }} € pour {{ duration }} jour(s)
+                                    {% endif %}
                                 </div>
                             {% endif %}
 

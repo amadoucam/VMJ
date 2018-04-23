@@ -450,7 +450,8 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         $immersion = $em->getRepository('VmjBundle:Immersion')->findOneById($immersionId);
 
         $price = ($immersion->getWeekprice() / 5) * $duration;
-        //$price = ($price/5) * $duration;
+
+        $pricePromoFree = $price;
 
         $codePromoform = $this->createForm(CodePromoType::class, null);
         $codePromoform->handleRequest($request);
@@ -521,6 +522,7 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             'name' => $name,
             'statut' => $statut,
             'duration' => $duration,
+            'pricePromoFree' => $pricePromoFree,
             'codePromoform' => $codePromoform->createView(),
         ));
     }
@@ -813,5 +815,4 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         $json = json_decode($response);
         return $json->success;
     }
-
 }
