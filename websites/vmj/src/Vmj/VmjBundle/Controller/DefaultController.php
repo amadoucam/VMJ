@@ -463,7 +463,7 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             $code = $codePromoform['code_promo']->getData();
             $promo = $em->getRepository('VmjBundle:Promo')->findOneByName($code);
 
-            if($promo)
+            if($promo && $duration == 5)
             {
                 $name = $promo->getName();
                 $coeff = $promo->getCoeff();
