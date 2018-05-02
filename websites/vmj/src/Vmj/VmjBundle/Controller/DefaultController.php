@@ -259,7 +259,7 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
         $categorieJobs = $em->getRepository('VmjBundle:CategorieJob')->findAll();
 
         /* Test filtre recherche */
-        $jobsByCity = $em->getRepository('VmjUserBundle:UserProfile')->findAllProByCity();
+        //$jobsByCity = $em->getRepository('VmjUserBundle:UserProfile')->findAllProByCity();
         
         /* PAGINATION */
        $searchResult = $this->get('knp_paginator')->paginate(
@@ -314,13 +314,14 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             'listPages' => $this->getPagesList(),
             'immersions' => $immersions,
             'findImmersions' => $findImmersions,
-            /*'jobsByCity' => $jobsByCity,*/
+            //'jobsByCity' => $jobsByCity,
             'simpleSearchform' => $simpleSearchform->createView()
         ));
     }
 
     /* Test filtre recherche */
-    /*public function filterSearchAction(Request $request)
+    /*
+    public function filterSearchAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -335,7 +336,8 @@ Vous recevrez bientôt toutes les actualités Viemonjob dans votre boite mail. <
             'region' => $region,
             'immersions' => $immersions
         ));
-    }*/
+    }
+    */
 
     public function metierAction(Request $request, $slug)
     {

@@ -136,8 +136,11 @@ class ImmersionRepository extends \Doctrine\ORM\EntityRepository {
         return $qb->getQuery()->getResult();
     }
     
+    /*
     public function filter($categorie, $region)
     {
+        $region = '%'.$region.'%';
+
         $em = $this->getEntityManager();
         $connection = $em->getConnection();
         $statement = $connection->prepare('
@@ -150,13 +153,14 @@ class ImmersionRepository extends \Doctrine\ORM\EntityRepository {
             ON categorie_job.id = categoriejob_immersion.categoriejob_id 
             WHERE immersion.actifAdmin ="1"
             AND categorie_job.name = :categorie
-            /*AND user_profile.region = :region*/');
+            AND user_profile.region 
+            LIKE :region');
         $statement->bindParam(':categorie', $categorie);
-        //$statement->bindParam(':region', $region);
+        $statement->bindParam(':region', $region);
         $statement->execute();
         $results = $statement->fetchall();
-
         return $results;
     }
+    */
 }
  

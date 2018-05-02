@@ -240,7 +240,7 @@ class Immersion {
 
     /**
      * @var float
-     * @Assert\Range(min = 200, max = 500, minMessage= "Le prix doit être supérieur ou égal à 200 euros", maxMessage="Le prix doit être inférieur ou égal à 500 euros")
+     * @Assert\Range(min = 500, max = 500, minMessage= "Le prix doit être supérieur ou égal à 200 euros", maxMessage="Le prix doit être inférieur ou égal à 500 euros")
      * @ORM\Column(name="weekprice", type="float", nullable=true)
      */
     private $weekprice;

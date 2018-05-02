@@ -26,6 +26,19 @@
                 <br>
             </div>
 
+            <div class="blocktext1-vmj">
+                <div class="container">
+                    <div class="col-md-10">
+                        <h2 style="text-align:center;">
+                            <strong>Nouveau! Immersion à la journée</strong>
+                        </h2>
+                        <p style="text-align:center;">
+                            <strong>Testez un métier à la journée ou sur une semaine complète</strong>
+                        </p>
+                    </div>
+                </div>
+              </div>
+
             <div class="text-bottom">
                 {% if simpleSearchform is defined %}
                     {{ form_start(simpleSearchform) }}
@@ -113,17 +126,31 @@
                             <br>
                             <select name="regions" value="Choisissez">
                                 <option value="" selected="selected"></option>
-
+                                <option value="Auvergne-Rhône-Alpes">Auvergne-Rhône-Alpes</option>
+                                <option value="Bourgogne-Franche-Comté">Bourgogne-Franche-Comté</option>
+                                <option value="Bretagne">Bretagne</option>
+                                <option value="Centre-Val de Loire">Centre-Val de Loire</option>
+                                <option value="Corse">Corse</option>
+                                <option value="Grand Est">Grand Est</option>
+                                <option value="Hauts-de-France">Hauts-de-France</option>
+                                <option value="Ile-de-France">Ile-de-France</option>
+                                <option value="Normandie">Normandie</option>
+                                <option value="Nouvelle-Aquitaine">Nouvelle-Aquitaine</option>
+                                <option value="Occitanie">Occitanie</option>
+                                <option value="Pays de la Loire">Pays de la Loire</option>
+                                <option value="Provence-Alpes-Côte d'Azur">Provence-Alpes-Côte d'Azur</option>
+                            
                             {% for metier in jobsByCity %}
                                 <option >{{ metier.region }}</option>
                             {% endfor %}
+                            
 
                             </select>
                             <br>
                         </p>
                         <input type="submit" value="Rechecher" /><br />
                     </form>
-                    #}
+                    #}                    
 
                     <div class="row">
                         <div class="portfolioContainer">
