@@ -9,13 +9,14 @@
     <div class="row">
         <h1>Liste des professionnels</h1>
         <button id="export" class="btn btn-warning">Export Excel</button>
-        <table id="list_users">
+        <table class="commandes table table-bordered" id="list_users">
             <thead>
                 <tr>
                     <th>Id</th>
                     <th>Nom</th>
                     <th>Prénom</th>
                     <th>Email</th>
+                    <th>Code postal</th>
                     <th>Ville</th>
                     <th>Type</th>
                     <th>Date <br>creation</th>
@@ -30,6 +31,7 @@
                     <td>{{ user.firstname }}</td>
                     <td>{{ user.lastname }}</td>
                     <td>{{ user.email }}</td>
+                    <td>{{ user.postalcode }}</td>
                     <td>{{ user.town }}</td>
                     <td>{{ type_user[user.type] }}</td>
                     <td>{{ user.created | date('d-m-Y')}}</td>
@@ -47,7 +49,7 @@
     <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function(){
-            $('#list_users').DataTable({'language': french_datatable , "bSort": false});
+            $('#list_users').DataTable({'language': french_datatable });
         });
     </script>
         <script>
