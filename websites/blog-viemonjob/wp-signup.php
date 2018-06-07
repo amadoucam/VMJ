@@ -224,6 +224,14 @@ function show_user_form($user_name = '', $user_email = '', $errors = '') {
 		$errors = new WP_Error();
 	}
 
+	// User name
+	echo '<label for="user_name">' . __('Username:') . '</label>';
+	if ( $errmsg = $errors->get_error_message('user_name') ) {
+		echo '<p class="error">'.$errmsg.'</p>';
+	}
+	echo '<input name="user_name" type="text" id="user_name" value="'. esc_attr( $user_name ) .'" autocapitalize="none" autocorrect="off" maxlength="60" /><br />';
+	_e( '(Must be at least 4 characters, letters and numbers only.)' );
+	?>
 
 	<label for="user_email"><?php _e( 'Email&nbsp;Address:' ) ?></label>
 	<?php if ( $errmsg = $errors->get_error_message('user_email') ) { ?>
