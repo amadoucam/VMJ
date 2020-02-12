@@ -1,7 +1,7 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
     "content-hash": "38cd2f3f113a62f6a8e083c8e6912528",
@@ -808,12 +808,12 @@
             "version": "v2.5.14",
             "source": {
                 "type": "git",
-                "url": "https://github.com/doctrine/doctrine2.git",
+                "url": "https://github.com/doctrine/orm.git",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/doctrine2/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
+                "url": "https://api.github.com/repos/doctrine/orm/zipball/810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "reference": "810a7baf81462a5ddf10e8baa8cb94b6eec02754",
                 "shasum": ""
             },
@@ -2075,7 +2075,7 @@
                     "homepage": "https://nette.org/contributors"
                 }
             ],
-            "description": "🛠 Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
+            "description": "? Nette Utils: lightweight utilities for string & array manipulation, image handling, safe JSON encoding/decoding, validation, slug or strong password generating etc.",
             "homepage": "https://nette.org",
             "keywords": [
                 "array",
@@ -2413,12 +2413,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/stof/StofDoctrineExtensionsBundle.git",
-                "reference": "46db71ec7ffee9122eca3cdddd4ef8d84bae269c"
+                "reference": "9b47596daa0fd33218687d0b91e7d016e5363796"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/46db71ec7ffee9122eca3cdddd4ef8d84bae269c",
-                "reference": "46db71ec7ffee9122eca3cdddd4ef8d84bae269c",
+                "url": "https://api.github.com/repos/stof/StofDoctrineExtensionsBundle/zipball/9b47596daa0fd33218687d0b91e7d016e5363796",
+                "reference": "9b47596daa0fd33218687d0b91e7d016e5363796",
                 "shasum": ""
             },
             "require": {
@@ -2470,7 +2470,7 @@
                 "translatable",
                 "tree"
             ],
-            "time": "2017-12-24T16:06:50+00:00"
+            "time": "2019-01-14T12:21:59+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
@@ -3623,20 +3623,21 @@
                 }
             ],
             "description": "This bundle generates code for you",
+            "abandoned": true,
             "time": "2017-12-07T15:36:41+00:00"
         },
         {
             "name": "symfony/phpunit-bridge",
-            "version": "v2.8.35",
+            "version": "v2.8.50",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/phpunit-bridge.git",
-                "reference": "a110b329168654bc8069d129af022e6b8bbe9468"
+                "reference": "4aa44ecbfb5e2c50797d17756da11c93a8a6974f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/a110b329168654bc8069d129af022e6b8bbe9468",
-                "reference": "a110b329168654bc8069d129af022e6b8bbe9468",
+                "url": "https://api.github.com/repos/symfony/phpunit-bridge/zipball/4aa44ecbfb5e2c50797d17756da11c93a8a6974f",
+                "reference": "4aa44ecbfb5e2c50797d17756da11c93a8a6974f",
                 "shasum": ""
             },
             "require": {
@@ -3681,7 +3682,7 @@
             ],
             "description": "Symfony PHPUnit Bridge",
             "homepage": "https://symfony.com",
-            "time": "2018-02-11T16:53:59+00:00"
+            "time": "2019-04-16T10:01:26+00:00"
         }
     ],
     "aliases": [],
